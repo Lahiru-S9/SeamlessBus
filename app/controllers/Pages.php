@@ -7,7 +7,8 @@
 
         public function index(){
             $data =  [
-                'title' => 'Welcome',
+                'title' => 'Seamless Bus',
+                'description' => 'We help you to pre-plan and make your day more efficient by digitizing the highway bus system.'
             ];
    
             $this->view('pages/index', $data);
@@ -15,7 +16,8 @@
         
         public function about(){
             $data =  [
-                'title' => 'About Us'
+                'title' => 'About Us',
+                'description' => 'We help you to pre-plan and make your day more efficient by digitizing the highway bus system.'
             ];
 
             $this->view('pages/about', $data);

@@ -11,3 +11,5 @@
     define ('URLROOT', 'http://localhost/SeamlessBus');
     //Site Name
     define ('SITENAME', 'SeamlessBus');
+    //App Version
+    define ('APPVERSION', '1.0.0');
