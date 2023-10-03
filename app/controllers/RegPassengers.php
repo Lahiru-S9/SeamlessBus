@@ -1,7 +1,7 @@
 <?php
     class RegPassengers extends Controller{
         public function __construct(){
-            
+            $this->regPassengerModel = $this->model('RegPassenger');
         }
 
         public function register(){
@@ -27,6 +27,11 @@
                 //Validate Email
                 if(empty($data['email'])){
                     $data['email_err'] = 'Please enter email';
+                } else {
+                    //Check email
+                    if($this->regPassengerModel->findRegPassengerByEmail($data['email'])){
+                        $data['email_err'] = 'Email is already taken';
+                    }
                 }
 
                 //Validate Name
