@@ -16,7 +16,7 @@
         <!-- Call to action buttons -->
         <div class="cta-buttons">
             <div class="cta-button">
-                <a href="#">Apply Now!</a>
+                <a href="<?php echo URLROOT; ?>/RegPassengers/register">Apply Now!</a>
             </div>
             <div class="cta-button">
                 <a href="#">Join Us!</a>

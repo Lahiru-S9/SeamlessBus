@@ -11,7 +11,7 @@
             </ul>
             <div class="user-actions">
                 <a href="<?php echo URLROOT; ?>/users/signup" class="signup">Sign up</a>
-                <a href="/users/login" class="login">Log in</a>
+                <a href="<?php echo URLROOT; ?>/pages/userSelect" class="login">Log in</a>
             </div>
         </div>
     </nav>
