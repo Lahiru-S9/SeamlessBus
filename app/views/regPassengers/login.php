@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="container">
     <div class="login-card">
+        <?php flash('register_success'); ?>
         <div class="login-title">Log into your profile</div>
         <div class="login-subtitle">Enter login credentials</div>
         <form action="<?php echo URLROOT; ?>/regPassengers/login" method="POST">
