@@ -504,3 +504,13 @@ button[type="submit"]:hover {
     cursor: pointer;
     border-radius: 5px;
 }
+
+/* CSS for Success Alert */
+.alert-success {
+    background-color: #D4EDDA; /* Background color for success alert */
+    border: 1px solid #C3E6CB; /* Border color for success alert */
+    color: #155724; /* Text color for success alert */
+    padding: 10px 15px; /* Padding for content inside the alert */
+    border-radius: 5px; /* Rounded corners for the alert */
+    margin-bottom: 10px; /* Margin to separate alerts if needed */
+}

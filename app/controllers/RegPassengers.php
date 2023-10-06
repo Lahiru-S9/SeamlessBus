@@ -58,10 +58,21 @@
                 //Make sure errors are empty
                 if(empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
                     //Validated
-                    die('SUCCESS');
+                    
+                    //Hash password
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                    //Register User
+                    if($this->regPassengerModel->register($data)){
+                        flash('register_success', 'You are registered and can log in');
+                        redirect('regPassengers/login');
+                    } else{
+                        die('Something went wrong');
+                    }
+
                 }else {
                     //Load view with errors
-                    $this->view('regUsers/register', $data);
+                    $this->view('regPassengers/register', $data);
                 }
 
 
@@ -83,7 +94,7 @@
 
                 
                 //Load view
-                $this->view('regUsers/register', $data);
+                $this->view('regPassengers/register', $data);
             }
         }
 
@@ -113,13 +124,32 @@
                     $data['password_err'] = 'Please enter password';
                 }
 
+                //Check for regPassenger/email
+                if($this->regPassengerModel->findRegPassengerByEmail($data['email'])){
+                    //User found
+                }else{
+                    //User not found
+                    $data['email_err'] = 'No user found';
+                }
+
                 // Make sure those are empty
                 if(empty($data['email_err']) && empty($data['password_err'])){
                     //Validated
-                    die('SUCCESS');
+                    //Check and set logged in regPassenger
+                    $loggedInRegPassenger = $this->regPassengerModel->login($data['email'], $data['password']);
+
+                    if($loggedInRegPassenger){
+                        //Create Session
+                        $this->createRegPassengerSession($loggedInRegPassenger);
+                    } else{
+                        $data['password_err'] = 'Password incorrect';
+
+                        $this->view('regPassengers/login', $data);
+                    }
+
                 }else {
                     //Load view with errors
-                    $this->view('regUsers/login', $data);
+                    $this->view('regPassengers/login', $data);
                 }
 
 
@@ -133,7 +163,30 @@
                 ];
 
                 //Load view
-                $this->view('regUsers/login', $data);
+                $this->view('regPassengers/login', $data);
+            }
+        }
+
+        public function createRegPassengerSession($regPassenger){
+            $_SESSION['regPassenger_id'] = $regPassenger->id;
+            $_SESSION['regPassenger_email'] = $regPassenger->email;
+            $_SESSION['regPassenger_name'] = $regPassenger->name;
+            redirect('pages/index');
+        }
+
+        public function logout(){
+            unset($_SESSION['regPassenger_id']);
+            unset($_SESSION['regPassenger_email']);
+            unset($_SESSION['regPassenger_name']);
+            session_destroy();
+            redirect('regPassengers/login');
+        }
+
+        public function isLoggedIn(){
+            if(isset($_SESSION['regPassenger_id'])){
+                return true;
+            } else {
+                return false;
             }
         }
     }
