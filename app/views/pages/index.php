@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/pages/index.css">
       <!-- Main content -->
       <div class="main-content">
         <img src="<?php echo URLROOT; ?>/img/indexBackground.jpg" alt="Background Image">
@@ -6,22 +7,30 @@
         <!-- Text content -->
         <div class="text-content">
             <div class="header-text">
-                For an Enhanced Travel Experience
+                <div class="header-text-line1">For an Enhanced Travel Experience</div>
+                <div class="header-text-line2"><?php echo $data['description']; ?></div>
             </div>
-            <div class="sub-text">
-                <?php echo $data['description']; ?>
+
+            <div class="middle-text">
+                <div class="middle-text-line1">Bus seat booking made easier</div>
+                <div class="middle-text-line2">book your seats in just a few easy steps</div>
             </div>
         </div>
+
+
 
         <!-- Call to action buttons -->
         <div class="cta-buttons">
             <div class="cta-button">
+                <img src="<?php echo URLROOT; ?>/img/passenger.png" alt="Apply Now">
                 <a href="<?php echo URLROOT; ?>/RegPassengers/register">Apply Now!</a>
             </div>
             <div class="cta-button">
+                <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="Join Us">
                 <a href="#">Join Us!</a>
             </div>
             <div class="cta-button">
+                <img src="<?php echo URLROOT; ?>/img/owner.png" alt="Get Started">
                 <a href="#">Get Started!</a>
             </div>
         </div>
