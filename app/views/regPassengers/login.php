@@ -1,9 +1,13 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<link rel="stylesheet" type="text/css" href="<?php echo URLROOT; ?>/css/regPassengers/login.css">
+
 <div class="container">
+<div class="login-subtitle">Enter login credentials</div>
+<div class="login-title">Log into your profile</div>
     <div class="login-card">
         <?php flash('register_success'); ?>
-        <div class="login-title">Log into your profile</div>
-        <div class="login-subtitle">Enter login credentials</div>
+        
+        
         <form action="<?php echo URLROOT; ?>/regPassengers/login" method="POST">
             <div class="form-group">
                 <label for="email">Email:</label>

@@ -1,123 +1,81 @@
-/* CSS for your form */
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
 .container {
-    width: 100%;
-    height: 100%;
     position: relative;
-    background: white;
 }
 
 .container img {
-    width: 1440px;
-    height: 639px;
-    left: 0px;
-    top: 137px;
-    position: absolute;
+    width: 100%;
+    height: auto;
 }
 
 .content {
-    width: 1449px;
-    height: 172px;
-    left: -565px;
-    top: 250px;
     position: absolute;
-}
-
-.login-title {
-    width: 1045.56px;
-    height: 145px;
-    left: 117.84px;
-    top: -8px;
-    position: absolute;
-    text-align: right;
-    color: #F3D9DC;
-    font-size: 48px;
-    font-family: Lato;
-    font-weight: 800;
-    line-height: 70px;
-    word-wrap: break-word;
-}
-
-.login-subtitle {
-    width: 837.84px;
-    height: 34px;
-    left: 325.55px;
-    top: 64px;
-    position: absolute;
-    opacity: 0.60;
-    text-align: right;
-    color: #F3D9DC;
-    font-size: 20px;
-    font-family: Lato;
-    font-weight: 500;
-    line-height: 30px;
-    word-wrap: break-word;
-}
-
-.subtitle {
-    left: 599px;
-    top: 957px;
-    position: absolute;
-    opacity: 0.60;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    color: #001514;
-    font-size: 20px;
-    font-family: Lato;
-    font-weight: 500;
-    line-height: 30px;
-    word-wrap: break-word;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
 .login-title {
-    left: 380px;
-    top: 874px;
-    position: absolute;
-    text-align: center;
-    color: #001514;
-    font-size: 48px;
-    font-family: Lato;
+    font-size: 24px;
     font-weight: 800;
-    line-height: 70px;
-    word-wrap: break-word;
+    margin-bottom: 20px;
 }
 
+.login-subtitle, .subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
 
 .form-group {
-    margin: 20px;
+    margin-bottom: 20px;
 }
 
 label {
-    color: #001514;
-    font-size: 24px;
-    font-weight: 800;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .custom-input {
     width: 100%;
     padding: 10px;
-    font-size: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .is-invalid {
-    border: 2px solid red;
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+}
+
+.btn-reset, .btn-submit {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-}
-
-.btn-reset,
-.btn-submit {
-    width: 150px;
-    padding: 10px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 800;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
 }
 
 /* Additional styling as needed */
