@@ -85,6 +85,8 @@
     cursor: pointer;
     padding: 10px;
     transition: background-color 0.3s ease-in-out;
+    width: auto; /* Adjust the width as needed */
+    white-space: nowrap;
 }
 
 .cta-button a {
@@ -92,48 +94,74 @@
     font-size: 24px;
     font-weight: 800;
     text-decoration: none;
-    margin-top: 10px; /* Adjust the margin as needed */
+    margin: 0;
 }
 
 .cta-buttons img {
     max-width: 50px; /* Adjust the max-width as needed */
     max-height:50px; /* Adjust the max-height as needed */
-    order: -1; /* Move images to the upper row */
 }
 
+.button-text{
+    width: 100%; 
+    height: 100%; 
+    text-align: center; 
+    color: #001514; 
+    font-size: 24px; 
+    font-family: Lato; 
+    font-weight: 800; 
+    line-height: 70px; 
+    word-wrap: break-word;
+    order: -2;
+    margin: 0;
+}
 
 .cta-button:hover {
     background-color: #FACC05;
 }
 
-/* Enhancing your Travel Experience */
+
+/* Footer styles */
+.footer {
+    background-color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; 
+}
+
+.footer img {
+    width: 70px; 
+    height: 70px;
+}
+
 .footer-text {
-    color: #6D758F;
     font-size: 16px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
     line-height: 24px;
     word-wrap: break-word;
 }
 
-/* Seamless Bus */
-.footer-subtext:nth-of-type(1) {
-    color: black;
-    font-size: 16px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-    line-height: 24px;
-    word-wrap: break-word;
-}
-
-/* Developed by CS group 23 */
-.footer-subtext:nth-of-type(2) {
-    color: black;
+.footer-subtext {
     font-size: 12px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
     line-height: 24px;
     word-wrap: break-word;
 }
 
-/* Other styles for elements can be added here */
+
+/* Social media icons */
+.social-media-icons {
+    margin-top: 20px;
+}
+
+.social-media-icon {
+    display: inline-block;
+    margin: 0 10px; /* Adjust the margin as needed */
+}
+
+.social-media-icon img {
+    width: 24px; /* Adjust the width as needed */
+    height: 24px; /* Adjust the height as needed */
+}
+
+
