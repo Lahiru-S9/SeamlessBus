@@ -1,5 +1,5 @@
 <?php
-    class RegPassenger {
+    class User {
         private $db;
 
         public function __construct(){
@@ -8,7 +8,7 @@
 
         //Register regPassenger
         public function register($data){
-            $this->db->query('INSERT INTO regPassengers (name, email, password) VALUES(:name, :email, :password)');
+            $this->db->query('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
             //Bind values
             $this->db->bind(':name', $data['name']);
             $this->db->bind(':email', $data['email']);
@@ -24,7 +24,7 @@
 
         //Login regPassenger
         public function login($email, $password){
-            $this->db->query('SELECT * FROM regPassengers WHERE email = :email');
+            $this->db->query('SELECT * FROM users WHERE email = :email');
             $this->db->bind(':email', $email);
 
             $row = $this->db->single();
@@ -38,8 +38,8 @@
         }
 
         //Find regPassenger by email
-        public function findRegPassengerByEmail($email){
-            $this->db->query('SELECT * FROM regPassengers WHERE email = :email');
+        public function findUserByEmail($email){
+            $this->db->query('SELECT * FROM users WHERE email = :email');
             //Bind value
             $this->db->bind(':email', $email);
 

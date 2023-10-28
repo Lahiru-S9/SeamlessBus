@@ -1,7 +1,7 @@
 <?php
-    class RegPassengers extends Controller{
+    class Users extends Controller{
         public function __construct(){
-            $this->regPassengerModel = $this->model('RegPassenger');
+            $this->userModel = $this->model('User');
         }
 
         public function register(){
@@ -29,7 +29,7 @@
                     $data['email_err'] = 'Please enter email';
                 } else {
                     //Check email
-                    if($this->regPassengerModel->findRegPassengerByEmail($data['email'])){
+                    if($this->userModel->findUserByEmail($data['email'])){
                         $data['email_err'] = 'Email is already taken';
                     }
                 }
@@ -63,16 +63,16 @@
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                     //Register User
-                    if($this->regPassengerModel->register($data)){
+                    if($this->userModel->register($data)){
                         flash('register_success', 'You are registered and can log in');
-                        redirect('regPassengers/login');
+                        redirect('users/login');
                     } else{
                         die('Something went wrong');
                     }
 
                 }else {
                     //Load view with errors
-                    $this->view('regPassengers/register', $data);
+                    $this->view('users/register', $data);
                 }
 
 
@@ -94,7 +94,7 @@
 
                 
                 //Load view
-                $this->view('regPassengers/register', $data);
+                $this->view('users/register', $data);
             }
         }
 
@@ -125,7 +125,7 @@
                 }
 
                 //Check for regPassenger/email
-                if($this->regPassengerModel->findRegPassengerByEmail($data['email'])){
+                if($this->regPassengerModel->findUserByEmail($data['email'])){
                     //User found
                 }else{
                     //User not found
@@ -136,20 +136,20 @@
                 if(empty($data['email_err']) && empty($data['password_err'])){
                     //Validated
                     //Check and set logged in regPassenger
-                    $loggedInRegPassenger = $this->regPassengerModel->login($data['email'], $data['password']);
+                    $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
-                    if($loggedInRegPassenger){
+                    if($loggedInUser){
                         //Create Session
-                        $this->createRegPassengerSession($loggedInRegPassenger);
+                        $this->createUserSession($loggedInUser);
                     } else{
                         $data['password_err'] = 'Password incorrect';
 
-                        $this->view('regPassengers/login', $data);
+                        $this->view('users/login', $data);
                     }
 
                 }else {
                     //Load view with errors
-                    $this->view('regPassengers/login', $data);
+                    $this->view('users/login', $data);
                 }
 
 
@@ -163,27 +163,27 @@
                 ];
 
                 //Load view
-                $this->view('regPassengers/login', $data);
+                $this->view('users/login', $data);
             }
         }
 
-        public function createRegPassengerSession($regPassenger){
-            $_SESSION['regPassenger_id'] = $regPassenger->id;
-            $_SESSION['regPassenger_email'] = $regPassenger->email;
-            $_SESSION['regPassenger_name'] = $regPassenger->name;
+        public function createRegPassengerSession($usger){
+            $_SESSION['user_id'] = $regPassenger->id;
+            $_SESSION['user_email'] = $regPassenger->email;
+            $_SESSION['user_name'] = $regPassenger->name;
             redirect('pages/index');
         }
 
         public function logout(){
-            unset($_SESSION['regPassenger_id']);
-            unset($_SESSION['regPassenger_email']);
-            unset($_SESSION['regPassenger_name']);
+            unset($_SESSION['user_id']);
+            unset($_SESSION['user_email']);
+            unset($_SESSION['user_name']);
             session_destroy();
-            redirect('regPassengers/login');
+            redirect('users/login');
         }
 
         public function isLoggedIn(){
-            if(isset($_SESSION['regPassenger_id'])){
+            if(isset($_SESSION['user_id'])){
                 return true;
             } else {
                 return false;
