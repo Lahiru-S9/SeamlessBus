@@ -4,6 +4,7 @@
             $this->userModel = $this->model('User');
         }
 
+        /*
         public function register(){
             //Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -97,6 +98,8 @@
                 $this->view('users/register', $data);
             }
         }
+
+        */
 
         public function login(){
             //Check for POST
