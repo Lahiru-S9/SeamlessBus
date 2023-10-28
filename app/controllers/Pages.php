@@ -22,5 +22,14 @@
 
             $this->view('pages/about', $data);
         }
+
+        public function userSelect(){
+            $data =  [
+                'title' => 'Select User Type',
+                'description' => 'We help you to pre-plan and make your day more efficient by digitizing the highway bus system.'
+            ];
+
+            $this->view('pages/userSelect', $data);
+        }
         
     }
