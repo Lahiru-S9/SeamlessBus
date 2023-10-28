@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo URLROOT; ?>/css/regPassengers/login.css">
+<link rel="stylesheet" type="text/css" href="<?php echo URLROOT; ?>/css/users/login.css">
 
 <div class="container">
 <div class="login-subtitle">Enter login credentials</div>
@@ -8,7 +8,7 @@
         <?php flash('register_success'); ?>
         
         
-        <form action="<?php echo URLROOT; ?>/regPassengers/login" method="POST">
+        <form action="<?php echo URLROOT; ?>/users/login" method="POST">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="text" id="email" name="email" class="custom-input <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>">

@@ -16,10 +16,10 @@
         </ul>
         <div class="user-actions">
             <?php if(isset($_SESSION['regPassenger_id'])) : ?>
-            <a href="<?php echo URLROOT; ?>/regPassengers/logout" class="logout">Log out</a>
+            <a href="<?php echo URLROOT; ?>/Users/logout" class="logout">Log out</a>
             <?php else : ?>
-            <a href="<?php echo URLROOT; ?>/users/signup" class="signup">Sign up</a>
-            <a href="<?php echo URLROOT; ?>/pages/userSelect" class="login">Log in</a>
+            <a href="<?php echo URLROOT; ?>/Users/register" class="signup">Sign up</a>
+            <a href="<?php echo URLROOT; ?>/Users/login" class="login">Log in</a>
             <?php endif; ?>
         </div>
     </div>

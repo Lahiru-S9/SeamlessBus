@@ -24,17 +24,17 @@
             <div class="cta-button">
                 <div class="button-text">Don’t have an account ?</div>
                 <img src="<?php echo URLROOT; ?>/img/passenger.png" alt="Apply Now">
-                <a href="<?php echo URLROOT; ?>/RegPassengers/register">Apply Now!</a>
+                <a href="<?php echo URLROOT; ?>/Users/register">Apply Now!</a>
             </div>
             <div class="cta-button">
                 <div class="button-text">Are you a conductor ?</div>
                 <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="Join Us">
-                <a href="#">Join Us!</a>
+                <a href="<?php echo URLROOT; ?>/Users/register">Join Us!</a>
             </div>
             <div class="cta-button">
                 <div class="button-text">Are you a bus owner ?</div>
                 <img src="<?php echo URLROOT; ?>/img/owner.png" alt="Get Started">
-                <a href="#">Get Started!</a>
+                <a href="<?php echo URLROOT; ?>/Users/register">Get Started!</a>
             </div>
         </div>
 
