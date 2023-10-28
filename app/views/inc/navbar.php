@@ -15,7 +15,7 @@
             <li><a href="#">Bookings</a></li>
         </ul>
         <div class="user-actions">
-            <?php if(isset($_SESSION['regPassenger_id'])) : ?>
+            <?php if(isset($_SESSION['user_id'])) : ?>
             <a href="<?php echo URLROOT; ?>/Users/logout" class="logout">Log out</a>
             <?php else : ?>
             <a href="<?php echo URLROOT; ?>/Users/register" class="signup">Sign up</a>
