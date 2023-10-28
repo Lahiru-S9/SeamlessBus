@@ -1,0 +1,167 @@
+/* index.css */
+.main-content {
+    position: relative;
+}
+
+/* Background image */
+.main-content img {
+    width: 100%;
+    height: auto;
+}
+
+.text-content {
+    width: 100%; 
+    height: 100%; 
+}
+
+/* Header text container */
+.header-text {
+    position: absolute;
+    top: 100px; /* Adjust the top position as needed */
+    left: 0px; /* Adjust the left position as needed */
+    width: 60%;
+    height: 100px;
+    background: rgba(183, 79, 111, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* For an Enhanced Travel Experience */
+.header-text-line1 {
+    text-align: center;
+    color: #F3D9DC;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 50px;
+    word-wrap: break-word;
+}
+
+/* We help you to pre-plan and make your day more efficient by digitizing the highway bus system */
+.header-text-line2 {
+    text-align: center;
+    color: #F3D9DC;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    opacity: 0.6;
+    word-wrap: break-word;
+}
+
+.middle-text-line1 {
+    text-align: center; 
+    color: #001514; 
+    font-size: 48px; 
+    font-family: Lato; font-weight: 800; 
+    line-height: 70px; 
+    word-wrap: break-word
+}
+.middle-text-line2 {
+    opacity: 0.60; 
+    text-align: center; 
+    color: #001514; 
+    font-size: 20px; 
+    font-family: Lato; 
+    font-weight: 500; 
+    line-height: 30px; 
+    word-wrap: break-word
+}
+
+/* Additional styles for call to action buttons */
+.cta-buttons {
+    display: flex; /* Display buttons in a row */
+    justify-content: center; /* Center-align buttons horizontally */
+    align-items: center; /* Center-align buttons vertically */
+    gap: 20px; /* Adjust the gap between buttons as needed */
+}
+
+.cta-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #FCFC62;
+    border-radius: 7px;
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s ease-in-out;
+    width: auto; /* Adjust the width as needed */
+    white-space: nowrap;
+}
+
+.cta-button a {
+    color: #001514;
+    font-size: 24px;
+    font-weight: 800;
+    text-decoration: none;
+    margin: 0;
+}
+
+.cta-buttons img {
+    max-width: 50px; /* Adjust the max-width as needed */
+    max-height:50px; /* Adjust the max-height as needed */
+}
+
+.button-text{
+    width: 100%; 
+    height: 100%; 
+    text-align: center; 
+    color: #001514; 
+    font-size: 24px; 
+    font-family: Lato; 
+    font-weight: 800; 
+    line-height: 70px; 
+    word-wrap: break-word;
+    order: -2;
+    margin: 0;
+}
+
+.cta-button:hover {
+    background-color: #FACC05;
+}
+
+
+/* Footer styles */
+.footer {
+    background-color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; 
+}
+
+.footer img {
+    width: 70px; 
+    height: 70px;
+}
+
+.footer-text {
+    font-size: 16px;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+.footer-subtext {
+    font-size: 12px;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+
+/* Social media icons */
+.social-media-icons {
+    margin-top: 20px;
+}
+
+.social-media-icon {
+    display: inline-block;
+    margin: 0 10px; /* Adjust the margin as needed */
+}
+
+.social-media-icon img {
+    width: 24px; /* Adjust the width as needed */
+    height: 24px; /* Adjust the height as needed */
+}
+
+
