@@ -176,7 +176,7 @@
             $_SESSION['user_name'] = $user->name;
             switch ($user->usertype){
                 case 2:
-                    $_SESSION['usertype'] = 'Passenger';
+                    $_SESSION['usertype'] = 'RegPassenger';
                     redirect('regPassengers/dashboard');
                     break;
                 case 3:
@@ -213,11 +213,5 @@
             redirect('users/login');
         }
 
-        public function isLoggedIn(){
-            if(isset($_SESSION['user_id'])){
-                return true;
-            } else {
-                return false;
-            }
-        }
+        
     }

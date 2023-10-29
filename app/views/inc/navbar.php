@@ -11,15 +11,16 @@
         <ul class="nav-links">
             <li><a href="<?php echo URLROOT; ?>">Home</a></li>
             <li><a href="<?php echo URLROOT; ?>/pages/about">About Us</a></li>
-            <li><a href="#">Bus Schedules</a></li>
+            <li><a href="<?php echo URLROOT; ?>/pages/schedule">Bus Schedules</a></li>
             <li><a href="#">Bookings</a></li>
         </ul>
         <div class="user-actions">
             <?php if(isset($_SESSION['user_id'])) : ?>
-            <a href="<?php echo URLROOT; ?>/users/logout" class="logout">Log out</a>
+                <a href="<?php echo URLROOT; ?>/regPassengers/dashboard" class="dashboard">Dashboard</a>
+                <a href="<?php echo URLROOT; ?>/users/logout" class="logout">Log out</a>
             <?php else : ?>
-            <a href="<?php echo URLROOT; ?>/pages/userSelect" class="signup">Sign up</a>
-            <a href="<?php echo URLROOT; ?>/users/login" class="login">Log in</a>
+                <a href="<?php echo URLROOT; ?>/pages/userSelect" class="signup">Sign up</a>
+                <a href="<?php echo URLROOT; ?>/users/login" class="login">Log in</a>
             <?php endif; ?>
         </div>
     </div>
