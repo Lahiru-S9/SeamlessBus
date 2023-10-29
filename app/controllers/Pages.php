@@ -31,5 +31,5 @@
 
             $this->view('pages/userSelect', $data);
         }
-        
+       
     }

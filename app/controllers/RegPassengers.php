@@ -99,4 +99,13 @@
                 $this->view('regPassengers/register', $data);
             }
         }
+
+        public function dashboard(){
+            $data = [
+                'title' => 'Dashboard',
+                'description' => 'Enhancing your Travel Experience'
+            ];
+
+            $this->view('regPassengers/dashboard', $data);
+        }
     }

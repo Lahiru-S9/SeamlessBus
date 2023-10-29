@@ -177,7 +177,7 @@
             switch ($user->usertype){
                 case 2:
                     $_SESSION['usertype'] = 'Passenger';
-                    redirect('passenger/dashboard');
+                    redirect('regPassengers/dashboard');
                     break;
                 case 3:
                     $_SESSION['usertype'] = 'Owner';

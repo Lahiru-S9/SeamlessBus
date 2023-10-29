@@ -146,3 +146,47 @@ a.active,a:hover {
 .login {
     background-color: #FCFC62;
 }
+
+/* Footer styles */
+.footer {
+    background-color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; 
+}
+
+.footer img {
+    width: 70px; 
+    height: 70px;
+}
+
+.footer-text {
+    font-size: 16px;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+.footer-subtext {
+    font-size: 12px;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+
+/* Social media icons */
+.social-media-icons {
+    margin-top: 20px;
+}
+
+.social-media-icon {
+    display: inline-block;
+    margin: 0 10px; /* Adjust the margin as needed */
+}
+
+.social-media-icon img {
+    width: 24px; /* Adjust the width as needed */
+    height: 24px; /* Adjust the height as needed */
+}
+
