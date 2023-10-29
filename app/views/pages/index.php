@@ -24,7 +24,7 @@
             <div class="cta-button">
                 <div class="button-text">Don’t have an account ?</div>
                 <img src="<?php echo URLROOT; ?>/img/passenger.png" alt="Apply Now">
-                <a href="<?php echo URLROOT; ?>/regPassengers/register">Apply Now!</a>
+                <a href="<?php echo URLROOT; ?>/GPassengers/register">Apply Now!</a>
             </div>
             <div class="cta-button">
                 <div class="button-text">Are you a conductor ?</div>

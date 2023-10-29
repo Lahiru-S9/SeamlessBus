@@ -8,7 +8,7 @@
         </div>
         <div class="card-body-user-select">
             <div class="form-group-user-select">
-                <button onclick="window.location.href = '<?php echo URLROOT; ?>/regPassengers/register';" class="btn btn-primary btn-user-select btn-block">Registered Passenger</button>
+                <button onclick="window.location.href = '<?php echo URLROOT; ?>/GPassengers/register';" class="btn btn-primary btn-user-select btn-block">Passenger</button>
             </div>
             <div class="form-group-user-select">
                 <button onclick="window.location.href = '<?php echo URLROOT; ?>/users/register';" class="btn btn-primary btn-user-select btn-block">Conductor</button>

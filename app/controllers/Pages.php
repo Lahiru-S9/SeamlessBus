@@ -31,5 +31,14 @@
 
             $this->view('pages/userSelect', $data);
         }
+
+        public function schedule(){
+            $data =  [
+                'title' => 'Schedule',
+                'description' => 'We help you to pre-plan and make your day more efficient by digitizing the highway bus system.'
+            ];
+
+            $this->view('pages/schedule', $data);
+        }
        
     }
