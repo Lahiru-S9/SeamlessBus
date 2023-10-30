@@ -85,4 +85,8 @@ label {
     align-items: center;
 }
 
+#footer-logo{
+    height: 80px;
+    width: auto;
+}
 /* Additional styling as needed */
