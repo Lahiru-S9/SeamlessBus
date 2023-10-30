@@ -2,7 +2,7 @@
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/pages/index.css">
       <!-- Main content -->
       <div class="main-content">
-        <img src="<?php echo URLROOT; ?>/img/indexBackground.jpg" alt="Background Image">
+      <img src="<?php echo URLROOT; ?>/img/indexBackground.jpg" alt="Background Image">
 
         <!-- Text content -->
         <div class="text-content">
@@ -34,7 +34,7 @@
             <div class="cta-button">
                 <div class="button-text">Are you a bus owner ?</div>
                 <img src="<?php echo URLROOT; ?>/img/owner.png" alt="Get Started">
-                <a href="<?php echo URLROOT; ?>/Users/register">Get Started!</a>
+                <a href="<?php echo URLROOT; ?>/Owners/register">Get Started!</a>
             </div>
         </div>
 
