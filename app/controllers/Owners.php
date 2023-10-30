@@ -120,6 +120,15 @@
 
             $this->view('Owners/AddBuses');
         }
+
+        public function bankDetails(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+                redirect('Users/login');
+            }
+
+            $this->view('Owners/bankDetails');
+        }
         
 
         
