@@ -4,6 +4,7 @@
             $this->userModel = $this->model('User');
         }
 
+        /*
         public function register(){
             //Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -98,6 +99,8 @@
             }
         }
 
+        */
+
         public function login(){
             //Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -125,7 +128,7 @@
                 }
 
                 //Check for regPassenger/email
-                if($this->regPassengerModel->findUserByEmail($data['email'])){
+                if($this->userModel->findUserByEmail($data['email'])){
                     //User found
                 }else{
                     //User not found
@@ -167,26 +170,48 @@
             }
         }
 
-        public function createRegPassengerSession($usger){
-            $_SESSION['user_id'] = $regPassenger->id;
-            $_SESSION['user_email'] = $regPassenger->email;
-            $_SESSION['user_name'] = $regPassenger->name;
-            redirect('pages/index');
+        public function createUserSession($user){
+            $_SESSION['user_id'] = $user->id;
+            $_SESSION['user_email'] = $user->email;
+            $_SESSION['user_name'] = $user->name;
+            switch ($user->usertype){
+                case 2:
+                    $_SESSION['usertype'] = 'RegPassenger';
+                    redirect('regPassengers/dashboard');
+                    break;
+                case 3:
+                    $_SESSION['usertype'] = 'Owner';
+                    redirect('owner/dashboard');
+                    break;
+                case 4:
+                    $_SESSION['usertype'] = 'Conductor';
+                    redirect('conductor/dashboard');
+                    break;
+                case 5:
+                    $_SESSION['usertype'] = 'Guest';
+                    redirect('guest/dashboard');
+                    break;
+                case 6:
+                    $_SESSION['usertype'] = 'Sheduler';
+                    redirect('sheduler/dashboard');
+                    break;
+                case 7:
+                    $_SESSION['usertype'] = 'Admin';
+                    redirect('admin/dashboard');
+                    break;
+                
+            }
+            //redirect('pages/index');
         }
 
         public function logout(){
             unset($_SESSION['user_id']);
             unset($_SESSION['user_email']);
             unset($_SESSION['user_name']);
+            unset($_SESSION['usertype']);
             session_destroy();
             redirect('users/login');
         }
 
-        public function isLoggedIn(){
-            if(isset($_SESSION['user_id'])){
-                return true;
-            } else {
-                return false;
-            }
-        }
+        
     }

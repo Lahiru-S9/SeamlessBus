@@ -6,13 +6,14 @@
             $this->db = new Database;
         }
 
-        //Register regPassenger
+        //Register user
         public function register($data){
-            $this->db->query('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
+            $this->db->query('INSERT INTO users (name, email, password, usertype) VALUES(:name, :email, :password, :usertype)');
             //Bind values
             $this->db->bind(':name', $data['name']);
             $this->db->bind(':email', $data['email']);
             $this->db->bind(':password', $data['password']);
+            $this->db->bind(':usertype', $data['usertype']);
 
             //Execute
             if($this->db->execute()){
@@ -22,7 +23,7 @@
             }
         }
 
-        //Login regPassenger
+        //Login user
         public function login($email, $password){
             $this->db->query('SELECT * FROM users WHERE email = :email');
             $this->db->bind(':email', $email);
@@ -37,7 +38,7 @@
             }
         }
 
-        //Find regPassenger by email
+        //Find user by email
         public function findUserByEmail($email){
             $this->db->query('SELECT * FROM users WHERE email = :email');
             //Bind value
