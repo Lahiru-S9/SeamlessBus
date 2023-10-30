@@ -46,3 +46,50 @@ body {
     word-wrap: break-word;
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center horizontally */
+    margin-bottom: 15px;
+}
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.table__header {
+    background-color: #001514;
+    color: white;
+}
+
+.table__cell {
+    padding: 10px;
+    border: 1px solid #ddd; /* Adjust the border styles as needed */
+    text-align: left;
+}
+
+.table__label {
+    font-weight: bold;
+}
+
+/* Styling for responsive breakpoints */
+@media (max-width: 767px) {
+    .header-title {
+        font-size: 36px; /* Adjust the font size for smaller screens */
+        line-height: 50px;
+    }
+
+    .header-subtitle {
+        font-size: 16px; /* Adjust the font size for smaller screens */
+        line-height: 24px;
+    }
+}
+
+
+
+
+
+  
