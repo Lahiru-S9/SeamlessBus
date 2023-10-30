@@ -2,19 +2,21 @@
 
     class Schedule extends Controller{
         public function __construct(){
-          
+          $this->scheduleModel = $this->model('Schedulerow');
         }
 
         public function index(){
+            //Get Schedule
+            $schedule = $this->scheduleModel->getSchedule();
+
             $data =  [
-                'title' => 'Seamless Bus',
-                'description' => 'We help you to pre-plan and make your day more efficient by digitizing the highway bus system.'
+                'schedule' => $schedule,
             ];
    
             $this->view('schedule/index', $data);
         }
 
-        public function getShedule(){
+        
 
-        }
+
     }
