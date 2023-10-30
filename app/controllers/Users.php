@@ -181,7 +181,7 @@
                     break;
                 case 3:
                     $_SESSION['usertype'] = 'Owner';
-                    redirect('owner/dashboard');
+                    redirect('Owners/dashboard');
                     break;
                 case 4:
                     $_SESSION['usertype'] = 'Conductor';
