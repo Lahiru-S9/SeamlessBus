@@ -98,5 +98,25 @@
                 //Load view
                 $this->view('Owners/register', $data);
             }
+
+            
         }
+        public function dashboard(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owners'){
+                $data = [
+                    'title' => 'Dashboard',
+                    'description' => 'Enhancing your Travel Experience'
+                ];
+
+            }
+            else{
+                redirect('Owners/register');
+            }
+            
+           
+
+            $this->view('Owners/dashboard', $data);
+        }
+
+
     }
