@@ -13,7 +13,7 @@
 
             <div class ="col-md-7">
                 <div class="col-md-4">
-                    <form action="" method="GET">
+                    <form action="" method="POST">
 
                         <div class ="row">
                             <select name ="from" class="form-select">
