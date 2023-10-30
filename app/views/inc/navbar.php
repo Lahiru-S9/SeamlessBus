@@ -11,7 +11,7 @@
         <ul class="nav-links">
             <li><a href="<?php echo URLROOT; ?>">Home</a></li>
             <li><a href="<?php echo URLROOT; ?>/pages/about">About Us</a></li>
-            <li><a href="<?php echo URLROOT; ?>/pages/schedule">Bus Schedules</a></li>
+            <li><a href="<?php echo URLROOT; ?>/schedule/index">Bus Schedules</a></li>
             <li><a href="#">Bookings</a></li>
         </ul>
         <div class="user-actions">

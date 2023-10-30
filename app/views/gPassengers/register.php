@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/regPassengers/register.css">
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/gpassengers/register.css">
 
 <div class="container">
     <img src="<?php echo URLROOT; ?>/img/passenger_signup.png" alt="Background Image" />
