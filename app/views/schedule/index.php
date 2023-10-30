@@ -10,8 +10,43 @@
             <div class="header-title">Bus Schedules</div>
             <div class="header-subtitle">Get updated information about bus schedules</div>
             
+
+            <div class ="col-md-7">
+                <div class="col-md-4">
+                    <form action="" method="GET">
+
+                        <div class ="row">
+                            <select name ="from" class="form-select">
+                                <option value="" disabled selected>From</option>
+                                <?php foreach   ($data['stations'] as $station) : ?>
+                                    <option value="<?php echo $station->id; ?>"><?php echo $station->station; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        
+                            <select name ="to" class="form-select">
+                                <option value="" disabled selected>To</option>
+                                <?php foreach   ($data['stations'] as $station) : ?>
+                                    <option value="<?php echo $station->id; ?>"><?php echo $station->station; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
+                            <div class = "col-md-4">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                                <a href="<?php echo URLROOT?>/Schedule/index" class="btn btn-danger">Reset</a>
+                            </div>
+
+                        </div>
+                   
+                        
+                    </form>
+                </div>
+            </div>
+
         </div>
         <div class ="row">
+
+           
+
             <table class="table table--expanded@xs tv5-position-relative tv5-z-index-1 tv5-width-100% tv5-text-sm js-table" aria-label="Table Example">
                 <thead class="table__header">
                     <tr class="table__row">
