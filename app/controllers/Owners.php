@@ -112,5 +112,17 @@
             $this->view('Owners/dashboard');
         }
 
+        public function AddBuses(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+                redirect('Users/login');
+            }
+
+            $this->view('Owners/AddBuses');
+        }
+        
+
+        
+
 
     }
