@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/pages/schedule.css">
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedule/index.css">
 
     <div class="container">
         <div class="header">
