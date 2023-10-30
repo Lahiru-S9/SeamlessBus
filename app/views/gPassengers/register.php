@@ -1,14 +1,12 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/gpassengers/register.css">
 
-<div class="container">
+<div class="container" >
     <img src="<?php echo URLROOT; ?>/img/passenger_signup.png" alt="Background Image" />
 
     <div class="content">
-        <div class="login-title">Making things easier</div>
-        <div class="login-subtitle">Ensure convenience and ease in your workspace with just a few simple steps</div>
-        <div class="subtitle">with just a few simple steps</div>
         <div class="login-title">Apply now to create an account</div>
+        <div class="subtitle">with just a few simple steps</div><br>
 
         <form action="<?php echo URLROOT; ?>/gPassengers/register" method="POST">
             <div class="form-group">
