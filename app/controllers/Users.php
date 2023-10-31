@@ -193,7 +193,7 @@
                     break;
                 case 6:
                     $_SESSION['usertype'] = 'Sheduler';
-                    redirect('sheduler/dashboard');
+                    redirect('schedulers/dashboard');
                     break;
                 case 7:
                     $_SESSION['usertype'] = 'Admin';

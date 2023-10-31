@@ -6,9 +6,9 @@
 
 <div class="item1"> <h3>schedule the seamless bus</h3></div>
 <br>
-<img src="<?php echo URLROOT; ?>/img/bus schedule3.avif" alt="Background Image" width="500px" height="400px" />
-<img src="<?php echo URLROOT; ?>/img/bus shedule2.jpg" alt="Background Image" width="500px" height="400px" />
-<img src="<?php echo URLROOT; ?>/img/bus timeslots.jpg" alt="Background Image" width="500px" height="400px" />
+<img src="<?php echo URLROOT; ?>/img/bus_schedule3.avif" alt="Background Image" width="500px" height="400px" />
+<img src="<?php echo URLROOT; ?>/img/bus_shedule2.jpg" alt="Background Image" width="500px" height="400px" />
+<img src="<?php echo URLROOT; ?>/img/bus_timeslots.jpg" alt="Background Image" width="500px" height="400px" />
 
 <br>
 <div class="item3">
