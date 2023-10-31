@@ -18,6 +18,17 @@
             $this->view('regPassengers/dashboard', $data);
         }
 
+        public function profile(){
+            
+
+            $this->view('regPassengers/profile');
+        }
+
+        public function book(){
+            
+        }
+
+        
         
 
     }

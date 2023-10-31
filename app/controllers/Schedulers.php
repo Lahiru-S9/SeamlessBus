@@ -12,4 +12,13 @@ class Schedulers extends Controller{
 
         $this->view('schedulers/dashboard', $data);
     }
+
+    public function profile(){
+            
+
+        $this->view('schedulers/profile');
+    }
+
 }
+
+

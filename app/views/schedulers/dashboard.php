@@ -1,26 +1,71 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedulers/dashboard.css">
-
-
-
-
-<div class="item1"> <h3>schedule the seamless bus</h3></div>
-<br>
-<img src="<?php echo URLROOT; ?>/img/bus_schedule3.avif" alt="Background Image" width="500px" height="400px" />
-<img src="<?php echo URLROOT; ?>/img/bus_shedule2.jpg" alt="Background Image" width="500px" height="400px" />
-<img src="<?php echo URLROOT; ?>/img/bus_timeslots.jpg" alt="Background Image" width="500px" height="400px" />
-
-<br>
-<div class="item3">
-    <div class="item2">
-        <button class="item" type="button"><a href="<?php echo URLROOT; ?>index1.php"> Verify conductors</a></button>
-        <button class="item" type="button"> <a href="<?php echo URLROOT; ?> index2.php">Verify bus</a></button>
-        <button class="item" type="button"> <a href="<?php echo URLROOT; ?>index3.php"> Edit schedule</a></button>
-        <button class="item" type="button"> <a href="<?php echo URLROOT; ?>index4.php"> Add busses timeslots</a></button>
-        <button class="item" type="button"> <a href="<?php echo URLROOT; ?>index5.php"> All booking list </a></button>
-       
+<div class="container">
+    <div class="dashboard-content">
+        <h1 class="dashboard-title">What's on your mind?</h1>
+        <p class="dashboard-description">Enhancing your Travel Experience</p>
+        
     </div>
+    <div class="dashboard-actions">
+        <a href="#" class="dashboard-action">
+            <div class="action-icon" style="background: #62D9CC;">
+                <img src="<?php echo URLROOT; ?>/img/QR.png" alt="QR">
+            </div>
+            <p class="action-label">Edit schedule</p>
+        </a>
+
+        <!-- Add more dashboard actions as needed -->
+        <a href="#" class="dashboard-action">
+            <div class="action-icon" style="background: #62D9CC;">
+                <img src="<?php echo URLROOT; ?>/img/Routines.png" alt="QR">
+            </div>
+            <p class="action-label">Bus details</p>
+        </a>
+
+        <!-- Add more dashboard actions as needed -->
+        <a href="#" class="dashboard-action">
+            <div class="action-icon" style="background: #62D9CC;">
+                <img src="<?php echo URLROOT; ?>/img/payment.png" alt="QR">
+            </div>
+            <p class="action-label">Bookings</p>
+        </a>
+
+        <!-- Add more dashboard actions as needed -->
+        <a href="<?php echo URLROOT?>/regPassengers/profile" class="dashboard-action">
+            <div class="action-icon" style="background: #62D9CC;">
+                <img src="<?php echo URLROOT; ?>/img/Group.png" alt="QR">
+            </div>
+            <p class="action-label">Profile details</p>
+        </a>
     </div>
-    
+
+    <div class="footer">
+            <img src="<?php echo URLROOT; ?>/img/logo_bw.png">
+            <div class="footer-subtext">
+                Seamless Bus
+            </div>
+            <div class="footer-text">
+                Enhancing your Travel Experience
+            </div>
+
+            <div class="social-media-icons">
+                <a href="#" class="social-media-icon">
+                    <img src="<?php echo URLROOT; ?>/img/Facebook.png" alt="Facebook">
+                </a>
+                <a href="#" class="social-media-icon">
+                    <img src="<?php echo URLROOT; ?>/img/Twitter.png" alt="Twitter">
+                </a>
+                <a href="#" class="social-media-icon">
+                    <img src="<?php echo URLROOT; ?>/img/Instagram.png" alt="Instagram">
+                </a>
+            </div>
+            
+            <div class="footer-subtext">
+                Developed by CS group 23
+            </div>
+    </div>
+
+</div>
+
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

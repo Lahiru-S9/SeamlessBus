@@ -214,7 +214,11 @@
             $this->view('Owners/bankDetails');
         }
 
-        
+        public function profile(){
+            
+
+            $this->view('owners/profile');
+        }
         
 
         
