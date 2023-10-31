@@ -8,7 +8,7 @@
         <div class="header">
             
             <div class="header-title">Bus Schedules</div>
-            <div class="header-subtitle">Get updated information about bus schedules</div>
+            <div class="header-subtitle">Get updated information about bus schedules</div><br><br>
             
 
             <div class ="col-md-7">
