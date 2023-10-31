@@ -32,6 +32,10 @@ class Schedulerow {
                             JOIN stations AS s ON r.tostationid = s.id
                             WHERE stations.id = :from AND s.id = :to
                          ');
+
+        $this->db->bind(':from', $from); // Bind the value for :from
+        $this->db->bind(':to', $to);     // Bind the value for :to
+
         $results = $this->db->resultSet();
 
         return $results;
