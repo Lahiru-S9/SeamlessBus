@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/pages/userSelect.css">
 
 <div class="container-user-select">
     <div class="card-user-select">
@@ -7,16 +8,16 @@
         </div>
         <div class="card-body-user-select">
             <div class="form-group-user-select">
-                <button onclick="window.location.href = '<?php echo URLROOT; ?>/RegPassengers/login';" class="btn btn-primary btn-user-select btn-block">Registered Passenger</button>
+                <button onclick="window.location.href = '<?php echo URLROOT; ?>/GPassengers/register';" class="btn btn-primary btn-user-select btn-block">Passenger</button>
             </div>
             <div class="form-group-user-select">
-                <button onclick="window.location.href = '<?php echo URLROOT; ?>/conductor/login';" class="btn btn-primary btn-user-select btn-block">Conductor</button>
+                <button onclick="window.location.href = '<?php echo URLROOT; ?>/users/register';" class="btn btn-primary btn-user-select btn-block">Conductor</button>
             </div>
             <div class="form-group-user-select">
-                <button onclick="window.location.href = '<?php echo URLROOT; ?>/scheduler/login';" class="btn btn-primary btn-user-select btn-block">Scheduler</button>
+                <button onclick="window.location.href = '<?php echo URLROOT; ?>/users/register';" class="btn btn-primary btn-user-select btn-block">Scheduler</button>
             </div>
             <div class="form-group-user-select">
-                <button onclick="window.location.href = '<?php echo URLROOT; ?>/owner/login';" class="btn btn-primary btn-user-select btn-block">Owner</button>
+                <button onclick="window.location.href = '<?php echo URLROOT; ?>/Owners/register';" class="btn btn-primary btn-user-select btn-block">Owner</button>
             </div>
         </div>
     </div>

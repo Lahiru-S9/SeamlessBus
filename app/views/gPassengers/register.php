@@ -1,16 +1,14 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/users/register.css">
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/gpassengers/register.css">
 
-<div class="container">
+<div class="container" >
     <img src="<?php echo URLROOT; ?>/img/passenger_signup.png" alt="Background Image" />
 
     <div class="content">
-        <div class="login-title">Making things easier</div>
-        <div class="login-subtitle">Ensure convenience and ease in your workspace with just a few simple steps</div>
-        <div class="subtitle">with just a few simple steps</div>
         <div class="login-title">Apply now to create an account</div>
+        <div class="subtitle">with just a few simple steps</div><br>
 
-        <form action="<?php echo URLROOT; ?>/users/register" method="POST">
+        <form action="<?php echo URLROOT; ?>/gPassengers/register" method="POST">
             <div class="form-group">
                 <label for="name">Name: <sup>*</sup></label>
                 <input type="text" class="custom-input <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" name="name" value="<?php echo $data['name']; ?>">
@@ -38,6 +36,33 @@
             </div>
         </form>
     </div>
+</div><br><br>
+<div class="footer">
+        <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
+        <div class="footer-subtext">
+            Seamless Bus
+        </div>
+        <div class="footer-text">
+            Enhancing your Travel Experience
+        </div>
+
+        <div class="social-media-icons">
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Facebook.png" alt="Facebook">
+            </a>
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Twitter.png" alt="Twitter">
+            </a>
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Instagram.png" alt="Instagram">
+            </a>
+        </div>
+    
+        <div class="footer-subtext">
+            Developed by CS group 23
+        </div>
+    </div>
+    
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

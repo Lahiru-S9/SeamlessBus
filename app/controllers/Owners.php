@@ -1,10 +1,10 @@
 <?php
-    class Users extends Controller{
+    class Owners extends Controller{
         public function __construct(){
             $this->userModel = $this->model('User');
+            $this->busModel = $this->model('Bus');
         }
 
-        /*
         public function register(){
             //Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -22,7 +22,8 @@
                     'name_err' => '',
                     'email_err' => '',
                     'password_err' => '',
-                    'confirm_password_err' => ''
+                    'confirm_password_err' => '',
+                    'usertype' => 3
                 ];
 
                 //Validate Email
@@ -73,7 +74,7 @@
 
                 }else {
                     //Load view with errors
-                    $this->view('users/register', $data);
+                    $this->view('Owners/register', $data);
                 }
 
 
@@ -90,128 +91,133 @@
                     'name_err' => '',
                     'email_err' => '',
                     'password_err' => '',
-                    'confirm_password_err' => ''
+                    'confirm_password_err' => '',
+                    'usertype' => '3'
                 ];
 
                 
                 //Load view
-                $this->view('users/register', $data);
+                $this->view('Owners/register', $data);
             }
+
+            
+        }
+        public function dashboard(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+               
+                redirect('Users/login');
+               
+
+            }
+           
+            $this->view('Owners/dashboard');
         }
 
-        */
+        public function AddBuses(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
 
-        public function login(){
+                redirect('Users/login');
+            }
+
             //Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 //process form
-
+               
                 //Sanitize POST data
                 $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 //Init data
                 $data = [
-                    'email' => trim($_POST['email']),
-                    'password' => trim($_POST['password']),
-                    'email_err' => '',
-                    'password_err' => '',   
+                    'bus_number' => trim($_POST['bus_number']),
+                    'bus_model' => trim($_POST['bus_model']),
+                    'bus_seat' => trim($_POST['bus_seat']),
+                    'permit_id' => trim($_POST['permit_id']),
+                    'owner_id' => $_SESSION['user_id'],
+                    'bus_number_err' => '',
+                    'bus_model_err' => '',
+                    'bus_seat_err' => '',
+                    'permit_id_err' => '',
                 ];
                 
-                //Validate Email
-                if(empty($data['email'])){
-                    $data['email_err'] = 'Please enter email';
+
+              
+                if(empty($data['bus_number'])){
+                    $data['bus_number_err'] = 'Please enter bus number';
+                } else {
+                    
+                    if($this->busModel->findBusByBusNo($data['bus_number'])){
+                        $data['bus_number_err'] = 'bus is already exists in the system';
+                    }
                 }
 
-                //Validate Password
-                if(empty($data['password'])){
-                    $data['password_err'] = 'Please enter password';
+               
+                if(empty($data['bus_model'])){
+                    $data['bus_model_err'] = 'Please enter bus_model';
                 }
 
-                //Check for regPassenger/email
-                if($this->userModel->findUserByEmail($data['email'])){
-                    //User found
-                }else{
-                    //User not found
-                    $data['email_err'] = 'No user found';
+          
+                if(empty($data['bus_seat'])){
+                    $data['bus_seat_err'] = 'Please enter bus_seat';
+                }
+             
+                if(empty($data['permit_id'])){
+                    $data['permit_id_err'] = 'Please enter permit_id';
                 }
 
-                // Make sure those are empty
-                if(empty($data['email_err']) && empty($data['password_err'])){
+                //Make sure errors are empty
+                if(empty($data['bus_number_err']) && empty($data['bus_model_err']) && empty($data['bus_seat_err']) && empty($data['permit_id_err'])){
                     //Validated
-                    //Check and set logged in regPassenger
-                    $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
-                    if($loggedInUser){
-                        //Create Session
-                        $this->createUserSession($loggedInUser);
+                    
+                    if($this->busModel->addBus($data)){
+                        flash('bus_added', 'Bus added successfully');
+                        redirect('Owners/dashboard');
                     } else{
-                        $data['password_err'] = 'Password incorrect';
-
-                        $this->view('users/login', $data);
+                        die('Something went wrong');
                     }
 
                 }else {
                     //Load view with errors
-                    $this->view('users/login', $data);
+                    $this->view('Owners/AddBuses', $data);
                 }
+
+
+
 
 
             }else{
                 //Init data
-                $data = [ 
-                    'email' => '',
-                    'password' => '',     
-                    'email_err' => '',   
-                    'password_err' => '', 
+                $data = [
+                    'bus_number' => '',
+                    'bus_model' => '',
+                    'bus_seat' => '',
+                    'permit_id' => '',
+                    'bus_number_err' => '',
+                    'bus_model_err' => '',
+                    'bus_seat_err' => '',
+                    'permit_id_err' => '',
                 ];
 
-                //Load view
-                $this->view('users/login', $data);
-            }
-        }
-
-        public function createUserSession($user){
-            $_SESSION['user_id'] = $user->id;
-            $_SESSION['user_email'] = $user->email;
-            $_SESSION['user_name'] = $user->name;
-            switch ($user->usertype){
-                case 2:
-                    $_SESSION['usertype'] = 'RegPassenger';
-                    redirect('regPassengers/dashboard');
-                    break;
-                case 3:
-                    $_SESSION['usertype'] = 'Owner';
-                    redirect('Owners/dashboard');
-                    break;
-                case 4:
-                    $_SESSION['usertype'] = 'Conductor';
-                    redirect('conductor/dashboard');
-                    break;
-                case 5:
-                    $_SESSION['usertype'] = 'Guest';
-                    redirect('guest/dashboard');
-                    break;
-                case 6:
-                    $_SESSION['usertype'] = 'Scheduler';
-                    redirect('schedulers/dashboard');
-                    break;
-                case 7:
-                    $_SESSION['usertype'] = 'Admin';
-                    redirect('admin/dashboard');
-                    break;
                 
+                //Load view
+                $this->view('Owners/AddBuses', $data);
             }
-            //redirect('pages/index');
         }
+    
 
-        public function logout(){
-            unset($_SESSION['user_id']);
-            unset($_SESSION['user_email']);
-            unset($_SESSION['user_name']);
-            unset($_SESSION['usertype']);
-            session_destroy();
-            redirect('users/login');
+        public function bankDetails(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+                redirect('Users/login');
+            }
+
+            $this->view('Owners/bankDetails');
         }
 
         
+        
+
+        
+
+
     }
