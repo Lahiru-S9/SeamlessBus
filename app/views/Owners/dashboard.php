@@ -23,11 +23,11 @@
         </a>
 
         <!-- Add more dashboard actions as needed -->
-        <a href="<?php echo URLROOT?>/Owners/bankDetails" class="dashboard-action">
+        <a href="<?php echo URLROOT?>/Owners/profile" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/payment.png" alt="QR">
             </div>
-            <p class="action-label">Input Bank Details</p>
+            <p class="action-label">Profile info</p>
         </a>
 
         <!-- Add more dashboard actions as needed -->

@@ -78,8 +78,12 @@
                             </td>
 
                             <td class="table__cell" role="cell">
-                                <form action="<?php echo URLROOT ?>/RegPassengers/dashboard" method="post"> 
-                                    <input type="hidden" name="schedule_id" value="<?php echo $schedule->scheduleId; ?>">
+                                <form action="<?php if($_SESSION['usertype']=='RegPassenger'){
+                                    echo URLROOT.'/RegPassenger/book';
+                                }else{
+                                    echo URLROOT.'/Gpassenger/book';
+                                } ?>" method="post"> 
+                                    <input type="hidden" name="schedule_id" value="<?php echo $schedule->id; ?>">
                                     <button type="submit" class="btn btn-primary">Book</button>
                                 </form>
                             </td>
