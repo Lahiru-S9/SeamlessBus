@@ -4,7 +4,7 @@
 }
 
 /* Background image */
-.main-content img {
+.main-content > img {
     width: 100%;
     height: auto;
 }
@@ -29,6 +29,7 @@
 
 /* For an Enhanced Travel Experience */
 .header-text-line1 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     color: #F3D9DC;
     font-size: 36px;
@@ -39,8 +40,9 @@
 
 /* We help you to pre-plan and make your day more efficient by digitizing the highway bus system */
 .header-text-line2 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
-    color: #F3D9DC;
+    color: #fff;
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
@@ -49,10 +51,11 @@
 }
 
 .middle-text-line1 {
+    font-weight: 600;
+    margin-top: 30px;;
     text-align: center; 
     color: #001514; 
-    font-size: 48px; 
-    font-family: Lato; font-weight: 800; 
+    font-size: 48px;
     line-height: 70px; 
     word-wrap: break-word
 }
@@ -61,7 +64,6 @@
     text-align: center; 
     color: #001514; 
     font-size: 20px; 
-    font-family: Lato; 
     font-weight: 500; 
     line-height: 30px; 
     word-wrap: break-word
@@ -72,10 +74,13 @@
     display: flex; /* Display buttons in a row */
     justify-content: center; /* Center-align buttons horizontally */
     align-items: center; /* Center-align buttons vertically */
-    gap: 20px; /* Adjust the gap between buttons as needed */
+    gap: 80px; /* Adjust the gap between buttons as needed */
 }
 
 .cta-button {
+    color: #000;
+    font-size: 18px;
+    font-weight: 800;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -98,8 +103,10 @@
 }
 
 .cta-buttons img {
-    max-width: 50px; /* Adjust the max-width as needed */
-    max-height:50px; /* Adjust the max-height as needed */
+    width: 170px;
+    height: auto;
+    max-width: 200px; /* Adjust the max-width as needed */
+    max-height:200px; /* Adjust the max-height as needed */
 }
 
 .button-text{
@@ -108,20 +115,17 @@
     text-align: center; 
     color: #001514; 
     font-size: 24px; 
-    font-family: Lato; 
-    font-weight: 800; 
+    font-weight: 600; 
     line-height: 70px; 
     word-wrap: break-word;
     order: -2;
     margin: 0;
 }
-
 .cta-button:hover {
-    background-color: #FACC05;
+    background-color: #B74F6F;
+    color: #fff;
 }
 
-
-/* Footer styles */
 .footer {
     background-color: #ffffff;
     padding: 20px 0;
@@ -137,7 +141,9 @@
 }
 
 .footer-text {
-    font-size: 16px;
+    font-family:"playlist script";
+    margin-top: 8px;
+    font-size: 24px;
     line-height: 24px;
     word-wrap: break-word;
 }
@@ -151,7 +157,7 @@
 
 /* Social media icons */
 .social-media-icons {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .social-media-icon {
@@ -163,5 +169,3 @@
     width: 24px; /* Adjust the width as needed */
     height: 24px; /* Adjust the height as needed */
 }
-
-

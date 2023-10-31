@@ -2,7 +2,7 @@
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/pages/index.css">
       <!-- Main content -->
       <div class="main-content">
-        <img src="<?php echo URLROOT; ?>/img/indexBackground.jpg" alt="Background Image">
+      <img src="<?php echo URLROOT; ?>/img/indexBackground.jpg" alt="Background Image">
 
         <!-- Text content -->
         <div class="text-content">
@@ -10,10 +10,9 @@
                 <div class="header-text-line1">For an Enhanced Travel Experience</div>
                 <div class="header-text-line2"><?php echo $data['description']; ?></div>
             </div>
-
             <div class="middle-text">
                 <div class="middle-text-line1">Bus seat booking made easier</div>
-                <div class="middle-text-line2">book your seats in just a few easy steps</div>
+                <div class="middle-text-line2">book your seats in just a few easy steps</div><br><br>
             </div>
         </div>
 
@@ -21,22 +20,22 @@
 
         <!-- Call to action buttons -->
         <div class="cta-buttons">
-            <div class="cta-button">
+            <div>
                 <div class="button-text">Don’t have an account ?</div>
-                <img src="<?php echo URLROOT; ?>/img/passenger.png" alt="Apply Now">
-                <a href="<?php echo URLROOT; ?>/Users/register">Apply Now!</a>
+                <center><img src="<?php echo URLROOT; ?>/img/passenger.png" alt="Apply Now"></center>
+                <a href="<?php echo URLROOT; ?>/GPassengers/register" class="cta-button">Apply Now!</a>
             </div>
-            <div class="cta-button">
+            <div>
                 <div class="button-text">Are you a conductor ?</div>
-                <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="Join Us">
-                <a href="<?php echo URLROOT; ?>/Users/register">Join Us!</a>
+                <center><img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="Join Us"></center>
+                <a href="<?php echo URLROOT; ?>/Users/register" class="cta-button">Join Us!</a>
             </div>
-            <div class="cta-button">
+            <div>
                 <div class="button-text">Are you a bus owner ?</div>
-                <img src="<?php echo URLROOT; ?>/img/owner.png" alt="Get Started">
-                <a href="<?php echo URLROOT; ?>/Users/register">Get Started!</a>
+                <center><img src="<?php echo URLROOT; ?>/img/owner.png" alt="Get Started"></center>
+                <a href="<?php echo URLROOT; ?>/Owners/register" class="cta-button">Get Started!</a>
             </div>
-        </div>
+        </div><br><br><br>
 
         <!-- Footer -->
         <div class="footer">
@@ -67,6 +66,5 @@
         
         
     </div>
-    
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 
