@@ -1,0 +1,30 @@
+/* profile.css */
+
+.container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.profile {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.profile h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.profile-info {
+    margin-top: 20px;
+}
+
+.profile-item {
+    margin-bottom: 10px;
+}
+
+/* You can add more styles as needed */

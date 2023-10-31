@@ -1,41 +1,41 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/regPassengers/dashboard.css">
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedulers/dashboard.css">
 <div class="container">
     <div class="dashboard-content">
         <h1 class="dashboard-title">What's on your mind?</h1>
         <p class="dashboard-description">Enhancing your Travel Experience</p>
-        <?php flash('bus_added'); ?>
+        
     </div>
     <div class="dashboard-actions">
         <a href="#" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
-                <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="QR">
+                <img src="<?php echo URLROOT; ?>/img/QR.png" alt="QR">
             </div>
-            <p class="action-label">Select Conductors</p>
-        </a>
-
-        <!-- Add more dashboard actions as needed -->
-        <a href="<?php echo URLROOT?>/Owners/AddBuses" class="dashboard-action">
-            <div class="action-icon" style="background: #62D9CC;">
-                <img src="<?php echo URLROOT; ?>/img/Routines.png" alt="QR">
-            </div>
-            <p class="action-label">Add Buses</p>
-        </a>
-
-        <!-- Add more dashboard actions as needed -->
-        <a href="<?php echo URLROOT?>/Owners/profile" class="dashboard-action">
-            <div class="action-icon" style="background: #62D9CC;">
-                <img src="<?php echo URLROOT; ?>/img/payment.png" alt="QR">
-            </div>
-            <p class="action-label">Profile info</p>
+            <p class="action-label">Edit schedule</p>
         </a>
 
         <!-- Add more dashboard actions as needed -->
         <a href="#" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
-                <img src="<?php echo URLROOT; ?>/img/abc.png" alt="QR">
+                <img src="<?php echo URLROOT; ?>/img/Routines.png" alt="QR">
             </div>
-            <p class="action-label">See Reports</p>
+            <p class="action-label">Bus details</p>
+        </a>
+
+        <!-- Add more dashboard actions as needed -->
+        <a href="#" class="dashboard-action">
+            <div class="action-icon" style="background: #62D9CC;">
+                <img src="<?php echo URLROOT; ?>/img/payment.png" alt="QR">
+            </div>
+            <p class="action-label">Bookings</p>
+        </a>
+
+        <!-- Add more dashboard actions as needed -->
+        <a href="<?php echo URLROOT?>/regPassengers/profile" class="dashboard-action">
+            <div class="action-icon" style="background: #62D9CC;">
+                <img src="<?php echo URLROOT; ?>/img/Group.png" alt="QR">
+            </div>
+            <p class="action-label">Profile details</p>
         </a>
     </div>
 
