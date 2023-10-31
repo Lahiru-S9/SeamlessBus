@@ -15,15 +15,15 @@
         </a>
 
         <!-- Add more dashboard actions as needed -->
-        <a href="#" class="dashboard-action">
+        <a href="<?php echo URLROOT?>/Owners/AddBuses" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/Routines.png" alt="QR">
             </div>
-            <p class="action-label">Verify Buses</p>
+            <p class="action-label">Add Buses</p>
         </a>
 
         <!-- Add more dashboard actions as needed -->
-        <a href="#" class="dashboard-action">
+        <a href="<?php echo URLROOT?>/Owners/bankDetails" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/payment.png" alt="QR">
             </div>
