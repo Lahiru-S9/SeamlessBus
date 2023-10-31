@@ -36,7 +36,7 @@
             </div>
         </form>
     </div>
-</div>
+</div><br><br>
 <div class="footer">
         <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
         <div class="footer-subtext">
