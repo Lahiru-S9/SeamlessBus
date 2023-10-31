@@ -76,6 +76,13 @@
                             <td class="table__cell tv5-text-right" role="cell">
                                 <span class="table__label" aria-hidden="true"></span> <?php echo $schedule->departure_time; ?>
                             </td>
+
+                            <td class="table__cell" role="cell">
+                                <form action="<?php echo URLROOT ?>/RegPassengers/dashboard" method="post"> 
+                                    <input type="hidden" name="schedule_id" value="<?php echo $schedule->scheduleId; ?>">
+                                    <button type="submit" class="btn btn-primary">Book</button>
+                                </form>
+                            </td>
                         </tr>
             
                     <?php endforeach; ?> 
