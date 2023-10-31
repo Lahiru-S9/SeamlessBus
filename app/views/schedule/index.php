@@ -13,7 +13,7 @@
 
             <div class ="col-md-7">
                 <div class="col-md-4">
-                    <form action="" method="POST">
+                    <form action="<?php echo URLROOT ?>/Schedule/index" method="POST">
 
                         <div class ="row">
                             <select name ="from" class="form-select">

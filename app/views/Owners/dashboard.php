@@ -4,7 +4,7 @@
     <div class="dashboard-content">
         <h1 class="dashboard-title">What's on your mind?</h1>
         <p class="dashboard-description">Enhancing your Travel Experience</p>
-        
+        <?php flash('bus_added'); ?>
     </div>
     <div class="dashboard-actions">
         <a href="#" class="dashboard-action">

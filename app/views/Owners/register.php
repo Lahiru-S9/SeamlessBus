@@ -2,7 +2,7 @@
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/owners/register.css">
 
 <div class="container">
-    <img src="<?php echo URLROOT; ?>/img/ownersignup.png" alt="Background Image" />
+    <img src="<?php echo URLROOT; ?>/img/owner_signup.png" alt="Background Image" />
 
     <div class="content">
         <div class="login-title">Making things easier</div>
