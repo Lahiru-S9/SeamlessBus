@@ -153,7 +153,7 @@ nav {
     padding: 20px 0;
     text-align: center;
     color: rgb(0, 0, 0);
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', 'sans-serif';
     font-weight: 400; 
 }
 
@@ -163,7 +163,9 @@ nav {
 }
 
 .footer-text {
-    font-size: 16px;
+    font-family:"playlist script";
+    margin-top: 8px;
+    font-size: 24px;
     line-height: 24px;
     word-wrap: break-word;
 }
@@ -177,7 +179,7 @@ nav {
 
 /* Social media icons */
 .social-media-icons {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .social-media-icon {
@@ -189,4 +191,3 @@ nav {
     width: 24px; /* Adjust the width as needed */
     height: 24px; /* Adjust the height as needed */
 }
-
