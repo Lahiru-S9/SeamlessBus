@@ -2,6 +2,7 @@
     class Owners extends Controller{
         public function __construct(){
             $this->userModel = $this->model('User');
+            $this->busModel = $this->model('Bus');
         }
 
         public function register(){
@@ -111,6 +112,116 @@
            
             $this->view('Owners/dashboard');
         }
+
+        public function AddBuses(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+                redirect('Users/login');
+            }
+
+            //Check for POST
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                //process form
+               
+                //Sanitize POST data
+                $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                //Init data
+                $data = [
+                    'bus_number' => trim($_POST['bus_number']),
+                    'bus_model' => trim($_POST['bus_model']),
+                    'bus_seat' => trim($_POST['bus_seat']),
+                    'permit_id' => trim($_POST['permit_id']),
+                    'owner_id' => $_SESSION['user_id'],
+                    'bus_number_err' => '',
+                    'bus_model_err' => '',
+                    'bus_seat_err' => '',
+                    'permit_id_err' => '',
+                ];
+                
+
+              
+                if(empty($data['bus_number'])){
+                    $data['bus_number_err'] = 'Please enter bus number';
+                } else {
+                    
+                    if($this->busModel->findBusByBusNo($data['bus_number'])){
+                        $data['bus_number_err'] = 'bus is already exists in the system';
+                    }
+                }
+
+               
+                if(empty($data['bus_model'])){
+                    $data['bus_model_err'] = 'Please enter bus_model';
+                }
+
+          
+                if(empty($data['bus_seat'])){
+                    $data['bus_seat_err'] = 'Please enter bus_seat';
+                }
+             
+                if(empty($data['permit_id'])){
+                    $data['permit_id_err'] = 'Please enter permit_id';
+                }
+
+                //Make sure errors are empty
+                if(empty($data['bus_number_err']) && empty($data['bus_model_err']) && empty($data['bus_seat_err']) && empty($data['permit_id_err'])){
+                    //Validated
+
+                    
+                    if($this->busModel->addBus($data)){
+                        flash('bus_added', 'Bus added successfully');
+                        redirect('Owners/dashboard');
+                    } else{
+                        die('Something went wrong');
+                    }
+
+                }else {
+                    //Load view with errors
+                    $this->view('Owners/AddBuses', $data);
+                }
+
+
+
+
+
+            }else{
+                //Init data
+                $data = [
+                    'bus_number' => '',
+                    'bus_model' => '',
+                    'bus_seat' => '',
+                    'permit_id' => '',
+                    'bus_number_err' => '',
+                    'bus_model_err' => '',
+                    'bus_seat_err' => '',
+                    'permit_id_err' => '',
+                ];
+
+                
+                //Load view
+                $this->view('Owners/AddBuses', $data);
+            }
+        }
+    
+
+        public function bankDetails(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+                redirect('Users/login');
+            }
+
+            $this->view('Owners/bankDetails');
+        }
+
+        public function profile(){
+            
+
+            $this->view('owners/profile');
+        }
+        
+
+        
 
 
     }
