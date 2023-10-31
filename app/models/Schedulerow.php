@@ -32,6 +32,9 @@ class Schedulerow {
                             JOIN stations AS s ON r.tostationid = s.id
                             WHERE stations.id = :from AND s.id = :to
                          ');
+        $results = $this->db->resultSet();
+
+        return $results;
     }
     
 
