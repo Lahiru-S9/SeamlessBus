@@ -5,6 +5,7 @@
                 redirect('users/login');
             }
             $this->userModel = $this->model('User');
+            $this->scheduleModel = $this->model('Schedule');
         }
 
 
@@ -24,8 +25,17 @@
             $this->view('regPassengers/profile');
         }
 
-        public function book(){
+        public function booking(){
+           
+            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'schedule_id' => trim($_POST['schedule_id']),
+            ];
             
+
+
+            $this->view('regPassengers/booking');
         }
 
         
