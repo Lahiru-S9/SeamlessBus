@@ -220,7 +220,14 @@
             $this->view('owners/profile');
         }
         
+        public function selectConductor(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
 
+                redirect('Users/login');
+            }
+
+            $this->view('Owners/selectConductor');
+        }
         
 
 
