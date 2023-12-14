@@ -5,7 +5,8 @@
                 redirect('users/login');
             }
             $this->userModel = $this->model('User');
-            $this->scheduleModel = $this->model('Schedule');
+            $this->scheduleModel = $this->model('Schedulerow');
+            $this->bookingModel = $this->model('Booking');
         }
 
 
@@ -26,19 +27,29 @@
         }
 
         public function booking(){
-           
             $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            
+            if(isset($POST['schedule_id'])) {
+                
+                $schedule_id = trim($POST['schedule_id']);
+                $schedule = $this->bookingModel->getScheduleById($schedule_id);
+                $seats = $this->bookingModel->getSeats($schedule_id);
 
+            }
+            
             $data = [
-                'schedule_id' => trim($_POST['schedule_id']),
+                'schedule' => $schedule,
+                'seats' => $seats
             ];
             
-
-
-            $this->view('regPassengers/booking');
-        }
-
+            $this->view('regPassengers/booking', $data);
+            }
         
         
-
     }
+        
+
+        
+        
+
+    
