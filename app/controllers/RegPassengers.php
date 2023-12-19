@@ -7,6 +7,7 @@
             $this->userModel = $this->model('User');
             $this->scheduleModel = $this->model('Schedulerow');
             $this->bookingModel = $this->model('Booking');
+            $this->regPassengerModel = $this->model('RegPassenger');
         }
 
 
@@ -22,8 +23,14 @@
 
         public function profile(){
             
-
-            $this->view('regPassengers/profile');
+            $totalBookings = $this->regPassengerModel->getTotalBookingsCount($_SESSION['user_id']);
+            
+            $data = [
+            
+                'totalBookings' => $totalBookings
+            ];
+            
+            $this->view('regPassengers/profile', $data);
         }
 
         public function booking(){

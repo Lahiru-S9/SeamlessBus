@@ -8,13 +8,14 @@ class Bus {
     }
 
     public function addBus($data){
-        $this->db->query('INSERT INTO buses (bus_no, bus_model, seats, permitid, ownerid) VALUES (:bus_number, :bus_model, :bus_seat, :permit_id, :owner_id)');
+        $this->db->query('INSERT INTO buses (bus_no, bus_model, seats, permitid, ownerid, seats_per_row) VALUES (:bus_number, :bus_model, :bus_seat, :permit_id, :owner_id, :seats_per_row)');
         //Bind values
         $this->db->bind(':bus_number', $data['bus_number']);
         $this->db->bind(':bus_model', $data['bus_model']);
         $this->db->bind(':bus_seat', $data['bus_seat']);
         $this->db->bind(':permit_id', $data['permit_id']);
         $this->db->bind(':owner_id', $_SESSION['user_id']);
+        $this->db->bind(':seats_per_row', $data['seats_per_row']);
 
         //Execute function
         if($this->db->execute()){

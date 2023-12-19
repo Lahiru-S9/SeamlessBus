@@ -13,6 +13,8 @@
     <p><strong>Departure Time:</strong> <?php echo $scheduleDetails->departure_time; ?></p>
     <!-- <p><strong>Ticket Price:</strong> <?php echo $scheduleDetails->ticket_price; ?></p> -->
     <p><strong>Ticket Price:</strong> <span id="ticketPrice" data-price="<?php echo $scheduleDetails->ticket_price; ?>"><?php echo $scheduleDetails->ticket_price; ?></span></p>
+    <p><strong>Bus Model:</strong> <?php echo $scheduleDetails->bus_model; ?></p>
+    <p><strong>Bus No:</strong> <?php echo $scheduleDetails->bus_no; ?></p>
 <?php else : ?>
     <p>No schedule found.</p>
 <?php endif; ?>
@@ -44,9 +46,9 @@
           $seatNos[] = $seats->seatno;
         }
 
-       for($i = 0; $i <= 10; $i++) : 
+       for($i = 0; $i <= $scheduleDetails->seats/$scheduleDetails->seats_per_row; $i++) : 
         echo '<div class = "row">';
-          for($j = 1; $j <= 4; $j++) : 
+          for($j = 1; $j <= $scheduleDetails->seats_per_row; $j++) : 
               $seatno = $alphabet[$i] . $j;
                 if (in_array($seatno, $seatNos)) {
                     echo '<div class="seat occupied" data-seat-id="'.$seatno.'"></div>';
