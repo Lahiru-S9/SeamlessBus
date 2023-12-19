@@ -22,7 +22,11 @@
             to_station.station AS to_station_name,
             sch.arrival_time,
             sch.departure_time,
-            route.ticket_price
+            route.ticket_price,
+            bus.bus_no,
+            bus.bus_model,
+            bus.seats,
+            bus.seats_per_row
         FROM 
             schedule AS sch
         JOIN 
@@ -31,6 +35,8 @@
             stations AS from_station ON route.fromstationid = from_station.id
         JOIN 
             stations AS to_station ON route.tostationid = to_station.id
+        JOIN
+            buses AS bus ON sch.bus_no = bus.bus_no
         WHERE 
             sch.id = :schedule_id;
         

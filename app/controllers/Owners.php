@@ -133,10 +133,12 @@
                     'bus_seat' => trim($_POST['bus_seat']),
                     'permit_id' => trim($_POST['permit_id']),
                     'owner_id' => $_SESSION['user_id'],
+                    'seats_per_row' => trim($_POST['seats_per_row']),
                     'bus_number_err' => '',
                     'bus_model_err' => '',
                     'bus_seat_err' => '',
                     'permit_id_err' => '',
+                    'seats_per_row_err' => '',
                 ];
                 
 
@@ -164,8 +166,12 @@
                     $data['permit_id_err'] = 'Please enter permit_id';
                 }
 
+                if(empty($data['seats_per_row'])){
+                    $data['seats_per_row_err'] = 'Please enter seats_per_row';
+                }
+
                 //Make sure errors are empty
-                if(empty($data['bus_number_err']) && empty($data['bus_model_err']) && empty($data['bus_seat_err']) && empty($data['permit_id_err'])){
+                if(empty($data['bus_number_err']) && empty($data['bus_model_err']) && empty($data['bus_seat_err']) && empty($data['permit_id_err']) && empty($data['seats_per_row_err'])){
                     //Validated
 
                     
@@ -196,6 +202,7 @@
                     'bus_model_err' => '',
                     'bus_seat_err' => '',
                     'permit_id_err' => '',
+                    'seats_per_row_err' => '',
                 ];
 
                 
