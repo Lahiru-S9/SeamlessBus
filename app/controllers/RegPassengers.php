@@ -24,11 +24,20 @@
         public function profile(){
             
             $totalBookings = $this->regPassengerModel->getTotalBookingsCount($_SESSION['user_id']);
-            
+            $passengerDetails = $this->regPassengerModel->getDetails($_SESSION['user_id']);
+            $savedRoutes = $this->regPassengerModel->getSavedRoutes($_SESSION['user_id']);
+            $activeBookings = $this->regPassengerModel->getActiveBookings($_SESSION['user_id']);
+            $finishedBookings = $this->regPassengerModel->getFinishedBookings($_SESSION['user_id']);
             $data = [
             
-                'totalBookings' => $totalBookings
+                'totalBookings' => $totalBookings,
+                'passengerDetails' => $passengerDetails,
+                'savedRoutes' => $savedRoutes,
+                'activeBookings' => $activeBookings,
+                'finishedBookings' => $finishedBookings
             ];
+
+            //print_r($data);
             
             $this->view('regPassengers/profile', $data);
         }
@@ -50,7 +59,11 @@
             ];
             
             $this->view('regPassengers/booking', $data);
-            }
+        }
+
+        public function getDetails(){
+            $this->view('regPassengers/detailsForm');
+        }
         
         
     }
