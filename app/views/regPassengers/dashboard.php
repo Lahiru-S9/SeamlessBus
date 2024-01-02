@@ -35,7 +35,7 @@
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/Group.png" alt="QR">
             </div>
-            <p class="action-label">Profile details</p>
+            <p class="action-label">Profile and bookings</p>
         </a>
     </div>
 

@@ -22,11 +22,18 @@
               </div>
               <div class="card mt-3">
                 <ul class="list-group list-group-flush">
+                <?php foreach   ($data['savedRoutes'] as $routes) : ?>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
-                    <span class="text-secondary">https://bootdey.com</span>
+                    <h6 class="mb-0">from: <?php echo $routes->from_station_name?></h6>
+                    <h6 class="mb-0">to: <?php echo $routes->to_station_name?></h6>
+                      <form action="/your_other_controller_route" method="post">
+                      <input type="hidden" name="from_station" value="<?php echo $routes->from_station_name ?>">
+                      <input type="hidden" name="to_station" value="<?php echo $routes->to_station_name ?>">
+                      <button type="submit" class="btn btn-primary" name="select_route">Book</button>
+                </form>
                   </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <?php endforeach; ?>
+                  <!-- <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
                     <span class="text-secondary">bootdey</span>
                   </li>
@@ -41,7 +48,7 @@
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
                     <span class="text-secondary">bootdey</span>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </div>
@@ -71,7 +78,7 @@
                       <h6 class="mb-0">Phone</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (239) 816-9029
+                      <?php echo $data['passengerDetails'][0]->phone;?>
                     </div>
                   </div>
                   <hr>
@@ -80,7 +87,7 @@
                       <h6 class="mb-0">Mobile</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (320) 380-4539
+                      <?php echo $data['passengerDetails'][0]->mobile;?>
                     </div>
                   </div>
                   <hr>
@@ -89,7 +96,7 @@
                       <h6 class="mb-0">Address</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
+                      <?php echo $data['passengerDetails'][0]->address;?>
                     </div>
                   </div>
                   <hr>
@@ -105,12 +112,32 @@
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Trips</i>Active</h6>
+                      <?php foreach ($data['activeBookings'] as $activeBooking ): ?>
+
+                        <div class="card mt-3">
+                          <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
+                                  <small>From: <?php echo $activeBooking->from_station?></small>
+                              </li>
+                              <li class="list-group-item">
+                                  <small>To: <?php echo $activeBooking->to_station?></small>
+                              </li>
+                              <li class="list-group-item">
+                                  <small>Arrival Time: <?php echo $activeBooking->arrival_time?></small>
+                              </li>
+                              <li class="list-group-item">
+                                  <small>Departure Time: <?php echo $activeBooking->departure_time?></small>
+                              </li>
+                              <li class="list-group-item">
+                                  <small>Seat Number: <?php echo $activeBooking->seatno?></small>
+                              </li>
+                          </ul>
+                        </div>
+                      
+
+                      <?php endforeach; ?>
+                      <!-- <small>Website Markup</small>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
@@ -125,34 +152,38 @@
                       <small>Backend API</small>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Trips</i>Finished</h6>
+                      <?php foreach ($data['finishedBookings'] as $finishedBooking ): ?>
+
+                        <div class="card mt-3">
+                          <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
+                                  <small>From: <?php echo $finishedBooking->from_station?></small>
+                              </li>
+                              <li class="list-group-item">
+                                  <small>To: <?php echo $finishedBooking->to_station?></small>
+                              </li>
+                              <li class="list-group-item">
+                                  <small>Arrival Time: <?php echo $finishedBooking->arrival_time?></small>
+                              </li>
+                              <li class="list-group-item">
+                                  <small>Departure Time: <?php echo $finishedBooking->departure_time?></small>
+                              </li>
+                              <li class="list-group-item">
+                                  <small>Seat Number: <?php echo $finishedBooking->seatno?></small>
+                              </li>
+                          </ul>
+                        </div>
+
+
+                        <?php endforeach; ?>
                     </div>
                   </div>
                 </div>
@@ -161,9 +192,38 @@
 
 
             </div>
+            
           </div>
+          <div class="footer">
+        <img src="<?php echo URLROOT; ?>/img/logo_bw.png">
+        <div class="footer-subtext">
+            Seamless Bus
+        </div>
+        <div class="footer-text">
+            Enhancing your Travel Experience
+        </div>
 
+        <div class="social-media-icons">
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Facebook.png" alt="Facebook">
+            </a>
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Twitter.png" alt="Twitter">
+            </a>
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Instagram.png" alt="Instagram">
+            </a>
+        </div>
+    
+        <div class="footer-subtext">
+            Developed by CS group 23
         </div>
     </div>
+    
+        </div>
+    </div>
+
+         
+    
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
