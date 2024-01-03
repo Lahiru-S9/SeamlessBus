@@ -64,6 +64,10 @@
         public function getDetails(){
             $this->view('regPassengers/detailsForm');
         }
+
+        public function QR(){
+            $this->view('regPassengers/QR');
+        }
         
         
     }

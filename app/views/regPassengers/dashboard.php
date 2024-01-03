@@ -7,7 +7,7 @@
         
     </div>
     <div class="dashboard-actions">
-        <a href="#" class="dashboard-action">
+        <a href="<?php echo URLROOT;?>/regPassengers/QR" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/QR.png" alt="QR">
             </div>
