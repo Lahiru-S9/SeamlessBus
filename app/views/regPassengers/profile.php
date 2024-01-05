@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/regPassengers/profile.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div class="container">
     <div class="main-body">
@@ -13,7 +14,8 @@
                     <div class="mt-3">
                       <h4><?php echo $_SESSION['user_name'];?></h4>
                       
-                      <p class="text-secondary mb-1">Total Trips:</p>
+                      <p class="custom-trips">Total Trips:</p>
+
                       <p class="text-muted font-size-sm"><?php echo $data['totalBookings'][0]->total_bookings?></p>
                       
                     </div>
@@ -55,15 +57,15 @@
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">User ID</h6>
+                      <h6 class="mb-0">User_ID</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       <?php echo $_SESSION['user_id'];?>
                     </div>
                   </div>
-                  <hr>
+                  <hr> -->
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Email</h6>
@@ -102,7 +104,13 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                      <!-- <a class="btn btn-info " target="__blank" href="<?php echo URLROOT;?>/regPassengers/getDetails">Edit</a> -->
+                      <div class="alert alert-success" role="alert" style="display: none;" id="successMessage">
+                        Profile updated successfully!
+                      </div>
+                      <button class="btn btn-info" id="editButton">Edit</button>
+                      <button class="btn btn-success" id="saveButton" style="display: none;">Save</button>
+                      <button class="btn btn-danger" id="cancelButton" style="display: none;">Cancel</button>
                     </div>
                   </div>
                 </div>
@@ -223,7 +231,14 @@
         </div>
     </div>
 
-         
-    
+     <script> var originalTexts = {
+            User_ID: "<?php echo $_SESSION['user_id']; ?>",
+            Email: "<?php echo $_SESSION['user_email']; ?>",
+            Phone: "<?php echo $data['passengerDetails'][0]->phone;?>",
+            Mobile: "<?php echo $data['passengerDetails'][0]->mobile;?>",
+            Address: "<?php echo $data['passengerDetails'][0]->address;?>",
+        };
+        </script>
+<script src="<?php echo URLROOT; ?>/js/regPassengers/editDetails.js"></script>   
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
