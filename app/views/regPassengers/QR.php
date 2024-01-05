@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/regPassengers/QR.css">
 
-<input id="text" type="text" value= "<?php echo $_SESSION['user_id'];?>" style="width:80%" /><br />
+<input id="text" type="hidden" value= "<?php echo $data['encrypted_data'];?>" style="width:80%" /><br />
 <div id="qrcode"></div>
 
 

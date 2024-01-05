@@ -77,6 +77,12 @@ margin-right: 20px; /* Adjust margin between columns */
     color: #6c757d; /* Adjust to match Bootstrap's secondary text color */
   }
   
+  .custom-trips {
+    color: #6c757d; /* Change color as needed */
+    margin-bottom: 0.5rem; /* Adjust margin as per your layout */
+    /* Any additional styles you want to apply */
+  }
+
   /* Margin bottom */
   .mb-1 {
     margin-bottom: 0.25rem; /* Adjust as needed */

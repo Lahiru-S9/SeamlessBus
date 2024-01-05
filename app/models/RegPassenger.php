@@ -94,4 +94,26 @@
             $results = $this->db->resultSet();
             return $results;
         }
+
+        public function updateRegPassengerById($data){
+            $this->db->query("UPDATE users u
+            JOIN reg_passengers rp ON u.id = rp.user_id
+            SET u.email = :email,
+                rp.phone = :phone,
+                rp.mobile = :mobile,
+                rp.address = :address
+            WHERE u.id = :id;");
+
+            $this->db->bind(':id', $data['id'],);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':phone', $data['phone']);
+            $this->db->bind(':mobile', $data['mobile']); 
+            $this->db->bind(':address', $data['address']);
+
+            if($this->db->execute()){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }

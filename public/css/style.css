@@ -194,3 +194,69 @@ nav {
     width: 24px; /* Adjust the width as needed */
     height: 24px; /* Adjust the height as needed */
 }
+
+.btn-success {
+    /* Background color */
+    background-color: #28a745;
+
+    /* Text color */
+    color: #fff;
+
+    /* Padding */
+    padding: 10px 20px;
+
+    /* Border radius */
+    border-radius: 5px;
+
+    /* Other styles (you can modify or add more as needed) */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    /* Background color */
+    background-color: #dc3545;
+
+    /* Text color */
+    color: #fff;
+
+    /* Padding */
+    padding: 10px 20px;
+
+    /* Border radius */
+    border-radius: 5px;
+
+    /* Other styles (you can modify or add more as needed) */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-info {
+    /* Background color */
+    background-color: #17a2b8;
+
+    /* Text color */
+    color: #fff;
+
+    /* Padding */
+    padding: 10px 20px;
+
+    /* Border radius */
+    border-radius: 5px;
+
+    /* Other styles (you can modify or add more as needed) */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
