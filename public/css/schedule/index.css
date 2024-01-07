@@ -65,9 +65,7 @@ body {
     border-radius: 5px;
 }
 
-.btn {
-    margin-top: 10px;
-}
+
 
 .row {
     display: flex;
@@ -105,18 +103,7 @@ form {
     padding: 0; /* Remove any default padding */
 }
 
-button {
-    background-color: #007bff; /* Button background color */
-    color: #fff; /* Text color */
-    border: none; /* Remove button border */
-    padding: 5px 10px; /* Adjust padding as needed */
-    cursor: pointer; /* Add a pointer cursor on hover */
-    border-radius: 4px; /* Add some rounded corners */
-}
 
-button:hover {
-    background-color: #0056b3; /* Change background color on hover */
-}
 
 
 /* Styling for responsive breakpoints */
