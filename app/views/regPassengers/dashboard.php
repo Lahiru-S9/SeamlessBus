@@ -7,13 +7,26 @@
         
     </div>
     <div class="dashboard-actions">
-        <a href="<?php echo URLROOT;?>/regPassengers/QR" class="dashboard-action">
+        
+        
+        
+        <div class = "popup" id = "popup-1">
+            <div class = "overlay"></div>
+            <div class = "content">
+                <div class = "close-btn" onclick = "togglePopup()">&times;</div>
+                <h1>My QR</h1>
+                <input id="text" type="hidden" value= "<?php echo $data['encrypted_data'];?>" style="width:80%" /><br />
+                <div id="qrcode"></div>
+            </div>
+        </div>
+        <!-- <button class="popup-button" onclick="togglePopup()">Show QR</button> -->
+        <a  class="dashboard-action" onclick = "togglePopup()">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/QR.png" alt="QR">
             </div>
             <p class="action-label">My QR</p>
         </a>
-
+        
         <!-- Add more dashboard actions as needed -->
         <a href="#" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
@@ -66,6 +79,7 @@
     </div>
 
 </div>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<?php echo URLROOT; ?>/js/qrcode.js"></script> 
+<script src="<?php echo URLROOT; ?>/js/regPassengers/QR.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
