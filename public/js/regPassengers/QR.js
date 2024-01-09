@@ -15,14 +15,23 @@ function makeCode () {
 
 makeCode();
 
-$("#text").
-  on("blur", function () {
+$("#text")
+  .on("blur", function () {
     makeCode();
-  }).
-  on("keydown", function (e) {
+  })
+  .on("keydown", function (e) {
     if (e.keyCode == 13) {
       makeCode();
     }
   });
 
 
+function togglePopup() {
+  var popup = document.getElementById('popup-1');
+    if (popup.style.display === 'none' || popup.style.display === '') {
+        popup.style.display = 'block';
+        makeCode(); // Generate QR code when showing the popup
+    } else {
+        popup.style.display = 'none';
+    }
+}

@@ -12,10 +12,13 @@
 
 
         public function dashboard(){
+            $this->QR();
+            $encrypted_data = $_SESSION['encrypted_data'] ?? '';
             
             $data = [
                 'title' => 'Dashboard',
-                'description' => 'Enhancing your Travel Experience'
+                'description' => 'Enhancing your Travel Experience',
+                'encrypted_data' => $encrypted_data // Pass encrypted data to the view
             ];
 
             $this->view('regPassengers/dashboard', $data);
@@ -98,20 +101,18 @@
 
             // Encrypt the data
             $encrypted_data = $this->encrypt_data($original_data, $key, $iv);
-
-            $data = [
-                'encrypted_data' => $encrypted_data
-            ];
+            $_SESSION['encrypted_data'] = $encrypted_data;
+           
 
             // Decrypt the data (just for verification purposes)
-            // $decrypted_data = $this->decrypt_data($encrypted_data, $key, $iv);
+            $decrypted_data = $this->decrypt_data($_SESSION['encrypted_data'], $key, $iv);
 
             // Output the encrypted data
             // echo "Encrypted Data: " . $encrypted_data . "<br>";
 
             // Output the decrypted data (should match the original data)
-            // echo "Decrypted Data: " . $decrypted_data . "<br>";
-            $this->view('regPassengers/QR', $data);
+            //echo "Decrypted Data: " . $decrypted_data . "<br>";
+            
         }
 
         // Encryption function
@@ -123,12 +124,12 @@
         }
 
         // Decryption function
-        // function decrypt_data($data, $key, $iv) {
-        //     $cipher = "aes-256-cbc"; // You should use the same cipher used for encryption
-        //     $options = 0;
-        //     $decrypted = openssl_decrypt($data, $cipher, $key, $options, $iv);
-        //     return $decrypted;
-        // }
+        function decrypt_data($data, $key, $iv) {
+            $cipher = "aes-256-cbc"; // You should use the same cipher used for encryption
+            $options = 0;
+            $decrypted = openssl_decrypt($data, $cipher, $key, $options, $iv);
+            return $decrypted;
+        }
         
         
     }
