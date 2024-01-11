@@ -197,7 +197,7 @@
                     break;
                 case 7:
                     $_SESSION['usertype'] = 'Admin';
-                    redirect('admin/dashboard');
+                    redirect('Admin/dashboard');
                     break;
                 
             }
