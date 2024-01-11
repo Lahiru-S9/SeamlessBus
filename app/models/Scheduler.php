@@ -7,11 +7,11 @@ class Bus {
         $this->db = new Database;
     }
 
-    public function getConductor(){
+    public function getScheduler(){
         $this->db->query('SELECT *
         FROM users
-        JOIN conductors ON users.id = conductors.user_id
-        WHERE users.user_type = 4;
+        JOIN schedulers ON users.id = schedulers.user_id
+        WHERE users.user_type = 6;
         ');
         $results = $this->db->resultSet();
 
