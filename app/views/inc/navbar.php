@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+
 <nav>
     <div class="navbar-container">
         <a href="<?php echo URLROOT; ?>">
@@ -16,7 +18,7 @@
         </ul>
         <div class="user-actions">
             <?php if(isset($_SESSION['user_id'])) : ?>
-                <a href="<?php echo URLROOT; ?>/regPassengers/dashboard" class="dashboard">Dashboard</a>
+                <a href="<?php echo URLROOT; ?>/<?php echo $_SESSION['usertype'].'s'?>/dashboard" class="dashboard">Dashboard</a>
                 <a href="<?php echo URLROOT; ?>/users/logout" class="logout">Log out</a>
             <?php else : ?>
                 <a href="<?php echo URLROOT; ?>/pages/userSelect" class="signup">Sign up</a>
@@ -24,4 +26,4 @@
             <?php endif; ?>
         </div>
     </div>
-</nav>
+</nav><br><br><br><br>
