@@ -1,0 +1,32 @@
+.main-container {
+  display: flex;
+  gap: 20px;
+}
+
+.container {
+  width: 45%; /* Adjust the width as needed */
+  display: inline-block;
+  vertical-align: top; /* Align containers to the top */
+  margin: 10px; /* Add margin for separation */
+}
+
+#scheduler-list,
+#stations-list {
+  width: 100%;
+  text-align: left;
+  margin-right:10px;
+}
+
+.scheduler-container,
+.stations-container {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.assigned-stations,
+.assigned-schedulers {
+  display: none;
+  margin-top: 10px;
+}

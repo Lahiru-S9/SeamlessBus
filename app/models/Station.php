@@ -41,4 +41,16 @@ class Station {
         $this->db->bind(':id', $id);
         return $this->db->execute();
     }
+
+    public function getStationsWithSchedulers() {
+        $this->db->query('SELECT stations.id AS station_id, stations.station, schedulers.id AS scheduler_id, users.name AS scheduler_name
+        FROM stations
+        LEFT JOIN schedulers ON stations.id = schedulers.station_id
+        LEFT JOIN users ON schedulers.user_id = users.id;
+        ');
+        
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
 }
