@@ -17,6 +17,9 @@
                                 <br>
                                 <?php echo "Assigned Station id: " . ($scheduler->station_id ?? "NULL"); ?>
                             </div>
+                            <div class="edit-button-container" id="scheduler-edit-button-container_<?php echo $scheduler->id; ?>" style="display: none;">
+                            <button class="edit-button btn btn-primary" onclick="editScheduler(<?php echo $scheduler->id; ?>)">Edit</button>
+                            </div>
                         </div>
                     <?php endforeach; ?>
             <?php else : ?>
@@ -40,6 +43,9 @@
                                 <br>
                                 <?php echo "Assigned Scheduler id: " .($station->scheduler_id ?? "NULL"); ?>
                             </div>
+                            <div class="edit-button-container" id="station-edit-button-container_<?php echo $station->station_id; ?>" style="display: none;">
+                            <button class="edit-button btn btn-primary" onclick="editStation(<?php echo $station->station_id; ?>)">Edit</button>
+                        </div>
                         </div>
                     <?php endforeach; ?>
             <?php else : ?>
