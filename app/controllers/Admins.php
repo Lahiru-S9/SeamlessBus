@@ -24,7 +24,7 @@
                 'schedulers' => $schedulers,
                 'stations' => $stations
             ];
-            var_dump($data); 
+            // var_dump($data); 
 
             $this->view('Admins/add_scheduler',$data);
         }
