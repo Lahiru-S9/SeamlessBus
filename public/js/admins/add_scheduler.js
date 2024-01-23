@@ -12,6 +12,8 @@ function toggleStations(schedulerId) {
       stationsDiv.style.display = 'none';
       editButtonContainer.style.display = 'none';
   }
+
+  closePopup();
 }
 
 function toggleSchedulers(stationId) {
@@ -29,10 +31,16 @@ function toggleSchedulers(stationId) {
 }
 }
 
+let popup = document.getElementById("popup");
+
 function editScheduler(schedulerId) {
-  // Implement your edit logic here
-  // You can open a modal or redirect to an edit page, for example
+  
+  popup.classList.add("open-popup");
   console.log("Edit scheduler with ID: " + schedulerId);
+}
+
+function closePopup() {
+  popup.classList.remove("open-popup");
 }
 
 function editStation(stationId) {
