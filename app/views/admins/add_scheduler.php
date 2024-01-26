@@ -8,21 +8,42 @@
             <?php if (isset($data['schedulers']) && is_array($data['schedulers'])) : ?>
                 <!-- <h2>Schedulers</h2> -->
                     <?php foreach ($data['schedulers'] as $scheduler) : ?>
-                        <div class="scheduler-container" onclick="toggleStations(<?php echo $scheduler->id; ?>)">
+                        <div class="scheduler-container" onclick="toggleStations(<?php echo $scheduler->user_id; ?>, event)">
                             <?php echo "Scheduler name: " . ($scheduler->scheduler_name ?? "NULL"); ?>
                             <br>
-                            <?php echo "Scheduler id: " . ($scheduler->id ?? "NULL"); ?>
-                            <div class="assigned-stations" id="stations_<?php echo $scheduler->id; ?>">
-                                <?php echo "Assigned Station: " . ($scheduler->station ?? "NULL"); ?>
+                            <?php echo "Scheduler id: " . ($scheduler->user_id ?? "NULL"); ?>
+                            <div class="assigned-stations" id="stations_<?php echo $scheduler->user_id; ?>">
+                                <?php echo "Assigned Station: " . ($scheduler->station_names ?? "NULL"); ?>
                                 <br>
-                                <?php echo "Assigned Station id: " . ($scheduler->station_id ?? "NULL"); ?>
+                                <?php echo "Assigned Station id: " . ($scheduler->station_ids ?? "NULL"); ?>
                             </div>
-                            <div class="edit-button-container" id="scheduler-edit-button-container_<?php echo $scheduler->id; ?>" style="display: none;">
-                                <button class="edit-button btn btn-primary" onclick="editScheduler(<?php echo $scheduler->id; ?>)">Edit</button>
+                            <div class="edit-button-container" id="scheduler-edit-button-container_<?php echo $scheduler->user_id; ?>" style="display: none;">
+                                <button class="edit-button btn btn-primary" onclick="editScheduler(<?php echo $scheduler->user_id; ?>, event)">Edit</button>
                                 <div class="popup" id="popup" >
-                                    <h2>Edit Scheduler</h2>
-                                    <p>Enter new scheduler name:</p>
-                                    <button type = "button" onclick = "closePopup()" >OK</button>
+                                    <h2>Edit Station</h2>
+                                    <p>Currant Station:</p>
+                                    <div class="main"> 
+                                        <h2 class="center-text"> 
+                                        <?php echo ($scheduler->station_names ?? "NULL"); ?>
+                                        </h2> 
+                                        
+                                        <div class="selectBox"> 
+                                            <input type="text" class="search-box" 
+                                                placeholder="Search"> 
+                                            <ul class="options"> 
+                                                <ul class="options"> 
+
+                                                    <?php foreach ($data['stations'] as $station) : ?>
+                                                        <li data-value="<?php echo $station->station_id; ?>"><?php echo $station->station; ?></li>
+                                                    <?php endforeach; ?>
+                                                    
+                                                </ul> 
+                                            </ul> 
+                                        </div> 
+                                        <div class="selected-option">Select an option</div> 
+                                        <button id="clear-button">Clear Selection</button> 
+                                    </div> 
+                                    <button type = "button" onclick = "closePopup(event)" >OK</button>
                                 </div>
                             </div>
                         </div>
@@ -44,9 +65,9 @@
                             <br>
                             <?php echo "Station id: " . ($station->station_id ?? "NULL"); ?>
                             <div class="assigned-schedulers" id="schedulers_<?php echo $station->station_id; ?>">
-                                <?php echo "Assigned Scheduler: " . ($station->scheduler_name ?? "NULL"); ?>
+                                <?php echo "Assigned Scheduler: " . ($station->scheduler_names ?? "NULL"); ?>
                                 <br>
-                                <?php echo "Assigned Scheduler id: " .($station->scheduler_id ?? "NULL"); ?>
+                                <?php echo "Assigned Scheduler id: " .($station->scheduler_ids ?? "NULL"); ?>
                             </div>
                             <div class="edit-button-container" id="station-edit-button-container_<?php echo $station->station_id; ?>" style="display: none;">
                             <button class="edit-button btn btn-primary" onclick="editStation(<?php echo $station->station_id; ?>)">Edit</button>

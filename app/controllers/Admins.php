@@ -20,6 +20,8 @@
             $schedulers = $this->schedulerModel->getSchedulers();
             $stations = $this->stationModel->getStationsWithSchedulers();
 
+            
+
             $data = [
                 'schedulers' => $schedulers,
                 'stations' => $stations
