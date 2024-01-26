@@ -43,14 +43,19 @@ class Station {
     }
 
     public function getStationsWithSchedulers() {
-        $this->db->query('SELECT stations.id AS station_id, stations.station, schedulers.id AS scheduler_id, users.name AS scheduler_name
+        $this->db->query('SELECT stations.id AS station_id,
+        stations.station,
+        GROUP_CONCAT(schedulers.id) AS scheduler_ids,
+        GROUP_CONCAT(users.name) AS scheduler_names
         FROM stations
         LEFT JOIN schedulers ON stations.id = schedulers.station_id
-        LEFT JOIN users ON schedulers.user_id = users.id;
+        LEFT JOIN users ON schedulers.user_id = users.id
+        GROUP BY stations.id, stations.station;
+ 
         ');
         
         $result = $this->db->resultSet();
 
-        return $result;
+        return $result; 
     }
 }
