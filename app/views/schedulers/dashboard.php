@@ -1,26 +1,22 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedulers/dashboard.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../public/css/schedulers/dashboard.css">
+    <title>Dashboard</title>
+</head>
+<body>
 
+    <h1>What you want to do?</h1>
 
+    <ul class="button-list">
+        <li><a href="verifyConductors.php" class="text">Verify Conductors</a></li>
+        <li><a href="verifyBuses.php" class="text">Verify Buses</a></li>
+        <li><a href="editSchedules.php " class="text">Edit Schedules</a></li>
+        <li><a href="addTimeSlots.php" class="text">Add Bus Time Slots</a></li>
+        <li><a href="bookinglists.php" class="text">View Booking Lists</a></li>
+    </ul>
 
-
-<div class="item1"> <h3>schedule the seamless bus</h3></div>
-<br>
-<img src="<?php echo URLROOT; ?>/img/bus_schedule3.avif" alt="Background Image" width="500px" height="400px" />
-<img src="<?php echo URLROOT; ?>/img/bus_shedule2.jpg" alt="Background Image" width="500px" height="400px" />
-<img src="<?php echo URLROOT; ?>/img/bus_timeslots.jpg" alt="Background Image" width="500px" height="400px" />
-
-<br>
-<div class="item3">
-    <div class="item2">
-        <button class="item" type="button"><a href="<?php echo URLROOT; ?>index1.php"> Verify conductors</a></button>
-        <button class="item" type="button"> <a href="<?php echo URLROOT; ?> index2.php">Verify bus</a></button>
-        <button class="item" type="button"> <a href="<?php echo URLROOT; ?>index3.php"> Edit schedule</a></button>
-        <button class="item" type="button"> <a href="<?php echo URLROOT; ?>index4.php"> Add busses timeslots</a></button>
-        <button class="item" type="button"> <a href="<?php echo URLROOT; ?>index5.php"> All booking list </a></button>
-       
-    </div>
-    </div>
-    
-
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+</body>
+</html>
