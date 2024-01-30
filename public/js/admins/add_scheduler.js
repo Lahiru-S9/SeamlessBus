@@ -1,11 +1,9 @@
 
 // Toggle function to show/hide the dropdown content
 function toggleStations(schedulerId, event) {
-    event.stopPropagation();
-
-    if (event.target.closest('.popup')) {
+    if (event && event.target.closest('.popup')) {
         return;
-      }
+    }
 
   var stationsDiv = document.getElementById('stations_' + schedulerId);
   var editButtonContainer = document.getElementById('scheduler-edit-button-container_' + schedulerId);
@@ -23,7 +21,10 @@ function toggleStations(schedulerId, event) {
   closePopup();
 }
 
-function toggleSchedulers(stationId) {
+function toggleSchedulers(stationId, event) {
+    if (event && event.target.closest('.popup')) {
+        return;
+    }
   var schedulersDiv = document.getElementById('schedulers_' + stationId);
   var editButtonContainer = document.getElementById('station-edit-button-container_' + stationId);
 
@@ -36,32 +37,58 @@ function toggleSchedulers(stationId) {
     schedulersDiv.style.display = 'none';
     editButtonContainer.style.display = 'none';
 }
+
+closePopup();
 }
 
-let popup = document.getElementById("popup");
+let stationsPopup = document.getElementById("stations-popup");
+const stationsSearchBox = stationsPopup.querySelector('.search-box');
+const stationsOptions = stationsPopup.querySelectorAll('.options li');
+const stationsSelectedOption = stationsPopup.querySelector('.selected-option');
+const stationsClearButton = stationsPopup.querySelector('#stations-clear-button');
+
+let schedulersPopup = document.getElementById("schedulers-popup");
+const schedulersSearchBox = schedulersPopup.querySelector('.search-box');
+const schedulersOptions = schedulersPopup.querySelectorAll('.options li');
+const schedulersSelectedOption = schedulersPopup.querySelector('.selected-option');
+const schedulersClearButton = schedulersPopup.querySelector('#schedulers-clear-button');
 
 function editScheduler(schedulerId, event) {
-  event.stopPropagation();
-  popup.classList.add("open-popup");
+
+if (event) {
+    event.stopPropagation();
+}
+  stationsPopup.classList.add("open-popup");
   console.log("Edit scheduler with ID: " + schedulerId);
 }
 
+function editStation(stationId, event) {
+    
+    if (event) {
+        event.stopPropagation();
+    }
+    schedulersPopup.classList.add("open-popup");
+    console.log("Edit station with ID: " + stationId);
+  }
 
-function closePopup(event) {
-  event.stopPropagation();
-  popup.classList.remove("open-popup");
+
+  function closePopup(event) {
+    if (event) {
+        event.stopPropagation();
+    }
+    stationsPopup.classList.remove("open-popup");
+    if (schedulersPopup) {
+        schedulersPopup.classList.remove("open-popup");
+    }
 }
 
-const searchBox = document.querySelector('.search-box'); 
-const options = document.querySelectorAll('.options li'); 
-const selectedOption = document.querySelector('.selected-option'); 
-const clearButton = document.getElementById('clear-button'); 
+
   
 // Check if search country present in menu list 
-searchBox.addEventListener('input', () => { 
-    const searchTerm = searchBox.value.toLowerCase(); 
+stationsSearchBox.addEventListener('input', () => { 
+    const searchTerm = stationsSearchBox.value.toLowerCase(); 
   
-    options.forEach(option => { 
+    stationsOptions.forEach(option => { 
         const text = option.textContent.toLowerCase(); 
         if (text.includes(searchTerm)) { 
             option.style.display = 'block'; 
@@ -70,24 +97,57 @@ searchBox.addEventListener('input', () => {
         } 
     }); 
 }); 
+
+schedulersSearchBox.addEventListener('input', () => {
+    const searchTerm = schedulersSearchBox.value.toLowerCase(); 
+  
+    schedulersOptions.forEach(option => { 
+        const text = option.textContent.toLowerCase(); 
+        if (text.includes(searchTerm)) { 
+            option.style.display = 'block'; 
+        } else { 
+            option.style.display = 'none'; 
+        } 
+    }); 
+});
   
 // Iterating and printing the selected country name 
-for (const option of options) { 
+for (const option of stationsOptions) { 
     option.addEventListener('click', () => { 
         const value = option.getAttribute('data-value'); 
-        selectedOption.textContent =  
+        stationsSelectedOption.textContent =  
             "You have chosen " + option.textContent; 
-        searchBox.value = ''; 
-        for (const opt of options) { 
+        stationsSearchBox.value = ''; 
+        for (const opt of stationsOptions) { 
             opt.style.display = 'block'; 
         } 
     }); 
 } 
+
+for (const option of schedulersOptions) { 
+    option.addEventListener('click', () => { 
+        const value = option.getAttribute('data-value'); 
+        schedulersSelectedOption.textContent =  
+            "You have chosen " + option.textContent; 
+        schedulersSearchBox.value = ''; 
+        for (const opt of schedulersOptions) { 
+            opt.style.display = 'block'; 
+        } 
+    }); 
+}
   
-clearButton.addEventListener('click', function () { 
-    selectedOption.textContent = 'Select an option'; 
-    searchBox.value = ''; 
-    options.forEach(option => { 
+stationsClearButton.addEventListener('click', function () { 
+    stationsSelectedOption.textContent = 'Select an option'; 
+    stationsSearchBox.value = ''; 
+    stationsOptions.forEach(option => { 
+        option.style.display = 'block'; 
+    }); 
+});
+
+schedulersClearButton.addEventListener('click', function () { 
+    schedulersSelectedOption.textContent = 'Select an option'; 
+    schedulersSearchBox.value = ''; 
+    schedulersOptions.forEach(option => { 
         option.style.display = 'block'; 
     }); 
 });
