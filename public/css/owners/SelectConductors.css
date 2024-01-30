@@ -1,98 +1,52 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Poppins", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('/img/selectconductor.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-}
+/* public/css/Owners/selectConductor.css */
 
 .container {
-    width: 80%;
-    max-width: 800px;
-    background: rgba(255, 255, 255, 0.8);
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.content {
-    width: 100%;
     text-align: center;
 }
 
-.login-title {
-    font-size: 24px;
-    margin-bottom: 10px;
+h1 {
+    color: #333;
 }
 
-.login-subtitle {
-    font-size: 18px;
+.search-bar {
     margin-bottom: 20px;
 }
 
 #conductor-search {
-    width: 80%;
     padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 300px;
     font-size: 16px;
 }
 
 .conductor-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .conductor-item {
-    width: 30%;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
 }
 
 .conductor-item img {
-    width: 100%;
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+}
+
+.select-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
     border-radius: 5px;
-    margin-bottom: 5px;
 }
-
-.selected-conductor-details {
-    width: 80%;
-    padding: 20px;
-    background: #fff;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    margin-top: 20px;
-    display: none;
-}
-
-.selected-conductor-details img {
-    width: 100%;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.selected-conductor-details h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-
-
