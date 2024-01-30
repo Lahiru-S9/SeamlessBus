@@ -16,7 +16,7 @@
         </ul>
         <div class="user-actions">
             <?php if(isset($_SESSION['user_id'])) : ?>
-                <a href="<?php echo URLROOT; ?>/regPassengers/dashboard" class="dashboard">Dashboard</a>
+                <a href="<?php echo URLROOT; ?>/<?php echo $_SESSION['usertype'].'s'?>/dashboard" class="dashboard">Dashboard</a>
                 <a href="<?php echo URLROOT; ?>/users/logout" class="logout">Log out</a>
             <?php else : ?>
                 <a href="<?php echo URLROOT; ?>/pages/userSelect" class="signup">Sign up</a>
