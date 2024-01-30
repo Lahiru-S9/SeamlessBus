@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/admin/dashboard.css">
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/admins/dashboard.css">
 <div class="container">
     <div class="dashboard-content">
         <h1 class="dashboard-title">What's on your mind?</h1>
@@ -7,7 +7,7 @@
         
     </div>
     <div class="dashboard-actions">
-        <a href="<?php echo URLROOT; ?>/Admin/add_scheduler" class="dashboard-action">
+        <a href="<?php echo URLROOT; ?>/Admins/add_scheduler" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/QR.png" alt="QR">
             </div>
