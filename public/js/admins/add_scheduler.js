@@ -1,5 +1,7 @@
 
-// Toggle function to show/hide the dropdown content
+
+
+
 function toggleStations(schedulerId, event) {
     if (event && event.target.closest('.popup')) {
         return;
@@ -7,6 +9,7 @@ function toggleStations(schedulerId, event) {
 
   var stationsDiv = document.getElementById('stations_' + schedulerId);
   var editButtonContainer = document.getElementById('scheduler-edit-button-container_' + schedulerId);
+
 
   if (stationsDiv.style.display === 'none' || stationsDiv.style.display === '') {
       // If stations are hidden, show them and the edit button container
@@ -69,10 +72,10 @@ function editStation(stationId, event) {
     }
     schedulersPopup.classList.add("open-popup");
     console.log("Edit station with ID: " + stationId);
-  }
+}
 
 
-  function closePopup(event) {
+function closePopup(event) {
     if (event) {
         event.stopPropagation();
     }
