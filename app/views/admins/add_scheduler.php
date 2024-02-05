@@ -18,34 +18,32 @@
                                 <?php echo "Assigned Station id: " . ($scheduler->station_ids ?? "NULL"); ?>
                             </div>
                             <div class="edit-button-container" id="scheduler-edit-button-container_<?php echo $scheduler->scheduler_id; ?>" style="display: none;">
-                                <button class="edit-button btn btn-primary" onclick="editScheduler(<?php echo $scheduler->scheduler_id; ?>, event)">Edit</button>
-                                <div class="popup" id="stations-popup" >
-                                    <h2>Edit Station</h2>
-                                    <p>Currant Station:</p>
-                                    <div class="main"> 
-                                        <h2 class="center-text"> 
-                                        <?php echo ($scheduler->station_names ?? "NULL"); ?>
-                                        </h2> 
+                                <button class="btn btn-primary" onclick="openStationModal(<?php echo $scheduler->scheduler_id; ?>)">Edit</button>
+                                <!-- The Modal -->
+                                <div id="stationModal_<?php echo $scheduler->scheduler_id; ?>" class="modal">
+
+                                <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <span class="close" data-modal-id="stationModal_<?php echo $scheduler->scheduler_id; ?>" onclick="closeModal()">&times;</span>
+
+
+                                        <label for="stationSelect">Select Stations:</label>
+                                        <input type="text" id="stationSearch_<?php echo $scheduler->scheduler_id; ?>" oninput="filterStations(<?php echo $scheduler->scheduler_id; ?>)" placeholder="Search for stations">
+                                        <select multiple id="stationSelect_<?php echo $scheduler->scheduler_id; ?>">
+                                            <!-- Add options dynamically based on available stations -->
+                                            <?php foreach ($data['stations'] as $station) : ?>
+                                                <option value="<?php echo $station->station_id; ?>">
+                                                    <?php echo $station->station; ?>
+                                                </option>
+                                            <?php endforeach; ?>
+
+                                        </select>
+                                        <button class="btn btn-primary" onclick="updateStations(<?php echo $scheduler->scheduler_id; ?>)">Save</button>
                                         
-                                        <div class="selectBox"> 
-                                            <input type="text" class="search-box" 
-                                                placeholder="Search"> 
-                                            <ul class="options"> 
-                                                <ul class="options"> 
+                                    </div>
 
-                                                    <?php foreach ($data['stations'] as $station) : ?>
-                                                        <li data-value="<?php echo $station->station_id; ?>"><?php echo $station->station; ?></li>
-                                                    <?php endforeach; ?>
-                                                    
-                                                </ul> 
-                                            </ul> 
-                                        </div> 
-                                        <div class="selected-option">Select an option</div> 
-                                        <button id="stations-clear-button">Clear Selection</button> 
-
-                                    </div> 
-                                    <button type = "button" onclick = "closePopup(event)" >OK</button>
                                 </div>
+                                    
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -71,37 +69,12 @@
                                 <?php echo "Assigned Scheduler id: " .($station->scheduler_ids ?? "NULL"); ?>
                             </div>
                             <div class="edit-button-container" id="station-edit-button-container_<?php echo $station->station_id; ?>" style="display: none;">
-                            <button class="edit-button btn btn-primary" onclick="editStation(<?php echo $station->station_id; ?>,event)">Edit</button>
+                            <button class="btn btn-primary" id="edit-button">Edit</button>
+
                             
                             
 
-                                <div class="popup" id="schedulers-popup" >
-                                    <h2>Edit Station</h2>
-                                    <p>Currant Station:</p>
-                                    <div class="main"> 
-                                        <h2 class="center-text"> 
-                                        <?php echo ($station->scheduler_names ?? "NULL"); ?>
-                                        </h2> 
-                                        
-                                        <div class="selectBox"> 
-                                            <input type="text" class="search-box" 
-                                                placeholder="Search"> 
-                                            <ul class="options"> 
-                                                <ul class="options"> 
-
-                                                    <?php foreach ($data['schedulers'] as $scheduler) : ?>
-                                                        <li data-value="<?php echo $scheduler->scheduler_id; ?>"><?php echo $scheduler->name; ?></li>
-                                                    <?php endforeach; ?>
-                                                    
-                                                </ul> 
-                                            </ul> 
-                                        </div> 
-                                        <div class="selected-option">Select an option</div> 
-                                        <button id="schedulers-clear-button">Clear Selection</button>
-
-                                    </div> 
-                                    <button type = "button" onclick = "closePopup(event)" >OK</button>
-                                </div>
+                               
                             </div>
                         </div>
                     <?php endforeach; ?>

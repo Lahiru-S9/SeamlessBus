@@ -2,6 +2,7 @@
 .main-container {
   display: flex;
   gap: 20px;
+  justify-content: center; /* Center the containers horizontally */
 }
 
 .container {
@@ -24,6 +25,13 @@
   border: 1px solid #ccc;
   padding: 10px;
   cursor: pointer;
+  background-color: #fff; /* Set a background color for containers */
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.scheduler-container:hover,
+.stations-container:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
 }
 
 .assigned-stations,
@@ -32,139 +40,43 @@
   margin-top: 10px;
 }
 
-.popup {
-  
-  background: #fff;
-  position: fixed; /* Change to fixed position */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
-  text-align: center;
-  padding: 20px; /* Add padding to the content */
-  color: #333;
-  visibility: hidden;
-  transition: transform 0.4s, top 0.4s;
-  z-index: 1000; /* Set a higher z-index to ensure it's above other elements */
-  box-shadow: 0px 2px 5px rgba(0,0,0,1);
-
-  max-width: 350px;
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.popup.main {
-  width: 100%;
-  height: 370px;
-  overflow: hidden;
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  border-radius: 8px; /* Add rounded corners */
 }
 
-
-
-.open-popup {
-  visibility: visible;
-  transform: translate(-50%, -50%) scale(1);
-  top: 50%;
-}
-
-.popup img {
-  width: 100px;
-  margin-top: -50px;
-  border-radius: 50px;
-  box-shadow: - 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.popup h2{
-  font-size: 24px;
-  font-weight: 500;
-  margin: 30px 0 10px;
-}
-
-.popup button{
-  width: 100%;
-  margin-top: 50px;
-  padding: 10px 0;
-  background: #6fd649;
-  color: #fff;
-  border: 0;
-  outline: none;
-  font-size: 18px;
-  border-radius:4px ;
+/* Add some styles to the modal close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: - 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.popup p {
-  font-size: 16px;
-}
-
-@media only screen and (max-width: 768px) {
-  .popup {
-    width: 90%; /* Adjust the width as needed for mobile view */
-     /* Add padding to the content */
-  }
-}
-
-  
-/* Center the custom select */
-body { 
-  /* display: flex;  */
-  justify-content: center; 
-  /* align-items: center;  */
-  height: 100vh; 
-  background-color: #f0f0f0; 
-} 
-
-
-.selectBox { 
-  width: 80%; /* Adjust the width as needed */
-  margin: 0 auto; /* Center the .selectBox within the .main */
-} 
-
-.search-box { 
-  width: 100%; 
-  padding: 10px; 
-  border: none; 
-  border-bottom: 1px solid #ccc; 
-  outline: none; 
-  font-size: 16px; 
-} 
-
-.center-text { 
-  text-align: center; 
-  color: green; 
-} 
-
-
-.options { 
-  list-style: none; 
-  padding: 0; 
-  max-height: 250px; 
-  overflow-y: auto; 
-  border-bottom: 1px solid #ccc; 
-} 
-
-.options li { 
-  padding: 10px; 
-  cursor: pointer; 
-} 
-
-.options li:hover { 
-  background-color: #f0f0f0; 
-} 
-
-.selected-option { 
-  padding: 10px; 
-  cursor: pointer; 
-} 
-
-#clear-button { 
-  background-color: #ff6347; 
-  color: white; 
-  padding: 8px 16px; 
-  border: none; 
-  border-radius: 4px; 
-  cursor: pointer; 
-} 
-
-#clear-button:hover { 
-  background-color: #ff0000; 
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
 }
 

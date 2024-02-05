@@ -25,6 +25,7 @@
             $data = [
                 'schedulers' => $schedulers,
                 'stations' => $stations
+
             ];
             // var_dump($data); 
 
