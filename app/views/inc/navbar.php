@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+
 <nav>
     <div class="navbar-container">
         <a href="<?php echo URLROOT; ?>">
@@ -24,4 +26,4 @@
             <?php endif; ?>
         </div>
     </div>
-</nav>
+</nav><br><br><br><br>

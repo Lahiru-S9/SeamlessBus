@@ -8,7 +8,7 @@
         <div class="header">
             
             <div class="header-title">Bus Schedules</div>
-            <div class="header-subtitle">Get updated information about bus schedules</div>
+            <div class="header-subtitle">Get updated information about bus schedules</div><br><br>
             
 
             <div class ="col-md-7">
@@ -78,8 +78,12 @@
                             </td>
 
                             <td class="table__cell" role="cell">
-                                <form action="<?php echo URLROOT ?>/RegPassengers/dashboard" method="post"> 
-                                    <input type="hidden" name="schedule_id" value="<?php echo $schedule->scheduleId; ?>">
+                                <form action="<?php if (isset($_SESSION['usertype']) && $_SESSION['usertype'] == 'RegPassenger') {
+                                                    echo URLROOT.'/RegPassengers/booking';
+                                                } else {
+                                                    echo URLROOT.'/Gpassenger/book';
+                                                } ?>" method="post"> 
+                                    <input type="hidden" name="schedule_id" value="<?php echo $schedule->id; ?>">
                                     <button type="submit" class="btn btn-primary">Book</button>
                                 </form>
                             </td>
