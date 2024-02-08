@@ -14,6 +14,9 @@ body{
 }
 
 nav {
+    position: fixed;
+    z-index: 100;
+    display: block;
     background-color: white;
     height: 80px;
     width:100%;
@@ -153,7 +156,7 @@ nav {
     padding: 20px 0;
     text-align: center;
     color: rgb(0, 0, 0);
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', 'sans-serif';
     font-weight: 400; 
 }
 
@@ -163,7 +166,9 @@ nav {
 }
 
 .footer-text {
-    font-size: 16px;
+    font-family:"playlist script";
+    margin-top: 8px;
+    font-size: 24px;
     line-height: 24px;
     word-wrap: break-word;
 }
@@ -177,7 +182,7 @@ nav {
 
 /* Social media icons */
 .social-media-icons {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .social-media-icon {
@@ -190,3 +195,104 @@ nav {
     height: 24px; /* Adjust the height as needed */
 }
 
+.btn.btn-primary {
+    /* Background color */
+    background-color: #007bff;
+
+    /* Text color */
+    color: #fff;
+
+    /* Padding */
+    padding: 10px 20px;
+
+    /* Border radius */
+    border-radius: 5px;
+
+    /* Other styles (you can modify or add more as needed) */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-success {
+    /* Background color */
+    background-color: #28a745;
+
+    /* Text color */
+    color: #fff;
+
+    /* Padding */
+    padding: 10px 20px;
+
+    /* Border radius */
+    border-radius: 5px;
+
+    /* Other styles (you can modify or add more as needed) */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    /* Background color */
+    background-color: #dc3545;
+
+    /* Text color */
+    color: #fff;
+
+    /* Padding */
+    padding: 10px 20px;
+
+    /* Border radius */
+    border-radius: 5px;
+
+    /* Other styles (you can modify or add more as needed) */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-info {
+    /* Background color */
+    background-color: #17a2b8;
+
+    /* Text color */
+    color: #fff;
+
+    /* Padding */
+    padding: 10px 20px;
+
+    /* Border radius */
+    border-radius: 5px;
+
+    /* Other styles (you can modify or add more as needed) */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Adjusting both .btn.btn-primary and .btn.btn-danger to have the same size */
+.btn.btn-primary,
+.btn.btn-danger {
+    /* Padding to control size */
+    padding: 10px 20px;
+
+    /* Optional: You can also specify width and height for precise control */
+    width: 120px; /* Adjust width as needed */
+    height: 40px; /* Adjust height as needed */
+
+    /* Other styles remain unchanged */
+    /* ... */
+}

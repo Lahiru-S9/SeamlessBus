@@ -35,18 +35,24 @@
                     ];
                     $this->view('schedule/index', $data);
                 }else{
+                    $schedule = $this->scheduleModel->getSchedule();
+                    $data =  [
+                        'schedule' => $schedule,
+                        'stations' => $stations,
+                    ];
                     $this->view('schedule/index', $data);
                 }
             }else{
             //Get Schedule
-            $schedule = $this->scheduleModel->getSchedule();
+                $schedule = $this->scheduleModel->getSchedule();
             
-            $data =  [
-                'schedule' => $schedule,
-                'stations' => $stations,
-            ];
-   
-            $this->view('schedule/index', $data);
+                $data =  [
+                    'schedule' => $schedule,
+                    'stations' => $stations,
+                ];
+            
+                $this->view('schedule/index', $data);
+                // print_r($data)['schedule'];
             }
         }
 

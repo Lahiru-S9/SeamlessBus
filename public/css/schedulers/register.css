@@ -1,11 +1,17 @@
+<<<<<<< HEAD
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+=======
+/* Reset some default styles */
+body, html {
+>>>>>>> 5240b69541f2be49f1da2f5bb46663c68453dfa2
     margin: 0;
     padding: 0;
 }
 
 .container {
+<<<<<<< HEAD
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,10 +59,59 @@ input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+=======
+    position: relative;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.login-title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.login-subtitle, .subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.custom-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+>>>>>>> 5240b69541f2be49f1da2f5bb46663c68453dfa2
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
+<<<<<<< HEAD
 button {
     background-color: #428bca;
     color: #fff;
@@ -78,3 +133,40 @@ button:hover {
     border-top: 1px solid #ddd;
     text-align: center;
 }
+=======
+.is-invalid {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+}
+
+.btn-reset, .btn-submit {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn-reset:hover, .btn-submit:hover{
+    background-color: #B74F6F;
+    color: white;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-logo{
+    height: 80px;
+    width: auto;
+}
+/* Additional styling as needed */
+>>>>>>> 5240b69541f2be49f1da2f5bb46663c68453dfa2
