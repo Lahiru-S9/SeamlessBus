@@ -16,6 +16,21 @@
         }
 
         public function add_scheduler(){
+            
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                // Retrieve the POST data
+            $postData = json_decode(file_get_contents('php://input'), true);
+        
+
+            // Extract relevant data
+            $schedulerId = $postData['schedulerId'];
+            $selectedStations = $postData['selectedStations'];
+
+                var_dump($selectedStations);
+
+            $this->schedulerModel->updateStationsForScheduler($schedulerId, $selectedStations);
+            exit();
+            }
 
             $schedulers = $this->schedulerModel->getSchedulers();
             $stations = $this->stationModel->getStationsWithSchedulers();
