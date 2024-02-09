@@ -1,3 +1,4 @@
+
 function toggleStations(schedulerId, event) {
     if (event && event.target.closest('.popup')) {
         return;
