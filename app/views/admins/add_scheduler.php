@@ -69,8 +69,31 @@
                                 <?php echo "Assigned Scheduler id: " .($station->scheduler_ids ?? "NULL"); ?>
                             </div>
                             <div class="edit-button-container" id="station-edit-button-container_<?php echo $station->station_id; ?>" style="display: none;">
-                            <button class="btn btn-primary" id="edit-button">Edit</button>
+                            <button class="btn btn-primary" onclick="openSchedulerModal(<?php echo $station->station_id; ?>)">Edit</button>
+                                <!-- The Modal -->
+                                <div id="schedulerModal_<?php echo $station->station_id; ?>" class="modal">
 
+                                <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <span class="close" data-modal-id="schedulerModal_<?php echo $station->station_id; ?>" onclick="closeModal()">&times;</span>
+
+
+                                        <label for="schedulerSelect">Select Stations:</label>
+                                        <input type="text" id="schedulerSearch_<?php echo $station->station_id; ?>" oninput="filterSchedulers(<?php echo $station->station_id; ?>)" placeholder="Search for schedulers">
+                                        <select multiple id="schedulerSelect_<?php echo $station->station_id; ?>">
+                                            <!-- Add options dynamically based on available stations -->
+                                            <?php foreach ($data['schedulers'] as $scheduler) : ?>
+                                                <option value="<?php echo $scheduler->scheduler_id; ?>">
+                                                    <?php echo $scheduler->name; ?>
+                                                </option>
+                                            <?php endforeach; ?>
+
+                                        </select>
+                                        <button class="btn btn-primary" onclick="updateSchedulers(<?php echo $station->station_id; ?>)">Save</button>
+                                        
+                                    </div>
+
+                                </div>
                             
                             
 
