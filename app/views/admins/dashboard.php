@@ -11,7 +11,7 @@
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/QR.png" alt="QR">
             </div>
-            <p class="action-label">Add a Scheduler</p>
+            <p class="action-label">Manage Schedulers</p>
         </a>
 
         <!-- Add more dashboard actions as needed -->

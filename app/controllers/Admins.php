@@ -22,14 +22,24 @@
             $postData = json_decode(file_get_contents('php://input'), true);
         
 
-            // Extract relevant data
-            $schedulerId = $postData['schedulerId'];
-            $selectedStations = $postData['selectedStations'];
+                // Check if schedulerId is present
+                if (isset($postData['schedulerId'])) {
+                    // Extract relevant data for handling stations
+                    $schedulerId = $postData['schedulerId'];
+                    $selectedStations = $postData['selectedStations'];
 
-                var_dump($selectedStations);
+                    // Update stations for the specified scheduler
+                    $this->schedulerModel->updateStationsForScheduler($schedulerId, $selectedStations);
+                } elseif (isset($postData['stationId'])) {
+                    // Extract relevant data for handling schedulers
+                    $stationId = $postData['stationId'];
+                    $selectedSchedulers = $postData['selectedSchedulers'];
 
-            $this->schedulerModel->updateStationsForScheduler($schedulerId, $selectedStations);
-            exit();
+                    // Update schedulers for the specified station
+                    $this->stationModel->updateSchedulersForStation($stationId, $selectedSchedulers);
+                }
+
+                exit();
             }
 
             $schedulers = $this->schedulerModel->getSchedulers();
