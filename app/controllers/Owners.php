@@ -198,6 +198,7 @@
                     'bus_model' => '',
                     'bus_seat' => '',
                     'permit_id' => '',
+                    'seats_per_row' => '',
                     'bus_number_err' => '',
                     'bus_model_err' => '',
                     'bus_seat_err' => '',
