@@ -1,65 +1,10 @@
-<<<<<<< HEAD
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-=======
 /* Reset some default styles */
 body, html {
->>>>>>> 5240b69541f2be49f1da2f5bb46663c68453dfa2
     margin: 0;
     padding: 0;
 }
 
 .container {
-<<<<<<< HEAD
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.login-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-.error-message {
-    color: #d9534f;
-    background-color: #f2dede;
-    border: 1px solid #ebccd1;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-}
-
-form {
-    margin-top: 15px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-=======
     position: relative;
 }
 
@@ -80,20 +25,18 @@ input {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .login-title {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 800;
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .login-subtitle, .subtitle {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     margin-bottom: 20px;
 }
 
 .form-group {
-    text-align: left;
     margin-bottom: 20px;
 }
 
@@ -106,34 +49,10 @@ label {
     width: 100%;
     padding: 10px;
     font-size: 16px;
->>>>>>> 5240b69541f2be49f1da2f5bb46663c68453dfa2
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-<<<<<<< HEAD
-button {
-    background-color: #428bca;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    background-color: #3071a9;
-}
-
-.separator {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #ddd;
-    text-align: center;
-}
-=======
 .is-invalid {
     border-color: red;
 }
@@ -153,20 +72,10 @@ button:hover {
     margin-right: 10px;
 }
 
-.btn-reset:hover, .btn-submit:hover{
-    background-color: #B74F6F;
-    color: white;
-}
-
 .row {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#footer-logo{
-    height: 80px;
-    width: auto;
-}
 /* Additional styling as needed */
->>>>>>> 5240b69541f2be49f1da2f5bb46663c68453dfa2

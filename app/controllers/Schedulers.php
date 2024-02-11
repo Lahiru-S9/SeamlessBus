@@ -1,6 +1,6 @@
 <?php
-    class Schedulers extends Controller{
-        public function __construct(){
+    class Schedulers extends Controller {
+        public function __construct() {
             $this->userModel = $this->model('User');
         }
 
@@ -30,7 +30,7 @@
                     $data['email_err'] = 'Please enter email';
                 } else {
                     //Check email
-                    if($this->userModel->findUserByEmail($data['email'])){
+                    if($this-> userModel->findUserByEmail($data['email'])){
                         $data['email_err'] = 'Email is already taken';
                     }
                 }
