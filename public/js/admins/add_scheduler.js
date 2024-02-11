@@ -1,3 +1,4 @@
+
 function toggleStations(schedulerId, event) {
     if (event && event.target.closest('.popup')) {
         return;
@@ -39,18 +40,33 @@ function toggleSchedulers(stationId, event) {
     var schedulersDiv = document.getElementById('schedulers_' + stationId);
     var editButtonContainer = document.getElementById('station-edit-button-container_' + stationId);
 
-    if (schedulersDiv.style.display === 'none' || schedulersDiv.style.display === '') {
-        // If stations are hidden, show them and the edit button container
-        schedulersDiv.style.display = 'block';
-        editButtonContainer.style.display = 'block';
+    // Use the correct modal ID based on schedulerId
+    var modalId = 'schedulerModal_' + stationId;
+    var modal = document.getElementById(modalId);
+    
+    // Check if the clicked element is the "Edit" button
+    var isEditButtonClicked = event && event.target.classList.contains('btn-primary') && event.target.innerText === 'Edit';
+    // Check if the clicked element is inside the modal
+    var isClickedInsideModal = modal.contains(event.target);
 
-         
-    } else {
-        // If stations are visible, hide them and the edit button container
-        schedulersDiv.style.display = 'none';
-        editButtonContainer.style.display = 'none';
+    
+
+    if (!isClickedInsideModal) {
+        // If the clicked element is not inside the modal and not the "Edit" button, proceed with toggling stations
+        if (!isEditButtonClicked) {
+            if (schedulersDiv.style.display === 'none' || schedulersDiv.style.display === '') {
+                // If stations are hidden, show them and the edit button container
+                schedulersDiv.style.display = 'block';
+                editButtonContainer.style.display = 'block';
+
+                
+            } else {
+                // If stations are visible, hide them and the edit button container
+                schedulersDiv.style.display = 'none';
+                editButtonContainer.style.display = 'none';
+            }
+        }
     }
-
    
 }
 
@@ -59,6 +75,12 @@ function toggleSchedulers(stationId, event) {
 // JavaScript function to open the modal for each scheduler
 function openStationModal(schedulerId) {
     var modal = document.getElementById('stationModal_' + schedulerId);
+    modal.style.display = 'block';
+}
+
+// JavaScript function to open the modal for each scheduler
+function openSchedulerModal(stationId) {
+    var modal = document.getElementById('schedulerModal_' + stationId);
     modal.style.display = 'block';
 }
 
@@ -101,8 +123,27 @@ function updateStations(schedulerId) {
     sendStationsToBackend(schedulerId, selectedStations);
 
     // Close the modal (you may need to modify this based on your modal implementation)
-    closeModal(schedulerId);
+    closeModal('stationModal_' + schedulerId);
 }
+
+function updateSchedulers(stationId) {
+    var selectedSchedulers = [];
+    var selectElement = document.getElementById('schedulerSelect_' + stationId);
+    for (var i = 0; i < selectElement.options.length; i++) {
+        if (selectElement.options[i].selected) {
+            selectedSchedulers.push(selectElement.options[i].value);
+        }
+    }
+
+    // You can now use AJAX or any other method to send the selected stations to the server
+    // For simplicity, let's just log the selected stations to the console
+    console.log('Selected Schedulers for Station ' + stationId + ':', selectedSchedulers);
+    sendSchedulersToBackend(stationId, selectedSchedulers);
+
+    // Close the modal (you may need to modify this based on your modal implementation)
+    closeModal('schedulerModal_' + stationId);
+}
+
 
 function sendStationsToBackend(schedulerId, selectedStations) {
     // Create an object with the data to send
@@ -129,8 +170,33 @@ function sendStationsToBackend(schedulerId, selectedStations) {
     });
 }
 
-function closeModal(schedulerId) {
-    var modal = document.getElementById('stationModal_' + schedulerId);
+function sendSchedulersToBackend(stationId, selectedSchedulers) {
+    // Create an object with the data to send
+    var requestData = {
+        stationId: stationId,
+        selectedSchedulers: selectedSchedulers
+    };
+
+    // Make an AJAX request to the backend
+    fetch('http://localhost/SeamlessBus/Admins/add_scheduler', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the response from the backend if needed
+        console.log('Response from backend:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = 'none';
     }
@@ -159,3 +225,29 @@ function filterStations(schedulerId) {
         }
     }
 }
+
+function filterSchedulers(stationId) {
+    var input, filter, select, options, option, i;
+
+    // Get the input element and the select element
+    input = document.getElementById('schedulerSearch_' + stationId);
+    select = document.getElementById('schedulerSelect_' + stationId);
+
+    // Convert input value to lowercase
+    filter = input.value.toLowerCase();
+
+    // Get all options inside the select
+    options = select.getElementsByTagName('option');
+
+    // Loop through all options, and hide those that do not match the search query
+    for (i = 0; i < options.length; i++) {
+        option = options[i];
+        if (option.textContent.toLowerCase().indexOf(filter) > -1) {
+            option.style.display = '';
+        } else {
+            option.style.display = 'none';
+        }
+    }
+}
+
+
