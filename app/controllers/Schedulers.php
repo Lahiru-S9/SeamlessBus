@@ -103,6 +103,14 @@
         public function dashboard(){
             $this->view('schedulers/dashboard');
         }
+<<<<<<< HEAD
+=======
+
+        public function busDetails(){
+            $this->view('schedulers/busdetails');
+        }
+    }
+>>>>>>> c327e7e84cf76c2ed3cb96412794fc4d2a3773a1
 
         public function AddBusRotation(){
             $this->view('schedulers/AddBusRotation');

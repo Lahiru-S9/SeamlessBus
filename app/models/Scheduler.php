@@ -15,7 +15,7 @@ class Scheduler {
         // FROM users
         // JOIN schedulers ON scheduler_details.id = schedulers.scheduler_id
         // JOIN scheduler_details ON scheduler_details.id = users.id
-        // LEFT JOIN stations ON schedulers.station_id = stations.id
+        // JOIN stations ON schedulers.station_id = stations.id
         // GROUP BY schedulers.scheduler_id;
         // ');
 
@@ -26,7 +26,7 @@ class Scheduler {
         JOIN scheduler_details ON users.id = scheduler_details.user_id
         LEFT JOIN schedulers ON schedulers.scheduler_id = scheduler_details.id
         LEFT JOIN stations ON schedulers.station_id = stations.id
-        GROUP BY schedulers.scheduler_id;');
+        GROUP BY scheduler_details.id;');
         
         
         $results = $this->db->resultSet();
@@ -35,6 +35,24 @@ class Scheduler {
         
         
     }
+
+    public function updateStationsForScheduler($schedulerId, $stationIds) {
+        // Delete all stations for the given scheduler
+        $this->db->query('DELETE FROM schedulers WHERE scheduler_id = :scheduler_id');
+        $this->db->bind(':scheduler_id', $schedulerId);
+        $this->db->execute();
+
+        // Insert the new stations
+        $this->db->query('INSERT INTO schedulers (scheduler_id, station_id) VALUES (:scheduler_id, :station_id)');
+        $this->db->bind(':scheduler_id', $schedulerId);
+        foreach($stationIds as $stationId){
+            $this->db->bind(':station_id', $stationId);
+            $this->db->execute();
+        }
+    }
+    
+
+   
 
     
     
