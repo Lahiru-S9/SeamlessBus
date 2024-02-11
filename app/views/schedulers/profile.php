@@ -1,6 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
 
+
+
 <div class="container">
     <div class="profile">
         <h1>Profile Details</h1>
