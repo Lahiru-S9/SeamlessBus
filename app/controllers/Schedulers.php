@@ -103,5 +103,37 @@
         public function dashboard(){
             $this->view('schedulers/dashboard');
         }
-    }
 
+        public function AddBusRotation(){
+            $this->view('schedulers/AddBusRotation');
+        }
+
+
+        public function DefineSchedule(){
+        $this->view('schedulers/DefineSchedule');
+        }
+
+        public function feedback(){
+            $this->view('schedulers/feedbackForm');
+        }
+
+        public function seebooking(){
+            $this->view('schedulers/seeBooking');
+        }
+
+        public function seebusdetails(){
+            $this->view('schedulers/seeBusDetails');
+        }
+
+        public function seeconductordetails(){
+            $this->view('schedulers/seeConductorDetails');
+        }
+
+        public function verifybus(){
+            $this->view('schedulers/verifyBus');
+        }
+
+        public function verifyconductor(){
+            $this->view('schedulers/verifyConductor');
+        }
+    }
