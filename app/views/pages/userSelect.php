@@ -14,9 +14,13 @@
                 <button onclick="window.location.href = '<?php echo URLROOT; ?>/users/register';" class="btn btn-primary btn-user-select btn-block">Conductor</button>
             </div>
             <div class="form-group-user-select">
+<<<<<<< HEAD
 
                 <button onclick="window.location.href = '<?php echo URLROOT; ?>/schedulers/register';" class="btn btn-primary btn-user-select btn-block">Scheduler</button>
 
+=======
+                <button onclick="window.location.href = '<?php echo URLROOT; ?>/Schedulers/register';" class="btn btn-primary btn-user-select btn-block">Scheduler</button>
+>>>>>>> c08a86354e448b1d227e4dd5ffd60e2e87968653
             </div>
             <div class="form-group-user-select">
                 <button onclick="window.location.href = '<?php echo URLROOT; ?>/Owners/register';" class="btn btn-primary btn-user-select btn-block">Owner</button>
