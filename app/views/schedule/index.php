@@ -79,7 +79,7 @@
 
                             <td class="table__cell" role="cell">
                                 <form action="<?php if (isset($_SESSION['usertype']) && $_SESSION['usertype'] == 'RegPassenger') {
-                                                    echo URLROOT.'/RegPassenger/book';
+                                                    echo URLROOT.'/RegPassengers/booking';
                                                 } else {
                                                     echo URLROOT.'/Gpassenger/book';
                                                 } ?>" method="post"> 
