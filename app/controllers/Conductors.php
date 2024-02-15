@@ -1,7 +1,12 @@
 <?php
-    class Schedulers extends Controller{
-        public function __construct(){
+
+    class Conductors extends Controller{
+        public function construct(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Conductor'){
+                redirect('users/login');
+            }
             $this->userModel = $this->model('User');
+            $this->conductorModel = $this->model('Conductor');
         }
 
         public function register(){
@@ -22,7 +27,7 @@
                     'email_err' => '',
                     'password_err' => '',
                     'confirm_password_err' => '',
-                    'usertype' => 6
+                    'usertype' => 2
                 ];
 
                 //Validate Email
@@ -73,7 +78,7 @@
 
                 }else {
                     //Load view with errors
-                    $this->view('schedulers/register', $data);
+                    $this->view('conductors/register', $data);
                 }
 
 
@@ -91,21 +96,14 @@
                     'email_err' => '',
                     'password_err' => '',
                     'confirm_password_err' => '',
-                    'usertype' => '6'
+                    'usertype' => '2'
                 ];
 
                 
                 //Load view
-                $this->view('schedulers/register', $data);
+                $this->view('conductors/register', $data);
             }
-        }
 
-        public function dashboard(){
-            $this->view('schedulers/dashboard');
-        }
-
-        public function busDetails(){
-            $this->view('schedulers/busdetails');
+            
         }
     }
-

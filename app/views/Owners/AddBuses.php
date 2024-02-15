@@ -34,6 +34,11 @@
                 <input type="text" class="custom-input <?php echo (!empty($data['permit_id_err'])) ? 'is-invalid' : ''; ?>" name="permit_id" value="<?php echo $data['permit_id']; ?>">
                 <span class="error-message"><?php echo $data['permit_id_err']; ?></span>
             </div>
+            <div class="form-group">
+                <label for="seats_per_row">Seats Per Row: <sup>*</sup></label>
+                <input type="text" class="custom-input <?php echo (!empty($data['seats_per_row_err'])) ? 'is-invalid' : ''; ?>" name="seats_per_row" value="<?php echo $data['seats_per_row']; ?>">
+                <span class="error-message"><?php echo $data['seats_per_row_err']; ?></span>
+            </div>
 
             <div class="form-group">
                 

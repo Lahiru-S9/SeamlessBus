@@ -41,4 +41,37 @@ class Station {
         $this->db->bind(':id', $id);
         return $this->db->execute();
     }
+
+    public function getStationsWithSchedulers() {
+        $this->db->query('SELECT stations.id AS station_id,
+        stations.station,
+        GROUP_CONCAT(schedulers.scheduler_id) AS scheduler_ids,
+        GROUP_CONCAT(users.name) AS scheduler_names
+        FROM users
+        JOIN scheduler_details ON users.id = scheduler_details.user_id
+        JOIN schedulers ON schedulers.scheduler_id = scheduler_details.id
+        RIGHT JOIN stations ON schedulers.station_id = stations.id
+        GROUP BY stations.id, stations.station;
+ 
+        ');
+        
+        $result = $this->db->resultSet();
+
+        return $result; 
+    }
+
+    public function updateSchedulersForStation($stationId, $schedulerIds) {
+        // Delete all schedulers for the given station
+        $this->db->query('DELETE FROM schedulers WHERE station_id = :station_id');
+        $this->db->bind(':station_id', $stationId);
+        $this->db->execute();
+
+        // Insert the new schedulers
+        $this->db->query('INSERT INTO schedulers (scheduler_id, station_id) VALUES (:scheduler_id, :station_id)');
+        $this->db->bind(':station_id', $stationId);
+        foreach($schedulerIds as $schedulerId){
+            $this->db->bind(':scheduler_id', $schedulerId);
+            $this->db->execute();
+        }
+    }
 }
