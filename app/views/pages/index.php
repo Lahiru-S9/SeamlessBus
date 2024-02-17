@@ -17,7 +17,6 @@
         </div>
 
 
-
         <!-- Call to action buttons -->
         <div class="cta-buttons">
             <div>
