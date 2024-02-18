@@ -126,3 +126,139 @@
     color: #fff;
 }
 
+@media (max-width: 1146px){
+    .header-text-line1 {
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 40px;
+    }
+    .header-text-line2 {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+    .middle-text-line1 {
+        font-weight: 600;
+        margin-top: 30px;;
+        font-size: 40px;
+        line-height: 70px; 
+    }
+    .middle-text-line2 {
+        font-size: 16px; 
+        font-weight: 500; 
+        line-height: 30px; 
+    }
+    .button-text{
+        font-size: 20px; 
+        font-weight: 600; 
+        line-height: 50px; 
+    }
+}
+
+@media (max-width: 920px){
+    .header-text-line1 {
+        font-size: 22px;
+        font-weight: 600;
+    }
+    .header-text-line2 {
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 14px;
+    }
+    .header-text {
+        height: 80px;
+        background: rgba(183, 79, 111, 0.85);
+    }
+    .middle-text-line1 {
+        font-weight: 600;
+        margin-top: 30px;;
+        font-size: 32px;
+        line-height: 50px; 
+    }
+    .middle-text-line2 {
+        font-size: 16px; 
+        font-weight: 500; 
+        line-height: 30px; 
+    }
+    .button-text{
+        font-size: 18px; 
+        font-weight: 600; 
+        line-height: 40px; 
+    }
+    .cta-buttons img{
+        width:130px;
+        height: auto;
+    }
+}
+
+@media (max-width: 700px){
+    .header-text-line1 {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 35px;
+    }
+    .header-text-line2 {
+        font-size: 8px;
+        font-weight: 300;
+        line-height: 5px;
+    }
+    .header-text {
+        height: 60px;
+        background: rgba(183, 79, 111, 0.85);
+    }
+    .middle-text-line1 {
+        font-weight: 600;
+        margin-top: 20px;;
+        font-size: 24px;
+        line-height: 30px; 
+    }
+    .middle-text-line2 {
+        font-size: 12px; 
+        font-weight: 300; 
+        line-height: 15px; 
+    }
+    .button-text{
+        font-size: 14px; 
+        font-weight: 600; 
+        line-height: 30px; 
+    }
+}
+
+@media (max-width: 560px){
+    .header-text-line1 {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 30px;
+    }
+    .header-text-line2 {
+        font-size: 8px;
+        font-weight: 300;
+        line-height: 5px;
+    }
+    .header-text {
+        width: 100%;
+        height: 50px;
+        background: rgba(183, 79, 111, 0.85);
+    }
+    .middle-text-line1 {
+        font-weight: 600;
+        margin-top: 20px;;
+        font-size: 24px;
+        line-height: 30px; 
+    }
+    .middle-text-line2 {
+        font-size: 12px; 
+        font-weight: 300; 
+        line-height: 15px; 
+    }
+    .cta-buttons {
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        display: block; /* Display buttons in a block */
+        justify-content:center; /* Center-align buttons horizontally */
+    }
+    .button-text{
+        margin-top: 40px;
+    }
+}

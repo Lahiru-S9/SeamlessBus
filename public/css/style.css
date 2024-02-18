@@ -78,10 +78,11 @@ nav {
 #check{
     display: none;
 }
+
 @media (max-width: 952px){
     .navbar-logo{
-       font-size: 30px;
-       padding-left:50px; 
+        width: 50px;
+        margin-left: 0px;
     }
     .nav-links a{
         font-size: 16px;
