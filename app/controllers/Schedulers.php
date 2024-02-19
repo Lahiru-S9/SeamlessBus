@@ -103,5 +103,9 @@
         public function dashboard(){
             $this->view('schedulers/dashboard');
         }
+
+        public function busDetails(){
+            $this->view('schedulers/busdetails');
+        }
     }
 
