@@ -107,5 +107,9 @@
         public function busDetails(){
             $this->view('schedulers/busdetails');
         }
+
+        public function manageSchedule(){
+            $this->view('schedulers/manageSchedule');
+        }
     }
 
