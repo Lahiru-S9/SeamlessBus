@@ -97,6 +97,9 @@
   .dashboard-action:nth-child(4) .action-icon {
     background: #0A6ED2;
   }
+  .dashboard-action:nth-child(5) .action-icon {
+    background: #1DA1F2;
+  }
   
   /* Hover effect for actions */
   .dashboard-action:hover {
