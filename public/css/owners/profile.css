@@ -11,20 +11,100 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    display: flex; /* Use flexbox for layout */
+}
+.avatar {
+    position: relative;
 }
 
-.profile h1 {
-    margin: 0;
-    font-size: 24px;
+#avatar-preview {
+    width: 50px; /* or any desired size */
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#avatar-upload {
+    display: none;
+}
+
+.edit-avatar-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #04AA6D;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.profile-photo {
+    flex: 1; /* Make the photo take up 1/3 of the container */
+}
+
+.profile-photo img {
+    width: 100%; /* Make the photo fill its container */
+    border-radius: 50%; /* Apply a circular border radius */
 }
 
 .profile-info {
-    margin-top: 20px;
+    flex: 2; /* Make the profile details take up 2/3 of the container */
+    padding-left: 20px; /* Add spacing between photo and details */
+    text-align: left; /* Align profile details text to the left */
+}
+
+.profile h2 {
+    margin-top: 0; /* Remove default margin */
 }
 
 .profile-item {
     margin-bottom: 10px;
+}
+
+.profile-editor {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.edit-avatar-button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container form {
+    margin-top: 20px;
+}
+
+.container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.container .save-button {
+    background-color: green;
+    color: rgb(21, 1, 1);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* You can add more styles as needed */

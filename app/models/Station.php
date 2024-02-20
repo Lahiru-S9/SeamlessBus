@@ -59,4 +59,19 @@ class Station {
 
         return $result; 
     }
+
+    public function updateSchedulersForStation($stationId, $schedulerIds) {
+        // Delete all schedulers for the given station
+        $this->db->query('DELETE FROM schedulers WHERE station_id = :station_id');
+        $this->db->bind(':station_id', $stationId);
+        $this->db->execute();
+
+        // Insert the new schedulers
+        $this->db->query('INSERT INTO schedulers (scheduler_id, station_id) VALUES (:scheduler_id, :station_id)');
+        $this->db->bind(':station_id', $stationId);
+        foreach($schedulerIds as $schedulerId){
+            $this->db->bind(':scheduler_id', $schedulerId);
+            $this->db->execute();
+        }
+    }
 }
