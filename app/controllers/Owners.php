@@ -236,7 +236,11 @@
 
             $this->view('Owners/SelectConductors');
         }
-        
+        public function addFeedback(){
+            
+
+            $this->view('owners/AddFeedback');
+        }
 
        
         
