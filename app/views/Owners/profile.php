@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/profile.css">
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/Owners/profile.css">
 <div class="container">
     <img src="<?php echo URLROOT; ?>/img/avatar.jpg" alt="avatar Image" />
     <label for="avatar-upload">
