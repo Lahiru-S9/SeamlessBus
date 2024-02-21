@@ -7,11 +7,11 @@
         
     </div>
     <div class="dashboard-actions">
-        <a href="#" class="dashboard-action">
+        <a href="<?php echo URLROOT?>/Schedulers/manageSchedule" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/QR.png" alt="QR">
             </div>
-            <p class="action-label">Edit schedule</p>
+            <p class="action-label">Manage Schedule</p>
         </a>
 
         <!-- Add more dashboard actions as needed -->
