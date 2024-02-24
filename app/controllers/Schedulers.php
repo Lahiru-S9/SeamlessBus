@@ -2,6 +2,7 @@
     class Schedulers extends Controller{
         public function __construct(){
             $this->userModel = $this->model('User');
+            $this->scheduleModel = $this->model('Schedulerow');
         }
 
         public function register(){
@@ -108,8 +109,44 @@
             $this->view('schedulers/busdetails');
         }
 
-        public function manageSchedule(){
-            $this->view('schedulers/manageSchedule');
-        }
+        public function manageSchedule()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['route_num'])) {
+        // It's an AJAX request
+        $routeNumber = $_POST['route_num'];
+        
+        // Fetch stations based on the selected route number
+        $stations = $this->scheduleModel->getStationsByRouteNum($routeNumber);
+
+        // Return stations as JSON
+        echo json_encode(['stations' => $stations]);
+        exit; // Terminate the script after sending JSON response in AJAX
+    } else {
+        // It's a regular request
+        $sunday = $this->scheduleModel->getScheduleByDay('Sunday');
+        $monday = $this->scheduleModel->getScheduleByDay('Monday');
+        $tuesday = $this->scheduleModel->getScheduleByDay('Tuesday');
+        $wednesday = $this->scheduleModel->getScheduleByDay('Wednesday');   
+        $thursday = $this->scheduleModel->getScheduleByDay('Thursday');
+        $friday = $this->scheduleModel->getScheduleByDay('Friday');
+        $saturday = $this->scheduleModel->getScheduleByDay('Saturday');
+
+        $routeNumbers = $this->scheduleModel->getRouteNumbers();
+
+        $data = [
+            'sunday' => $sunday,
+            'monday' => $monday,
+            'tuesday' => $tuesday,
+            'wednesday' => $wednesday,
+            'thursday' => $thursday,
+            'friday' => $friday,
+            'saturday' => $saturday,
+            'routeNumbers' => $routeNumbers,
+        ];
+
+        $this->view('schedulers/manageSchedule', $data);
+    }
+}
+
     }
 
