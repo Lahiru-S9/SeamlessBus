@@ -30,10 +30,9 @@ nav {
 }
 
 .navbar-container {
-    max-width: 1440px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items:center;
     height: 100%;
     padding: 0 20px;
 }
@@ -79,17 +78,24 @@ nav {
     display: none;
 }
 
-@media (max-width: 952px){
+/*laptop view hd*/
+@media (max-width: 1025px){
     .navbar-logo{
         width: 50px;
         margin-left: 0px;
     }
     .nav-links a{
         font-size: 16px;
+        padding: 5px;
     }
+
 }
 
-@media (max-width: 852px){
+/*Tablet view*/
+@media (max-width: 769px){
+    nav{
+        height: 60px;
+    }
     .checkbtn{
         display: block;
     }
@@ -124,6 +130,19 @@ nav {
         left: 0;
     }
 
+}
+
+/*mobile view large*/
+@media (max-width: 426px){
+    nav{
+        height: 60px;
+    }
+    .navbar-logo{
+        width: 40px;
+    }
+    .user-actions a{
+        padding: 8px;
+    }
 }
 
 .user-actions {
