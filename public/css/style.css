@@ -195,6 +195,14 @@ nav {
     height: 24px; /* Adjust the height as needed */
 }
 
+button {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+
 .btn.btn-primary {
     /* Background color */
     background-color: #007bff;
@@ -241,7 +249,7 @@ nav {
 
 .btn-danger {
     /* Background color */
-    background-color: #dc3545;
+    background-color: #d9534f;
 
     /* Text color */
     color: #fff;
@@ -253,12 +261,20 @@ nav {
     border-radius: 5px;
 
     /* Other styles (you can modify or add more as needed) */
-    border: none;
+    border: 1px solid #d9534f;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: #5bc0de;
+    color: #fff;
+    border: 1px solid #5bc0de;
+    /* Border radius */
+    border-radius: 5px;
 }
 
 .btn-info {
@@ -285,14 +301,14 @@ nav {
 
 /* Adjusting both .btn.btn-primary and .btn.btn-danger to have the same size */
 .btn.btn-primary,
-.btn.btn-danger {
-    /* Padding to control size */
+.btn.btn-danger,
+.btn.btn-secondary {
+    
     padding: 10px 20px;
 
-    /* Optional: You can also specify width and height for precise control */
-    width: 120px; /* Adjust width as needed */
-    height: 40px; /* Adjust height as needed */
+   
+    width: 120px; 
+    height: 40px; 
 
-    /* Other styles remain unchanged */
-    /* ... */
 }
+
