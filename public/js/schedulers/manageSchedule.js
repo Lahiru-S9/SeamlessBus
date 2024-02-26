@@ -22,12 +22,19 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 // Update the station select dropdown with the fetched stations
-                var stationSelect = $('#station-select');
-                stationSelect.empty(); // Clear previous options
-                
+                var fromStationSelect = $('#from-station-select');
+                var toStationSelect = $('#to-station-select');
+
+                fromStationSelect.empty(); // Clear previous options
+                toStationSelect.empty(); // Clear previous options
+
                 // Append new options based on the fetched data
-                $.each(data.stations, function(index, station) {
-                    stationSelect.append('<option value="' + station.from_station + '">' + station.from_station + '</option>');
+                $.each(data.stations, function (index, station) {
+                    // Append options to "From Station" dropdown
+                    fromStationSelect.append('<option value="' + station.from_station + '">' + station.from_station + '</option>');
+
+                    // Append options to "To Station" dropdown
+                    toStationSelect.append('<option value="' + station.to_station + '">' + station.to_station + '</option>');
                 });
             },
             error: function(error) {
