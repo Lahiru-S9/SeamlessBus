@@ -1,25 +1,23 @@
-/* Reset some default styles */
-body, html {
-    margin: 0;
-    padding: 0;
-}
-
 .container {
-    position: relative;
+    align-items: center;
+    display:flex;
+    margin-top: 5%;
+    position:relative;
 }
 
-.container img {
-    width: 100%;
-    height: auto;
+#main-image{
+    width: 50%; 
+    height: 70%;
 }
 
 .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    color: black;
+    margin-left: 10%;
+    width: 40%;
+    height: auto;
+
     text-align: center;
-    background: white;
+    background: #F3D9DC;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
