@@ -295,10 +295,13 @@
             <label for="departure">Departure Time:</label>
             <input type="time" id="departure" placeholder="Enter Departure Time" name="departure">
             <label for="from">From Station:</label>
+            <label for="from">From Station:</label>
             <div class="custom-select" style="width:200px;">
-                <select name="stations" id="station-select">
-                    
-                </select>
+                <select name="stations" id="from-station-select"></select>
+            </div>
+            <label for="to">To Station:</label>
+            <div class="custom-select" style="width:200px;">
+                <select name="to_stations" id="to-station-select"></select>
             </div>
             <button type="button" class="btn btn-danger" onclick="add()">Add</button>
             <button type="button" class="btn btn-secondary" onclick="reset()">Reset</button>
