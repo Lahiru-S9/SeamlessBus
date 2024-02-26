@@ -1,5 +1,7 @@
 <?php
     class Schedulers extends Controller {
+        private $userModel;
+        
         public function __construct() {
             $this->userModel = $this->model('User');
         }
@@ -100,12 +102,12 @@
             }
         }
 
-        public function dashboard(){
-            $this->view('schedulers/dashboard');
+        public function index(){
+            $this->view('schedulers/dashboard' );
         }
 
         public function AddBusRotation(){
-            $this->view('schedulers/AddBusRotation');
+            $this->view('schedulers/AddBusRotation.php');
         }
 
 
@@ -135,5 +137,20 @@
 
         public function verifyconductor(){
             $this->view('schedulers/verifyConductor');
+
+        }
+        public function buses(){
+            $this->view('schedulers/buses');
+        }
+        public function booking1(){
+            $this->view('schedulers/booking1');
+        }
+
+        public function conductors(){
+            $this->view('schedulers/conductors');
+        }
+
+        public function schedule(){
+            $this->view('schedulers/schedule');
         }
     }

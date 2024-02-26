@@ -2,6 +2,11 @@
 
 
 
+<!-- import dashbord icons -->
+<?php require APPROOT . '/views/schedulers/importDashboard.php' ; ?>
+<!-- end dashbord icons -->
+
+<!-- footer -->
 <div class="footer">
         <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
         <div class="footer-subtext">
