@@ -6,6 +6,8 @@
         <div class="feedback">
        <h2>FEEDBACK FOR US</h2><br>
         <p>We would like your feedback to improve our website.</p><br>
+        <?php flash('feedback_success'); ?>
+        <?php flash('feedback_error'); ?>
         <div class="emoticons">
             <div class="heartface">
             <input type="radio" id="feedback" name="feedback" value="Very Happy">
