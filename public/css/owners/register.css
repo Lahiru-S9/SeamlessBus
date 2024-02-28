@@ -6,15 +6,16 @@
 }
 
 .container img {
-    width: 750px;
-    height: 600px;
+    width: 100%;
+    
+    
     
 }
 
 .content {
     position: relative;
     top: 50%;
-    right:-25%;
+    right:50%;
     transform: translate(-50%, -50%);
     text-align: center;
     background:#00ffde57;
