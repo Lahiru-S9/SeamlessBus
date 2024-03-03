@@ -42,14 +42,15 @@ class Schedulerow {
     }
 
     public function getScheduleByDay($day) {
-        $this->db->query('SELECT sc.id, sc.arrival_time, sc.departure_time, sc.route_num,
-                            stations.station AS from_station, 
-                            s.station AS to_station
+        $this->db->query('SELECT sc.id, sc.arrival_time, sc.departure_time,
+                                    stations.station AS from_station, 
+                                    s.station AS to_station,
+                                    r.route_num
                             FROM schedule_def AS sc
                             JOIN routes AS r ON sc.route_id = r.id
                             JOIN stations AS stations ON r.fromstationid = stations.id
                             JOIN stations AS s ON r.tostationid = s.id
-                            WHERE sc.day = :day
+                            WHERE sc.day = :day;
                          ');
 
         $this->db->bind(':day', $day); // Bind the value for :day
@@ -82,6 +83,66 @@ class Schedulerow {
 
         return $results;
     }
+
+    public function addSchedule($data) {
+        $this->db->query('INSERT INTO schedule_def (route_id, arrival_time, departure_time, day) VALUES(:route_id, :arrival_time, :departure_time, :day)');
+
+        $this->db->bind(':route_id', $data['route_id']);
+        $this->db->bind(':arrival_time', $data['arrival_time']);
+        $this->db->bind(':departure_time', $data['departure_time']);
+        $this->db->bind(':day', $data['day']);
+
+        if($this->db->execute()){
+            return $this->db->lastInsertId();
+        } else {
+            return false;
+        }
+    }
+
+    public function getRouteID($to_station, $from_station)
+    {
+        $this->db->query('SELECT
+                            r.id
+                        FROM
+                            routes r
+                        INNER JOIN stations from_station ON
+                            from_station.station = :from_station
+                        INNER JOIN stations to_station ON
+                            to_station.station = :to_station
+                        WHERE
+                            r.fromstationid = from_station.id AND r.tostationid = to_station.id;
+        ');
+
+        // die($to_station." ".$from_station);
+
+        $this->db->bind(':from_station', $from_station);
+        $this->db->bind(':to_station', $to_station);
+
+        
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getScheduleById($id) {
+        $this->db->query('SELECT sc.day, sc.arrival_time, sc.departure_time,
+                                    stations.station AS from_station, 
+                                    s.station AS to_station,
+                                    r.route_num                                                                                                 
+                            FROM schedule_def AS sc
+                            JOIN routes AS r ON sc.route_id = r.id
+                            JOIN stations AS stations ON r.fromstationid = stations.id
+                            JOIN stations AS s ON r.tostationid = s.id
+                            WHERE sc.id = :id;
+                         ');
+
+        $this->db->bind(':id', $id); // Bind the value for :day
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+    
     
 
 }
