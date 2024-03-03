@@ -109,44 +109,102 @@
             $this->view('schedulers/busdetails');
         }
 
-        public function manageSchedule()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['route_num'])) {
-        // It's an AJAX request
-        $routeNumber = $_POST['route_num'];
-        
-        // Fetch stations based on the selected route number
-        $stations = $this->scheduleModel->getStationsByRouteNum($routeNumber);
+    public function manageSchedule(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['route_num'])) {
+            // It's an AJAX request
+            $routeNumber = $_POST['route_num'];
 
-        // Return stations as JSON
-        echo json_encode(['stations' => $stations]);
-        exit; // Terminate the script after sending JSON response in AJAX
-    } else {
-        // It's a regular request
-        $sunday = $this->scheduleModel->getScheduleByDay('Sunday');
-        $monday = $this->scheduleModel->getScheduleByDay('Monday');
-        $tuesday = $this->scheduleModel->getScheduleByDay('Tuesday');
-        $wednesday = $this->scheduleModel->getScheduleByDay('Wednesday');   
-        $thursday = $this->scheduleModel->getScheduleByDay('Thursday');
-        $friday = $this->scheduleModel->getScheduleByDay('Friday');
-        $saturday = $this->scheduleModel->getScheduleByDay('Saturday');
+            
+            // Fetch stations based on the selected route number
+            $stations = $this->scheduleModel->getStationsByRouteNum($routeNumber);
 
-        $routeNumbers = $this->scheduleModel->getRouteNumbers();
+            // Return stations as JSON
+            echo json_encode(['stations' => $stations]);
+            exit; // Terminate the script after sending JSON response in AJAX
+        }
+        if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['from_station']) && isset($_POST['to_station'])) {
+            // It's an AJAX request
+            $from = $_POST['from_station'];
+            $to = $_POST['to_station'];
 
-        $data = [
-            'sunday' => $sunday,
-            'monday' => $monday,
-            'tuesday' => $tuesday,
-            'wednesday' => $wednesday,
-            'thursday' => $thursday,
-            'friday' => $friday,
-            'saturday' => $saturday,
-            'routeNumbers' => $routeNumbers,
-        ];
+            $route_id = $this->scheduleModel->getRouteId($to, $from);
 
-        $this->view('schedulers/manageSchedule', $data);
+            echo json_encode(['route_id' => $route_id]);
+            exit;
+        }
+        else {
+            // It's a regular request
+            $sunday = $this->scheduleModel->getScheduleByDay('Sunday');
+            $monday = $this->scheduleModel->getScheduleByDay('Monday');
+            $tuesday = $this->scheduleModel->getScheduleByDay('Tuesday');
+            $wednesday = $this->scheduleModel->getScheduleByDay('Wednesday');   
+            $thursday = $this->scheduleModel->getScheduleByDay('Thursday');
+            $friday = $this->scheduleModel->getScheduleByDay('Friday');
+            $saturday = $this->scheduleModel->getScheduleByDay('Saturday');
+
+            $routeNumbers = $this->scheduleModel->getRouteNumbers();
+
+            $data = [
+                'sunday' => $sunday,
+                'monday' => $monday,
+                'tuesday' => $tuesday,
+                'wednesday' => $wednesday,
+                'thursday' => $thursday,
+                'friday' => $friday,
+                'saturday' => $saturday,
+                'routeNumbers' => $routeNumbers,
+            ];
+
+            $this->view('schedulers/manageSchedule', $data);
+        }
     }
+
+    public function addSchedule(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Get the JSON data from the request body
+            $json_data = file_get_contents('php://input');
+    
+            // Decode the JSON data into an associative array
+            $postData = json_decode($json_data, true);
+    
+            if ($postData === null) {
+                // Handle JSON decoding error
+                echo json_encode(['error' => 'Invalid JSON data']);
+                exit;
+            }
+    
+            // Assuming you have a Schedule model with methods like addSchedule
+            $scheduleData = [
+                'route_id' => trim($postData['route_id']),
+                'arrival_time' => trim($postData['arrival']),
+                'departure_time' => trim($postData['departure']),
+                'day' => trim($postData['day'])// Adjust the day based on your form or logic
+            ];
+    
+            // Call a method in your Schedule model to add the new schedule to the database
+            $newScheduleId = $this->scheduleModel->addSchedule($scheduleData);
+    
+            if ($newScheduleId) {
+                // Fetch the newly added schedule from the database
+                $newSchedule = $this->scheduleModel->getScheduleById($newScheduleId);
+    
+                // Return the new schedule data as JSON
+                echo json_encode(['schedule' => $newSchedule]);
+                exit;
+            } else {
+                // Handle the case where the schedule addition fails
+                echo json_encode(['error' => 'Failed to add schedule']);
+                exit;
+            }
+        } else {
+            // Handle non-POST requests, if needed
+            echo json_encode(['error' => 'Invalid request method']);
+            exit;
+        }
+    }
+    
+    
+
+
 }
-
-    }
 
