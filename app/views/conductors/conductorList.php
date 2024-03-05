@@ -21,7 +21,7 @@
                 <p>Address: <?php echo $conductor->address; ?></p>
                 <button class="select-btn" data-conductor-id="<?php echo $conductor->id; ?>">Select</button>
             </div>
-        
+        <?php endforeach; ?>
     </div>
 </div>
 

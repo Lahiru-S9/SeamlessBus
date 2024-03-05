@@ -5,6 +5,12 @@ body {
     background-color: #e2e8f0;
 }
 
+.container {
+    
+    margin-top: 80px;
+
+}
+
 .main-body {
     padding: 15px;
 }

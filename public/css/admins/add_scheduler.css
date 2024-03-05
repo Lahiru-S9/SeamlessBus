@@ -6,10 +6,11 @@
 }
 
 .container {
+  margin-top: 80px;
   width: 45%; /* Adjust the width as needed */
   display: inline-block;
   vertical-align: top; /* Align containers to the top */
-  margin: 10px; /* Add margin for separation */
+  /* margin: 10px;  */
 }
 
 #scheduler-list,
