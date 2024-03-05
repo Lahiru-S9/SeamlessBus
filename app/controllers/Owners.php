@@ -234,8 +234,15 @@
                 redirect('Users/login');
             }
 
-            $this->view('Owners/selectConductor');
+            $this->view('Owners/SelectConductors');
         }
+        public function addFeedback(){
+            
+
+            $this->view('owners/AddFeedback');
+        }
+
+       
         
 
 

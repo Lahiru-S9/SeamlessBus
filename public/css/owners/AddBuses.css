@@ -5,21 +5,21 @@ body, html {
 }
 
 .container {
-    position: relative;
+    display: flex;
 }
 
 .container img {
     width: 100%;
-    height: auto;
+   
 }
 
 .content {
-    position: absolute;
+    position: relative;
     top: 50%;
-    left: 50%;
+    right:50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background: white;
+    background: #8b745cad;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
