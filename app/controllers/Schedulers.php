@@ -110,8 +110,8 @@
         public function AddBusRotation(){
             $this->view('schedulers/AddBusRotation.php');
         }
-<<<<<<< HEAD
-=======
+
+
 
     public function manageSchedule(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['route_num'])) {
@@ -212,9 +212,8 @@
 
 }
 
-<<<<<<< HEAD
     }
->>>>>>> a7a16673e074021c5a012bec17e019ab950f2a43
+
 
 
         public function DefineSchedule(){
