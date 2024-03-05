@@ -142,17 +142,28 @@ h1,h2,h3,h4,h5,h6 {
 
 .form-container{
   margin-top: 300px;
+  max-width: 600px;
+  width: 100%;
+  padding: 20px; /* Add some padding for better spacing */
+  background-color: #f4f4f4; /* Set a background color */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 8px; /* Add border-radius for rounded corners */
 }
 
 form {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .tabs .tab form label {
   width: 100%;
   margin: 5px;
   background: none; 
   border: none; 
+}
+
+label{
+  margin-bottom: 8px;
 }
 
 input {
@@ -165,12 +176,10 @@ input {
 
 .custom-select {
   position: relative;
-  font-family: Arial;
+  margin-bottom: 10px;
 }
 
-/* .custom-select select {
-  display: none; 
-} */
+
 
 .select-selected {
   background-color: DodgerBlue;
@@ -211,6 +220,7 @@ input {
   left: 0;
   right: 0;
   z-index: 99;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 
@@ -220,4 +230,9 @@ input {
 
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.select-selected, .select-items div, .select-selected:after {
+  background-color: DodgerBlue;
+  color: #ffffff;
 }
