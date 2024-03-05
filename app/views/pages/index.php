@@ -1,8 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/pages/index.css">
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/style.css">
       <!-- Main content -->
       <div class="main-content">
-      <img src="<?php echo URLROOT; ?>/img/indexBackground.jpg" alt="Background Image">
+      <img src="<?php echo URLROOT; ?>/img/home.png" alt="Background Image">
 
         <!-- Text content -->
         <div class="text-content">
@@ -15,7 +16,6 @@
                 <div class="middle-text-line2">book your seats in just a few easy steps</div><br><br>
             </div>
         </div>
-
 
 
         <!-- Call to action buttons -->
