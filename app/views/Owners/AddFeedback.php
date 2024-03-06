@@ -3,7 +3,11 @@
 <div class="container">
 <img src="<?php echo URLROOT; ?>/img/fb.jpg" alt="feedback Image" />
 
+
+
+
         <div class="feedback">
+        <form action="<?php echo URLROOT; ?>/Owners/AddFeedback" method="post">
        <h2>FEEDBACK FOR US</h2><br>
         <p>We would like your feedback to improve our website.</p><br>
         <?php flash('feedback_success'); ?>
@@ -38,15 +42,17 @@
         </div>
         
        <br> <label for="feedback-category">What is your opinion of this page?</label>
-        <select id="feedback-category">
+        <select id="feedback-category" name ="feedback-category">
             <option value="suggestion">Suggestion</option>
             <option value="not-right">Something is not quite right</option>
             <option value="compliment">Compliment</option>
         </select>
         <br>
-        <textarea id="feedback-text" placeholder="I cannot find the contact page."></textarea>
+        <textarea id="feedback-text" name="feeback-text" placeholder="I cannot find the contact page."></textarea>
         <button id="send-feedback">Send</button>
-        </div>
+        </form>    
+    </div>
+
    
 
 
