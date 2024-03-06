@@ -1,5 +1,5 @@
 <?php
-class feedback{
+class Feedback{
     private $db;
 
     public function __construct(){
@@ -7,19 +7,19 @@ class feedback{
     }
 
     public function addFeedback($data){
-        $this->db->query('INSERT INTO feedbacks(user_id, rating, category, messages) VALUES (:user_id, :rating, :category, :messages)');
+        $this->db->query('INSERT INTO feedback(user_id, rating, category, messages) VALUES (:user_id, :rating, :category, :messages)');
 
         $this->db->bind(':user_id', $_SESSION['user_id']);
-        $this->db->bind(':rating' , $_SESSION['rating']);
-        $this->db->bind('category', $_SESSION['category']);
-        $this->db->bind('messages', $_SESSION['messages']);
+        $this->db->bind(':rating' , $data['feedbackType']);
+        $this->db->bind(':category', $data['feedbackCategory']);
+        $this->db->bind(':messages', $data['feedbackText']);
     
- //Execute function
-if($this->db->execute()){
-    return true;
-} else {
-    return false;
-}
+    //Execute function
+    if($this->db->execute()){
+        return true;
+    } else {
+        return false;
+    }
     }
 
 }
