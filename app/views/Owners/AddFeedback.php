@@ -48,7 +48,7 @@
             <option value="compliment">Compliment</option>
         </select>
         <br>
-        <textarea id="feedback-text" name="feeback-text" placeholder="I cannot find the contact page."></textarea>
+        <textarea id="feedback-text" name="feedback-text" placeholder="I cannot find the contact page."></textarea>
         <button id="send-feedback">Send</button>
         </form>    
     </div>
