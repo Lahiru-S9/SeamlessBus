@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedulers/register.css">
 
 <div class="container" >
@@ -37,6 +38,7 @@
         </form>
     </div>
 </div><br><br>
+<!-- Footer -->
 <div class="footer">
         <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
         <div class="footer-subtext">
@@ -66,3 +68,4 @@
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+
