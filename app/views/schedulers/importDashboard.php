@@ -30,11 +30,11 @@
         </a>
 
    <!-- go to schedulers dashboard -->
-        <a href="<?php echo URLROOT ?>/schedulers/shedule.php" class="dashboard-action">
+        <a href="<?php echo URLROOT ?>/Schedulers/manageSchedule" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/owner.png" alt="QR">
             </div>
-            <p class="action-label">Schedule</p>
+            <p class="action-label">Manage Schedule</p>
         </a>
 
       <!-- go to booking  dashboard -->
