@@ -7,7 +7,8 @@
         <?php flash('bus_added'); ?>
     </div>
     <div class="dashboard-actions">
-        <a href="<?php echo URLROOT?>/Owners/selectConductor" class="dashboard-action">
+        
+        <a href="#" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="QR">
             </div>
