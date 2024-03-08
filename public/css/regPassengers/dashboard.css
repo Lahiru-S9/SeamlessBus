@@ -1,11 +1,12 @@
 /* dashboard.css */
 
 .container {
-    width: 100%;
-    height: 100%;
-    background: white;
-    display: flex; /* Use flexbox to align content and actions */
-    flex-direction: column;
+  margin-top: 80px;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex; /* Use flexbox to align content and actions */
+  flex-direction: column;
 }
 
 .dashboard-content {
