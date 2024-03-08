@@ -2,8 +2,6 @@
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/gpassengers/register.css">
 
 <div class="container" >
-    <img src="<?php echo URLROOT; ?>/img/passenger_signup.png" alt="Background Image" />
-
     <div class="content">
         <div class="login-title">Apply now to create an account</div>
         <div class="subtitle">with just a few simple steps</div><br>
@@ -36,7 +34,9 @@
             </div>
         </form>
     </div>
-</div><br><br>
+    <img id="main-image" src="<?php echo URLROOT; ?>/img/registerPage.png" alt="Background Image" />
+</div>
+</div><br>
 <div class="footer">
         <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
         <div class="footer-subtext">
@@ -62,7 +62,5 @@
             Developed by CS group 23
         </div>
     </div>
-    
-</div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
