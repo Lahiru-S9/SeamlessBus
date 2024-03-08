@@ -1,82 +1,84 @@
-/* Reset some default styles */
-body, html {
-    margin: 0;
-    padding: 0;
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
 }
+
+.background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 
 .container {
-    display: flex;
-    margin-top: 80px;
+    max-width: 600px;
+    margin: 100px auto; /* Adjust the top margin to move the container down */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow for better visibility */
+    position: relative;
+     z-index: 1;
+    background-color: rgba(255, 255, 255, 0.7); /* Adjust background color and opacity as needed */
+    padding: 20px;
+    border-radius: 10px;
+    
 }
-
-.container img {
-    width: 100%;
-   
+.form-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px; /* Adjust the maximum width as needed */
+    width: 90%; /* Adjust width as needed */
+    background-color: rgba(255, 255, 255, 0.7); /* Adjust background color and opacity as needed */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add box shadow for a subtle effect */
 }
 
 .content {
-    position: relative;
-    top: 50%;
-    right:50%;
-    transform: translate(-50%, -50%);
     text-align: center;
-    background: #8b745cad;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.login-title {
-    font-size: 24px;
-    font-weight: 800;
-    margin-bottom: 20px;
+    display: flex;
 }
 
-.login-subtitle, .subtitle {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    font-size: 18px;
-    font-weight: 600;
+.login-subtitle {
+    margin-bottom: 30px;
+    display: flex;
+    text-align: center;
 }
 
 .custom-input {
+    text-align: center;
     width: 100%;
     padding: 10px;
-    font-size: 16px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.is-invalid {
-    border-color: red;
+    border-radius: 5px;
+    
 }
 
 .error-message {
-    color: red;
+    color: #dc3545;
     font-size: 14px;
 }
 
-.btn-reset, .btn-submit {
+.btn-submit {
     padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 600;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px;
 }
 
-.row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn-submit:hover {
+    background-color: #f1f50b;
 }
-
-/* Additional styling as needed */
