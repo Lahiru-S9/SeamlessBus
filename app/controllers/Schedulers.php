@@ -207,6 +207,7 @@
         }
     }
     
+<<<<<<< HEAD
 
 
         public function DefineSchedule(){
@@ -253,3 +254,55 @@
         }
     }
 // $this->view('schedulers/manageSchedule', $data);
+=======
+    public function DefineSchedule(){
+        $this->view('schedulers/DefineSchedule');
+    }
+
+    public function feedback(){
+        $this->view('schedulers/feedbackForm');
+    }
+
+    public function seebooking(){
+        $this->view('schedulers/seeBooking');
+    }
+
+    public function seebusdetails(){
+        $this->view('schedulers/seeBusDetails');
+    }
+
+    public function seeconductordetails(){
+        $this->view('schedulers/seeConductorDetails');
+    }
+
+    public function verifybus(){
+        $this->view('schedulers/verifyBus');
+    }
+
+    public function verifyconductor(){
+        $this->view('schedulers/verifyConductor');
+    }
+
+    public function buses(){
+        $this->view('schedulers/buses');
+    }
+
+    public function booking1(){
+        $this->view('schedulers/booking1');
+    }
+
+    public function conductors(){
+        $this->view('schedulers/conductors');
+    }
+
+    public function schedule(){
+        $this->view('schedulers/schedule');
+    }
+
+
+}
+
+
+    
+
+>>>>>>> f787b064a06841113bed05b5e8a4a8fb3299045d

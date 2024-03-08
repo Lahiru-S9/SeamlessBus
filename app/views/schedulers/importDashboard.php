@@ -16,6 +16,7 @@
             <p class="action-label">Conductors</p>
         </a>
 
+<<<<<<< HEAD
         <!-- go to busses dashboard -->
         <a id="busses-dashboard" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
@@ -26,10 +27,14 @@
 
         <!-- go to schedulers dashboard -->
         <a id="schedule-dashboard" class="dashboard-action">
+=======
+   <!-- go to schedulers dashboard -->
+        <a href="<?php echo URLROOT ?>/Schedulers/manageSchedule" class="dashboard-action">
+>>>>>>> f787b064a06841113bed05b5e8a4a8fb3299045d
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/owner.png" alt="QR">
             </div>
-            <p class="action-label">Schedule</p>
+            <p class="action-label">Manage Schedule</p>
         </a>
 
         <!-- go to booking dashboard -->
