@@ -1,28 +1,36 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedulers/conductors.css">
 <!-- background image -->
-<div class="container">
-<img src="/public/img/4.png" style="width: 65%;">
-  <div>
-   <!-- create button1 -->
-   <button class="button1" name="logingButton1" 
-      onclick="location.href='verifyConductor.php'">
-      <i class="fa-solid fa-user-plus"></i>register
-    
-    </button>
-    <!-- end button -->
-<br>
-          <!-- create button1 -->
-   <button class="button1" name="logingButton1" 
-      onclick="location.href='SeeConductorDetails.php'">
-      <i class="fa-solid fa-user-plus"></i>register
-    
-    </button>
-    <!-- end button -->
-  </div>
+
+<div class="container" >
+<div class="image-container">
+    <img src="<?php echo URLROOT; ?>/img/4.png" alt="Background Image" class="background-image">
+  <div class="left">
+      <div class="text-overlay">
+                <h1 class="overlay-text">You Have Full Rights To Handle <br><br> bus conductors!!</h1>
+                <h4 class="text2"> Click On Your Need?<h4>
+      <div class="buttons-container">
+<!--1 button image -->
+        <div class="clickheres">
+        <a href="/app/views/schedulers/verifyCondutor.php"> 
+        <img src="<?php echo URLROOT;?> /public/img/verify conductors.png" class="image"></a>
+        </div>
+<!-- 1 end button image -->
+<!-- 2 end button image -->
+        <div class="clickheres">
+        <a href="/app/views/schedulers/SeeConductorDetails.php"> 
+        <img src="<?php echo URLROOT;?>/public/img/SeeConductor.png"  class="image"></a>
+        </div>
+        
+ <!-- 2 nd button end-->
+
+ </div><!--for button-->
+</div> <!--for text-->
+</div>
+</div> <!--image container-->
 </div>
 <!-- end background image -->
+
 <!-- import dashbord icons -->
 <?php require APPROOT . '/views/schedulers/importDashboard.php' ; ?>
 <!-- end dashbord icons -->
