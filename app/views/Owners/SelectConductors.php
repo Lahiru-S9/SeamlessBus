@@ -1,24 +1,41 @@
+<?php
+// Dummy data for conductors
+$conductors = [
+    [
+        'name' => 'John Doe',
+        'age' => 30,
+        'experience' => '5 years',
+    ],
+    [
+        'name' => 'Jane Smith',
+        'age' => 35,
+        'experience' => '8 years',
+    ],
+    // Add more dummy data as needed
+];
+?>
+
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/Owners/selectConductor.css">
-
+<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/Owners/SelectConductors.css">
 <div class="container">
-    <h1>Select Conductor</h1>
-    <div class="search-bar">
-        <input type="text" id="conductor-search" placeholder="Search for a conductor...">
-    </div>
-    <div class="conductor-list">
-        <?php foreach ($data['conductors'] as $conductor) : ?>
-            <div class="conductor-item">
-                <img src="<?php echo $conductor->profile_image; ?>" alt="Conductor Image">
-                <h2><?php echo $conductor->name; ?></h2>
-                <p>Mobile: <?php echo $conductor->mobile; ?></p>
-                <p>Address: <?php echo $conductor->address; ?></p>
-                <button class="select-btn" data-conductor-id="<?php echo $conductor->id; ?>">Select</button>
+    <form action="<?php echo URLROOT; ?>/Owners/SelectConductors" method="post">
+        <h1>Assign Conductor for Buses</h1>
+        <main>
+            <div class="search-container">
+                <input type="text" placeholder="Search for conductor...">
+                <button id="search-btn">Search</button>
             </div>
-        <?php endforeach; ?>
-    </div>
+            <div id="conductor-list">
+                <?php foreach ($conductors as $conductor) : ?>
+                    <div class="conductor">
+                        <span class="conductor-name"><?php echo $conductor['name']; ?></span><br>
+                        <span class="conductor-age"><?php echo $conductor['age']; ?> years old</span><br>
+                        <span class="conductor-exp"><?php echo $conductor['experience']; ?> of experience</span>
+                        <button class="assign-btn">Assign</button>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </main>
+    </form>
 </div>
-
-<script src="<?php echo URLROOT; ?>/js/Owners/selectConductors.js"></script>
-
 <?php require APPROOT . '/views/inc/footer.php'; ?>
