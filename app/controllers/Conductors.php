@@ -106,4 +106,12 @@
 
             
         }
+        public function conductorList(){
+            $conductors = $this-> conductorModel-> getconductorList();
+            $data=[
+                'conductors' =>$conductors,
+            ];
+
+            $this->view('conductors/conductorList',$data);
+        }
     }
