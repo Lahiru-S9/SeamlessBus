@@ -1,28 +1,29 @@
 /* Reset some default styles */
-body, html {
-    margin: 0;
-    padding: 0;
-}
+
 
 .container {
-    position: relative;
+    margin-top: 80px;
+    display: flex;
 }
 
 .container img {
     width: 100%;
-    height: auto;
+    
+    
+    
 }
 
 .content {
-    position: absolute;
+    position: relative;
     top: 50%;
-    left: 50%;
+    right:50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background: white;
+    background:#00ffde57;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
 }
 .login-title {
     font-size: 24px;
@@ -46,11 +47,13 @@ label {
 }
 
 .custom-input {
-    width: 100%;
+   max-width: 400px;
+   margin: 0 auto;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    align-items:center;
 }
 
 .is-invalid {
