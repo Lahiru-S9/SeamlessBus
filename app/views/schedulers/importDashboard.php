@@ -22,7 +22,7 @@
 
         
         <!-- go to busses dashboard -->
-        <a href="<?php echo URLROOT ?>/schedulers/buses.php" class="dashboard-action">
+        <a href="<?php echo URLROOT ?>/Schedulers/buses" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
             <img src="<?php echo URLROOT; ?>/img/buses.png" alt="QR">
             </div>
