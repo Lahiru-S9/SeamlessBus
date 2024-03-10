@@ -1,6 +1,6 @@
 <?php
     class Schedulers extends Controller {
-        private $userModel;
+        public $userModel;
         
         public function __construct() {
             $this->userModel = $this->model('User');
@@ -103,12 +103,12 @@
             }
         }
 
-        public function index(){
+        public function dashboard(){
             $this->view('schedulers/dashboard' );
         }
 
         public function AddBusRotation(){
-            $this->view('schedulers/AddBusRotation.php');
+            $this->view('schedulers/AddBusRotation');
         }
 
 
@@ -207,53 +207,49 @@
         }
     }
     
-    public function DefineSchedule(){
+
+
+        public function DefineSchedule(){
         $this->view('schedulers/DefineSchedule');
+        }
+
+        public function feedback(){
+            $this->view('schedulers/feedbackForm');
+        }
+
+        public function seebooking(){
+            $this->view('schedulers/seeBooking');
+        }
+
+        public function seebusdetails(){
+            $this->view('schedulers/seeBusDetails');
+        }
+
+        public function seeconductordetails(){
+            $this->view('schedulers/seeConductorDetails');
+        }
+
+        public function verifybus(){
+            $this->view('schedulers/verifyBus');
+        }
+
+        public function verifyconductor(){
+            $this->view('schedulers/verifyConductor');
+
+        }
+        public function index(){
+            $this->view('schedulers/buses');
+        }
+        public function booking1(){
+            $this->view('schedulers/booking1');
+        }
+
+        public function conductors(){
+            $this->view('schedulers/conductors');
+        }
+
+        public function schedule(){
+            $this->view('schedulers/schedule');
+        }
     }
-
-    public function feedback(){
-        $this->view('schedulers/feedbackForm');
-    }
-
-    public function seebooking(){
-        $this->view('schedulers/seeBooking');
-    }
-
-    public function seebusdetails(){
-        $this->view('schedulers/seeBusDetails');
-    }
-
-    public function seeconductordetails(){
-        $this->view('schedulers/seeConductorDetails');
-    }
-
-    public function verifybus(){
-        $this->view('schedulers/verifyBus');
-    }
-
-    public function verifyconductor(){
-        $this->view('schedulers/verifyConductor');
-    }
-
-    public function buses(){
-        $this->view('schedulers/buses');
-    }
-
-    public function booking1(){
-        $this->view('schedulers/booking1');
-    }
-
-    public function conductors(){
-        $this->view('schedulers/conductors');
-    }
-
-    public function schedule(){
-        $this->view('schedulers/schedule');
-    }
-
-
-}
-
-
-    
-
+// $this->view('schedulers/manageSchedule', $data);
