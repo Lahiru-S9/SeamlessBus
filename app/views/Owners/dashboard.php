@@ -49,6 +49,35 @@
         </a>
     </div>
 
+    <div class = "buses">
+        <h2 class="dashboard-title">Your Buses</h2>
+        <table>
+            <tr>
+                <th>Bus No</th>
+                <th>Request status</th>
+                <th>Route</th>
+            </tr>
+            <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Eve</td>
+                <td>Jackson</td>
+                <td>94</td>
+            </tr>
+            <tr>
+                <td>Adam</td>
+                <td>Johnson</td>
+                <td>67</td>
+            </tr>
+        </table>
+
+        
+        
+    </div>
+
     <div class="footer">
             <img src="<?php echo URLROOT; ?>/img/logo_bw.png">
             <div class="footer-subtext">
