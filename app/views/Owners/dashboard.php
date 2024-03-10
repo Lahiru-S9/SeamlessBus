@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/regPassengers/dashboard.css">
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/owners/dashboard.css">
 <div class="container">
     <div class="dashboard-content">
         <h1 class="dashboard-title">What's on your mind?</h1>
@@ -38,6 +38,35 @@
             </div>
             <p class="action-label">See Reports</p>
         </a>
+    </div>
+
+    <div class = "buses">
+        <h2 class="dashboard-title">Your Buses</h2>
+        <table>
+            <tr>
+                <th>Bus No</th>
+                <th>Request status</th>
+                <th>Route</th>
+            </tr>
+            <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Eve</td>
+                <td>Jackson</td>
+                <td>94</td>
+            </tr>
+            <tr>
+                <td>Adam</td>
+                <td>Johnson</td>
+                <td>67</td>
+            </tr>
+        </table>
+
+        
+        
     </div>
 
     <div class="footer">
