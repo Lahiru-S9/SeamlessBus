@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="dashboard-actions">
-        <!-- go to conductor dashboard -->
+        <a href="<?php echo URLROOT ?>/Schedulers/conductors" class="dashboard-action">
         <a id="conductor-dashboard" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="QR">
