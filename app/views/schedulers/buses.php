@@ -1,77 +1,75 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<stylesheet>
-    <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedulers/buses.css">
-</stylesheet>
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedulers/buses.css">
+<!-- background image -->
 
+<div class="container" >
+<div class="image-container">
+    <img src="<?php echo URLROOT; ?>/img/1.png" alt="Background Image" class="background-image">
+  <div class="left">
+      <div class="text-overlay">
+                <h1 class="overlay-text">You Have Full Rights To Handle <br><br> buses!!</h1>
+                <h4 class="text2"> Click On Your Need?<h4>
+      <div class="buttons-container">
+<!--1 button image -->
+        <div class="clickheres">
+        <a href="/app/views/schedulers/verifyBus.php"> 
+        <img src="<?php echo URLROOT;?> /public/img/verify bus.png" class="image"></a>
+        </div>
+<!-- 1 end button image -->
+<!-- 2 end button image -->
+        <div class="clickheres">
+        <a href="/app/views/schedulers/busdetails.php"> 
+        <img src="<?php echo URLROOT;?>/public/img/seeBusDetails.png"  class="image"></a>
+        </div>
+        
+ <!-- 2 nd button end-->
 
-<div class="bus-requests" style="margin: 20px;">
-    <h2 class="title">Bus Requests</h2>
-    <table>
-        <tr>
-            <th style="width:50%">Bus No</th>
-            <th>Requested Route</th>
-            <th>Accept</th>
-            <th>Remove</th>
-        </tr>
-        <tr>
-            <td>Sample text</td>
-            <td>123</td>
-            <td><button><i class="fa fa-check"></i></button></td>
-            <td><button><i class="fa fa-remove"></i></button></td>
-            
-        </tr>
-        <tr>
-            <td>Sample text</td>
-            <td>123</td>
-            <td><button><i class="fa fa-check"></i></button></td>
-            <td><button><i class="fa fa-remove"></i></button></td>
-        </tr>
-        <tr>
-            <td>Sample text</td>
-            <td>123</td>
-            <td><button><i class="fa fa-check"></i></button></td>
-            <td><button><i class="fa fa-remove"></i></button></td>
-        </tr>
-        <tr>
-            <td>Sample text</td>
-            <td>123</td>
-            <td><button><i class="fa fa-check"></i></button></td>
-            <td><button><i class="fa fa-remove"></i></button></td>
-        </tr>
-        <tr>
-            <td>Sample text</td>
-            <td>123</td>
-            <td><button><i class="fa fa-check"></i></button></td>
-            <td><button><i class="fa fa-remove"></i></button></td>
-        </tr>
-    </table>
+ <!-- 3 end button image -->
+ <div class="clickheres">
+        <a href="/app/views/schedulers/AddBusRotation.php"> 
+        <img src="<?php echo URLROOT;?>/public/img/addbus rotation.png"  class="image"></a>
+        </div>
+        
+ <!-- 3 nd button end-->
+
+ </div><!--for button-->
+</div> <!--for text-->
 </div>
-
-<div class="buses" style="margin: 20px;">
-    <h2 class="title">Buses</h2>
-    <table>
-    <tr>
-    <th>Bus No</th>
-    <th>Assigned Route</th>
-    <th>Status</th>
-  </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
-  </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-  </tr>
-  <tr>
-    <td>Adam</td>
-    <td>Johnson</td>
-    <td>67</td>
-  </tr>
-    </table>
+</div> <!--image container-->
 </div>
+<!-- end background image -->
 
+
+
+
+
+<!-- footer -->
+<div class="footer">
+        <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
+        <div class="footer-subtext">
+            Seamless Bus
+        </div>
+        <div class="footer-text">
+            Enhancing your Travel Experience
+        </div>
+
+        <div class="social-media-icons">
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Facebook.png" alt="Facebook">
+            </a>
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Twitter.png" alt="Twitter">
+            </a>
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Instagram.png" alt="Instagram">
+            </a>
+        </div>
+    
+        <div class="footer-subtext">
+            Developed by CS group 23
+        </div>
+    </div>
+    
+</div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
