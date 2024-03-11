@@ -31,9 +31,6 @@
 </div>
 <!-- end background image -->
 
-<!-- import dashbord icons -->
-<?php require APPROOT . '/views/schedulers/importDashboard.php' ; ?>
-<!-- end dashbord icons -->
 
 <!-- footer -->
 <div class="footer">

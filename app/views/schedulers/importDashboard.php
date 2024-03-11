@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="dashboard-actions">
-        <!-- go to conductor dashboard -->
-        <a id="conductor-dashboard" class="dashboard-action">
+        
+        <a href="<?php echo URLROOT ?>/Schedulers/conductors" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="QR">
             </div>
@@ -26,7 +26,7 @@
         </a>
 
         <!-- go to schedulers dashboard -->
-        <a href="<?php echo URLROOT ?>/Schedulers/buses" class="dashboard-action">
+        <a href="<?php echo URLROOT ?>/Schedulers/manageSchedule" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/owner.png" alt="QR">
             </div>
