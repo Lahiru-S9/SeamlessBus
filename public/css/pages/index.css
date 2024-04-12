@@ -60,14 +60,20 @@
     line-height: 70px; 
     word-wrap: break-word
 }
-.middle-text-line2 {
-    opacity: 0.60; 
-    text-align: center; 
-    color: #001514; 
-    font-size: 20px; 
-    font-weight: 500; 
-    line-height: 30px; 
-    word-wrap: break-word
+
+#direct-btn{
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    color: #ffffff;
+    background-color: #0048c6;
+}
+
+#direct-btn:hover {
+    background-color: #B74F6F;
+    color: #fff;
 }
 
 /* Additional styles for call to action buttons */
