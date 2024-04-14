@@ -12,12 +12,7 @@
                 <div class="header-text-line2"><?php echo $data['description']; ?></div>
             </div>
             <div class="middle-text">
-<<<<<<< Updated upstream
-                <div class="middle-text-line1">Bus seat booking made easier</div>
-                <div class="middle-text-line2">book your seats in just a few easy steps</div><br><br>
-=======
                 <div class="middle-text-line1">Bus seat booking made easier</div><br>
->>>>>>> Stashed changes
             </div>
         </div>
         
