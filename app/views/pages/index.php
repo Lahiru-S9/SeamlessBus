@@ -12,11 +12,36 @@
                 <div class="header-text-line2"><?php echo $data['description']; ?></div>
             </div>
             <div class="middle-text">
+<<<<<<< Updated upstream
                 <div class="middle-text-line1">Bus seat booking made easier</div>
                 <div class="middle-text-line2">book your seats in just a few easy steps</div><br><br>
+=======
+                <div class="middle-text-line1">Bus seat booking made easier</div><br>
+>>>>>>> Stashed changes
             </div>
         </div>
-
+        
+        <?php if(!isset($_SESSION['user_id'])) : ?>
+            <button onclick="showConfirmation()" class="cta-button" id="direct-btn">Book your seats in just a few easy steps</button><br><br>
+            <script>
+            function goToPage1() {
+                window.location.href = '<?php echo URLROOT; ?>/GPassengers/register';
+            }
+            function goToPage2() {
+                window.location.href = '<?php echo URLROOT; ?>/schedule/index';
+            }
+            function showConfirmation() {
+                var result = confirm('Hey there!\n\nCreating an account would make it convenient for you to place bookings and save your regular routines.\n\nWould you like to create an account first?');
+                if (result) {
+                    goToPage1();
+                } else {
+                    goToPage2();
+                }
+            }
+            </script>
+        <?php else : ?>
+            <a href="<?php echo URLROOT; ?>/schedule/index" class="cta-button" id="direct-btn">Book your seats in just a few easy steps</a><br><br>
+        <?php endif; ?>
 
         <!-- Call to action buttons -->
         <div class="cta-buttons">
