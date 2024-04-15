@@ -11,8 +11,9 @@
                 <div class="header-text-line1">For an Enhanced Travel Experience</div>
                 <div class="header-text-line2"><?php echo $data['description']; ?></div>
             </div>
+
             <div class="middle-text">
-                <div class="middle-text-line1">Bus seat booking made easier</div><br>
+                <div class="middle-text-line1">Bus seat booking made easier</div>
             </div>
         </div>
         
