@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/Owners/AddBuses.css">
 
+
 <div class="container">
     <img src="<?php echo URLROOT; ?>/img/R.jpeg" alt="Background Image" />
 
@@ -41,11 +42,26 @@
             </div>
 
             <div class="form-group">
+                <label for="request_a_route">request a route: <sup></sup></label>
+                <input id="myInput" class="custom-input" onkeyup="filterFunction()" onclick="showDropdown()" name="request_a_route">
+                <div id="dropdown" class="dropdown-content">
+                    <?php foreach($data['route_numbers'] as $route) : ?>
+                        <a href="#route<?php echo $route->{'Route Number'}; ?>" onclick = "selectValue('<?php echo $route->{'Route Number'}; ?>')"><?php echo $route->{'Route Number'}; ?></a>
+                    <?php endforeach; ?>
+                    <!-- Add as many routes as you need -->
+                </div>
+                <span class="error-message"></span>
+            </div>
+
+
+            <div class="form-group">
                 
                 <input type="submit" value="Add your Bus" class="btn btn-submit">
             </div>
         </form>
     </div>
 </div>
+
+<script src="<?php echo URLROOT; ?>/js/Owners/addBuses.js"></script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

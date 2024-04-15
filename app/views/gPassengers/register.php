@@ -3,7 +3,7 @@
 
 <div class="container" >
     <div class="content">
-        <div class="login-title">Apply now to create an account</div>
+        <div class="login-title">Register now to create an account</div>
         <div class="subtitle">with just a few simple steps</div><br>
 
         <form action="<?php echo URLROOT; ?>/gPassengers/register" method="POST">

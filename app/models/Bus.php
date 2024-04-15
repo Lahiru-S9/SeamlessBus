@@ -8,7 +8,7 @@ class Bus {
     }
 
     public function addBus($data){
-        $this->db->query('INSERT INTO buses (bus_no, bus_model, seats, permitid, ownerid, seats_per_row) VALUES (:bus_number, :bus_model, :bus_seat, :permit_id, :owner_id, :seats_per_row)');
+        $this->db->query('INSERT INTO buses (bus_no, bus_model, seats, permitid, ownerid, seats_per_row, route_num) VALUES (:bus_number, :bus_model, :bus_seat, :permit_id, :owner_id, :seats_per_row, :route_num)');
         //Bind values
         $this->db->bind(':bus_number', $data['bus_number']);
         $this->db->bind(':bus_model', $data['bus_model']);
@@ -16,6 +16,7 @@ class Bus {
         $this->db->bind(':permit_id', $data['permit_id']);
         $this->db->bind(':owner_id', $_SESSION['user_id']);
         $this->db->bind(':seats_per_row', $data['seats_per_row']);
+        $this->db->bind(':route_num', $data['request_a_route']);
 
         //Execute function
         if($this->db->execute()){
@@ -38,5 +39,15 @@ class Bus {
         } else {
             return false;
         }
+    }
+
+    public function getBusesByOwnerId($owner_id){
+        $this->db->query('SELECT * FROM buses WHERE ownerid = :owner_id');
+        //Bind value
+        $this->db->bind(':owner_id', $owner_id);
+
+        $results = $this->db->resultSet();
+
+        return $results;
     }
 }
