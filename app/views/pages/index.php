@@ -14,7 +14,6 @@
 
             <div class="middle-text">
                 <div class="middle-text-line1">Bus seat booking made easier</div>
-                <a class="cta-button" id="direct-btn" href="<?php echo URLROOT; ?>/schedule/index">Book your seats in just a few easy steps</a><br><br>
             </div>
         </div>
         
