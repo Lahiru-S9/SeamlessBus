@@ -5,6 +5,7 @@
         public function __construct() {
             $this->userModel = $this->model('User');
             $this->scheduleModel = $this->model('Schedulerow');
+            $this->busModel = $this->model('Bus');
         }
 
         public function register(){
@@ -104,16 +105,32 @@
         }
 
         public function dashboard(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+                redirect('Users/login');
+    
+            }
             $this->view('schedulers/dashboard' );
         }
 
         public function AddBusRotation(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+                redirect('Users/login');
+    
+            }
             $this->view('schedulers/AddBusRotation');
         }
 
 
 
     public function manageSchedule(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+
+        }
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['route_num'])) {
             // It's an AJAX request
             $routeNumber = $_POST['route_num'];
@@ -161,9 +178,15 @@
 
             $this->view('schedulers/manageSchedule', $data);
         }
+    
     }
 
     public function addSchedule(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Get the JSON data from the request body
             $json_data = file_get_contents('php://input');
@@ -205,51 +228,67 @@
             echo json_encode(['error' => 'Invalid request method']);
             exit;
         }
+            
+    }
+
+    public function verifyBus(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+        }
+
+        $busRequests = $this->busModel->getRequestedBusesBySchdeuler($_SESSION['user_id']);
+
+        $data = [
+            'busRequests' => $busRequests
+        ];
+
+        // var_dump($data);
+
+        $this->view('schedulers/verifyBus', $data);
+
     }
     
 
 
-        public function DefineSchedule(){
-        $this->view('schedulers/DefineSchedule');
-        }
-
-        public function feedback(){
-            $this->view('schedulers/feedbackForm');
-        }
-
-        public function seebooking(){
-            $this->view('schedulers/seeBooking');
-        }
-
-        public function seebusdetails(){
-            $this->view('schedulers/seeBusDetails');
-        }
-
-        public function seeconductordetails(){
-            $this->view('schedulers/seeConductorDetails');
-        }
-
-        public function verifybus(){
-            $this->view('schedulers/verifyBus');
-        }
-
-        public function verifyconductor(){
-            $this->view('schedulers/verifyConductor');
-
-        }
-        public function index(){
-            $this->view('schedulers/buses');
-        }
-        public function booking1(){
-            $this->view('schedulers/booking1');
-        }
-
-        public function conductors(){
-            $this->view('schedulers/conductors');
-        }
-
-        public function schedule(){
-            $this->view('schedulers/schedule');
-        }
+    public function DefineSchedule(){
+    $this->view('schedulers/DefineSchedule');
     }
-// $this->view('schedulers/manageSchedule', $data);
+
+    public function feedback(){
+        $this->view('schedulers/feedbackForm');
+    }
+
+    public function seebooking(){
+        $this->view('schedulers/seeBooking');
+    }
+
+    public function seebusdetails(){
+        $this->view('schedulers/seeBusDetails');
+    }
+
+    public function seeconductordetails(){
+        $this->view('schedulers/seeConductorDetails');
+    }
+
+    
+
+    public function verifyconductor(){
+        $this->view('schedulers/verifyConductor');
+
+    }
+    public function buses(){
+        $this->view('schedulers/buses');
+    }
+    public function booking1(){
+        $this->view('schedulers/booking1');
+    }
+
+    public function conductors(){
+        $this->view('schedulers/conductors');
+    }
+
+    public function schedule(){
+        $this->view('schedulers/schedule');
+    }
+}
