@@ -1,6 +1,7 @@
 <?php
     class Schedulers extends Controller {
         public $userModel;
+        public $scheduleModel;
         
         public function __construct() {
             $this->userModel = $this->model('User');
@@ -229,7 +230,8 @@
             $this->view('schedulers/seeConductorDetails');
         }
 
-        public function verifybus(){
+        public function verifyBus(){
+            
             $this->view('schedulers/verifyBus');
         }
 
@@ -237,7 +239,7 @@
             $this->view('schedulers/verifyConductor');
 
         }
-        public function index(){
+        public function buses(){
             $this->view('schedulers/buses');
         }
         public function booking1(){
