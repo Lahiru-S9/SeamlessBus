@@ -50,4 +50,36 @@ class Bus {
 
         return $results;
     }
+
+    public function getRequestedBusesBySchdeuler($scheduler_id){
+        $this->db->query("SELECT 
+        buses.bus_no,
+        buses.bus_model,
+        buses.permitid,
+        buses.ownerid,
+        users.name AS owner_name,
+        users.email AS owner_email,
+        MAX(routes.route_num) AS route_num,
+        MAX(schedulers.station_id) AS station_id,
+        MAX(scheduler_details.id) AS scheduler_id,
+        MAX(scheduler_details.user_id) AS user_id
+    FROM 
+        buses
+    JOIN 
+        routes ON buses.route_num = routes.route_num
+    JOIN 
+        schedulers ON (routes.fromstationid = schedulers.station_id OR routes.tostationid = schedulers.station_id)
+    JOIN 
+        scheduler_details ON scheduler_details.id = schedulers.scheduler_id
+    JOIN
+        users ON buses.ownerid = users.id
+    WHERE 
+        buses.status = 'Requested' AND scheduler_details.user_id = :scheduler_id
+    GROUP BY 
+        buses.bus_no;
+        ");
+        $this->db->bind(':scheduler_id', $scheduler_id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
 }
