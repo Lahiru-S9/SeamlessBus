@@ -237,6 +237,25 @@
             redirect('Users/login');
         }
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['busId']) && isset($_POST['status'])) {
+            // It's an AJAX request
+            $busNo = $_POST['busId'];
+            $status = $_POST['status'];
+
+            echo $busNo;
+            echo $status;
+
+            // Update bus status
+            $this->busModel->updateBusStatus($busNo, $status);
+
+            // Return success message
+            echo json_encode(['status' => 'success', 'message' => 'Bus status updated successfully']);
+
+            exit;
+        }
+
+        else {
+
         $busRequests = $this->busModel->getRequestedBusesBySchdeuler($_SESSION['user_id']);
 
         $data = [
@@ -246,6 +265,7 @@
         // var_dump($data);
 
         $this->view('schedulers/verifyBus', $data);
+        }
 
     }
     
