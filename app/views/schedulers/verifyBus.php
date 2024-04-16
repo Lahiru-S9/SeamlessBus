@@ -27,8 +27,8 @@
 
                 <td>
                     <!-- Accept and Decline buttons -->
-                    <button class="accept-button">Accept</button>
-                    <button class="decline-button">Decline</button>
+                    <button class="accept-button" onclick="updateBusStatus('<?php echo $busRequest->bus_no; ?>', 'accepted')">Accept</button>
+                    <button class="decline-button" onclick="updateBusStatus('<?php echo $busRequest->bus_no; ?>', 'declined')">Decline</button>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -63,5 +63,8 @@
     </div>
     
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>;
+<script src="<?php echo URLROOT; ?>/js/schedulers/verifyBus.js"></script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

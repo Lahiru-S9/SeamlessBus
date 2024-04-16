@@ -82,4 +82,18 @@ class Bus {
         $results = $this->db->resultSet();
         return $results;
     }
+
+    public function updateBusStatus($bus_no, $status){
+        $this->db->query('UPDATE buses SET status = :status WHERE bus_no = :bus_no');
+        //Bind values
+        $this->db->bind(':bus_no', $bus_no);
+        $this->db->bind(':status', $status);
+
+        //Execute function
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
