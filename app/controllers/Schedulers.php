@@ -242,9 +242,6 @@
             $busNo = $_POST['busId'];
             $status = $_POST['status'];
 
-            echo $busNo;
-            echo $status;
-
             // Update bus status
             $this->busModel->updateBusStatus($busNo, $status);
 
