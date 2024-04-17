@@ -60,6 +60,7 @@
                 <th>ownerid</th>
                 <th>seats_per_row</th>
                 <th>route</th>
+                <th>status</th>
             </tr>
             <?php 
                 if(empty($data['buses'])){
@@ -77,6 +78,7 @@
                         <td><?php echo $bus->ownerid; ?></td>
                         <td><?php echo $bus->seats_per_row; ?></td>
                         <td><?php echo $bus->route_num; ?></td>
+                        <td><?php echo $bus->status; ?></td>
                     </tr>
             <?php
                     endforeach;}
