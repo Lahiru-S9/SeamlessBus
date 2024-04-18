@@ -6,9 +6,9 @@
     <h1>Schedule Details</h1>
     <?php $scheduleDetails = $data['schedule'][0]; ?>
     <!-- <p><strong>Schedule ID:</strong> <?php echo $scheduleDetails->schedule_id; ?></p> -->
-    <p><strong>Schedule ID:</strong> <span id="scheduleId" data-price="<?php echo $scheduleDetails->schedule_id; ?>"><?php echo $scheduleDetails->schedule_id; ?></span></p>
-    <p><strong>From Station:</strong> <?php echo $scheduleDetails->from_station_name; ?></p>
-    <p><strong>To Station:</strong> <?php echo $scheduleDetails->to_station_name; ?></p>
+    <p><strong>Schedule ID:</strong> <span id="scheduleId" data-price="<?php echo $scheduleDetails->id; ?>"><?php echo $scheduleDetails->id; ?></span></p>
+    <p><strong>From Station:</strong> <?php echo $scheduleDetails->from_station; ?></p>
+    <p><strong>To Station:</strong> <?php echo $scheduleDetails->to_station; ?></p>
     <p><strong>Arrival Time:</strong> <?php echo $scheduleDetails->arrival_time; ?></p>
     <p><strong>Departure Time:</strong> <?php echo $scheduleDetails->departure_time; ?></p>
     <!-- <p><strong>Ticket Price:</strong> <?php echo $scheduleDetails->ticket_price; ?></p> -->
