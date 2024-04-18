@@ -52,8 +52,12 @@
                     <tr class="table__row">
                         <th class="table__cell tv5-text-left" scope="col">from</th>
                         <th class="table__cell tv5-text-left" scope="col">destination</th>
+                        <th class="table__cell tv5-text-right" scope="col">Route Number</th>
+                        <th class="table__cell tv5-text-right" scope="col">Day</th>
+                        <th class="table__cell tv5-text-right" scope="col">Date</th>
                         <th class="table__cell tv5-text-left" scope="col">arrival time</th>
                         <th class="table__cell tv5-text-right" scope="col">departure time</th>
+                        <th class="table__cell tv5-text-right" scope="col">Action</th>
                     </tr>
                 </thead>
 
@@ -67,6 +71,18 @@
 
                             <td class="table__cell" role="cell">
                                 <span class="table__label" aria-hidden="true"></span> <?php echo $schedule->to_station; ?>
+                            </td>
+
+                            <td class="table__cell" role="cell">
+                                <span class="table__label" aria-hidden="true"></span> <?php echo $schedule->route_num; ?>
+                            </td>
+
+                            <td class="table__cell" role="cell">
+                                <span class="table__label" aria-hidden="true"></span> <?php echo $schedule->day; ?>
+                            </td>
+
+                            <td class="table__cell" role="cell">
+                                <span class="table__label" aria-hidden="true"></span> <?php echo $schedule->date; ?>
                             </td>
 
                             <td class="table__cell" role="cell">
