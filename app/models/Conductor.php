@@ -1,17 +1,16 @@
 <?php
 
-class Bus {
+class Conductor {
     private $db;
 
     public function __construct(){
         $this->db = new Database;
     }
 
-    public function getConductor(){
+    public function getConductors(){
         $this->db->query('SELECT *
         FROM users
-        JOIN conductors ON users.id = conductors.user_id
-        WHERE users.user_type = 4;
+        WHERE users.usertype = 4;
         ');
         $results = $this->db->resultSet();
 
