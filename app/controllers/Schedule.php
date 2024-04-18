@@ -52,7 +52,7 @@
                 ];
             
                 $this->view('schedule/index', $data);
-                // print_r($data)['schedule'];
+                print_r($data)['schedule'];
             }
         }
 

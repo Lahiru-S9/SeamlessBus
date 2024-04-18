@@ -7,14 +7,46 @@ class Schedulerow {
         $this->db = new Database;
     }
 
+    // public function getSchedule(){
+    //     $this->db->query('SELECT sc.id, sc.arrival_time, sc.departure_time, 
+    //     stations.station AS from_station, 
+    //     s.station AS to_station
+    //     FROM schedule AS sc
+    //     JOIN routes AS r ON sc.routeid = r.id
+    //     JOIN stations AS stations ON r.fromstationid = stations.id
+    //     JOIN stations AS s ON r.tostationid = s.id
+    //  ');
+
+    //     $results = $this->db->resultSet();
+
+    //     return $results;
+    // }
+
     public function getSchedule(){
-        $this->db->query('SELECT sc.id, sc.arrival_time, sc.departure_time, 
-        stations.station AS from_station, 
-        s.station AS to_station
-        FROM schedule AS sc
-        JOIN routes AS r ON sc.routeid = r.id
-        JOIN stations AS stations ON r.fromstationid = stations.id
-        JOIN stations AS s ON r.tostationid = s.id
+        $this->db->query('SELECT 
+        schedule1.id,
+        schedule1.schedule_defId,
+        schedule1.date,
+        schedule_def.day,
+        schedule_def.route_id,
+        schedule_def.arrival_time,
+        schedule_def.departure_time,
+        from_station.station AS from_station,
+        to_station.station AS to_station,
+        routes.route_num,
+        routes.ticket_price
+    FROM 
+        schedule1
+    JOIN 
+        schedule_def ON schedule1.schedule_defId = schedule_def.id
+    JOIN 
+        routes ON schedule_def.route_id = routes.id
+    JOIN 
+        stations AS from_station ON routes.fromstationid = from_station.id
+    JOIN 
+        stations AS to_station ON routes.tostationid = to_station.id;
+    
+        
      ');
 
         $results = $this->db->resultSet();
