@@ -50,9 +50,9 @@
 
         public function getScheduleById($schedule_id){
             $this->db->query('SELECT 
-            schedule1.id,
-            schedule1.schedule_defId,
-            schedule1.date,
+            schedule.id,
+            schedule.schedule_defId,
+            schedule.date,
             schedule_def.day,
             schedule_def.route_id,
             schedule_def.arrival_time,
@@ -66,9 +66,9 @@
             buses.seats,
             buses.seats_per_row
         FROM 
-            schedule1
+            schedule
         JOIN 
-            schedule_def ON schedule1.schedule_defId = schedule_def.id
+            schedule_def ON schedule.schedule_defId = schedule_def.id
         JOIN 
             routes ON schedule_def.route_id = routes.id
         JOIN 
@@ -76,11 +76,11 @@
         JOIN 
             stations AS to_station ON routes.tostationid = to_station.id
         JOIN
-            bus_assigned ON schedule1.id = bus_assigned.schedule_id
+            bus_assigned ON schedule.id = bus_assigned.schedule_id
         JOIN
             buses ON bus_assigned.bus_no = buses.bus_no
         WHERE 
-            schedule1.id = :schedule_id
+            schedule.id = :schedule_id
             
          ');
 

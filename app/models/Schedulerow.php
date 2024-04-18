@@ -24,9 +24,9 @@ class Schedulerow {
 
     public function getSchedule(){
         $this->db->query('SELECT 
-        schedule1.id,
-        schedule1.schedule_defId,
-        schedule1.date,
+        schedule.id,
+        schedule.schedule_defId,
+        schedule.date,
         schedule_def.day,
         schedule_def.route_id,
         schedule_def.arrival_time,
@@ -36,9 +36,9 @@ class Schedulerow {
         routes.route_num,
         routes.ticket_price
     FROM 
-        schedule1
+        schedule
     JOIN 
-        schedule_def ON schedule1.schedule_defId = schedule_def.id
+        schedule_def ON schedule.schedule_defId = schedule_def.id
     JOIN 
         routes ON schedule_def.route_id = routes.id
     JOIN 
@@ -75,9 +75,9 @@ class Schedulerow {
 
     // public function getScheduleByStation($from, $to) {
     //     $this->db->query('SELECT 
-    //     schedule1.id,
-    //     schedule1.schedule_defId,
-    //     schedule1.date,
+    //     schedule.id,
+    //     schedule.schedule_defId,
+    //     schedule.date,
     //     schedule_def.day,
     //     schedule_def.route_id,
     //     schedule_def.arrival_time,
@@ -87,9 +87,9 @@ class Schedulerow {
     //     routes.route_num,
     //     routes.ticket_price
     // FROM 
-    //     schedule1
+    //     schedule
     // JOIN 
-    //     schedule_def ON schedule1.schedule_defId = schedule_def.id
+    //     schedule_def ON schedule.schedule_defId = schedule_def.id
     // JOIN 
     //     routes ON schedule_def.route_id = routes.id
     // JOIN 
@@ -112,9 +112,9 @@ class Schedulerow {
 
     // public function getScheduleByFromStation($from) {
     //     $this->db->query('SELECT 
-    //     schedule1.id,
-    //     schedule1.schedule_defId,
-    //     schedule1.date,
+    //     schedule.id,
+    //     schedule.schedule_defId,
+    //     schedule.date,
     //     schedule_def.day,
     //     schedule_def.route_id,
     //     schedule_def.arrival_time,
@@ -124,9 +124,9 @@ class Schedulerow {
     //     routes.route_num,
     //     routes.ticket_price
     // FROM 
-    //     schedule1
+    //     schedule
     // JOIN 
-    //     schedule_def ON schedule1.schedule_defId = schedule_def.id
+    //     schedule_def ON schedule.schedule_defId = schedule_def.id
     // JOIN 
     //     routes ON schedule_def.route_id = routes.id
     // JOIN 
@@ -149,9 +149,9 @@ class Schedulerow {
 
     // public function getScheduleByToStation($to) {
     //     $this->db->query('SELECT 
-    //     schedule1.id,
-    //     schedule1.schedule_defId,
-    //     schedule1.date,
+    //     schedule.id,
+    //     schedule.schedule_defId,
+    //     schedule.date,
     //     schedule_def.day,
     //     schedule_def.route_id,
     //     schedule_def.arrival_time,
@@ -161,9 +161,9 @@ class Schedulerow {
     //     routes.route_num,
     //     routes.ticket_price
     // FROM 
-    //     schedule1
+    //     schedule
     // JOIN 
-    //     schedule_def ON schedule1.schedule_defId = schedule_def.id
+    //     schedule_def ON schedule.schedule_defId = schedule_def.id
     // JOIN 
     //     routes ON schedule_def.route_id = routes.id
     // JOIN 
@@ -187,9 +187,9 @@ class Schedulerow {
         // Start building the SQL query
         
         $sql = 'SELECT 
-            schedule1.id,
-            schedule1.schedule_defId,
-            schedule1.date,
+            schedule.id,
+            schedule.schedule_defId,
+            schedule.date,
             schedule_def.day,
             schedule_def.route_id,
             schedule_def.arrival_time,
@@ -199,9 +199,9 @@ class Schedulerow {
             routes.route_num,
             routes.ticket_price
         FROM 
-            schedule1
+            schedule
         JOIN 
-            schedule_def ON schedule1.schedule_defId = schedule_def.id
+            schedule_def ON schedule.schedule_defId = schedule_def.id
         JOIN 
             routes ON schedule_def.route_id = routes.id
         JOIN 
@@ -223,7 +223,7 @@ class Schedulerow {
         }
     
         if ($date !== null) {
-            $sql .= ' AND schedule1.date = :date';
+            $sql .= ' AND schedule.date = :date';
         }
     
         if ($route_num !== null) {
@@ -255,7 +255,7 @@ class Schedulerow {
             $this->db->bind(':route_num', $route_num);
         }
 
-        // echo "Executed Query: " . $sql . "<br>";
+        echo "Executed Query: " . $sql . "<br>";
     
         // Execute the query and fetch results
         $results = $this->db->resultSet();
