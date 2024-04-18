@@ -18,7 +18,7 @@
                     'to' => isset($_POST['to']) ? trim($_POST['to']) : null,
                     'day' => isset($_POST['day']) ? trim($_POST['day']) : null,
                     'date' => isset($_POST['date']) ? trim($_POST['date']) : null,
-                    'route_num' => isset($_POST['route_num']) ? trim($_POST['route_num']) : null,
+                    'route_num' => isset($_POST['Route']) ? trim($_POST['Route']) : null,
                     // 'from_err' => '',
                     // 'to_err' => '',
                 ];
