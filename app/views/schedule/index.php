@@ -30,6 +30,27 @@
                                 <?php endforeach; ?>
                             </select>
 
+                            <select name="day" class="form-select">
+                                <option value="" disabled selected>Day</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
+
+                            <input type="date" name="date" class="form-control" placeholder="Date">
+
+                            <select name ="Route" class="form-select">
+                                <option value="" disabled selected>Route Number</option>
+                                <?php foreach   ($data['route_nums'] as $route_num) : ?>
+                                    <option value="<?php echo $route_num->{'Route Number'}; ?>"><?php echo $route_num->{'Route Number'}; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            
+
                             <div class = "col-md-4">
                                 <button type="submit" class="btn btn-primary">Search</button>
                                 <a href="<?php echo URLROOT?>/Schedule/index" class="btn btn-danger">Reset</a>
