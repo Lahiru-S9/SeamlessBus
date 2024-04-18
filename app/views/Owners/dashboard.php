@@ -7,7 +7,8 @@
         <?php flash('bus_added'); ?>
     </div>
     <div class="dashboard-actions">
-        <a href="<?php echo URLROOT?>/Owners/selectConductor" class="dashboard-action">
+        
+        <a href="#" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="QR">
             </div>
@@ -39,13 +40,55 @@
         </a>
     
 
-    <!--add more dashboard actions as needed -->
-    <a href="<?php echo URLROOT?>/Owners/AddFeedback" class="dashboard-action">
-        <div class="action-icon" style="background: #62D9CC ;">
-            <img src="<?php echo URLROOT;?>/img/feedback 02.jpg" alt ="Feedback">
-        </div>
-        <p class="action-label">Add Feedback</p>
+        <!--add more dashboard actions as needed -->
+        <a href="<?php echo URLROOT?>/Owners/AddFeedback" class="dashboard-action">
+            <div class="action-icon" style="background: #62D9CC ;">
+                <img src="<?php echo URLROOT;?>/img/feedback 02.jpg" alt ="Feedback">
+            </div>
+            <p class="action-label">Add Feedback</p>
         </a>
+    </div>
+
+    <div class = "buses">
+        <h2 class="dashboard-title">Your Buses</h2>
+        <table>
+            <tr>
+                <th>Bus No</th>
+                <th>bus_model</th>
+                <th>seats</th>
+                <th>permitid</th>
+                <th>ownerid</th>
+                <th>seats_per_row</th>
+                <th>route</th>
+                <th>status</th>
+            </tr>
+            <?php 
+                if(empty($data['buses'])){
+                    echo "<h3>No buses found</h3>";
+                }
+                
+                else{
+            
+                    foreach($data['buses'] as $bus) : ?>
+                    <tr>
+                        <td><?php echo $bus->bus_no; ?></td>
+                        <td><?php echo $bus->bus_model; ?></td>
+                        <td><?php echo $bus->seats; ?></td>
+                        <td><?php echo $bus->permitid; ?></td>
+                        <td><?php echo $bus->ownerid; ?></td>
+                        <td><?php echo $bus->seats_per_row; ?></td>
+                        <td><?php echo $bus->route_num; ?></td>
+                        <td><?php echo $bus->status; ?></td>
+                    </tr>
+            <?php
+                    endforeach;}
+            ?>
+            
+            
+        </table>
+
+        
+        
     </div>
 
     <div class="footer">
@@ -75,6 +118,8 @@
     </div>
 
 </div>
+
+
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

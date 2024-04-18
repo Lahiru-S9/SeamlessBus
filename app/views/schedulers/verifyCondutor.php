@@ -1,17 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo URLROOT; ?>/public/css/schedulers/dashbord.css">
 
-
-<div class="container">
-    <div class="dashboard-content">
-        <h1 class="dashboard-title">What's on your mind?</h1>
-        <p class="dashboard-description">Enhancing your Travel Experience</p>
-    </div>
-
-<?php require APPROOT . '/views/schedulers/importDashboard.php' ; ?>
-
-
+<!-- footer -->
 <div class="footer">
         <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
         <div class="footer-subtext">
@@ -38,7 +28,6 @@
         </div>
     </div>
     
-
-
+</div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
