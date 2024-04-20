@@ -31,7 +31,7 @@
         </a>
 
         <!-- Add more dashboard actions as needed -->
-        <a href="#" class="dashboard-action">
+        <a href="<?php echo URLROOT?>/Owners/SeeReport" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/abc.png" alt="QR">
             </div>
