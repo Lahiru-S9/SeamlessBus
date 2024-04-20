@@ -1,20 +1,15 @@
 <?php
 
-class Conductor {
+class Route {
     private $db;
 
     public function __construct(){
         $this->db = new Database;
     }
 
-    public function getConductors(){
-        $this->db->query('SELECT *
-        FROM users
-        WHERE users.usertype = 4;
-        ');
+    public function getRoutes(){
+        $this->db->query('SELECT route_num AS "Route Number" FROM routes');
         $results = $this->db->resultSet();
-
         return $results;
     }
-
 }
