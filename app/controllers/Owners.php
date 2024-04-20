@@ -4,6 +4,8 @@
             $this->userModel = $this->model('User');
             $this->busModel = $this->model('Bus');
             $this->feedbackModel = $this->model('Feedback');
+            $this->routeModel = $this->model('Route');
+            $this->conductorModel = $this->model('Conductor');
         }
 
         public function register(){
@@ -109,9 +111,12 @@
                 redirect('Users/login');
             }
            
+            $data = [
+                'buses' => $this->busModel->getBusesByOwnerId($_SESSION['user_id'])
+            ];
 
-
-            $this->view('Owners/dashboard');
+            $this->view('Owners/dashboard', $data);
+            
         }
 
         public function AddBuses(){
@@ -119,6 +124,8 @@
 
                 redirect('Users/login');
             }
+
+            $route_numbers = $this->routeModel->getRoutes();
 
             //Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -135,11 +142,15 @@
                     'permit_id' => trim($_POST['permit_id']),
                     'owner_id' => $_SESSION['user_id'],
                     'seats_per_row' => trim($_POST['seats_per_row']),
+                    'request_a_route' => trim($_POST['request_a_route']),
                     'bus_number_err' => '',
                     'bus_model_err' => '',
                     'bus_seat_err' => '',
                     'permit_id_err' => '',
                     'seats_per_row_err' => '',
+                    'request_a_route_err' => '',
+                    'route_numbers' => $route_numbers
+
                 ];
                 
 
@@ -171,8 +182,12 @@
                     $data['seats_per_row_err'] = 'Please enter seats_per_row';
                 }
 
+                if(empty($data['request_a_route'])){
+                    $data['request_a_route_err'] = 'Please enter request_a_route';
+                }
+
                 //Make sure errors are empty
-                if(empty($data['bus_number_err']) && empty($data['bus_model_err']) && empty($data['bus_seat_err']) && empty($data['permit_id_err']) && empty($data['seats_per_row_err'])){
+                if(empty($data['bus_number_err']) && empty($data['bus_model_err']) && empty($data['bus_seat_err']) && empty($data['permit_id_err']) && empty($data['seats_per_row_err']) && empty($data['request_a_route_err'])){
                     //Validated
 
                     
@@ -200,16 +215,21 @@
                     'bus_seat' => '',
                     'permit_id' => '',
                     'seats_per_row' => '',
+                    'request_a_route' => '',
                     'bus_number_err' => '',
                     'bus_model_err' => '',
                     'bus_seat_err' => '',
                     'permit_id_err' => '',
                     'seats_per_row_err' => '',
+                    'request_a_route_err' => '',
+                    'route_numbers' => $route_numbers
+
                 ];
 
                 
                 //Load view
                 $this->view('Owners/AddBuses', $data);
+                // var_dump($data);
             }
         }
     
@@ -229,13 +249,19 @@
             $this->view('owners/profile');
         }
         
-        public function selectConductor(){
+        public function selectConductors(){
             if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
 
                 redirect('Users/login');
             }
 
-            $this->view('Owners/SelectConductors');
+            $buses = $this->busModel->getBusesByOwnerId($_SESSION['user_id']);
+            $conductors = $this->conductorModel->getConductors();
+            $data = [
+                'buses' => $buses
+            ];
+
+            $this->view('Owners/SelectConductors', $data);
         }
         public function addFeedback(){
             if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){

@@ -1,56 +1,13 @@
-<?php
-// Database connection variables
-$host = 'localhost'; // or your database host
-$dbname = 'seamlessbus'; // your database name
-$user = 'localhost'; // your database username
-$pass = 'YES'; // your database password
+<?php require APPROOT . '/views/inc/header.php'; ?>
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/owners/SelectConductors.css">
 
-// Create a new PDO instance
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-    // Set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    die("ERROR: Could not connect. " . $e->getMessage());
-}
-
-// Fetch buses from the database
-try {
-    $stmt = $pdo->query('SELECT * FROM buses');
-    $buses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch(PDOException $e) {
-    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
-
-// Close connection
-unset($pdo);
-
-// Hardcoded list of conductors
-$conductors = [
-    'Conductor 1' => false, // false indicates not assigned
-    'Conductor 2' => true,  // true indicates already assigned
-    'Conductor 3' => true, // false indicates not assigned
-    'Conductor 4' => true,
-    'Conductor 5' => false,
-    'Conductor 6' => true,
-    'Conductor 7' => true, 
-    'Conductor 8' => true,
-    // Add more conductors as needed
-];
-
-// Function to display assignment status
-function displayAssignmentStatus($isAssigned) {
-    return $isAssigned ? 'Already Assigned' : 'Assign';
-}
-
-?>
 
 <!-- HTML to display bus list -->
 <div id="bus-list">
-    <?php foreach ($buses as $bus): ?>
+    <?php foreach ($data['buses'] as $bus): ?>
         <div class="bus">
-            <span class="bus-number"><?php echo $bus['bus_number']; ?></span>
-            <span class="bus-route"><?php echo $bus['route']; ?></span>
+            <span class="bus-number"><?php echo $bus->bus_no; ?></span>
+            <span class="bus-route"><?php echo $bus->route_num; ?></span>
             <button class="select-btn" onclick="showConductors()">Select</button>
         </div>
     <?php endforeach; ?>
@@ -106,7 +63,7 @@ function deleteConductor(conductorName) {
 
 <!-- HTML to display conductor list -->
 <div id="conductor-list" style="display:none;">
-    <?php foreach ($conductors as $name => $isAssigned): ?>
+    <?php foreach ($data['conductors'] as $name => $isAssigned): ?>
         <div class="conductor">
             <span class="conductor-name"><?php echo $name; ?></span>
             <button class="assign-btn"><?php echo displayAssignmentStatus($isAssigned); ?></button>
