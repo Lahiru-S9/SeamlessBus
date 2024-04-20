@@ -13,3 +13,8 @@
     define ('SITENAME', 'seamlessBus');
     //App Version
     define ('APPVERSION', '1.0.0');
+
+    //PAYHERE
+
+    define ('MERCHANT_ID', '1226529'); // Replace your Merchant ID
+    define ('MERCHANT_SECRET', 'NTE2ODE1NDAwMTYzNTQ0NTAzNjM3NTE2MDU0NTEzMjU4ODE3MDU='); // Replace your Merchant Secret (Add your app ID at the end)

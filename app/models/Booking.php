@@ -75,9 +75,9 @@
             stations AS from_station ON routes.fromstationid = from_station.id
         JOIN 
             stations AS to_station ON routes.tostationid = to_station.id
-        JOIN
+        LEFT JOIN
             bus_assigned ON schedule.id = bus_assigned.schedule_id
-        JOIN
+        LEFT JOIN
             buses ON bus_assigned.bus_no = buses.bus_no
         WHERE 
             schedule.id = :schedule_id
