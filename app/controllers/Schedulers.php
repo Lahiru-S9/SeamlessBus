@@ -265,6 +265,10 @@
         }
 
     }
+
+    public function seebusdetails(){
+        $this->view('schedulers/seeBusDetails');
+    }
     
 
 
@@ -278,10 +282,6 @@
 
     public function seebooking(){
         $this->view('schedulers/seeBooking');
-    }
-
-    public function seebusdetails(){
-        $this->view('schedulers/seeBusDetails');
     }
 
     public function seeconductordetails(){
