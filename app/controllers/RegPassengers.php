@@ -86,44 +86,102 @@
             ];
             
             $this->view('regPassengers/booking', $data);
-            var_dump($data);
+            // var_dump($data);
         }
 
         public function payment(){
-            $amount = 3000;
-            $merchant_id = MERCHANT_ID;
-            $order_id = uniqid();
-            $merchant_secret = MERCHANT_SECRET;
-            $currency = 'LKR';
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                
+                // Retrieve POST parameters from PayHere notification
+                $merchant_id         = $_POST['merchant_id'];
+                $order_id            = $_POST['order_id'];
+                $payhere_amount      = $_POST['payhere_amount'];
+                $payhere_currency    = $_POST['payhere_currency'];
+                $status_code         = $_POST['status_code'];
+                $md5sig              = $_POST['md5sig'];
 
-            $hash = strtoupper(
-                md5(
-                    $merchant_id . 
-                    $order_id . 
-                    number_format($amount, 2, '.', '') . 
-                    $currency .  
-                    strtoupper(md5($merchant_secret)) 
-                ) 
-            );
+                // Replace with your Merchant Secret
+                $merchant_secret = MERCHANT_SECRET;
 
-            $array = [];
-            
-            $array['first_name'] = "saman";
-            $array['last_name'] = "kumara";
-            $array['item_name'] = "Bus Ticket";
-            $array['email'] = "samankumara@gmail.com";
-            $array['phone'] = "0324200276";
-            $array['address'] = "No 1, Colombo Road, Colombo 07";
-            $array['city'] = "Colombo";
-            $array['amount'] = $amount;
-            $array['merchant_id'] = $merchant_id;
-            $array['order_id'] = $order_id;
-            $array['currency'] = $currency;
-            $array['hash'] = $hash;
+                // Generate local md5sig for verification
+                $local_md5sig = strtoupper(
+                    md5(
+                        $merchant_id . 
+                        $order_id . 
+                        $payhere_amount . 
+                        $payhere_currency . 
+                        $status_code . 
+                        strtoupper(md5($merchant_secret)) 
+                    ) 
+                );
 
-            $jsonObj = json_encode($array);
+                // Verify the authenticity of the payment notification
+                if (($local_md5sig === $md5sig) && ($status_code == 2)) {
+                    
+                    $this->bookingModel->updateBookingStatus($order_id, 'accepted');
+                }
 
-            echo $jsonObj;
+                else{
+                    $this->bookingModel->deleteBooking($order_id);
+                }
+
+
+            }
+            else{
+                $totalAmount = $_GET['totalAmount'];
+                $selectedSeats = $_GET['selectedSeats'];
+                $schedule_id = $_GET['scheduleId'];
+                $seatIds = explode(',', $selectedSeats);
+                $order_id = uniqid();
+                $user_type = ($_SESSION['usertype'] == 'RegPassenger') ? '2' : '5';
+                foreach($seatIds as $seatId){
+                    $this->bookingModel->addBooking($order_id, $schedule_id, $seatId, $_SESSION['user_id'], $user_type );
+                }
+
+
+                $amount = $totalAmount;
+                $merchant_id = MERCHANT_ID;
+                $merchant_secret = MERCHANT_SECRET;
+                $currency = 'LKR';
+
+                $hash = strtoupper(
+                    md5(
+                        $merchant_id . 
+                        $order_id . 
+                        number_format($amount, 2, '.', '') . 
+                        $currency .  
+                        strtoupper(md5($merchant_secret)) 
+                    ) 
+                );
+                
+                $passengerDetails = $this->regPassengerModel->getDetails($_SESSION['user_id']);
+                $passengerDetails = $passengerDetails[0];
+                $addressParts = explode(',', $passengerDetails->address);
+
+                // Assuming the city is the last part of the address
+                $city = trim(end($addressParts));
+
+                $array['city'] = $city;
+                $array = [];
+                
+                $array['first_name'] = $_SESSION['user_name'];
+                $array['last_name'] = "";
+                $array['item_name'] = "Bus Ticket";
+                $array['email'] = $_SESSION['user_email'];
+                $array['phone'] = $passengerDetails->mobile;
+                $array['address'] = $passengerDetails->address;
+                $array['city'] = $city;
+                $array['amount'] = $amount;
+                $array['merchant_id'] = $merchant_id;
+                $array['order_id'] = $order_id;
+                $array['currency'] = $currency;
+                $array['hash'] = $hash;
+
+                $jsonObj = json_encode($array);
+
+                echo $jsonObj;
+                // echo $selectedSeats;
+            }
         }
 
         public function getDetails(){
