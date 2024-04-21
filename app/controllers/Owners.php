@@ -329,6 +329,40 @@
 
         }
 
+        public function Booking()
+    {
+        // Check if the user is logged in and is an owner
+        if (!isLoggedIn() || $_SESSION['usertype'] !== 'Owner') {
+            // Redirect to login if not logged in or not an owner
+            redirect('users/login');
+        }
+
+        // Load the Booking model
+        $this->bookingModel = $this->model('Booking');
+
+        // Fetch bookings for the current owner
+        $bookings = $this->bookingModel->getBookingsByOwner($_SESSION['user_id']);
+
+        // Prepare data to be passed to the view
+        $data = [
+            'bookings' => $bookings
+        ];
+
+        // Load the view to display bookings
+        $this->view('owners/Booking', $data);
+    }
+
+    public function OnGoingBus(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+            redirect('Users/login');
+        }
+
+        $this->view('Owners/OnGoingBus');
+    }
+
+
+
        
         
 

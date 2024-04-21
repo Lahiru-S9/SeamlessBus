@@ -1,0 +1,36 @@
+.container{
+    margin-top: 80px;
+    
+
+
+
+}
+.h1{
+    margin-top: 30px;
+    
+
+
+}
+
+.booking-list{
+    margin-top: 20px;
+    display: grid;
+    
+
+}
+
+.booking-item{
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+
+}
+
+.booking-item p {
+    margin: 5px 0;
+    color: #1f0c5b;
+    font-weight: bold;
+}
