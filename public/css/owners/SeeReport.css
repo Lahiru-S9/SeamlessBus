@@ -5,12 +5,13 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: blue;
 }
 
 nav ul {
@@ -24,23 +25,23 @@ nav ul li {
     margin-right: 20px;
 }
 
-section {
-    margin-bottom: 30px;
-}
-
 .summary {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
 
 .statistic {
+    display:grid;
+    margin-top: 20px;
     text-align: center;
+    
+}
+.statistic :hover{
+    background-color: brown;
 }
 
-.charts {
-    /* Add styles for charts and graphs */
-}
 
 table {
     width: 100%;

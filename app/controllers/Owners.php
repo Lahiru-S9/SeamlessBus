@@ -309,6 +309,26 @@
             $this->view('Owners/SeeReport');
         }
 
+        public function readFeedback(){
+            if(!isLoggedIn() || $_SESSION['usertype'] !== 'Owner'){
+                redirect('users/login');
+            }
+            $this->feedbackModel = $this->model('Feedback');
+
+            // Fetch feedback data
+            $feedbackData = $this->feedbackModel->getAllFeedback();
+    
+            // Pass feedback data to the view
+            $data = [
+                'feedback' => $feedbackData
+            ];
+    
+            // Load view
+            $this->view('Owners/readFeedback', $data);
+
+
+        }
+
        
         
 
