@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class OwnerProfile {
     private $db;
@@ -8,9 +8,8 @@ class OwnerProfile {
     }
 
     public function profile($data){
-        $this->db->query('INSERT INTO owner_profile (owner_id, owner_name, owner_email, owner_password) VALUES (:owner_id, :owner_name, :owner_email, :owner_password)');
+        $this->db->query('INSERT INTO owner_profile (owner_name, owner_email, owner_password) VALUES (:owner_name, :owner_email, :owner_password)');
 
-        $this->db->bind(':owner_id' , $data['owner_id']);
         $this->db->bind(':owner_name' , $data['owner_name']);
         $this->db->bind(':owner_email' , $data['owner_email']);
         $this->db->bind(':owner_password' , $data['owner_password']);
@@ -24,9 +23,4 @@ class OwnerProfile {
     }
 
 }
-
-
-
-
-
 ?>
