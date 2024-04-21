@@ -8,7 +8,7 @@ function updateFilterValues(filterType) {
   // Configure the request
   xhr.open(
     "GET",
-    "<?php echo URLROOT; ?>/schedulers/getFilterValues?filter_type=" +
+    "http://localhost/SeamlessBus/Schedulers/getFilterValues?filter_type=" +
       filterType,
     true
   );
@@ -17,11 +17,11 @@ function updateFilterValues(filterType) {
   xhr.onload = function () {
     if (xhr.status === 200) {
       // The request was successful, parse the response as JSON and add the options
-      var options = JSON.parse(xhr.responseText);
-      options.forEach(function (option) {
+      var response = JSON.parse(xhr.responseText);
+      response.forEach(function (obj) {
         var optionElement = document.createElement("option");
-        optionElement.value = option;
-        optionElement.text = option;
+        optionElement.value = obj["Option"];
+        optionElement.text = obj["Option"];
         filterValueElement.add(optionElement);
       });
     } else {
