@@ -300,7 +300,7 @@
 
         }
         
-        public function seereports(){
+        public function seeReports(){
             if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
 
                 redirect('Users/login');
