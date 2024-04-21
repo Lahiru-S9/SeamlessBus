@@ -113,4 +113,37 @@
     font-weight: 600;
   }
 
+  .buses {
+    margin-top: 20px;
+  }
+  
+  .dashboard-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #e98412;
+  }
+  
+  table th {
+    background-color: #bfdd77;
+  }
+  
+  table tr:hover {
+    background-color: #4a2cdf;
+  }
+  
+  h3 {
+    margin-top: 20px;
+  }
+
  
