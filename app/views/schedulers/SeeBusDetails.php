@@ -18,18 +18,27 @@
 <table>
     <thead>
         <tr>
+            <th>Bus Number</th>
+            <th>Bus Model</th>
+            <th>Permit ID</th>
             <th>Route Number</th>
+            <th>Owner Name</th>
             <th>To Station</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($buses as $bus) : ?>
+        <?php foreach ($data['buses'] as $bus) : ?>
             <tr>
-                <td><?php echo $bus['route_number']; ?></td>
-                <td><?php echo $bus['to_station']; ?></td>
+                <td><?php echo $bus->bus_no; ?></td>
+                <td><?php echo $bus->bus_model; ?></td>
+                <td><?php echo $bus->permitid; ?></td>
+                <td><?php echo $bus->route_num; ?></td>
+                <td><?php echo $bus->name; ?></td>
+                <td><?php echo $bus->station; ?></td>
                 <td>
-                    <a href="<?php echo URLROOT; ?>/schedulers/removeBus/<?php echo $bus['id']; ?>">Remove</a>
+                    <a href="<?php echo URLROOT; ?>/schedulers/removeBus/<?php echo $bus->bus_no; ?>">Remove</a>
+                    <a href="<?php echo URLROOT; ?>/schedulers/editBus/<?php echo $bus->bus_no; ?>">Pause</a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -67,6 +76,6 @@
     
 </div>
 
-<script src="<?php echo URLROOT; ?>/js/schedulers/seeBusSchedule.js"></script>
+<script src="<?php echo URLROOT; ?>/js/schedulers/seeBusDetails.js"></script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

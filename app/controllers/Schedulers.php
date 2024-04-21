@@ -6,6 +6,7 @@
             $this->userModel = $this->model('User');
             $this->scheduleModel = $this->model('Schedulerow');
             $this->busModel = $this->model('Bus');
+            $this->routesModel = $this->model('Route');
         }
 
         public function register(){
@@ -267,9 +268,47 @@
     }
 
     public function seebusdetails(){
-        $this->view('schedulers/seeBusDetails');
+        $buses = $this->busModel->getBusesBySchedulerId($_SESSION['user_id']);
+
+        $data = [
+            'buses' => $buses
+        ];
+
+        // var_dump($data);
+    
+        $this->view('schedulers/seeBusDetails', $data);
     }
     
+    public function getFilterValues(){
+        if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['filter_type'])) {
+            // It's an AJAX request
+            $filterType = $_GET['filter_type'];
+
+            if ($filterType === 'route_number') {
+                // Fetch all route numbers
+                $routeNumbers = $this->routesModel->getRoutesbyScheduler($_SESSION['user_id']);
+
+                // Return route numbers as JSON
+                echo json_encode($routeNumbers);
+                exit;
+            } else if ($filterType === 'to_station') {
+                // Fetch all stations
+                $stations = $this->busModel->getStations();
+
+                // Return stations as JSON
+                echo json_encode($stations);
+                exit;
+            } else {
+                // Return an error message
+                echo json_encode(['error' => 'Invalid filter type']);
+                exit;
+            }
+        } else {
+            // Handle non-POST requests, if needed
+            echo json_encode(['error' => 'Invalid request method']);
+            exit;
+        }
+    }
 
 
     public function DefineSchedule(){

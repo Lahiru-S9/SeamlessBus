@@ -96,4 +96,35 @@ class Bus {
             return false;
         }
     }
+
+    public function getBusesBySchedulerId($id){
+        $this->db->query('SELECT 
+        buses.bus_no,
+        buses.bus_model,
+        buses.permitid,
+        buses.route_num,
+        users.name,
+        stations.station
+    FROM 
+        buses
+    JOIN 
+        users ON buses.ownerid = users.id
+    JOIN 
+        routes ON buses.route_num = routes.route_num
+    JOIN 
+        stations ON routes.tostationid = stations.id
+    WHERE 
+        status = "accepted" AND 
+        (routes.fromstationid = (SELECT station_id FROM schedulers JOIN scheduler_details ON scheduler_details.id = schedulers.scheduler_id WHERE scheduler_details.user_id = :id) OR 
+         routes.tostationid = (SELECT station_id FROM schedulers JOIN scheduler_details ON scheduler_details.id = schedulers.scheduler_id WHERE scheduler_details.user_id = :id))
+    ');
+
+
+        //Bind value
+        $this->db->bind(':id', $id);
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
 }
