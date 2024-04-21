@@ -8,7 +8,7 @@
         }
 
         public function getSeats($schedule_id){
-            $this->db->query('SELECT `seatno` FROM `bookings` WHERE `scheduleid` = :schedule_id');
+            $this->db->query('SELECT `seatno` FROM `bookings` WHERE `scheduleid` = :schedule_id AND `payment_status` = "accepted"');
             $this->db->bind(':schedule_id', $schedule_id);
         
             $results = $this->db->resultSet();
@@ -107,7 +107,7 @@
         }
 
         public function updateBookingStatus($order_id, $status){
-            $this->db->query('UPDATE `bookings` SET `status` = :status WHERE `order_id` = :order_id');
+            $this->db->query('UPDATE `bookings` SET `payment status` = :status WHERE `order_id` = :order_id');
             $this->db->bind(':order_id', $order_id);
             $this->db->bind(':status', $status);
 

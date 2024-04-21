@@ -80,6 +80,7 @@
 
             }
             
+            var_dump($seats);
             $data = [
                 'schedule' => $schedule,
                 'seats' => $seats
