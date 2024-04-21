@@ -26,10 +26,11 @@ th, td {
 
 th {
     background-color: #9fd892;
+    font-weight: bold;
     
 }
 
 tbody tr:hover {
-    background-color: #abe7a3;
+    background-color: #ceebcb;
 }
 
