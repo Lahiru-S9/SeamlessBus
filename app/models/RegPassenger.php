@@ -51,14 +51,14 @@
             $this->db->query("
                         SELECT s_from.station AS from_station,
                         s_to.station AS to_station,
-                        sch.arrival_time,
-                        sch.departure_time,
+                        schedule_def.arrival_time,
+                        schedule_def.departure_time,
                         b.seatno
-                FROM saved_routes sr
-                JOIN routes r ON sr.route_id = r.id
+                FROM routes r
                 JOIN stations s_from ON r.fromstationid = s_from.id
                 JOIN stations s_to ON r.tostationid = s_to.id
-                JOIN schedule sch ON r.id = sch.routeid
+                JOIN schedule_def ON schedule_def.route_id = r.id
+                JOIN schedule sch ON schedule_def.id = sch.schedule_defId
                 JOIN bookings b ON sch.id = b.scheduleid
                 JOIN booked_regpassengers br ON b.id = br.bookingid
                 WHERE br.passengerid = :passenger_id
@@ -73,20 +73,20 @@
 
         public function getFinishedBookings($passenger_id){
             $this->db->query("
-                        SELECT s_from.station AS from_station,
-                        s_to.station AS to_station,
-                        sch.arrival_time,
-                        sch.departure_time,
-                        b.seatno
-                FROM saved_routes sr
-                JOIN routes r ON sr.route_id = r.id
-                JOIN stations s_from ON r.fromstationid = s_from.id
-                JOIN stations s_to ON r.tostationid = s_to.id
-                JOIN schedule sch ON r.id = sch.routeid
-                JOIN bookings b ON sch.id = b.scheduleid
-                JOIN booked_regpassengers br ON b.id = br.bookingid
-                WHERE br.passengerid = :passenger_id
-                AND br.status = 'finished';
+            SELECT s_from.station AS from_station,
+            s_to.station AS to_station,
+            schedule_def.arrival_time,
+            schedule_def.departure_time,
+            b.seatno
+        FROM routes r
+        JOIN stations s_from ON r.fromstationid = s_from.id
+        JOIN stations s_to ON r.tostationid = s_to.id
+        JOIN schedule_def ON schedule_def.route_id = r.id
+        JOIN schedule sch ON schedule_def.id = sch.schedule_defId
+        JOIN bookings b ON sch.id = b.scheduleid
+        JOIN booked_regpassengers br ON b.id = br.bookingid
+        WHERE br.passengerid = :passenger_id
+        AND br.status = 'finished';
             ");
             
             $this->db->bind(':passenger_id', $passenger_id);    
