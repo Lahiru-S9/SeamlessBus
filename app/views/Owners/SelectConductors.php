@@ -6,8 +6,10 @@
 <div id="bus-list">
     <?php foreach ($data['buses'] as $bus): ?>
         <div class="bus">
-            <span class="bus-number"><?php echo $bus->bus_no; ?></span>
-            <span class="bus-route"><?php echo $bus->route_num; ?></span>
+            <span class="bus-number"><?php echo $bus->bus_no; ?></span><br>
+            <span class="bus-ownerid">Owner ID: <?php echo $bus->ownerid; ?></span><br>
+            <span class="bus-model">Bus Model: <?php echo $bus->bus_model; ?></span><br>
+            <span class="bus-route">Bus Route: <?php echo $bus->route_num; ?></span>
             <button class="select-btn" onclick="showConductors()">Select</button>
         </div>
     <?php endforeach; ?>
@@ -27,6 +29,10 @@
         var conductors = [
             { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
             { name: 'Jane Smith', age:28,yearsOfExperience: 5,isAssigned: true },
+            { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
+            { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
+            { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
+            { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
            
         
             // Add more conductor objects as needed
@@ -46,13 +52,13 @@
                 assignButton = '<button class="assign-btn" disabled>Already Assigned</button>';
             }
             html += `
-                <div class="conductor">
-                    <span class="conductor-name">${conductor.name}</span><br>
-                    <span class="conductor-age">${conductor.age}</span><br>
-                    <span class="conductor-age">${conductor.yearsOfExperience}</span>
-                    ${assignButton}
-                    <button class="delete-btn" onclick="deleteConductor('${conductor.name}')">Delete</button>
-                </div>
+            <div class="conductor">
+                            <span>Name: ${conductor.name}</span><br>
+                            <span>Age: ${conductor.age}</span><br>
+                            <span>Years of Experience: ${conductor.yearsOfExperience}</span><br>
+                            <button class="assign-btn" onclick="assignConductor('${conductor.name}')">Assign</button>
+                            <button class="delete-btn" onclick="deleteConductor('${conductor.name}')">Delete</button>
+                        </div>
             `;
         });
 

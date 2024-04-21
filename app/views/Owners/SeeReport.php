@@ -5,15 +5,12 @@
     <h1>Bus Owner Reports</h1>
     <nav>
         <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Sales Report</a></li>
             <li><a href="#">Performance Metrics</a></li>
-            <li><a href="#">Feedback</a></li>
+            <li><a href="<?php echo URLROOT?>/Owners/readFeedback" class="container">Feedback</a></li>
+            <li><a href="#">On Going Buses </a></li>
+            <li><a href="#">Bookings</a></li>
         </ul>
     </nav>
-
-    <section id="dashboard">
-        <h2>Dashboard</h2>
 
         <div class="summary">
             <div class="statistic">
@@ -25,12 +22,7 @@
                 <p>XX,XXX</p>
             </div>
             <!-- Add more summary statistics -->
-        </div>
-        <!-- Display charts and graphs -->
-        <div class="charts">
-            <!-- Include charts here (e.g., revenue trend, passenger distribution) -->
-        </div>
-    </section>
+</div>
 
     <section id="sales-report">
         <h2>Sales Report</h2>
@@ -39,16 +31,17 @@
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th>Route</th>
+                    <th>Bus</th>
                     <th>Revenue</th>
                     <!-- Add more column headers -->
                 </tr>
             </thead>
             <tbody>
                 <!-- Populate table rows with sales data -->
-                <tr>
+                <tr> 
+                    <!-- dummy data for reports -->
                     <td>2024-04-01</td>
-                    <td>Route A</td>
+                    <td>Rosa</td>
                     <td>$XXX</td>
                     <!-- Add more columns -->
                 </tr>
