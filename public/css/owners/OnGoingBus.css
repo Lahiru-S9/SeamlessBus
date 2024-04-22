@@ -1,0 +1,36 @@
+.container{
+    margin-top: 80px;
+
+}
+
+.h1{
+    margin-top: 80px;
+    background-color: blue;
+    background-position: center;
+    margin-bottom: 40px;
+}
+
+
+table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #d1eb69;
+}
+
+th {
+    background-color: #9fd892;
+    font-weight: bold;
+    
+}
+
+tbody tr:hover {
+    background-color: #ceebcb;
+}
+

@@ -12,7 +12,7 @@
                 <button onclick="window.location.href = '<?php echo URLROOT; ?>/GPassengers/register';" class="btn btn-primary btn-user-select btn-block">Passenger</button>
             </div>
             <div class="form-group-user-select">
-                <button onclick="window.location.href = '<?php echo URLROOT; ?>/users/register';" class="btn btn-primary btn-user-select btn-block">Conductor</button>
+                <button onclick="window.location.href = '<?php echo URLROOT; ?>/Conductors/register';" class="btn btn-primary btn-user-select btn-block">Conductor</button>
             </div>
             <div class="form-group-user-select">
 
