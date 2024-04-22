@@ -36,3 +36,46 @@ function updateFilterValues(filterType) {
 
 // Call updateFilterValues initially to populate the dropdown
 updateFilterValues(document.getElementById("filter_type").value);
+
+function applyFilter() {
+  var form = document.querySelector("form");
+  var formData = new FormData(form);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open(
+    "GET",
+    form.action + "?" + new URLSearchParams(formData).toString(),
+    true
+  );
+
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      var response = xhr.responseText;
+      var tableContent = extractTableContent(response); // Extract table content from the response
+      document.getElementById("busDetailsContainer").innerHTML = tableContent;
+    } else {
+      console.error("Filter request failed: " + xhr.status);
+    }
+  };
+
+  xhr.send();
+}
+
+function extractTableContent(response) {
+  // Extract the form and table content from the response
+  var startIdx = response.indexOf("<button");
+  var endIdx = response.indexOf("</button>") + "</buttton>".length;
+  var formContent = response.substring(startIdx, endIdx);
+
+  startIdx = response.indexOf("<table>");
+  endIdx = response.indexOf("</table>") + "</table>".length;
+  var tableContent = response.substring(startIdx, endIdx);
+
+  return formContent + tableContent;
+}
+
+// Function to reset the filter
+function resetFilter() {
+  // Reload the page to reset the filter
+  window.location.href = window.location.origin + window.location.pathname;
+}

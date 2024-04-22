@@ -104,7 +104,8 @@ class Bus {
         buses.permitid,
         buses.route_num,
         users.name,
-        stations.station
+        to_station.station AS to_station,
+        from_station.station AS from_station
     FROM 
         buses
     JOIN 
@@ -112,7 +113,9 @@ class Bus {
     JOIN 
         routes ON buses.route_num = routes.route_num
     JOIN 
-        stations ON routes.tostationid = stations.id
+        stations AS to_station ON routes.tostationid = to_station.id 
+    JOIN
+        stations AS from_station ON routes.fromstationid = from_station.id 
     WHERE 
         status = "accepted" AND 
         (routes.fromstationid = (SELECT station_id FROM schedulers JOIN scheduler_details ON scheduler_details.id = schedulers.scheduler_id WHERE scheduler_details.user_id = :id) OR 
@@ -125,6 +128,14 @@ class Bus {
 
         $results = $this->db->resultSet();
 
+        return $results;
+    }
+
+    public function getFilteredBuses($sql,$id,$filter_value){
+        $this->db->query($sql);
+        $this->db->bind(':id', $id);
+        $this->db->bind(':filter_value', $filter_value);
+        $results = $this->db->resultSet();
         return $results;
     }
 }
