@@ -5,6 +5,7 @@
             $this->busModel = $this->model('Bus');
             $this->feedbackModel = $this->model('Feedback');
             $this->routeModel = $this->model('Route');
+            $this->conductorModel = $this->model('Conductor');
         }
 
         public function register(){
@@ -248,13 +249,19 @@
             $this->view('owners/profile');
         }
         
-        public function selectConductor(){
+        public function selectConductors(){
             if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
 
                 redirect('Users/login');
             }
 
-            $this->view('Owners/SelectConductors');
+            $buses = $this->busModel->getBusesByOwnerId($_SESSION['user_id']);
+            $conductors = $this->conductorModel->getConductors();
+            $data = [
+                'buses' => $buses
+            ];
+
+            $this->view('Owners/SelectConductors', $data);
         }
         public function addFeedback(){
             if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
@@ -292,6 +299,69 @@
             }
 
         }
+        
+        public function seeReports(){
+            if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+                redirect('Users/login');
+            }
+
+            $this->view('Owners/SeeReport');
+        }
+
+        public function readFeedback(){
+            if(!isLoggedIn() || $_SESSION['usertype'] !== 'Owner'){
+                redirect('users/login');
+            }
+            $this->feedbackModel = $this->model('Feedback');
+
+            // Fetch feedback data
+            $feedbackData = $this->feedbackModel->getAllFeedback();
+    
+            // Pass feedback data to the view
+            $data = [
+                'feedback' => $feedbackData
+            ];
+    
+            // Load view
+            $this->view('Owners/readFeedback', $data);
+
+
+        }
+
+        public function Booking()
+    {
+        // Check if the user is logged in and is an owner
+        if (!isLoggedIn() || $_SESSION['usertype'] !== 'Owner') {
+            // Redirect to login if not logged in or not an owner
+            redirect('users/login');
+        }
+
+        // Load the Booking model
+        $this->bookingModel = $this->model('Booking');
+
+        // Fetch bookings for the current owner
+        $bookings = $this->bookingModel->getBookingsByOwner($_SESSION['user_id']);
+
+        // Prepare data to be passed to the view
+        $data = [
+            'bookings' => $bookings
+        ];
+
+        // Load the view to display bookings
+        $this->view('owners/Booking', $data);
+    }
+
+    public function OnGoingBus(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+            redirect('Users/login');
+        }
+
+        $this->view('Owners/OnGoingBus');
+    }
+
+
 
        
         

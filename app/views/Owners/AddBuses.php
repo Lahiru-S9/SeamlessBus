@@ -1,20 +1,15 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/Owners/AddBuses.css">
-
-
+<div class="background-image">
+    <img src="<?php echo URLROOT; ?>/img/bus_timeslots.jpg" alt="background image">
+</div>  
+<div class="form-wrapper">
 <div class="container">
-    <img src="<?php echo URLROOT; ?>/img/R.jpeg" alt="Background Image" />
-
-
-
-    <div class="content">
-
+        <h2>ADD THE BUS</h2>
         
-
-      
-        <div class="login-subtitle"><h2>Add the new bus</h2></div>
         
-        <form action="<?php echo URLROOT; ?>/Owners/AddBuses" method="POST">
+        <form action="<?php echo URLROOT; ?>css/owners/AddBuses" method="POST">
             <div class="form-group">
                 <label for="bus_number">Bus No:  <sup></sup></label>
                 <input type="text" class="custom-input <?php echo (!empty($data['bus_number_err'])) ? 'is-invalid' : ''; ?>" name="bus_number" value="<?php echo $data['bus_number']; ?>" >
@@ -31,7 +26,7 @@
                 <span class="error-message"><?php echo $data['bus_seat_err']; ?></span>
             </div>
             <div class="form-group">
-                <label for="permit_id">permit ID: <sup></sup></label>
+                <label for="permit_id">Permit ID: <sup></sup></label>
                 <input type="text" class="custom-input <?php echo (!empty($data['permit_id_err'])) ? 'is-invalid' : ''; ?>" name="permit_id" value="<?php echo $data['permit_id']; ?>">
                 <span class="error-message"><?php echo $data['permit_id_err']; ?></span>
             </div>
@@ -56,7 +51,7 @@
 
             <div class="form-group">
                 
-                <input type="submit" value="Add your Bus" class="btn btn-submit">
+                <input type="submit" value="Register" class="btn btn-submit">
             </div>
         </form>
     </div>

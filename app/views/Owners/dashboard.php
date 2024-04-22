@@ -8,7 +8,7 @@
     </div>
     <div class="dashboard-actions">
         
-        <a href="#" class="dashboard-action">
+        <a href="<?php echo URLROOT?>/Owners/selectConductors" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="QR">
             </div>
@@ -32,7 +32,7 @@
         </a>
 
         <!-- Add more dashboard actions as needed -->
-        <a href="#" class="dashboard-action">
+        <a href="<?php echo URLROOT;?>/Owners/seeReports" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/abc.png" alt="QR">
             </div>
