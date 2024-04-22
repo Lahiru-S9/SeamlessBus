@@ -103,6 +103,7 @@ class Bus {
         buses.bus_model,
         buses.permitid,
         buses.route_num,
+        buses.status,
         users.name,
         to_station.station AS to_station,
         from_station.station AS from_station
@@ -117,7 +118,7 @@ class Bus {
     JOIN
         stations AS from_station ON routes.fromstationid = from_station.id 
     WHERE 
-        status = "accepted" AND 
+        status IN ("accepted", "paused") AND 
         (routes.fromstationid = (SELECT station_id FROM schedulers JOIN scheduler_details ON scheduler_details.id = schedulers.scheduler_id WHERE scheduler_details.user_id = :id) OR 
          routes.tostationid = (SELECT station_id FROM schedulers JOIN scheduler_details ON scheduler_details.id = schedulers.scheduler_id WHERE scheduler_details.user_id = :id))
     ');

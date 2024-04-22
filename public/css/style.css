@@ -239,12 +239,13 @@ button {
     border-radius: 5px;
 
     /* Other styles (you can modify or add more as needed) */
-    border: none;
+    border: 1px solid #007bff;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    width: 110px;
 }
 
 .btn-success {
@@ -289,14 +290,21 @@ button {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    width: 110px;
 }
 
 .btn-secondary {
     background-color: #5bc0de;
     color: #fff;
-    border: 1px solid #5bc0de;
-    /* Border radius */
+    padding: 10px 20px;
     border-radius: 5px;
+    border: 1px solid #5bc0de;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 110px;
 }
 
 .btn-info {
@@ -319,19 +327,6 @@ button {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-}
-
-/* Adjusting both .btn.btn-primary and .btn.btn-danger to have the same size */
-.btn.btn-primary,
-.btn.btn-danger,
-.btn.btn-secondary {
-    
-    padding: 10px 20px;
-
-   
-    width: 120px; 
-    height: 40px; 
-
 }
 
 .accept-button {

@@ -29,6 +29,7 @@
                 <th>Owner Name</th>
                 <th>From Station</th>
                 <th>To Station</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -42,10 +43,15 @@
                     <td><?php echo $bus->name; ?></td>
                     <td><?php echo $bus->from_station; ?></td>
                     <td><?php echo $bus->to_station; ?></td>
+                    <td><?php echo $bus->status; ?></td>
                     
                     <td>
-                        <a href="<?php echo URLROOT; ?>/schedulers/removeBus/<?php echo $bus->bus_no; ?>">Remove</a>
-                        <a href="<?php echo URLROOT; ?>/schedulers/editBus/<?php echo $bus->bus_no; ?>">Pause</a>
+                        <a href="<?php echo URLROOT; ?>/schedulers/removeBus/<?php echo $bus->bus_no; ?>" class="btn-danger">Remove</a>
+                        <?php if ($bus->status == 'accepted') : ?>
+                            <a href="<?php echo URLROOT; ?>/schedulers/pauseBus/<?php echo $bus->bus_no; ?>" class="btn-secondary">Pause</a>
+                        <?php elseif ($bus->status == 'paused') : ?>
+                            <a href="<?php echo URLROOT; ?>/schedulers/resumeBus/<?php echo $bus->bus_no; ?>" class="btn btn-primary" style="padding: 10px 20px; border-radius: 5px; border: 1px solid #d9534f; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; cursor: pointer;">Resume</a>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
