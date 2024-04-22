@@ -332,6 +332,7 @@
                             buses.bus_model,
                             buses.permitid,
                             buses.route_num,
+                            buses.status,
                             users.name,
                             from_stations.station AS from_station,
                             to_stations.station AS to_station
@@ -356,6 +357,7 @@
                             buses.bus_model,
                             buses.permitid,
                             buses.route_num,
+                            buses.status,
                             users.name,
                             from_stations.station AS from_station,
                             to_stations.station AS to_station
@@ -421,6 +423,71 @@
         }
     }
     
+    public function removeBus($busNo){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // It's a regular request
+            if ($this->busModel->removeBus($busNo)) {
+                // Redirect to the seebusdetails page
+                redirect('schedulers/seebusdetails');
+            } else {
+                // Handle the case where the bus removal fails
+                echo json_encode(['error' => 'Failed to remove bus']);
+                exit;
+            }
+        } else {
+            // Handle non-GET requests, if needed
+            echo json_encode(['error' => 'Invalid request method']);
+            exit;
+        }
+    }
+
+    public function pauseBus($busNo){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // It's a regular request
+            if ($this->busModel->updateBusStatus($busNo, 'paused')) {
+                // Redirect to the seebusdetails page
+                redirect('schedulers/seebusdetails');
+            } else {
+                // Handle the case where the bus status update fails
+                echo json_encode(['error' => 'Failed to pause bus']);
+                exit;
+            }
+        } else {
+            // Handle non-GET requests, if needed
+            echo json_encode(['error' => 'Invalid request method']);
+            exit;
+        }
+    }
+
+    public function resumeBus($busNo){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // It's a regular request
+            if ($this->busModel->updateBusStatus($busNo, 'accepted')) {
+                // Redirect to the seebusdetails page
+                redirect('schedulers/seebusdetails');
+            } else {
+                // Handle the case where the bus status update fails
+                echo json_encode(['error' => 'Failed to resume bus']);
+                exit;
+            }
+        } else {
+            // Handle non-GET requests, if needed
+            echo json_encode(['error' => 'Invalid request method']);
+            exit;
+        }
+    }
     
     public function DefineSchedule(){
     $this->view('schedulers/DefineSchedule');
