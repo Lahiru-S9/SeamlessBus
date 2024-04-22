@@ -1,54 +1,62 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/schedulers/seeBusDetails.css">
 <!-- Filters -->
-<form action="<?php echo URLROOT; ?>/schedulers/SeeBusDetails" method="GET">
-    <label for="filter_type">Filter by:</label>
-    <select name="filter_type" id="filter_type" onchange="updateFilterValues(this.value)">
-        <option value="route_number">Route Number</option>
-        <option value="to_station">To Station</option>
-    </select>
-    <label for="filter_value">Value:</label>
-    <select name="filter_value" id="filter_value">
-        <!-- Options will be populated here based on the filter_type -->
-    </select>
-    <input type="submit" value="Filter">
-</form>
 
+<div id="busDetailsContainer">
+    <form action="<?php echo URLROOT; ?>/schedulers/applyFilter" method="GET">
+        <label for="filter_type">Filter by:</label>
+        <select name="filter_type" id="filter_type" onchange="updateFilterValues(this.value)">
+            <option value="route_number">Route Number</option>
+            <option value="to_station">To Station</option>
+            <option value="from_station">From Station</option>
+        </select>
+        <label for="filter_value">Value:</label>
+        <select name="filter_value" id="filter_value">
+            <!-- Options will be populated here based on the filter_type -->
+        </select>
+        <input type="button" value="Filter" onclick="applyFilter()">
+    </form>
 
-<table>
-    <thead>
-        <tr>
-            <th>Bus Number</th>
-            <th>Bus Model</th>
-            <th>Permit ID</th>
-            <th>Route Number</th>
-            <th>Owner Name</th>
-            <th>To Station</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($data['buses'] as $bus) : ?>
+    <button onclick="resetFilter()">Reset Filter</button>
+
+    <table>
+        <thead>
             <tr>
-                <td><?php echo $bus->bus_no; ?></td>
-                <td><?php echo $bus->bus_model; ?></td>
-                <td><?php echo $bus->permitid; ?></td>
-                <td><?php echo $bus->route_num; ?></td>
-                <td><?php echo $bus->name; ?></td>
-                <td><?php echo $bus->station; ?></td>
-                <td>
-                    <a href="<?php echo URLROOT; ?>/schedulers/removeBus/<?php echo $bus->bus_no; ?>">Remove</a>
-                    <a href="<?php echo URLROOT; ?>/schedulers/editBus/<?php echo $bus->bus_no; ?>">Pause</a>
-                </td>
+                <th>Bus Number</th>
+                <th>Bus Model</th>
+                <th>Permit ID</th>
+                <th>Route Number</th>
+                <th>Owner Name</th>
+                <th>From Station</th>
+                <th>To Station</th>
+                <th>Actions</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php foreach ($data['buses'] as $bus) : ?>
+                <tr>
+                    <td><?php echo $bus->bus_no; ?></td>
+                    <td><?php echo $bus->bus_model; ?></td>
+                    <td><?php echo $bus->permitid; ?></td>
+                    <td><?php echo $bus->route_num; ?></td>
+                    <td><?php echo $bus->name; ?></td>
+                    <td><?php echo $bus->from_station; ?></td>
+                    <td><?php echo $bus->to_station; ?></td>
+                    
+                    <td>
+                        <a href="<?php echo URLROOT; ?>/schedulers/removeBus/<?php echo $bus->bus_no; ?>">Remove</a>
+                        <a href="<?php echo URLROOT; ?>/schedulers/editBus/<?php echo $bus->bus_no; ?>">Pause</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
+</div>
 
 
 <!-- footer -->
-<div class="footer">
+    <div class="footer">
         <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
         <div class="footer-subtext">
             Seamless Bus
