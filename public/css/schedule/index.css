@@ -51,10 +51,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    line-height: normal;
 }
 
 .col-md-4 {
     margin: 0 10px; /* Adjust the margin as needed */
+}
+
+.guest-info{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
 }
 
 .form-select {
