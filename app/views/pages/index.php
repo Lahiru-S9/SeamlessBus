@@ -24,7 +24,7 @@
                 window.location.href = '<?php echo URLROOT; ?>/GPassengers/register';
             }
             function goToPage2() {
-                window.location.href = '<?php echo URLROOT; ?>/gpassengers/guestBooking';
+                window.location.href = '<?php echo URLROOT; ?>/schedule/index';
             }
             function showConfirmation() {
                 var result = confirm('Hey there!\n\nCreating an account would make it convenient for you to place bookings and save your regular routines.\n\nWould you like to create an account first?');
