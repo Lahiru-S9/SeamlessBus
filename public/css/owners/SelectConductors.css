@@ -1,0 +1,97 @@
+/* SelectConductors.css */
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 80px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#bus-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.bus {
+    border: 1px solid #76cac7;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.bus-number {
+    font-weight: bold;
+}
+
+.select-btn {
+    padding: 5px 10px;
+    background-color: #0e30ef;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.select-btn:hover {
+    background-color: #f7f315;
+}
+
+/* Conductor list styles */
+#conductor-list {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.conductor {
+    border: 1px solid #76cac7;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.conductor-name {
+    font-weight: bold;
+}
+
+
+.assign-btn {
+    width: 10%;
+    padding: 5px 10px;
+    background-size: 5cm;
+    background-position: center;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.assign-btn:hover {
+    background-color: #f7f315;
+}
+
+.delete-btn {
+    width: 10%;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #f7f315;
+}

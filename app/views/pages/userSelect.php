@@ -12,10 +12,12 @@
                 <button onclick="window.location.href = '<?php echo URLROOT; ?>/GPassengers/register';" class="btn btn-primary btn-user-select btn-block">Passenger</button>
             </div>
             <div class="form-group-user-select">
-                <button onclick="window.location.href = '<?php echo URLROOT; ?>/users/register';" class="btn btn-primary btn-user-select btn-block">Conductor</button>
+                <button onclick="window.location.href = '<?php echo URLROOT; ?>/Conductors/register';" class="btn btn-primary btn-user-select btn-block">Conductor</button>
             </div>
             <div class="form-group-user-select">
-                <button onclick="window.location.href = '<?php echo URLROOT; ?>/Schedulers/register';" class="btn btn-primary btn-user-select btn-block">Scheduler</button>
+
+                <button onclick="window.location.href = '<?php echo URLROOT; ?>/schedulers/register';" class="btn btn-primary btn-user-select btn-block">Scheduler</button>
+
             </div>
             <div class="form-group-user-select">
                 <button onclick="window.location.href = '<?php echo URLROOT; ?>/Owners/register';" class="btn btn-primary btn-user-select btn-block">Owner</button>

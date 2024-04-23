@@ -5,6 +5,7 @@ body, html {
 }
 
 .container {
+    margin-top: 80px;
     position: relative;
 }
 
@@ -25,20 +26,18 @@ body, html {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .login-title {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 800;
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .login-subtitle, .subtitle {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     margin-bottom: 20px;
 }
 
 .form-group {
-    text-align: left;
     margin-bottom: 20px;
 }
 
@@ -74,19 +73,10 @@ label {
     margin-right: 10px;
 }
 
-.btn-reset:hover, .btn-submit:hover{
-    background-color: #B74F6F;
-    color: white;
-}
-
 .row {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#footer-logo{
-    height: 80px;
-    width: auto;
-}
 /* Additional styling as needed */
