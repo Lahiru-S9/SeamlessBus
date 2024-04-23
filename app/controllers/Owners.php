@@ -6,6 +6,7 @@
             $this->feedbackModel = $this->model('Feedback');
             $this->routeModel = $this->model('Route');
             $this->conductorModel = $this->model('Conductor');
+            $this->ownerModel = $this->model('Owner');
         }
 
         public function register(){
@@ -242,12 +243,6 @@
 
             $this->view('Owners/bankDetails');
         }
-
-        public function profile(){
-            
-
-            $this->view('owners/profile');
-        }
         
         public function selectConductors(){
             if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
@@ -361,10 +356,40 @@
         $this->view('Owners/OnGoingBus');
     }
 
+    public function profile(){
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'id' => $_SESSION['user_id'],
+                'email' => trim($_POST['Email']),
+                'phone' => trim($_POST['Phone']),
+                'mobile' => trim($_POST['Mobile']),
+                'address' =>trim($_POST['Address'])
+            ];
 
-       
+            var_dump($data);
+
+            if($this->ownerModel->updateOwnerById($data)){
+                redirect('owners/profile');
+            }
+            else{
+                die('Something went wrong');
+            }
+            exit;
+
+        }
+        else{
         
+            
+            $ownerDetails = $this->ownerModel->getDetails($_SESSION['user_id']);
 
-
+            $data = [
+                'ownerDetails' => $ownerDetails
+            ];
+            
+            $this->view('owners/profile', $data);
+        }
     }
+
+}
