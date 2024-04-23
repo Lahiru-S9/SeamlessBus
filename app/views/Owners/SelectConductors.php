@@ -7,7 +7,7 @@
     <?php foreach ($data['buses'] as $bus): ?>
         <div class="bus">
             <span class="bus-number"><?php echo $bus->bus_no; ?></span><br>
-            <span class="bus-ownerid">Owner ID: <?php echo $bus->ownerid; ?></span><br>
+            <span class="bus-ownerid">Bus No: <?php echo $bus->bus_no; ?></span><br>
             <span class="bus-model">Bus Model: <?php echo $bus->bus_model; ?></span><br>
             <span class="bus-route">Bus Route: <?php echo $bus->route_num; ?></span>
             <button class="select-btn" onclick="showConductors()">Select</button>
