@@ -3,7 +3,7 @@
 
     <div class="schedule-container">
       <?php if (!empty($data['schedule'])) : ?>
-      <h1>Schedule Details</h1>
+      <h1>Schedule Details</h1><br>
       <?php $scheduleDetails = $data['schedule'][0]; ?>
       <!-- <p><strong>Schedule ID:</strong> <?php echo $scheduleDetails->schedule_id; ?></p> -->
       <p><strong>Route Number:</strong> <span id="routeNo" data-price="<?php echo $scheduleDetails->route_num; ?>"><?php echo $scheduleDetails->route_num; ?></span></p>
