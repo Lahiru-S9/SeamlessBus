@@ -96,6 +96,8 @@
         </div>
     </div>
     
+<div id="scheduleId" data-schedule-id="<?php echo $scheduleDetails->id; ?>"></div>
+
 <script src="<?php echo URLROOT; ?>/js/regPassengers/booking.js"></script>
 <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 
