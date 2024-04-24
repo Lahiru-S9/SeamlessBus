@@ -42,7 +42,7 @@ class Bus {
     }
 
     public function getBusesByOwnerId($owner_id){
-        $this->db->query('SELECT * FROM buses WHERE ownerid = :owner_id');
+        $this->db->query('SELECT * FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE ownerid = :owner_id');
         //Bind value
         $this->db->bind(':owner_id', $owner_id);
 
@@ -138,5 +138,19 @@ class Bus {
         $this->db->bind(':filter_value', $filter_value);
         $results = $this->db->resultSet();
         return $results;
+    }
+
+    public function assignConductor($data){
+        $this->db->query('UPDATE conductors SET assigned_to = :bus_no WHERE id = :conductor_id');
+        //Bind values
+        $this->db->bind(':bus_no', $data['bus_no']);
+        $this->db->bind(':conductor_id', $data['conductor_id']);
+
+        //Execute function
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

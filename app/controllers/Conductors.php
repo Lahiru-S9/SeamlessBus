@@ -1,12 +1,10 @@
 <?php
 
     class Conductors extends Controller{
-        public function construct(){
-            if(!isLoggedIn() || $_SESSION['usertype'] != 'Conductor'){
-                redirect('users/login');
-            }
+        public function __construct(){
             $this->userModel = $this->model('User');
             $this->conductorModel = $this->model('Conductor');
+            $this->stationModel = $this->model('Station');
         }
 
         public function register(){
@@ -27,7 +25,7 @@
                     'email_err' => '',
                     'password_err' => '',
                     'confirm_password_err' => '',
-                    'usertype' => 2
+                    'usertype' => '4'
                 ];
 
                 //Validate Email
@@ -96,7 +94,7 @@
                     'email_err' => '',
                     'password_err' => '',
                     'confirm_password_err' => '',
-                    'usertype' => '2'
+                    'usertype' => '4'
                 ];
 
                 
@@ -106,12 +104,56 @@
 
             
         }
-        public function conductorList(){
-            $conductors = $this-> conductorModel-> getconductorList();
-            $data=[
-                'conductors' =>$conductors,
-            ];
+        // public function conductorList(){
+        //     $conductors = $this-> conductorModel-> getconductorList();
+        //     $data=[
+        //         'conductors' =>$conductors,
+        //     ];
 
-            $this->view('conductors/conductorList',$data);
+        //     $this->view('conductors/conductorList',$data);
+        // }
+
+        public function profile(){
+            // Check if the form is submitted
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                // Handle form submission
+                // Assuming you have a method like updateConductorInfo in your model
+                // Validate and sanitize the input data before updating the database
+                $address = $_POST['address'];
+                $mobile = $_POST['mobile'];
+                $station = $_POST['station'];
+                
+                // Update conductor's information
+                if($this->conductorModel->updateConductorInfo($_SESSION['user_id'],$address, $mobile, $station)){
+                    // Redirect after successful update
+                    header('Location: ' . URLROOT . '/conductors/profile');
+                    exit();
+                } else {
+                    // Handle update failure
+                    // You can set an error message and pass it to the view
+                    $conductor = $this->conductorModel->getConductorById($_SESSION['user_id']);
+                    $stations = $this->stationModel->getAllStations();
+                    $error = "Failed to update profile information.";
+                    $data = [
+                        'conductor' => $conductor,
+                        'stations' => $stations,
+                        'error' => $error
+                    ];
+                    
+                    $this->view('conductors/profile', $data);
+                    exit();
+                }
+            } else {
+                // If the form is not submitted, load the profile page as usual
+                $conductor = $this->conductorModel->getConductorById($_SESSION['user_id']);
+                $stations = $this->stationModel->getAllStations();
+                $data = [
+                    'conductor' => $conductor,
+                    'stations' => $stations
+                ];
+                // var_dump($data);
+                $this->view('conductors/profile', $data);
+            }
         }
+        
     }

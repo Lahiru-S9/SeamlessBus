@@ -8,7 +8,7 @@
         <div class="login-title">Apply now to create an account</div>
         <div class="subtitle">with just a few simple steps</div><br>
 
-        <form action="<?php echo URLROOT; ?>/gPassengers/register" method="POST">
+        <form action="<?php echo URLROOT; ?>/Conductors/register" method="POST">
             <div class="form-group">
                 <label for="name">Name: <sup>*</sup></label>
                 <input type="text" class="custom-input <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" name="name" value="<?php echo $data['name']; ?>">
