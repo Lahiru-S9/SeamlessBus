@@ -1,50 +1,63 @@
 /* userSelect.css */
 
 /* Style for the container */
-.container-user-select {
+body{
+    display: flexbox;
+    position: relative;
+}
+
+.user-select-text{
+    font-size: 50px;
+    font-weight: 600;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 10%;
+}
+
+.card-container {
+    height: max-content;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    gap: 5%;
+    margin: 10% 10%;
 }
 
-/* Style for the card */
-.card-user-select {
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    background: #fff;
-    text-align: center;
+.card:hover{
+    cursor: pointer;
+    transform: rotateY(180deg);
+    border-radius: 2rem;
 }
 
-/* Style for the card header */
-.card-header-user-select {
-    background: #007BFF;
-    color: #fff;
-    padding: 10px;
+.card{
+    border-radius: 2rem;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1000ms;
+    transform-style: preserve-3d;
 }
 
-/* Style for the card title */
-.card-header-user-select h2 {
-    margin: 0;
+.card img{
+    border-radius: 2rem;
+    height:100%;
+    width: 100%;
 }
 
-/* Style for the card body */
-.card-body-user-select {
-    padding: 20px;
+.card-front,
+.card-back{
+    position:absolute;
+    border-radius: 2rem;
+    height: 100%;
+    width:100%;
+    backface-visibility: hidden;
 }
 
-/* Style for the buttons */
-.btn-user-select {
-    margin: 10px 0;
-    padding: 10px;
-    width: 200px !important;   
+.card-front{
+    height:auto;
+    width: 100%;
 }
 
-/* Style for the buttons' hover effect */
-.btn-user-select:hover {
-    background: #0056b3;
-    color: #fff;
-    transition: background 0.3s ease;
+.card-back{
+    transform: rotateY(180deg);
+    height:auto;
+    width: 100%;
 }
