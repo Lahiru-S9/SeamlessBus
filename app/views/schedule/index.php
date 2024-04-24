@@ -14,7 +14,13 @@
             <div class ="col-md-7">
                 <div class="col-md-4">
                     <form action="<?php echo URLROOT ?>/Schedule/index" method="POST">
-
+                    <div class="guest-info">
+                    <?php if(!isset($_SESSION['user_id'])) : ?>
+                            <input type="text" name="name" placeholder="  Name"/>
+                            <input type="text" name="nic" placeholder="  NIC"/>
+                            <input type="text" name="phone" placeholder="   Phone"/><br><br>
+                    <?php endif; ?>
+                    </div>
                         <div class ="row">
                             <select name ="from" class="form-select">
                                 <option value="" disabled selected>From</option>
