@@ -45,7 +45,6 @@ class Schedulerow {
         stations AS from_station ON routes.fromstationid = from_station.id
     JOIN 
         stations AS to_station ON routes.tostationid = to_station.id;
-    
         
      ');
 
@@ -264,7 +263,7 @@ class Schedulerow {
     }
     
 
-    public function getScheduleByDay($day) {
+    public function getScheduleByDay($day,$id) {
         $this->db->query('SELECT sc.id, sc.arrival_time, sc.departure_time,
                                     stations.station AS from_station, 
                                     s.station AS to_station,
@@ -273,10 +272,13 @@ class Schedulerow {
                             JOIN routes AS r ON sc.route_id = r.id
                             JOIN stations AS stations ON r.fromstationid = stations.id
                             JOIN stations AS s ON r.tostationid = s.id
-                            WHERE sc.day = :day;
+                            JOIN schedulers ON stations.id = schedulers.station_id
+                            JOIN scheduler_details ON schedulers.scheduler_id = scheduler_details.id
+                            WHERE sc.day = :day AND scheduler_details.user_id = :id;
                          ');
 
         $this->db->bind(':day', $day); // Bind the value for :day
+        $this->db->bind(':id', $id); // Bind the value for :id
 
         $results = $this->db->resultSet();
 

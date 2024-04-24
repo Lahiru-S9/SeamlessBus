@@ -157,13 +157,13 @@
         }
         else {
             // It's a regular request
-            $sunday = $this->scheduleModel->getScheduleByDay('Sunday');
-            $monday = $this->scheduleModel->getScheduleByDay('Monday');
-            $tuesday = $this->scheduleModel->getScheduleByDay('Tuesday');
-            $wednesday = $this->scheduleModel->getScheduleByDay('Wednesday');   
-            $thursday = $this->scheduleModel->getScheduleByDay('Thursday');
-            $friday = $this->scheduleModel->getScheduleByDay('Friday');
-            $saturday = $this->scheduleModel->getScheduleByDay('Saturday');
+            $sunday = $this->scheduleModel->getScheduleByDay('Sunday',$_SESSION['user_id']);
+            $monday = $this->scheduleModel->getScheduleByDay('Monday',$_SESSION['user_id']);
+            $tuesday = $this->scheduleModel->getScheduleByDay('Tuesday',$_SESSION['user_id']);
+            $wednesday = $this->scheduleModel->getScheduleByDay('Wednesday',$_SESSION['user_id']);   
+            $thursday = $this->scheduleModel->getScheduleByDay('Thursday',$_SESSION['user_id']);
+            $friday = $this->scheduleModel->getScheduleByDay('Friday',$_SESSION['user_id']);
+            $saturday = $this->scheduleModel->getScheduleByDay('Saturday',$_SESSION['user_id']);
 
             $routeNumbers = $this->scheduleModel->getRouteNumbers();
 
