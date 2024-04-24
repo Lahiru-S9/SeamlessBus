@@ -5,27 +5,27 @@
 <center><div class="user-select-text">Create your account now!</div></center>
 <div class="card-container">
     <div class="card" id="passenger-card">
-        <div class="card-front"><img src="<?php echo URLROOT; ?>/img/passenger-card.jpg"/>
+        <div class="card-front"><img src="<?php echo URLROOT; ?>/img/passenger-card-back.png"/>
         </div>
-        <div class="card-back"><img src="<?php echo URLROOT; ?>/img/passenger-card-back.png"/>
+        <div class="card-back"><img src="<?php echo URLROOT; ?>/img/passenger-card.jpg"/>
         </div>
     </div>
     <div class="card" id="conductor-card">
-    <div class="card-front"><img src="<?php echo URLROOT; ?>/img/conductor-card.jpg"/>
+    <div class="card-front"><img src="<?php echo URLROOT; ?>/img/conductor-card-back.png"/>
     </div>
-        <div class="card-back"><img src="<?php echo URLROOT; ?>/img/conductor-card-back.png"/>
+        <div class="card-back"><img src="<?php echo URLROOT; ?>/img/conductor-card.jpg"/>
         </div>
     </div>
     <div class="card" id="scheduler-card">
-    <div class="card-front"><img src="<?php echo URLROOT; ?>/img/scheduler-card.jpg"/>
+    <div class="card-front"><img src="<?php echo URLROOT; ?>/img/scheduler-card-back.png"/>
     </div>
-        <div class="card-back"><img src="<?php echo URLROOT; ?>/img/scheduler-card-back.png"/>
+        <div class="card-back"><img src="<?php echo URLROOT; ?>/img/scheduler-card.jpg"/>
         </div>
     </div>
     <div class="card" id="owner-card">
-    <div class="card-front"><img src="<?php echo URLROOT; ?>/img/owner-card.jpg"/>
+    <div class="card-front"><img src="<?php echo URLROOT; ?>/img/owner-card-back.png"/>
     </div>
-        <div class="card-back"><img src="<?php echo URLROOT; ?>/img/owner-card-back.png"/>
+        <div class="card-back"><img src="<?php echo URLROOT; ?>/img/owner-card.jpg"/>
         </div>
     </div>
 </div><br><br><br><br><br><br><br><br><br><br><br><br>
