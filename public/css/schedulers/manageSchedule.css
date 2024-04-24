@@ -28,16 +28,30 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .table {
-    width:auto;
-    border:1px solid #EEEEEE;
+    /* width:auto;
+    border:1px solid #EEEEEE; */
+    width: auto;
+    height: 200px; /* Fixed height */
+    overflow-y: auto; /* Enables vertical scrolling */
+    table-layout: fixed;
 
 }
 
 .table-header {
-    display:flex;
-    width:100%;
-    background:#000;
-    padding:12px 0;
+  display:flex;
+  width:100%;
+  background:#000;
+  padding:12px 0;
+}
+
+.table-content {
+  height:300px;
+	overflow:auto;
+	overflow-x:hidden;
+	display:block;
+	width:100%;
+  display:table;
+	table-layout:fixed;
 }
 
 .table-row {
