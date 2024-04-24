@@ -8,6 +8,7 @@
             $this->busModel = $this->model('Bus');
             $this->routesModel = $this->model('Route');
             $this->stationModel = $this->model('Station');
+            $this->feedbackModel = $this->model('Feedback');
         }
 
         public function register(){
@@ -157,13 +158,13 @@
         }
         else {
             // It's a regular request
-            $sunday = $this->scheduleModel->getScheduleByDay('Sunday');
-            $monday = $this->scheduleModel->getScheduleByDay('Monday');
-            $tuesday = $this->scheduleModel->getScheduleByDay('Tuesday');
-            $wednesday = $this->scheduleModel->getScheduleByDay('Wednesday');   
-            $thursday = $this->scheduleModel->getScheduleByDay('Thursday');
-            $friday = $this->scheduleModel->getScheduleByDay('Friday');
-            $saturday = $this->scheduleModel->getScheduleByDay('Saturday');
+            $sunday = $this->scheduleModel->getScheduleByDay('Sunday',$_SESSION['user_id']);
+            $monday = $this->scheduleModel->getScheduleByDay('Monday',$_SESSION['user_id']);
+            $tuesday = $this->scheduleModel->getScheduleByDay('Tuesday',$_SESSION['user_id']);
+            $wednesday = $this->scheduleModel->getScheduleByDay('Wednesday',$_SESSION['user_id']);   
+            $thursday = $this->scheduleModel->getScheduleByDay('Thursday',$_SESSION['user_id']);
+            $friday = $this->scheduleModel->getScheduleByDay('Friday',$_SESSION['user_id']);
+            $saturday = $this->scheduleModel->getScheduleByDay('Saturday',$_SESSION['user_id']);
 
             $routeNumbers = $this->scheduleModel->getRouteNumbers();
 
@@ -525,4 +526,43 @@
     public function schedule(){
         $this->view('schedulers/schedule');
     }
+
+    public function feedbackForm(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+           
+            redirect('Users/login');
+
+        }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // Sanitize input data
+            $feedbackType = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
+            $feedbackCategory = filter_input(INPUT_POST, 'feedback-category', FILTER_SANITIZE_STRING);
+            $feedbackText = filter_input(INPUT_POST, 'feedback-text', FILTER_SANITIZE_STRING);
+            
+            $data = [
+                'feedbackType' => $feedbackType,
+                'feedbackCategory' => $feedbackCategory,
+                'feedbackText' => $feedbackText,
+            ];
+
+            // var_dump($data);
+
+            // Validate the data if needed
+
+            // Call a method in the Feedback model to save the feedback
+            $this->feedbackModel->addFeedback($data);
+
+            // Redirect or show success message
+            // You might want to redirect to a thank you page or the same page with a success message
+            flash('feedback_success', 'Thank you for your feedback!');
+            $this->view('schedulers/feedbackForm');
+        } else {
+            // If the form is not submitted, display the feedback form
+            $this->view('schedulers/feedbackForm');
+        }
+
+    }
+    
+    
 }
