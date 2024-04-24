@@ -42,11 +42,11 @@
         </a>
 
         <!-- go to feedbackform -->
-        <a id="feedbacks-dashboard" class="dashboard-action">
+        <a href="<?php echo URLROOT ?>/Schedulers/feedbackForm" class="dashboard-action"> class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/feedbacks.jpg" alt="QR">
             </div>
-            <p class="action-label">Feedbacks</p>
+            <p class="action-label">Feedback</p>
         </a>
     </div>
 

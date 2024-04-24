@@ -79,6 +79,8 @@ body {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
+    margin-right: 5%;
+    margin-left: 5%;
 }
 
 .table__header {
