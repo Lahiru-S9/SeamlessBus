@@ -39,6 +39,7 @@
 .btn-user-select {
     margin: 10px 0;
     padding: 10px;
+    width: 200px !important;   
 }
 
 /* Style for the buttons' hover effect */

@@ -6,7 +6,7 @@
     <div class="booking-list">
         <?php foreach ($data['bookings'] as $booking): ?>
             <div class="booking-item">
-                <p><?php echo $bookings->?></p>
+                <p><?php echo $bookings->memberName; ?></p>
                 <!-- Add more booking details as needed -->
             </div>
         <?php endforeach; ?>

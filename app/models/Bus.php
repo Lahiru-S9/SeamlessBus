@@ -42,7 +42,7 @@ class Bus {
     }
 
     public function getBusesByOwnerId($owner_id){
-        $this->db->query('SELECT * FROM buses WHERE ownerid = :owner_id');
+        $this->db->query('SELECT * FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE ownerid = :owner_id');
         //Bind value
         $this->db->bind(':owner_id', $owner_id);
 
@@ -88,6 +88,63 @@ class Bus {
         //Bind values
         $this->db->bind(':bus_no', $bus_no);
         $this->db->bind(':status', $status);
+
+        //Execute function
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getBusesBySchedulerId($id){
+        $this->db->query('SELECT 
+        buses.bus_no,
+        buses.bus_model,
+        buses.permitid,
+        buses.route_num,
+        buses.status,
+        users.name,
+        to_station.station AS to_station,
+        from_station.station AS from_station
+    FROM 
+        buses
+    JOIN 
+        users ON buses.ownerid = users.id
+    JOIN 
+        routes ON buses.route_num = routes.route_num
+    JOIN 
+        stations AS to_station ON routes.tostationid = to_station.id 
+    JOIN
+        stations AS from_station ON routes.fromstationid = from_station.id 
+    WHERE 
+        status IN ("accepted", "paused") AND 
+        (routes.fromstationid = (SELECT station_id FROM schedulers JOIN scheduler_details ON scheduler_details.id = schedulers.scheduler_id WHERE scheduler_details.user_id = :id) OR 
+         routes.tostationid = (SELECT station_id FROM schedulers JOIN scheduler_details ON scheduler_details.id = schedulers.scheduler_id WHERE scheduler_details.user_id = :id))
+    ');
+
+
+        //Bind value
+        $this->db->bind(':id', $id);
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
+    public function getFilteredBuses($sql,$id,$filter_value){
+        $this->db->query($sql);
+        $this->db->bind(':id', $id);
+        $this->db->bind(':filter_value', $filter_value);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
+    public function assignConductor($data){
+        $this->db->query('UPDATE conductors SET assigned_to = :bus_no WHERE id = :conductor_id');
+        //Bind values
+        $this->db->bind(':bus_no', $data['bus_no']);
+        $this->db->bind(':conductor_id', $data['conductor_id']);
 
         //Execute function
         if($this->db->execute()){
