@@ -8,7 +8,7 @@
         }
 
         public function getSeats($schedule_id){
-            $this->db->query('SELECT `seatno` FROM `bookings` WHERE `scheduleid` = :schedule_id');
+            $this->db->query('SELECT `seatno` FROM `bookings` WHERE `scheduleid` = :schedule_id AND `payment_status` = "accepted"');
             $this->db->bind(':schedule_id', $schedule_id);
         
             $results = $this->db->resultSet();
@@ -90,5 +90,44 @@
             return $results;
         }
 
-        
+        public function addBooking( $order_id, $schedule_id, $seatno, $user_id, $userType){
+            $this->db->query('INSERT INTO `bookings` (`order_id`, `scheduleid`, `seatno`, `user_id`, `user_type`) VALUES (:order_id, :schedule_id, :seatno, :user_id, :user_type)');
+            $this->db->bind(':order_id', $order_id);
+            $this->db->bind(':schedule_id', $schedule_id);
+            $this->db->bind(':seatno', $seatno);
+            $this->db->bind(':user_id', $user_id);
+            $this->db->bind(':user_type', $userType);
+
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function updateBookingStatus($order_id, $status){
+            $this->db->query('UPDATE `bookings` SET `payment status` = :status WHERE `order_id` = :order_id');
+            $this->db->bind(':order_id', $order_id);
+            $this->db->bind(':status', $status);
+
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function deleteBooking($order_id){
+            $this->db->query('DELETE FROM `bookings` WHERE `order_id` = :order_id');
+            $this->db->bind(':order_id', $order_id);
+
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     }

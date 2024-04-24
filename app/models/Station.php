@@ -74,4 +74,17 @@ class Station {
             $this->db->execute();
         }
     }
+
+    public function getToStationsByScheduler($id){
+        $this->db->query('SELECT DISTINCT station AS "Option" FROM stations
+        JOIN routes ON (stations.id = routes.tostationid OR stations.id = routes.fromstationid)
+        JOIN schedulers ON (schedulers.station_id = routes.fromstationid OR schedulers.station_id = routes.tostationid)
+        JOIN scheduler_details ON schedulers.scheduler_id = scheduler_details.id 
+        WHERE  scheduler_details.user_id= :id');
+
+        $this->db->bind(':id', $id);
+        $results = $this->db->resultSet();
+        return $results;
+
+    }
 }

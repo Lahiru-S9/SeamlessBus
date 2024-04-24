@@ -239,12 +239,13 @@ button {
     border-radius: 5px;
 
     /* Other styles (you can modify or add more as needed) */
-    border: none;
+    border: 1px solid #007bff;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    width: 110px;
 }
 
 .btn-success {
@@ -269,6 +270,33 @@ button {
     cursor: pointer;
 }
 
+.btn-success-soft {
+    height: 35px;
+    color: #28a745;
+    background-color: rgba(40, 167, 69, 0.1);
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    appearance: auto;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    padding-block: 1px;
+    padding-inline: 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+
+
 .btn-danger {
     /* Background color */
     background-color: #d9534f;
@@ -289,14 +317,26 @@ button {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    width: 110px;
+}
+
+.btn-danger-soft {
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
 }
 
 .btn-secondary {
     background-color: #5bc0de;
     color: #fff;
-    border: 1px solid #5bc0de;
-    /* Border radius */
+    padding: 10px 20px;
     border-radius: 5px;
+    border: 1px solid #5bc0de;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 110px;
 }
 
 .btn-info {
@@ -319,19 +359,6 @@ button {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-}
-
-/* Adjusting both .btn.btn-primary and .btn.btn-danger to have the same size */
-.btn.btn-primary,
-.btn.btn-danger,
-.btn.btn-secondary {
-    
-    padding: 10px 20px;
-
-   
-    width: 120px; 
-    height: 40px; 
-
 }
 
 .accept-button {
@@ -363,6 +390,7 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+
 
 table {
     border-collapse: collapse;
