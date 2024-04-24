@@ -14,6 +14,8 @@
         </div>
     <?php endforeach; ?>
 </div>
+
+
     
 
 <script>
@@ -29,7 +31,7 @@
         var conductors = [
             { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
             { name: 'Jane Smith', age:28,yearsOfExperience: 5,isAssigned: true },
-            { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
+            { name: 'Amal', age:30, yearsOfExperience: 8,isAssigned: false },
             { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
             { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
             { name: 'John Doe', age:30, yearsOfExperience: 8,isAssigned: false },
@@ -92,6 +94,37 @@
         conductorDiv.remove();
     }
 </script>
+
+<div class = "search-container">
+    <input type="text" id="searchInput" onkeypress="filterConductors()" placeholder="Search for conductors...">
+
+</div>
+<script>
+// JavaScript function to filter the conductor list based on search input
+function filterConductors() {
+    // Get the search input value
+    var input = document.getElementById("searchInput");
+    var filter = input.value.toUpperCase();
+
+    // Get the list of conductor elements
+    var conductorList = document.getElementById("conductor-list");
+    var conductors = conductorList.getElementsByClassName("conductor");
+
+    // Loop through all conductor elements, and hide those that don't match the search query
+    for (var i = 0; i < conductors.length; i++) {
+        var conductor = conductors[i];
+        var name = conductor.getElementsByTagName("span")[0]; // Assuming the name is the first <span> element
+
+        // If the name matches the search query, display the conductor, otherwise hide it
+        if (name.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            conductor.style.display = "";
+        } else {
+            conductor.style.display = "none";
+        }
+    }
+}
+</script>
+
 
 <!-- HTML to display conductor list -->
 <div id="conductor-list" style="display:none;">
