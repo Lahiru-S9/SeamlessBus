@@ -15,7 +15,7 @@
         </div>
     <?php endforeach; ?>
 </div>
-<div class = "search-container">
+ <div class = "search-container">
     <input type="text" id="searchInput" onkeypress="filterConductors()" placeholder="Search for conductors...">
 
 </div>
@@ -43,7 +43,7 @@ function filterConductors() {
         }
     }
 }
-</script>
+</script> 
 
 
 <!-- HTML to display conductor list -->
