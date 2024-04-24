@@ -45,4 +45,12 @@ class Conductor {
         }
     }
 
+    public function getConductorsWithDetails(){
+        $this->db->query('SELECT * FROM users
+        JOIN conductors ON users.id = conductors.user_id');
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
 }
