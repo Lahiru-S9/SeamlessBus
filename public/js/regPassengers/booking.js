@@ -4,6 +4,9 @@ const count = document.getElementById("count");
 const total = document.getElementById("total");
 const ticketPriceElement = document.getElementById("ticketPrice");
 const scheduleIdElement = document.getElementById("scheduleId");
+const nameElement = document.getElementById("name");
+const nicElement = document.getElementById("nic");
+const phoneElement = document.getElementById("phone");
 
 populateUI();
 
@@ -83,6 +86,10 @@ function paymentGateWay() {
   var scheduleId = document
     .getElementById("scheduleId")
     .getAttribute("data-schedule-id");
+  var name = document.getElementById("name").getAttribute("data-name");
+  var nic = document.getElementById("nic").getAttribute("data-nic");
+  var phone = document.getElementById("phone").getAttribute("data-phone");
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = () => {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -111,9 +118,9 @@ function paymentGateWay() {
       var payment = {
         sandbox: true,
         merchant_id: "1226529", // Replace your Merchant ID
-        return_url: "http://localhost/SeamlessBus/RegPassengers/booking", // Important
-        cancel_url: "http://localhost/SeamlessBus/RegPassengers/booking", // Important
-        notify_url: "http://localhost/SeamlessBus/RegPassengers/payment",
+        return_url: "http://localhost/SeamlessBus/GPassengers/booking", // Important
+        cancel_url: "http://localhost/SeamlessBus/GPassengers/booking", // Important
+        notify_url: "http://localhost/SeamlessBus/GPassengers/payment",
         order_id: obj["order_id"],
         items: obj["item_name"],
         amount: obj["amount"],
@@ -138,12 +145,18 @@ function paymentGateWay() {
   };
   xhttp.open(
     "GET",
-    "http://localhost/SeamlessBus/RegPassengers/payment?totalAmount=" +
+    "http://localhost/SeamlessBus/GPassengers/payment?totalAmount=" +
       totalAmount +
       "&selectedSeats=" +
       seatIdsParam +
       "&scheduleId=" +
-      scheduleId,
+      scheduleId +
+      "&name=" +
+      name +
+      "&nic=" +
+      nic +
+      "&phone=" +
+      phone,
     true
   );
   xhttp.send();
