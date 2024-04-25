@@ -53,6 +53,7 @@
                     <td>$XXX</td> -->
                     <!-- Add more columns -->
                 </tr>
+                <?php endforeach; ?>
                 <!-- Add more rows -->
             </tbody>
         </table>
