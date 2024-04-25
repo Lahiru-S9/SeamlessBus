@@ -101,7 +101,7 @@
 <div id="nic" data-nic="<?php echo $data['nic']?>"></div>
 <div id="phone" data-phone="<?php echo $data['phone']?>"></div>
 
-<script src="<?php echo URLROOT; ?>/js/regPassengers/booking.js"></script>
+<script src="<?php echo URLROOT; ?>/js/gPassengers/booking.js"></script>
 <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 
 
