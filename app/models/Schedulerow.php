@@ -272,7 +272,7 @@ class Schedulerow {
                             JOIN routes AS r ON sc.route_id = r.id
                             JOIN stations AS stations ON r.fromstationid = stations.id
                             JOIN stations AS s ON r.tostationid = s.id
-                            JOIN schedulers ON stations.id = schedulers.station_id
+                            JOIN schedulers ON (stations.id = schedulers.station_id OR s.id = schedulers.station_id)
                             JOIN scheduler_details ON schedulers.scheduler_id = scheduler_details.id
                             WHERE sc.day = :day AND scheduler_details.user_id = :id;
                          ');
