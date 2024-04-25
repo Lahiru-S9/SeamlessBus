@@ -326,7 +326,7 @@
                 'revenue_data' => $busModel->seeReports(['owner_id' => $owner_id])
             ];
 
-            $this->view('Owners/SeeReport');
+            $this->view('Owners/SeeReport',$data);
         }
 
         public function readFeedback(){
@@ -416,5 +416,23 @@
             $this->view('owners/profile', $data);
         }
     }
+
+    public function PerformanceMatrix(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+            redirect('Users/login');
+        }
+            $busModel = $this->model('Bus');
+            $owner_id = $_SESSION['user_id'];
+        
+         //pass the revenue data to the view
+         $data = [
+            'revenue_data' => $busModel->seeReports(['owner_id' => $owner_id])
+        ];
+ 
+            //load the view
+        $this->view('Owners/PerformanceMatrix',$data);
+    }
+
 
 }

@@ -31,7 +31,7 @@ h1 {
 
 .select-btn {
     padding: 5px 10px;
-    background-color: #0e30ef;
+    background-color: #4c63e2;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -40,7 +40,31 @@ h1 {
 }
 
 .select-btn:hover {
-    background-color: #f7f315;
+    background-color: #eceb81;
+}
+.deselect-btn {
+    padding: 5px 10px;
+    background-color: #e75050;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+
+}
+.deselect-btn:hover {
+    background-color: #eceb81;
+}
+
+.search-container{
+    text-align: center;
+    margin-top: 20px;
+    width: 200px;
+    padding :5px 10px;
+    background-color: orange;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 /* Conductor list styles */
