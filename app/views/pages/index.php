@@ -44,7 +44,7 @@
             <div>
                 <div class="button-text">Don’t have an account ?</div>
                 <center><img src="<?php echo URLROOT; ?>/img/passenger.png" alt="Apply Now"></center>
-                <a href="<?php echo URLROOT; ?>/GPassengers/register" class="cta-button">Apply Now!</a>
+                <a href="<?php echo URLROOT; ?>/GPassengers/register" class="cta-button">Register Now!</a>
             </div>
             <div>
                 <div class="button-text">Are you a conductor ?</div>
