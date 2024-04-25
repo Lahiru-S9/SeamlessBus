@@ -7,6 +7,7 @@
             $this->routeModel = $this->model('Route');
             $this->conductorModel = $this->model('Conductor');
             $this->ownerModel = $this->model('Owner');
+            $this->bookingModel=$this->model('Bus');
         }
 
         public function register(){
@@ -317,6 +318,12 @@
 
                 redirect('Users/login');
             }
+            $busModel = $this->model('Bus');
+            $owner_id = $_SESSION['user_id']; // Assuming the owner's ID is stored in the session
+        
+            $data = [
+                'revenue_data' => $busModel->seeRevenue(['owner_id' => $owner_id])
+            ];
 
             $this->view('Owners/SeeReport');
         }
@@ -341,8 +348,8 @@
 
         }
 
-        public function Booking()
-    {
+        public function Booking(){
+    
         // Check if the user is logged in and is an owner
         if (!isLoggedIn() || $_SESSION['usertype'] !== 'Owner') {
             // Redirect to login if not logged in or not an owner
@@ -350,7 +357,7 @@
         }
 
         // Load the Booking model
-        $this->bookingModel = $this->model('Booking');
+        $this->bookingModel = $this->model('Bus');
 
         // Fetch bookings for the current owner
         $bookings = $this->bookingModel->getBookingsByOwner($_SESSION['user_id']);
@@ -361,7 +368,7 @@
         ];
 
         // Load the view to display bookings
-        $this->view('owners/Booking', $data);
+        $this->view('Owners/Booking', $data);
     }
 
     public function OnGoingBus(){

@@ -153,4 +153,32 @@ class Bus {
             return false;
         }
     }
+
+  public function seeRevenue($data){
+        $this->db->query('SELECT 
+        buses.bus_no, 
+        COUNT(bookings.id) AS booking_count,
+        routes.ticket_price, COUNT(bookings.id) * routes.ticket_price AS total_revenue
+        FROM 
+            bookings
+        JOIN 
+            schedule ON bookings.scheduleid = schedule.id 
+        JOIN
+            schedule_def ON schedule_def.id = schedule.schedule_defId 
+        JOIN 
+            bus_assigned ON schedule.id = bus_assigned.schedule_id
+        JOIN 
+            buses ON bus_assigned.bus_no = buses.bus_no 
+        JOIN
+            routes ON routes.id = schedule_def.route_id
+        WHERE
+            buses.ownerid = :id 
+        GROUP BY 
+            buses.bus_no, routes.ticket_price;');
+   
+   //bind values
+    $this->db->bind(':id', $data['owner_id']);
+    $results = $this->db->resultSet();
+    return $results;
+ }
 }
