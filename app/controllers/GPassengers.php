@@ -228,16 +228,18 @@
             else{
                 $totalAmount = $_GET['totalAmount'];
                 $seatshm = $_GET['seatshm'];
+                $schedule_id = $_GET['scheduleId'];
                 $name = $_GET['name'];
                 $nic = $_GET['nic'];
                 $phone = $_GET['phone'];
                 $order_id = uniqid();
-                $user_type = ($_SESSION['usertype'] == 'RegPassenger') ? '2' : '5';
+                $user_type = 5;
                 
                 $lastSeat = $this->bookingModel->getLastSeatByScheduleId($schedule_id);
-                $lastSeat = $lastSeat[0]->seatno;
-                if ($lastSeat === NULL) {
+                if (!isset($lastSeat[0]->seatno)) {
                     $lastSeat = 'A0';
+                } else {
+                    $lastSeat = $lastSeat[0]->seatno;
                 }
                 $lastRow = substr($lastSeat, 0, 1);
                 $lastSeatNumber = intval(substr($lastSeat, 1));
@@ -269,8 +271,6 @@
                     ) 
                 );
                 
-
-                $array['city'] = $city;
                 $array = [];
                 
                 $array['first_name'] = $nic;
