@@ -35,33 +35,7 @@
                 ];
 
                 $this->view('schedule/index', $data);
-
-
-                // if(empty($data['from'])){
-                //     $data['from_err'] = 'Please select a station';
-                // }
-
-                // if(empty($data['to'])){
-                //     $data['to_err'] = 'Please select a station';
-                // }
-
-                // if(empty($data['from_err']) && empty($data['to_err'])){
-                //     $schedule = $this->scheduleModel->getScheduleByStation($data['from'], $data['to']);
-                //     $data =  [
-                //         'schedule' => $schedule,
-                //         'stations' => $stations,
-                //         'route_nums' => $route_nums,
-                //     ];
-                //     $this->view('schedule/index', $data);
-                // }else{
-                //     $schedule = $this->scheduleModel->getSchedule();
-                //     $data =  [
-                //         'schedule' => $schedule,
-                //         'stations' => $stations,
-                //         'route_nums' => $route_nums,
-                //     ];
-                //     $this->view('schedule/index', $data);
-                // }
+                
             }else{
             //Get Schedule
                 $schedule = $this->scheduleModel->getSchedule();

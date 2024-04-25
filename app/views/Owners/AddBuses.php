@@ -9,7 +9,7 @@
         <h2>ADD THE BUS</h2>
         
         
-        <form action="<?php echo URLROOT; ?>css/owners/AddBuses" method="POST">
+        <form action="<?php echo URLROOT; ?>/Owners/AddBuses" method="POST">
             <div class="form-group">
                 <label for="bus_number">Bus No:  <sup></sup></label>
                 <input type="text" class="custom-input <?php echo (!empty($data['bus_number_err'])) ? 'is-invalid' : ''; ?>" name="bus_number" value="<?php echo $data['bus_number']; ?>" >
