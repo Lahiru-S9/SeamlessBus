@@ -10,12 +10,12 @@
 <body>
     <div class="dashboard-actions">
         
-        <a href="<?php echo URLROOT ?>/Schedulers/conductors" class="dashboard-action">
+      <!-- <a href="<?php echo URLROOT ?>/Schedulers/conductors" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/cartoon_conductor.png" alt="QR">
             </div>
             <p class="action-label">Conductors</p>
-        </a>
+        </a> -->
 
         <!-- go to busses dashboard -->
         <a href="<?php echo URLROOT ?>/Schedulers/buses" class="dashboard-action">
@@ -34,15 +34,15 @@
         </a>
 
         <!-- go to booking dashboard -->
-        <a id="booking-lists-dashboard" class="dashboard-action">
+        <!--<a id="booking-lists-dashboard" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/bus booking.webp" alt="QR">
             </div>
             <p class="action-label">Booking Lists</p>
-        </a>
+        </a> -->
 
         <!-- go to feedbackform -->
-        <a href="<?php echo URLROOT ?>/Schedulers/feedbackForm" class="dashboard-action"> class="dashboard-action">
+        <a href="<?php echo URLROOT ?>/Schedulers/feedbackForm" class="dashboard-action">
             <div class="action-icon" style="background: #62D9CC;">
                 <img src="<?php echo URLROOT; ?>/img/feedbacks.jpg" alt="QR">
             </div>
