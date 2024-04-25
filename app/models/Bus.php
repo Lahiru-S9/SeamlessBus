@@ -212,4 +212,26 @@ $this->db->bind(':id', $data['owner_id']);
 $results = $this->db->resultSet();
 return $results;
 }
+
+public function OnGoingBus($data){
+    $this->db->query('SELECT 
+    buses.bus_no,
+    COUNT(bookings.id) AS booking_count
+    FROM
+    bookings 
+    JOIN 
+        schedule ON schedule.id = bookings.scheduleid 
+    JOIN
+        bus_assigned ON bus_assigned.schedule_id = schedule.id 
+    JOIN 
+        buses ON buses.bus_no = bus_assigned.bus_no 
+    WHERE
+         buses.ownerid = :id AND DATE(schedule.date) = CURDATE() 
+    GROUP BY 
+        buses.bus_no;');
+    
+    $this->db->bind(':id' , $data['owner_id']);
+    $results = $this->db->resultSet();
+    return $results;
+}
 }
