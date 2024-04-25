@@ -5,22 +5,32 @@
     <h1>Bus Owner Reports</h1>
     <nav>
         <ul>
-            <li><a href="#">Performance Metrics</a></li>
+            <li><a href="<?php echo URLROOT?>/Owners/PerformanceMatrix" class="container">Performance Metrics</a></li>
             <li><a href="<?php echo URLROOT?>/Owners/readFeedback" class="container">Feedback</a></li>
             <li><a href="<?php echo URLROOT?>/Owners/OnGoingBus" class="container">On Going Buses </a></li>
             <li><a href="<?php echo URLROOT?>/Owners/Booking" class="container">Bookings</a></li>
         </ul>
     </nav>
 
+    
+
         <div class="summary">
             <div class="statistic">
                 <h3>Total Revenue</h3>
-                <p>$XX,XXX</p>
+                <?php 
+                $total_revenue=0;
+                foreach($data['revenue_data'] as $revenue):
+                 $total_revenue+=$revenue->total_revenue; 
+                endforeach;
+                ?>
+               
+                <p > Revenue :  <?php echo $revenue->total_revenue;?></p>
+                
             </div>
-            <div class="statistic">
+            <!--<div class="statistic">
                 <h3>Total Passengers</h3>
                 <p>XX,XXX</p>
-            </div>
+            </div> -->
             <!-- Add more summary statistics -->
 </div>
 
@@ -53,10 +63,13 @@
                     <td>$XXX</td> -->
                     <!-- Add more columns -->
                 </tr>
+                <?php endforeach; ?>
                 <!-- Add more rows -->
             </tbody>
         </table>
     </section>
 </div>
 
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+
+
+                
