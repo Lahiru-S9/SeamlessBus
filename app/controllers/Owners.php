@@ -349,7 +349,7 @@
 
         }
 
-        public function Booking(){
+        /*public function Booking(){
     
         // Check if the user is logged in and is an owner
         if (!isLoggedIn() || $_SESSION['usertype'] !== 'Owner') {
@@ -370,16 +370,34 @@
 
         // Load the view to display bookings
         $this->view('Owners/Booking', $data);
-    }
+    }*/
 
     public function OnGoingBus(){
         if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
-
             redirect('Users/login');
         }
+         
+        // Instantiate the Bus model
+        $busModel = $this->model('Bus');
+    
+        // Get the owner ID from the session or elsewhere
+        $owner_id = $_SESSION['user_id']; // Adjust this line according to your session structure
+       
+    
+        
+            //passing ongoing bus data for view
+            $data = [
+                'booking_count' => $busModel->OnGoingBus(['owner_id' => $owner_id])
+            ];
 
-        $this->view('Owners/OnGoingBus');
-    }
+           
+    
+            // Load view with data
+            $this->view('Owners/OnGoingBus', $data);
+       
+        }
+    
+    
 
     public function profile(){
 
