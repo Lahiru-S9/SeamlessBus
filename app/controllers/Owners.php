@@ -320,9 +320,10 @@
             }
             $busModel = $this->model('Bus');
             $owner_id = $_SESSION['user_id']; // Assuming the owner's ID is stored in the session
-        
+            
+            //pass the revenue data to the view
             $data = [
-                'revenue_data' => $busModel->seeRevenue(['owner_id' => $owner_id])
+                'revenue_data' => $busModel->seeReports(['owner_id' => $owner_id])
             ];
 
             $this->view('Owners/SeeReport');
@@ -330,7 +331,7 @@
 
         public function readFeedback(){
             if(!isLoggedIn() || $_SESSION['usertype'] !== 'Owner'){
-                redirect('users/login');
+                redirect('Owners/seeReports');
             }
             $this->feedbackModel = $this->model('Feedback');
 

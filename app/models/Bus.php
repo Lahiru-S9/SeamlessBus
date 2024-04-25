@@ -154,7 +154,7 @@ class Bus {
         }
     }
 
-  public function seeRevenue($data){
+  public function seeReports($data){
         $this->db->query('SELECT 
         buses.bus_no, 
         COUNT(bookings.id) AS booking_count,
