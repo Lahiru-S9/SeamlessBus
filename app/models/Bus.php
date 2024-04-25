@@ -158,7 +158,8 @@ class Bus {
         $this->db->query('SELECT 
         buses.bus_no, 
         COUNT(bookings.id) AS booking_count,
-        routes.ticket_price, COUNT(bookings.id) * routes.ticket_price AS total_revenue
+        routes.ticket_price,
+        COUNT(bookings.id) * routes.ticket_price AS total_revenue
         FROM 
             bookings
         JOIN 
