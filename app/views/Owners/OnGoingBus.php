@@ -16,10 +16,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <th> ND 6754</th>
-                    <th>2024-04-01</th>
-                    <th>12.30</th>
-                    <th>30</th>
+                    <td> ND 6754</td>
+                    <td>2024-04-01</td>
+                    <td>12.30</td>
+                    <td>30</td>
                 </tr>
             </tbody> 
         </table>
