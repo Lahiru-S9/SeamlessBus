@@ -200,9 +200,10 @@
                 $user_type = ($_SESSION['usertype'] == 'RegPassenger') ? '2' : '5';
                 
                 $lastSeat = $this->bookingModel->getLastSeatByScheduleId($schedule_id);
-                $lastSeat = $lastSeat[0]->seatno;
-                if ($lastSeat === NULL) {
+                if (!isset($lastSeat[0]->seatno)) {
                     $lastSeat = 'A0';
+                } else {
+                    $lastSeat = $lastSeat[0]->seatno;
                 }
                 $lastRow = substr($lastSeat, 0, 1);
                 $lastSeatNumber = intval(substr($lastSeat, 1));
