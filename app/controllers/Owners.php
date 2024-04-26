@@ -374,7 +374,7 @@
 
     public function OnGoingBus(){
         if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
-            redirect('Users/login');
+            redirect('Owners/seeReports');
         }
          
         // Instantiate the Bus model
@@ -438,7 +438,7 @@
     public function PerformanceMatrix(){
         if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
 
-            redirect('Users/login');
+            redirect('Owners/seeReports');
         }
             $busModel = $this->model('Bus');
             $owner_id = $_SESSION['user_id'];
