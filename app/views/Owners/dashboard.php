@@ -97,6 +97,7 @@
                                                 <button type="submit">Quit</button>
                                             </form>
                                             <form method="post" action="<?php echo URLROOT; ?>/Owners/dashboard">
+                                                <input type="hidden" name="bus_no" value="<?php echo $bus->bus_no; ?>">
                                                 <input type="hidden" name="action" value="take_break">
                                                 <button type="submit">Take a Break</button>
                                             </form>
