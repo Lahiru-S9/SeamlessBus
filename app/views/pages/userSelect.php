@@ -21,7 +21,7 @@
     <div class="card" id="owner-card">
     <div class="card-front"><img src="<?php echo URLROOT; ?>/img/owner-card-back.png"/>
     </div></div>
-</div>--><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>-->
 
 <!-- Footer -->
 <div class="footer">
