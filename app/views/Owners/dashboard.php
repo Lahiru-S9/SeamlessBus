@@ -61,6 +61,7 @@
                 <th>seats_per_row</th>
                 <th>route</th>
                 <th>status</th>
+                <th>Actions</th>
             </tr>
             <?php 
                 if(empty($data['buses'])){
@@ -79,6 +80,42 @@
                         <td><?php echo $bus->seats_per_row; ?></td>
                         <td><?php echo $bus->route_num; ?></td>
                         <td><?php echo $bus->status; ?></td>
+                        <td> 
+                            <form method="post" action="<?php echo URLROOT; ?>/Owners/dashboard">
+                                <input type="hidden" name="bus_no" value="<?php echo $bus->bus_no; ?>">
+                                <?php
+                                // Conditional buttons based on status
+                                    switch ($bus->status) {
+                                        case "requested":
+                                            echo '<input type="hidden" name="action" value="cancel">';
+                                            echo '<button type="submit">Cancel</button>';
+                                            break;
+                                        case "accepted":
+                                            echo '<input type="hidden" name="action" value="quit">';
+                                            echo '<button type="submit">Quit</button>';
+                                            echo '<input type="hidden" name="action" value="take_break">';
+                                            echo '<button type="submit">Take a Break</button>';
+                                            break;
+                                        case "paused":
+                                            echo '<input type="hidden" name="action" value="quit">';
+                                            echo '<button type="submit">Quit</button>';
+                                            break;
+                                        case "on a break":
+                                            echo '<input type="hidden" name="action" value="resume">';
+                                            echo '<button type="submit">Resume</button>';
+                                            break;
+                                        case "declined":
+                                        case null:
+                                            echo '<input type="hidden" name="action" value="request">';
+                                            echo '<button type="submit">Request</button>';
+                                            break;
+                                        default:
+                                            // Default action
+                                            break;
+                                    }
+                                ?>
+                            </form>
+                        </td>
                     </tr>
             <?php
                     endforeach;}
