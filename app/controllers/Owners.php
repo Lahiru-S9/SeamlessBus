@@ -109,16 +109,51 @@
         }
         public function dashboard(){
             if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
-               
                 redirect('Users/login');
             }
-           
-            $data = [
-                'buses' => $this->busModel->getBusesByOwnerId($_SESSION['user_id'])
-            ];
-
-            $this->view('Owners/dashboard', $data);
+        
+            // Handle form submissions
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (isset($_POST['action'])) {
+                    $busId = $_POST['bus_no'];
+                    $action = $_POST['action'];
+        
+                    switch ($action) {
+                        case 'cancel':
+                            // Update bus status to cancelled in the database
+                            $this->busModel->updateBusStatus($busId, '');
+                            break;
+                        case 'quit':
+                            // Update bus status to quit in the database
+                            $this->busModel->updateBusStatus($busId, 'quit');
+                            break;
+                        case 'take_break':
+                            // Update bus status to on break in the database
+                            $this->busModel->updateBusStatus($busId, 'on a break');
+                            break;
+                        case 'resume':
+                            // Update bus status to accepted in the database
+                            $this->busModel->updateBusStatus($busId, 'accepted');
+                            break;
+                        case 'request':
+                            // Update bus status to requested in the database
+                            $this->busModel->updateBusStatus($busId, 'requested');
+                            break;
+                        default:
+                            // Handle other actions if needed
+                            break;
+                    }
+                }
+            }
             
+            // Prepare data to be passed to the view
+            $buses = $this->busModel->getBusesByOwnerId($_SESSION['user_id']);
+
+            $data = [
+                'buses' => $buses
+            ];
+        
+            $this->view('Owners/dashboard', $data);
         }
 
         public function AddBuses(){

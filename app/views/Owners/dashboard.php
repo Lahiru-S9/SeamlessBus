@@ -91,11 +91,17 @@
                                             echo '<button type="submit">Cancel</button>';
                                             break;
                                         case "accepted":
-                                            echo '<input type="hidden" name="action" value="quit">';
-                                            echo '<button type="submit">Quit</button>';
-                                            echo '<input type="hidden" name="action" value="take_break">';
-                                            echo '<button type="submit">Take a Break</button>';
-                                            break;
+                                ?>
+                                            <form method="post" action="<?php echo URLROOT; ?>/Owners/dashboard">
+                                                <input type="hidden" name="action" value="quit">
+                                                <button type="submit">Quit</button>
+                                            </form>
+                                            <form method="post" action="<?php echo URLROOT; ?>/Owners/dashboard">
+                                                <input type="hidden" name="action" value="take_break">
+                                                <button type="submit">Take a Break</button>
+                                            </form>
+                                <?php
+                                                break;
                                         case "paused":
                                             echo '<input type="hidden" name="action" value="quit">';
                                             echo '<button type="submit">Quit</button>';
