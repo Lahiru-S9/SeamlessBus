@@ -3,6 +3,7 @@
         public function __construct(){
             $this->scheduleModel = $this->model('Schedulerow');
             $this->bookingModel = $this->model('Booking');
+            $this->userModel = $this->model('User');
         }
 
         public function register(){
