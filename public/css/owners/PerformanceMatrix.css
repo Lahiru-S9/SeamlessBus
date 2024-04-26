@@ -33,3 +33,7 @@ h1{
 .poor {
     color: red;
 }
+#footer-logo{
+    height: 80px;
+    width: auto;
+}
