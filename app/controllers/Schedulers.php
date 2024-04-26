@@ -184,6 +184,32 @@
     
     }
 
+    public function deleteSchedule(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // It's an AJAX request
+            var_dump($_GET);
+            $urlParts = explode('/', $_GET['url']);
+            $id = end($urlParts);
+
+            // Delete the schedule from the database
+            $this->scheduleModel->deleteSchedule($id);
+
+            // Return success message
+            echo json_encode(['status' => 'success', 'message' => 'Schedule deleted successfully']);
+
+            exit;
+        } else {
+            // Handle non-POST requests, if needed
+            echo json_encode(['error' => 'Invalid request method']);
+            exit;
+        }
+    }
+
     public function addSchedule(){
         if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
                

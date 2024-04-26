@@ -324,6 +324,18 @@ class Schedulerow {
         }
     }
 
+    public function deleteSchedule($id) {
+        $this->db->query('DELETE FROM schedule_def WHERE id = :id');
+
+        $this->db->bind(':id', $id);
+
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getRouteID($to_station, $from_station)
     {
         $this->db->query('SELECT

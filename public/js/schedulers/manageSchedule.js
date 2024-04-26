@@ -195,3 +195,29 @@ function add() {
     $("#selected-tab").val(selectedDay);
   }
 }
+
+function handleDelete(id) {
+  alert("Delete schedule with ID: " + id);
+  if (confirm("Are you sure you want to delete this schedule?")) {
+    // Make AJAX request to delete schedule
+    $.ajax({
+      url: "http://localhost/SeamlessBus/schedulers/deleteSchedule/" + id,
+      method: "GET",
+      success: function (response) {
+        // Handle success
+        console.log(response);
+        $("#schedule-" + id).remove();
+        // For example, remove the deleted schedule from the UI
+        // You can also reload the page or update the UI in any other way
+      },
+      error: function (error) {
+        // Handle error
+      },
+    });
+  }
+}
+
+$(document.body).on("click", ".delete-btn", function () {
+  var id = $(this).data("id");
+  handleDelete(id);
+});
