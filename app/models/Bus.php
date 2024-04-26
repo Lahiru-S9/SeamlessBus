@@ -42,7 +42,11 @@ class Bus {
     }
 
     public function getBusesByOwnerId($owner_id){
-        $this->db->query('SELECT * FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE ownerid = :owner_id');
+        $this->db->query('SELECT * FROM buses
+         LEFT JOIN 
+         conductors ON buses.bus_no=conductors.assigned_to 
+         LEFT JOIN users ON users.id = conductors.user_id 
+         WHERE ownerid = :owner_id');
         //Bind value
         $this->db->bind(':owner_id', $owner_id);
 
@@ -133,9 +137,9 @@ class Bus {
     }
 
     public function getFilteredBuses($sql,$id,$filter_value){
-        $this->db->query($sql);
-        $this->db->bind(':id', $id);
-        $this->db->bind(':filter_value', $filter_value);
+        $this->db->query($sql); //This parameter represents the SQL query to be executed for fetching the filtered buses. It is a dynamic query that may contain placeholders for bind parameters.
+        $this->db->bind(':id', $id);//owner_id 
+        $this->db->bind(':filter_value', $filter_value);//It represents the value used to filter the buses based on a specific condition.
         $results = $this->db->resultSet();
         return $results;
     }
@@ -153,6 +157,12 @@ class Bus {
             return false;
         }
     }
+    // Conductor Model
+    //public function getConductorsWithDetailsWithAddressA(){
+    //$this->db->query("SELECT * FROM conductors WHERE address LIKE 'A%A'");
+    //return $this->db->resultSet();
+
+
 
 //   public function seeReports($data){
 //         $this->db->query('SELECT 

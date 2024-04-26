@@ -250,6 +250,18 @@
 
                 redirect('Users/login');
             }
+            
+            // Fetch conductors with addresses beginning with 'A' and ending with 'A'
+    //$conductors = $this->conductorModel->getConductorsWithDetailsWithAddressA();
+
+    //$buses = $this->busModel->getBusesByOwnerId($_SESSION['user_id']);
+    //$data = [
+        //'buses' => $buses,
+        //'conductors' => $conductors
+    //];
+
+
+    $this->view('Owners/SelectConductors', $data);
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -288,6 +300,7 @@
                 $feedbackType = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
                 $feedbackCategory = filter_input(INPUT_POST, 'feedback-category', FILTER_SANITIZE_STRING);
                 $feedbackText = filter_input(INPUT_POST, 'feedback-text', FILTER_SANITIZE_STRING);
+                
                 
                 $data = [
                     'feedbackType' => $feedbackType,
