@@ -18,7 +18,7 @@
         </div>
         
         <?php if(!isset($_SESSION['user_id'])) : ?>
-            <button onclick="showConfirmation()" class="cta-button" id="direct-btn">Book your seats in just a few easy steps</button><br><br>
+            <div onclick="showConfirmation()" class="cta-button" id="direct-btn">Book your seats in just a few easy steps</div><br><br>
             <script>
             function goToPage1() {
                 window.location.href = '<?php echo URLROOT; ?>/GPassengers/register';
