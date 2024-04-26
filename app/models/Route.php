@@ -8,7 +8,7 @@ class Route {
     }
 
     public function getRoutes(){
-        $this->db->query('SELECT route_num AS "Route Number" FROM routes');
+        $this->db->query('SELECT DISTINCT route_num AS "Route Number" FROM routes');
         $results = $this->db->resultSet();
         return $results;
     }

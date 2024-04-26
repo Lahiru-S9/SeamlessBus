@@ -113,8 +113,27 @@
                                             break;
                                         case "declined":
                                         case null:
-                                            echo '<input type="hidden" name="action" value="request">';
-                                            echo '<button type="submit">Request</button>';
+                                            // Display request form
+                                            ?>
+                                            <div id="modal" class="modal">
+                                                <div class="modal-content">
+                                                    <span class="close">&times;</span>
+                                                    <p>Please select a route:</p>
+                                                    <select id="routeSelect" name="route">
+                                                        <?php
+                                                        if (isset($data['routes'])) {
+                                                            foreach ($data['routes'] as $route) {
+                                                                echo '<option value="' . htmlspecialchars($route->{'Route Number'}) . '">' . htmlspecialchars($route->{'Route Number'}) . '</option>';
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    <button onclick="submitRoute()">Submit</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="action" value="request">
+                                            <button type="button" onclick="requestRoute('<?php echo htmlspecialchars($bus->bus_no); ?>')">Request</button>
+                                            <?php
                                             break;
                                         default:
                                             // Default action
@@ -135,35 +154,10 @@
         
     </div>
 
-    <div class="footer">
-            <img src="<?php echo URLROOT; ?>/img/logo_bw.png">
-            <div class="footer-subtext">
-                Seamless Bus
-            </div>
-            <div class="footer-text">
-                Enhancing your Travel Experience
-            </div>
-
-            <div class="social-media-icons">
-                <a href="#" class="social-media-icon">
-                    <img src="<?php echo URLROOT; ?>/img/Facebook.png" alt="Facebook">
-                </a>
-                <a href="#" class="social-media-icon">
-                    <img src="<?php echo URLROOT; ?>/img/Twitter.png" alt="Twitter">
-                </a>
-                <a href="#" class="social-media-icon">
-                    <img src="<?php echo URLROOT; ?>/img/Instagram.png" alt="Instagram">
-                </a>
-            </div>
-            
-            <div class="footer-subtext">
-                Developed by CS group 23
-            </div>
-    </div>
 
 </div>
 
 
-
+<script src="<?php echo URLROOT; ?>/js/Owners/dashboard.js"></script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

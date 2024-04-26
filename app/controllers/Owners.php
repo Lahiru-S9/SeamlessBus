@@ -117,6 +117,9 @@
                 if (isset($_POST['action'])) {
                     $busId = $_POST['bus_no'];
                     $action = $_POST['action'];
+                    if(isset($_POST['route'])){
+                        $route = $_POST['route'];
+                    }
         
                     switch ($action) {
                         case 'cancel':
@@ -137,7 +140,7 @@
                             break;
                         case 'request':
                             // Update bus status to requested in the database
-                            $this->busModel->updateBusStatus($busId, 'requested');
+                            $this->busModel->requestRoute($busId, $route);
                             break;
                         default:
                             // Handle other actions if needed
@@ -148,8 +151,10 @@
             
             // Prepare data to be passed to the view
             $buses = $this->busModel->getBusesByOwnerId($_SESSION['user_id']);
+            $routes = $this->routeModel->getRoutes();
 
             $data = [
+                'routes' => $routes,
                 'buses' => $buses
             ];
         
