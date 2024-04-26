@@ -23,15 +23,15 @@
                     </div>
                     <div class="table-content">	
                         <?php foreach($data['monday'] as $schedule) : ?>
-                            <div class="table-row">		
+                            <div class="table-row" id="schedule-<?php echo $schedule->id; ?>">		
                                 <div class="table-data"><?php echo $schedule->route_num; ?></div>
                                 <div class="table-data"><?php echo $schedule->arrival_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->departure_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->from_station; ?></div>
                                 <div class="table-data"><?php echo $schedule->to_station; ?></div>
                                 <div class="table-data">
-                                    <a href="<?php echo URLROOT; ?>/schedulers/editSchedule/<?php echo $schedule->id; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?php echo URLROOT; ?>/schedulers/deleteSchedule/<?php echo $schedule->id; ?>" class="btn btn-danger">Delete</a>
+                                    <button class="btn btn-primary edit-btn" data-id="<?php echo $schedule->id;?>">Edit</button>
+                                    <button class="btn btn-danger delete-btn" data-id="<?php echo $schedule->id;?>">Delete</button>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -62,15 +62,15 @@
                     </div>
                     <div class="table-content">	
                     <?php foreach($data['tuesday'] as $schedule) : ?>
-                            <div class="table-row">		
+                            <div class="table-row" id="schedule-<?php echo $schedule->id; ?>">	
                                 <div class="table-data"><?php echo $schedule->route_num; ?></div>
                                 <div class="table-data"><?php echo $schedule->arrival_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->departure_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->from_station; ?></div>
                                 <div class="table-data"><?php echo $schedule->to_station; ?></div>
                                 <div class="table-data">
-                                    <a href="<?php echo URLROOT; ?>/schedulers/editSchedule/<?php echo $schedule->id; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?php echo URLROOT; ?>/schedulers/deleteSchedule/<?php echo $schedule->id; ?>" class="btn btn-danger">Delete</a>
+                                    <button class="btn btn-primary edit-btn" data-id="<?php echo $schedule->id;?>">Edit</button>
+                                    <button class="btn btn-danger delete-btn" data-id="<?php echo $schedule->id;?>">Delete</button>
                                     </div>
                             </div>
                         <?php endforeach; ?>
@@ -100,15 +100,15 @@
                     </div>
                     <div class="table-content">	
                     <?php foreach($data['wednesday'] as $schedule) : ?>
-                            <div class="table-row">		
+                            <div class="table-row" id="schedule-<?php echo $schedule->id; ?>">	
                                 <div class="table-data"><?php echo $schedule->route_num; ?></div>
                                 <div class="table-data"><?php echo $schedule->arrival_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->departure_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->from_station; ?></div>
                                 <div class="table-data"><?php echo $schedule->to_station; ?></div>
                                 <div class="table-data">
-                                    <a href="<?php echo URLROOT; ?>/schedulers/editSchedule/<?php echo $schedule->id; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?php echo URLROOT; ?>/schedulers/deleteSchedule/<?php echo $schedule->id; ?>" class="btn btn-danger">Delete</a>
+                                    <button class="btn btn-primary edit-btn" data-id="<?php echo $schedule->id;?>">Edit</button>
+                                    <button class="btn btn-danger delete-btn" data-id="<?php echo $schedule->id;?>">Delete</button>
                                     </div>
                             </div>
                         <?php endforeach; ?>
@@ -137,15 +137,15 @@
                     </div>
                     <div class="table-content">	
                         <?php foreach($data['thursday'] as $schedule) : ?>
-                            <div class="table-row">		
+                            <div class="table-row" id="schedule-<?php echo $schedule->id; ?>">	
                                 <div class="table-data"><?php echo $schedule->route_num; ?></div>
                                 <div class="table-data"><?php echo $schedule->arrival_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->departure_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->from_station; ?></div>
                                 <div class="table-data"><?php echo $schedule->to_station; ?></div>
                                 <div class="table-data">
-                                    <a href="<?php echo URLROOT; ?>/schedulers/editSchedule/<?php echo $schedule->id; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?php echo URLROOT; ?>/schedulers/deleteSchedule/<?php echo $schedule->id; ?>" class="btn btn-danger">Delete</a>
+                                    <button class="btn btn-primary edit-btn" data-id="<?php echo $schedule->id;?>">Edit</button>
+                                    <button class="btn btn-danger delete-btn" data-id="<?php echo $schedule->id;?>">Delete</button>
                                     </div>
                             </div>
                         <?php endforeach; ?>
@@ -174,15 +174,15 @@
                     </div>
                     <div class="table-content">	
                         <?php foreach($data['friday'] as $schedule) : ?>
-                            <div class="table-row">		
+                            <div class="table-row" id="schedule-<?php echo $schedule->id; ?>">	
                                 <div class="table-data"><?php echo $schedule->route_num; ?></div>
                                 <div class="table-data"><?php echo $schedule->arrival_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->departure_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->from_station; ?></div>
                                 <div class="table-data"><?php echo $schedule->to_station; ?></div>
                                 <div class="table-data">
-                                    <a href="<?php echo URLROOT; ?>/schedulers/editSchedule/<?php echo $schedule->id; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?php echo URLROOT; ?>/schedulers/deleteSchedule/<?php echo $schedule->id; ?>" class="btn btn-danger">Delete</a>
+                                    <button class="btn btn-primary edit-btn" data-id="<?php echo $schedule->id;?>">Edit</button>
+                                    <button class="btn btn-danger delete-btn" data-id="<?php echo $schedule->id;?>">Delete</button>
                                     </div>
                             </div>
                         <?php endforeach; ?>
@@ -211,15 +211,15 @@
                     </div>
                     <div class="table-content">	
                     <?php foreach($data['saturday'] as $schedule) : ?>
-                            <div class="table-row">		
+                            <div class="table-row" id="schedule-<?php echo $schedule->id; ?>">	
                                 <div class="table-data"><?php echo $schedule->route_num; ?></div>
                                 <div class="table-data"><?php echo $schedule->arrival_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->departure_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->from_station; ?></div>
                                 <div class="table-data"><?php echo $schedule->to_station; ?></div>
                                 <div class="table-data">
-                                    <a href="<?php echo URLROOT; ?>/schedulers/editSchedule/<?php echo $schedule->id; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?php echo URLROOT; ?>/schedulers/deleteSchedule/<?php echo $schedule->id; ?>" class="btn btn-danger">Delete</a>
+                                    <button class="btn btn-primary edit-btn" data-id="<?php echo $schedule->id;?>">Edit</button>
+                                    <button class="btn btn-danger delete-btn" data-id="<?php echo $schedule->id;?>">Delete</button>
                                     </div>
                             </div>
                         <?php endforeach; ?>
@@ -248,15 +248,15 @@
                     </div>
                     <div class="table-content">	
                     <?php foreach($data['sunday'] as $schedule) : ?>
-                            <div class="table-row">		
+                            <div class="table-row" id="schedule-<?php echo $schedule->id; ?>">	
                                 <div class="table-data"><?php echo $schedule->route_num; ?></div>
                                 <div class="table-data"><?php echo $schedule->arrival_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->departure_time; ?></div>
                                 <div class="table-data"><?php echo $schedule->from_station; ?></div>
                                 <div class="table-data"><?php echo $schedule->to_station; ?></div>
                                 <div class="table-data">
-                                    <a href="<?php echo URLROOT; ?>/schedulers/editSchedule/<?php echo $schedule->id; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="<?php echo URLROOT; ?>/schedulers/deleteSchedule/<?php echo $schedule->id; ?>" class="btn btn-danger">Delete</a>
+                                    <button class="btn btn-primary edit-btn" data-id="<?php echo $schedule->id;?>" >Edit</button>
+                                    <button class="btn btn-danger delete-btn" data-id="<?php echo $schedule->id;?>">Delete</button>
                                     </div>
                             </div>
                         <?php endforeach; ?>
