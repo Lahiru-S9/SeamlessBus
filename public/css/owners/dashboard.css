@@ -1,7 +1,7 @@
 /* dashboard.css */
 
 .container {
-  margin-top: 80px;
+  margin-top: 40px;
   width: 100%;
   height: 100%;
   background: white;
@@ -113,18 +113,37 @@
     font-weight: 600;
   }
 
+  .buses {
+    margin-top: 20px;
+  }
+  
+  .dashboard-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
   table {
-    border-collapse: collapse;
-    border-spacing: 0;
     width: 100%;
-    border: 1px solid #ddd;
+    border-collapse: collapse;
   }
   
-  th, td {
+  table th,
+  table td {
+    padding: 8px;
     text-align: left;
-    padding: 16px;
+    border-bottom: 1px solid #e98412;
   }
   
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
+  table th {
+    background-color: #bfdd77;
   }
+  
+  table tr:hover {
+    background-color: #4a2cdf;
+  }
+  
+  h3 {
+    margin-top: 20px;
+  }
+
+ 

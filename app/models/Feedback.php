@@ -21,5 +21,10 @@ class Feedback{
         return false;
     }
     }
+    // Method to fetch all feedback
+    public function getAllFeedback() {
+        $this->db->query('SELECT * FROM feedback');
+        return $this->db->resultSet();
+    }
 
 }

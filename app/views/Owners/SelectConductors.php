@@ -1,24 +1,31 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<link rel="stylesheet" href="<?php echo URLROOT; ?>/css/Owners/selectConductor.css">
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/owners/SelectConductors.css">
 
-<div class="container">
-    <h1>Select Conductor</h1>
-    <div class="search-bar">
-        <input type="text" id="conductor-search" placeholder="Search for a conductor...">
-    </div>
-    <div class="conductor-list">
-        <?php foreach ($data['conductors'] as $conductor) : ?>
-            <div class="conductor-item">
-                <img src="<?php echo $conductor->profile_image; ?>" alt="Conductor Image">
-                <h2><?php echo $conductor->name; ?></h2>
-                <p>Mobile: <?php echo $conductor->mobile; ?></p>
-                <p>Address: <?php echo $conductor->address; ?></p>
-                <button class="select-btn" data-conductor-id="<?php echo $conductor->id; ?>">Select</button>
-            </div>
-        <?php endforeach; ?>
-    </div>
+
+<!-- HTML to display bus list -->
+<div id="bus-list">
+    <?php foreach ($data['buses'] as $bus): ?>
+        <div class="bus bus-<?php echo str_replace(' ', '_', $bus->bus_no); ?>">
+            <span class="bus-number"><?php echo $bus->bus_no; ?></span><br>
+            <span class="currant-conductor">currant conductor: <?php echo $bus->name ?? 'not assigned'; ?></span><br>
+            <span class="bus-model">Bus Model: <?php echo $bus->bus_model; ?></span><br>
+            <span class="bus-route">Bus Route: <?php echo $bus->route_num; ?></span>
+            <button class="select-btn" onclick="showConductors('<?php echo $bus->bus_no;?>')">Select</button>
+            <button class="deselect-btn" onclick="deSelectConductors()">Deselect</button>
+        </div>
+    <?php endforeach; ?>
 </div>
 
-<script src="<?php echo URLROOT; ?>/js/Owners/selectConductors.js"></script>
+<!-- HTML to display conductor list -->
+<div id="conductor-list" style="display:none;">
+    <!-- Conductor list will be dynamically populated by JavaScript -->
+</div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    var conductors = <?php echo json_encode($data['conductors']); ?>;
+</script>
+
+<script src="<?php echo URLROOT; ?>/js/owners/selectConductors.js"></script>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

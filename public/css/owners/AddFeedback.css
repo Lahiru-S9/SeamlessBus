@@ -1,7 +1,8 @@
 /* styles.css */
 .container{
-    margin-top: 80px;
+    margin-top: 60px;
     display: flex;
+    margin-left: 10px;
 }
 
 
@@ -87,3 +88,44 @@
     color: #888;
     text-align: center;
 }
+
+/* Footer styles */
+.footer {
+    margin-top: 100px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    height: 24px;
+}
+
+#footer-logo {
+    margin-top: 100px;
+    width: 100px; /* Adjust the size as needed */
+}
+
+.footer-subtext {
+    font-size: 14px;
+    color: #6c757d;
+    margin-top: 10px;
+}
+
+.footer-text {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.social-media-icons {
+    margin-top: 20px;
+}
+
+.social-media-icon {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-media-icon img {
+    width: 30px; /* Adjust the size as needed */
+    height: 30px; /* Adjust the size as needed */
+}
+

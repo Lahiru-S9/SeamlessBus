@@ -12,13 +12,13 @@
       <div class="buttons-container">
 <!--1 button image -->
         <div class="clickheres">
-        <a href="/app/views/schedulers/verifyBus.php"> 
+        <a href="<?php echo URLROOT?>/Schedulers/verifyBus"> 
         <img src="<?php echo URLROOT;?> /public/img/verify bus.png" class="image"></a>
         </div>
 <!-- 1 end button image -->
 <!-- 2 end button image -->
         <div class="clickheres">
-        <a href="/app/views/schedulers/busdetails.php"> 
+        <a href="<?php echo URLROOT;?>/Schedulers/seeBusDetails"> 
         <img src="<?php echo URLROOT;?>/public/img/seeBusDetails.png"  class="image"></a>
         </div>
         
