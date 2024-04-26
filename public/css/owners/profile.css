@@ -173,10 +173,15 @@ body {
     justify-content: center;
     align-items: center;
     color: #fff;
-    background-color: #007bff;
+    background-color: #21dbe2;
     transition: width 0.3s ease-in-out;
 }
 
 .bg-primary {
-    background-color: #007bff;
+    background-color: #51cee1;
+}
+
+#footer-logo{
+    height: 80px;
+    width: auto;
 }

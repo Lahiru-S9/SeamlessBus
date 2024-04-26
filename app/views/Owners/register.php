@@ -2,7 +2,7 @@
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/owners/register.css">
 
 <div class="container">
-    <img src="<?php echo URLROOT; ?>/img/owner_signup.png" alt="Background Image" />
+   
 
     <div class="content">
         <div class="login-title">Making things easier</div>
@@ -36,6 +36,34 @@
             </div>
         </form>
     </div>
+    <img src="<?php echo URLROOT; ?>/img/registerPage.png" alt="Background Image" />
 </div>
+</div><br>
+<div class="footer">
+        <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
+        <div class="footer-subtext">
+            Seamless Bus
+        </div>
+        <div class="footer-text">
+            Enhancing your Travel Experience
+        </div>
+
+        <div class="social-media-icons">
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Facebook.png" alt="Facebook">
+            </a>
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Twitter.png" alt="Twitter">
+            </a>
+            <a href="#" class="social-media-icon">
+                <img src="<?php echo URLROOT; ?>/img/Instagram.png" alt="Instagram">
+            </a>
+        </div>
+    
+        <div class="footer-subtext">
+            Developed by CS group 23
+        </div>
+    </div>
+
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

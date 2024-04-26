@@ -115,31 +115,38 @@
 
   .buses {
     margin-top: 20px;
+    
   }
   
   .dashboard-title {
+    color: #0A6ED2;
     font-size: 24px;
     margin-bottom: 20px;
   }
   
-  table {
-    width: 100%;
+  .buses-table {
+    width: 80%;
+    position: center;
     border-collapse: collapse;
+    margin-top: 20px;
+    cursor: pointer;
+   background-color:  rgb(224, 234, 231) ;
   }
   
   table th,
   table td {
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #e98412;
+    border-bottom: 1px solid #04226e;
   }
   
   table th {
-    background-color: #bfdd77;
+    background-color: #4aebd1;
   }
   
   table tr:hover {
-    background-color: #4a2cdf;
+    cursor: pointer;
+    background-color: #e2dd4a;
   }
   
   h3 {

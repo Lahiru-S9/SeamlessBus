@@ -79,3 +79,8 @@ th {
 tbody tr:hover {
     background-color:  rgb(191, 234, 106);
 }
+
+#footer-logo{
+    height: 80px;
+    width: auto;
+}
