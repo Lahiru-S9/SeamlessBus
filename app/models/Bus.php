@@ -52,15 +52,7 @@ class Bus {
     // }
 
     public function getBusesByOwnerId($owner_id){
-<<<<<<< HEAD
-        $this->db->query('SELECT * FROM buses
-         LEFT JOIN 
-         conductors ON buses.bus_no=conductors.assigned_to 
-         LEFT JOIN users ON users.id = conductors.user_id 
-         WHERE ownerid = :owner_id');
-=======
         $this->db->query('SELECT buses.*, conductors.id AS conductorId, users.* FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE buses.ownerid = :owner_id');
->>>>>>> 53a826eedec5f2940e676b4a2e248bfb027ea99a
         //Bind value
         $this->db->bind(':owner_id', $owner_id);
     
