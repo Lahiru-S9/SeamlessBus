@@ -56,5 +56,50 @@
 
             $this->view('Admins/add_scheduler',$data);
         }
+
+        public function addStation(){
+
+            $stations = $this->stationModel->getAllStations();
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                // Sanitize POST array
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'station' => trim($_POST['station']),
+                    'stations' => $stations,
+                    'station_err' => ''
+                ];
+
+                // Validate data
+                if(empty($data['station'])){
+                    $data['station_err'] = 'Please enter station name';
+                }
+
+                // Make sure no errors
+                if(empty($data['station_err'])){
+                    // Validated
+                    if($this->stationModel->addStation($data)){
+                        flash('station_message', 'Station Added');
+                        redirect('admins/addStation');
+                    } else {
+                        die('Something went wrong');
+                    }
+                } else {
+                    // Load view with errors
+                    $this->view('admins/addStation', $data);
+                }
+
+            }else{
+            $data = [
+                'station' => '',
+                'station_err' => '',
+                'stations' => $stations
+            ];
+
+            // var_dump($data);
+            $this->view('admins/addStation', $data);
+            }
+        }
     }
 
