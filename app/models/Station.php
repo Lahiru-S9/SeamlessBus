@@ -89,7 +89,7 @@ class Station {
     }
 
     public function getSchedulerStation($id){
-        $this->db->query('SELECT station FROM stations
+        $this->db->query('SELECT stations.station,stations.id FROM stations
         JOIN schedulers ON schedulers.station_id = stations.id
         JOIN scheduler_details ON schedulers.scheduler_id = scheduler_details.id 
         WHERE  scheduler_details.user_id= :id');

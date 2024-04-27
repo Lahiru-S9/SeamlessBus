@@ -25,6 +25,7 @@ class Route {
     public function getRoutesbySchedulerWithDetails($id){
         $this->db->query('SELECT 
         routes.route_num,
+        routes.ticket_price,
         tostation.station AS tostation,
         fromstation.station AS fromstation,
         COUNT(buses.bus_no) AS bus_count
@@ -38,7 +39,7 @@ class Route {
         stations AS fromstation ON routes.fromstationid = fromstation.id
     JOIN 
         scheduler_details ON schedulers.scheduler_id = scheduler_details.id 
-    JOIN 
+    LEFT JOIN 
         buses ON routes.route_num = buses.route_num
     WHERE 
         scheduler_details.user_id = :id
@@ -56,5 +57,27 @@ class Route {
         $result = $this->db->single();
         return $result;
     }
+
+    public function addRoute($data) {
+        $this->db->query('INSERT INTO routes (route_num, tostationid, fromstationid) VALUES (:route_num, :to, :from)');
+        $this->db->bind(':route_num', $data['routeNumber']);
+        $this->db->bind(':to', $data['to']);
+        $this->db->bind(':from', $data['from']);
+    
+        // Insert the first record with tostationid:to and fromstationid:from
+        if ($this->db->execute()) {
+            // Swap the values for the second record
+            $this->db->bind(':to', $data['from']);
+            $this->db->bind(':from', $data['to']);
+    
+            // Insert the second record with fromstationid:from and tostationid:to
+            if ($this->db->execute()) {
+                return true;
+            }
+        }
+    
+        return false;
+    }
+    
     
 }

@@ -608,9 +608,11 @@
                 'routeNumber' => trim($_POST['routeNumber']),
                 'from' => trim($_POST['from']),
                 'to' => trim($_POST['to']),
+                'ticketPrice' => trim($_POST['ticketPrice']),
                 'routeNumber_err' => '',
                 'from_err' => '',
-                'to_err' => ''
+                'to_err' => '',
+                'ticketPrice_err' => ''
             ];
 
             //Validate routeNumber
@@ -625,6 +627,10 @@
                 $data['to_err'] = 'Please enter to station';
             }
 
+            if(empty($data['ticketPrice'])){
+                $data['ticketPrice_err'] = 'Please enter ticket price';
+            }
+
             //Make sure errors are empty
             if(empty($data['routeNumber_err']) && empty($data['from_err']) && empty($data['to_err'])){
                 //Validated
@@ -632,14 +638,14 @@
                 //Register User
                 if($this->routesModel->addRoute($data)){
                     flash('route_success', 'Route added successfully');
-                    redirect('schedulers/addRoute');
+                    redirect('Schedulers/addRoute');
                 } else{
                     die('Something went wrong');
                 }
 
             }else {
                 //Load view with errors
-                $this->view('schedulers/addRoute', $data);
+                $this->view('Schedulers/addRoute', $data);
             }
         }
         //Init data
@@ -652,7 +658,8 @@
             'station' => $station,
             'stations' => $stations,
             'routeNumber_err' => '',
-            'to-err' => ''
+            'to-err' => '',
+            'ticketPrice_err' => ''
         ];
 
         // var_dump($data);
