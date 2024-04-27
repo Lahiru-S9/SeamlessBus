@@ -666,6 +666,73 @@
 
         $this->view('schedulers/addRoute',$data);
     }
+
+    public function editRoutes($id){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+
+        }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize input data
+            $routeNumber = filter_input(INPUT_POST, 'routeNumber', FILTER_SANITIZE_STRING);
+            $from = filter_input(INPUT_POST, 'from', FILTER_SANITIZE_STRING);
+            $to = filter_input(INPUT_POST, 'to', FILTER_SANITIZE_STRING);
+            $ticketPrice = filter_input(INPUT_POST, 'ticketPrice', FILTER_SANITIZE_STRING);
+
+            $data = [
+                'routeNumber' => $routeNumber,
+                'from' => $from,
+                'to' => $to,
+                'ticketPrice' => $ticketPrice,
+                'id' => $id
+            ];
+
+            // Call a method in the Route model to update the route
+            if ($this->routesModel->updateRoute($data)) {
+                // Redirect to the addRoute page
+                redirect('schedulers/addRoute');
+            } else {
+                // Handle the case where the route update fails
+                echo json_encode(['error' => 'Failed to update route']);
+                exit;
+            }
+        } else {
+            // Fetch the route data from the database
+            $route = $this->routesModel->getRouteById($id);
+
+            // Pass the route data to the view
+            $data = [
+                'route' => $route
+            ];
+
+            // Load the view with the route data
+            $this->view('schedulers/editRoutes', $data);
+        }
+    }
+
+    public function deleteRoute($routeNumber){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // It's a regular request
+            if ($this->routesModel->deleteRoute($routeNumber)) {
+                // Redirect to the addRoute page
+                redirect('schedulers/addRoute');
+            } else {
+                // Handle the case where the route deletion fails
+                echo json_encode(['error' => 'Failed to delete route']);
+                exit;
+            }
+        } else {
+            // Handle non-GET requests, if needed
+            echo json_encode(['error' => 'Invalid request method']);
+            exit;
+        }
+    }
     
     
 }
