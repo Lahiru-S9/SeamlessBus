@@ -78,6 +78,12 @@ class Route {
     
         return false;
     }
+
+    public function deleteRoute($routeNumber) {
+        $this->db->query('DELETE FROM routes WHERE route_num = :route_num');
+        $this->db->bind(':route_num', $routeNumber);
+        return $this->db->execute();
+    }
     
     
 }
