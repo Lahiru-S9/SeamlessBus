@@ -52,7 +52,7 @@
                 }elseif(strlen($data['password']) < 6){
                     $data['password_err'] = 'Password must be at least 6 characters';
                 }
-
+            
                 //Validate Confirm Password
                 if(empty($data['confirm_password'])){
                     $data['confirm_password_err'] = 'Please confirm password';
@@ -86,7 +86,7 @@
 
 
 
-            }else{
+            } else{
                 //Init data
                 $data = [
                     'name' => '',
@@ -495,7 +495,7 @@
     public function PerformanceMatrix(){
         if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
 
-            redirect('Owners/seeReports');
+            redirect('Users/login');
         }
             $busModel = $this->model('Bus');
             $owner_id = $_SESSION['user_id'];
