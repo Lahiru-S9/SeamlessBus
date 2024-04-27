@@ -41,15 +41,26 @@ class Bus {
         }
     }
 
+    // public function getBusesByOwnerId($owner_id){
+    //     $this->db->query('SELECT * FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE ownerid = :owner_id');
+    //     //Bind value
+    //     $this->db->bind(':owner_id', $owner_id);
+
+    //     $results = $this->db->resultSet();
+
+    //     return $results;
+    // }
+
     public function getBusesByOwnerId($owner_id){
-        $this->db->query('SELECT * FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE ownerid = :owner_id');
+        $this->db->query('SELECT buses.*, conductors.id AS conductorId, users.* FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE buses.ownerid = :owner_id');
         //Bind value
         $this->db->bind(':owner_id', $owner_id);
-
+    
         $results = $this->db->resultSet();
-
+    
         return $results;
     }
+    
 
     public function getRequestedBusesBySchdeuler($scheduler_id){
         $this->db->query("SELECT 
@@ -166,7 +177,9 @@ class Bus {
         } else {
             return false;
         }
+
     }
+
 
 //   public function seeReports($data){
 //         $this->db->query('SELECT 
