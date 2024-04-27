@@ -85,5 +85,11 @@ class Route {
         return $this->db->execute();
     }
     
+    public function updateTicketPrice($data) {
+        $this->db->query('UPDATE routes SET ticket_price = :ticket_price WHERE route_num = :route_num');
+        $this->db->bind(':ticket_price', $data['ticketPrice']);
+        $this->db->bind(':route_num', $data['route_num']);
+        return $this->db->execute();
+    }
     
 }
