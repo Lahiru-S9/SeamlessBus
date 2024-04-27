@@ -10,6 +10,12 @@
     height: 70%;
 }
 
+#main-image-conductor{
+    margin-left: 5%;
+    width: 35%; 
+    height: 50%;
+}
+
 .content {
     color: black;
     margin-left: 10%;
