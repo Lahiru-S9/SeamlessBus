@@ -667,49 +667,55 @@
         $this->view('schedulers/addRoute',$data);
     }
 
-    public function editRoutes($id){
+    public function editRoute($routeNumber){
         if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
-               
             redirect('Users/login');
-
         }
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Sanitize input data
-            $routeNumber = filter_input(INPUT_POST, 'routeNumber', FILTER_SANITIZE_STRING);
-            $from = filter_input(INPUT_POST, 'from', FILTER_SANITIZE_STRING);
-            $to = filter_input(INPUT_POST, 'to', FILTER_SANITIZE_STRING);
-            $ticketPrice = filter_input(INPUT_POST, 'ticketPrice', FILTER_SANITIZE_STRING);
-
+    
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Process form
+            // Sanitize POST data
+            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+            // Initialize data
             $data = [
-                'routeNumber' => $routeNumber,
-                'from' => $from,
-                'to' => $to,
-                'ticketPrice' => $ticketPrice,
-                'id' => $id
+                'route_num' => $routeNumber,
+                'ticketPrice' => trim($_POST['ticketPrice']),
+                'ticketPrice_err' => ''
             ];
-
-            // Call a method in the Route model to update the route
-            if ($this->routesModel->updateRoute($data)) {
-                // Redirect to the addRoute page
-                redirect('schedulers/addRoute');
+    
+            // Validate ticketPrice
+            if(empty($data['ticketPrice'])){
+                $data['ticketPrice_err'] = 'Please enter ticket price';
+            }
+    
+            // Make sure errors are empty
+            if(empty($data['ticketPrice_err'])){
+                // Validated
+                // Update ticket price
+                if($this->routesModel->updateTicketPrice($data)){
+                    flash('route_success', 'Ticket price updated successfully');
+                    redirect('Schedulers/addRoute');
+                } else{
+                    die('Something went wrong');
+                }
             } else {
-                // Handle the case where the route update fails
-                echo json_encode(['error' => 'Failed to update route']);
-                exit;
+                // Load view with errors
+                $this->view('schedulers/editRoute', $data);
             }
         } else {
-            // Fetch the route data from the database
-            $route = $this->routesModel->getRouteById($id);
-
-            // Pass the route data to the view
+            // Load the route data for editing
+            $route = $this->routesModel->getRouteByRouteNumber($routeNumber);
             $data = [
-                'route' => $route
+                'route_num' => $routeNumber,
+                'ticketPrice' => $route->ticket_price,
+                'ticketPrice_err' => ''
             ];
-
-            // Load the view with the route data
-            $this->view('schedulers/editRoutes', $data);
+    
+            $this->view('schedulers/editRoute', $data);
         }
     }
+    
 
     public function deleteRoute($routeNumber){
         if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
