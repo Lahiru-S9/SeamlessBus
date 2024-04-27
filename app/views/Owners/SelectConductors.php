@@ -11,7 +11,12 @@
             <span class="bus-model">Bus Model: <?php echo $bus->bus_model; ?></span><br>
             <span class="bus-route">Bus Route: <?php echo $bus->route_num; ?></span>
             <button class="select-btn" onclick="showConductors('<?php echo $bus->bus_no;?>')">Select</button>
-            <button class="deselect-btn" onclick="deSelectConductors()">Deselect</button>
+            <!-- Inside the loop where you display buses -->
+            <form method="post" action = "<?php echo URLROOT;?>/Owners/Selectconductors" style="display: inline;" >
+                <input type="hidden" name="deselectConductor" value="true">
+                <input type="hidden" name="conductorId" value="<?php echo $bus->conductorId; ?>">
+                <button type="submit" class="deselect-btn" onclick="deSelectConductors('<?php echo $bus->bus_no;?>')">Deselect</button>
+            </form>
         </div>
     <?php endforeach; ?>
 </div>

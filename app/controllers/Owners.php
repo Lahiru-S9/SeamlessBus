@@ -52,7 +52,7 @@
                 }elseif(strlen($data['password']) < 6){
                     $data['password_err'] = 'Password must be at least 6 characters';
                 }
-
+            
                 //Validate Confirm Password
                 if(empty($data['confirm_password'])){
                     $data['confirm_password_err'] = 'Please confirm password';
@@ -86,7 +86,7 @@
 
 
 
-            }else{
+            } else{
                 //Init data
                 $data = [
                     'name' => '',
@@ -109,16 +109,56 @@
         }
         public function dashboard(){
             if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
-               
                 redirect('Users/login');
             }
-           
-            $data = [
-                'buses' => $this->busModel->getBusesByOwnerId($_SESSION['user_id'])
-            ];
-
-            $this->view('Owners/dashboard', $data);
+        
+            // Handle form submissions
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (isset($_POST['action'])) {
+                    $busId = $_POST['bus_no'];
+                    $action = $_POST['action'];
+                    if(isset($_POST['route'])){
+                        $route = $_POST['route'];
+                    }
+        
+                    switch ($action) {
+                        case 'cancel':
+                            // Update bus status to cancelled in the database
+                            $this->busModel->updateBusStatus($busId, '');
+                            break;
+                        case 'quit':
+                            // Update bus status to quit in the database
+                            $this->busModel->updateBusStatus($busId, 'quit');
+                            break;
+                        case 'take_break':
+                            // Update bus status to on break in the database
+                            $this->busModel->updateBusStatus($busId, 'on a break');
+                            break;
+                        case 'resume':
+                            // Update bus status to accepted in the database
+                            $this->busModel->updateBusStatus($busId, 'accepted');
+                            break;
+                        case 'request':
+                            // Update bus status to requested in the database
+                            $this->busModel->requestRoute($busId, $route);
+                            break;
+                        default:
+                            // Handle other actions if needed
+                            break;
+                    }
+                }
+            }
             
+            // Prepare data to be passed to the view
+            $buses = $this->busModel->getBusesByOwnerId($_SESSION['user_id']);
+            $routes = $this->routeModel->getRoutes();
+
+            $data = [
+                'routes' => $routes,
+                'buses' => $buses
+            ];
+        
+            $this->view('Owners/dashboard', $data);
         }
 
         public function AddBuses(){
@@ -250,8 +290,21 @@
 
                 redirect('Users/login');
             }
+            if(isset($_POST['deselectConductor'])) {
+                $data = [
+                    'bus_no' => null,
+                    'conductor_id' => trim($_POST['conductorId'])
+                ];
+        
+                if($this->busModel->assignConductor($data)){
+                    flash('conductor_deselected', 'Conductor deselected successfully');
+                    redirect('Owners/selectConductors');
+                } else {
+                    die('Something went wrong');
+                }
+            }
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $data = [
                     'bus_no' => trim($_POST['busNumber']),
@@ -260,7 +313,7 @@
 
                 if($this->busModel->assignConductor($data)){
                     flash('conductor_assigned', 'Conductor assigned successfully');
-                    redirect('Owners/dashboard');
+                    redirect('Owners/selectConductors');
                 }else{
                     die('Something went wrong');
                 }
@@ -272,7 +325,7 @@
                 'conductors' => $conductors
             ];}
 
-            // var_dump($conductors);
+            // var_dump($data);
 
             $this->view('Owners/SelectConductors', $data);
         }
@@ -400,6 +453,10 @@
     
 
     public function profile(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+            redirect('Owners/seeReports');
+        }
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);

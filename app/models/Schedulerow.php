@@ -44,7 +44,9 @@ class Schedulerow {
     JOIN 
         stations AS from_station ON routes.fromstationid = from_station.id
     JOIN 
-        stations AS to_station ON routes.tostationid = to_station.id;
+        stations AS to_station ON routes.tostationid = to_station.id
+    WHERE 
+        schedule.date >= CURDATE() AND schedule_def.arrival_time > CURTIME();
         
      ');
 
