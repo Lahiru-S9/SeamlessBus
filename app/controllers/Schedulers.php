@@ -589,6 +589,76 @@
         }
 
     }
+
+    public function addRoute(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+
+        }
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //process form
+           
+            //Sanitize POST data
+            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Init data
+            $data = [
+                'routeNumber' => trim($_POST['routeNumber']),
+                'from' => trim($_POST['from']),
+                'to' => trim($_POST['to']),
+                'routeNumber_err' => '',
+                'from_err' => '',
+                'to_err' => ''
+            ];
+
+            //Validate routeNumber
+            if(empty($data['routeNumber'])){
+                $data['routeNumber_err'] = 'Please enter route number';
+            } elseif($this->routesModel->getRouteByRouteNumber($data['routeNumber'])){
+                $data['routeNumber_err'] = 'Route name already exists';
+            }
+
+            //Validate to
+            if(empty($data['to'])){
+                $data['to_err'] = 'Please enter to station';
+            }
+
+            //Make sure errors are empty
+            if(empty($data['routeNumber_err']) && empty($data['from_err']) && empty($data['to_err'])){
+                //Validated
+                
+                //Register User
+                if($this->routesModel->addRoute($data)){
+                    flash('route_success', 'Route added successfully');
+                    redirect('schedulers/addRoute');
+                } else{
+                    die('Something went wrong');
+                }
+
+            }else {
+                //Load view with errors
+                $this->view('schedulers/addRoute', $data);
+            }
+        }
+        //Init data
+        $routes= $this->routesModel->getRoutesbySchedulerWithDetails($_SESSION['user_id']);
+        $station = $this->stationModel->getSchedulerStation($_SESSION['user_id']);
+        $stations = $this->stationModel->getAllStations();
+
+        $data = [
+            'routes' => $routes,
+            'station' => $station,
+            'stations' => $stations,
+            'routeNumber_err' => '',
+            'to-err' => ''
+        ];
+
+        // var_dump($data);
+
+        $this->view('schedulers/addRoute',$data);
+    }
     
     
 }
