@@ -30,12 +30,49 @@
   border-radius: 15px;
   cursor: pointer;
 }
+/*reg user my profile card*/
 #profile-card{
   background: rgb(255, 221, 0);
 }
 #profile-card::before,
 #profile-card::after{
   background-color: rgb(183, 255, 0);
+}
+
+/*scheduler busses card*/
+#bus-card{  
+  background: rgb(255, 221, 0);
+}
+#bus-card::before,
+#bus-card::after{
+  background-color: rgb(183, 255, 0);
+}
+.card#bus-card:hover::after{
+  content: "View Busses";
+}
+
+/*scheduler manage schedules card
+#schedule-card{
+  background: rgb(255, 221, 0);
+}
+#schedule-card::before,
+#schedule-card::after{
+  background-color: rgb(183, 255, 0);
+}*/
+.card#schedule-card:hover::after{
+  content: "Manage Schedules";
+}
+
+/*scheduler feedback form card*/
+#feedback-card{
+  background: rgb(255, 115, 243);
+}
+#feedback-card::before,
+#feedback-card::after{
+  background-color: rgb(255, 169, 218);
+}
+.card#feedback-card:hover::after{
+  content: "Provide Feedback";
 }
 
 .card::before,
@@ -78,7 +115,6 @@
 }
 .card#profile-card:hover::after{
   content: "View Profile";
-  
 }
 
 /*.card#qr-card:hover::before {
