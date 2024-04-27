@@ -290,8 +290,21 @@
 
                 redirect('Users/login');
             }
+            if(isset($_POST['deselectConductor'])) {
+                $data = [
+                    'bus_no' => null,
+                    'conductor_id' => trim($_POST['conductorId'])
+                ];
+        
+                if($this->busModel->assignConductor($data)){
+                    flash('conductor_deselected', 'Conductor deselected successfully');
+                    redirect('Owners/selectConductors');
+                } else {
+                    die('Something went wrong');
+                }
+            }
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $data = [
                     'bus_no' => trim($_POST['busNumber']),
@@ -300,7 +313,7 @@
 
                 if($this->busModel->assignConductor($data)){
                     flash('conductor_assigned', 'Conductor assigned successfully');
-                    redirect('Owners/dashboard');
+                    redirect('Owners/selectConductors');
                 }else{
                     die('Something went wrong');
                 }
@@ -312,7 +325,7 @@
                 'conductors' => $conductors
             ];}
 
-            // var_dump($conductors);
+            // var_dump($data);
 
             $this->view('Owners/SelectConductors', $data);
         }
@@ -440,6 +453,10 @@
     
 
     public function profile(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
+
+            redirect('Owners/seeReports');
+        }
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
