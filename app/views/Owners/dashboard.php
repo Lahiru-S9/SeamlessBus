@@ -61,6 +61,7 @@
                 <th>seats_per_row</th>
                 <th>route</th>
                 <th>status</th>
+                <th>Actions</th>
             </tr>
             <?php 
                 if(empty($data['buses'])){
@@ -79,6 +80,68 @@
                         <td><?php echo $bus->seats_per_row; ?></td>
                         <td><?php echo $bus->route_num; ?></td>
                         <td><?php echo $bus->status; ?></td>
+                        <td> 
+                            <form method="post" action="<?php echo URLROOT; ?>/Owners/dashboard">
+                                <input type="hidden" name="bus_no" value="<?php echo $bus->bus_no; ?>">
+                                <?php
+                                // Conditional buttons based on status
+                                    switch ($bus->status) {
+                                        case "requested":
+                                            echo '<input type="hidden" name="action" value="cancel">';
+                                            echo '<button type="submit">Cancel</button>';
+                                            break;
+                                        case "accepted":
+                                ?>
+                                            <form method="post" action="<?php echo URLROOT; ?>/Owners/dashboard">
+                                                <input type="hidden" name="action" value="quit">
+                                                <button type="submit">Quit</button>
+                                            </form>
+                                            <form method="post" action="<?php echo URLROOT; ?>/Owners/dashboard">
+                                                <input type="hidden" name="bus_no" value="<?php echo $bus->bus_no; ?>">
+                                                <input type="hidden" name="action" value="take_break">
+                                                <button type="submit">Take a Break</button>
+                                            </form>
+                                <?php
+                                                break;
+                                        case "paused":
+                                            echo '<input type="hidden" name="action" value="quit">';
+                                            echo '<button type="submit">Quit</button>';
+                                            break;
+                                        case "on a break":
+                                            echo '<input type="hidden" name="action" value="resume">';
+                                            echo '<button type="submit">Resume</button>';
+                                            break;
+                                        case "declined":
+                                        case null:
+                                            // Display request form
+                                            ?>
+                                            <div id="modal" class="modal">
+                                                <div class="modal-content">
+                                                    <span class="close">&times;</span>
+                                                    <p>Please select a route:</p>
+                                                    <select id="routeSelect" name="route">
+                                                        <?php
+                                                        if (isset($data['routes'])) {
+                                                            foreach ($data['routes'] as $route) {
+                                                                echo '<option value="' . htmlspecialchars($route->{'Route Number'}) . '">' . htmlspecialchars($route->{'Route Number'}) . '</option>';
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    <button onclick="submitRoute()">Submit</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="action" value="request">
+                                            <button type="button" onclick="requestRoute('<?php echo htmlspecialchars($bus->bus_no); ?>')">Request</button>
+                                            <?php
+                                            break;
+                                        default:
+                                            // Default action
+                                            break;
+                                    }
+                                ?>
+                            </form>
+                        </td>
                     </tr>
             <?php
                     endforeach;}
@@ -91,35 +154,10 @@
         
     </div>
 
-    <div class="footer">
-            <img src="<?php echo URLROOT; ?>/img/logo_bw.png">
-            <div class="footer-subtext">
-                Seamless Bus
-            </div>
-            <div class="footer-text">
-                Enhancing your Travel Experience
-            </div>
-
-            <div class="social-media-icons">
-                <a href="#" class="social-media-icon">
-                    <img src="<?php echo URLROOT; ?>/img/Facebook.png" alt="Facebook">
-                </a>
-                <a href="#" class="social-media-icon">
-                    <img src="<?php echo URLROOT; ?>/img/Twitter.png" alt="Twitter">
-                </a>
-                <a href="#" class="social-media-icon">
-                    <img src="<?php echo URLROOT; ?>/img/Instagram.png" alt="Instagram">
-                </a>
-            </div>
-            
-            <div class="footer-subtext">
-                Developed by CS group 23
-            </div>
-    </div>
 
 </div>
 
 
-
+<script src="<?php echo URLROOT; ?>/js/Owners/dashboard.js"></script>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

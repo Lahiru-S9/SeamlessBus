@@ -41,19 +41,34 @@ class Bus {
         }
     }
 
+    // public function getBusesByOwnerId($owner_id){
+    //     $this->db->query('SELECT * FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE ownerid = :owner_id');
+    //     //Bind value
+    //     $this->db->bind(':owner_id', $owner_id);
+
+    //     $results = $this->db->resultSet();
+
+    //     return $results;
+    // }
+
     public function getBusesByOwnerId($owner_id){
+<<<<<<< HEAD
         $this->db->query('SELECT * FROM buses
          LEFT JOIN 
          conductors ON buses.bus_no=conductors.assigned_to 
          LEFT JOIN users ON users.id = conductors.user_id 
          WHERE ownerid = :owner_id');
+=======
+        $this->db->query('SELECT buses.*, conductors.id AS conductorId, users.* FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE buses.ownerid = :owner_id');
+>>>>>>> 53a826eedec5f2940e676b4a2e248bfb027ea99a
         //Bind value
         $this->db->bind(':owner_id', $owner_id);
-
+    
         $results = $this->db->resultSet();
-
+    
         return $results;
     }
+    
 
     public function getRequestedBusesBySchdeuler($scheduler_id){
         $this->db->query("SELECT 
@@ -78,7 +93,7 @@ class Bus {
     JOIN
         users ON buses.ownerid = users.id
     WHERE 
-        buses.status = 'Requested' AND scheduler_details.user_id = :scheduler_id
+        buses.status = 'requested' AND scheduler_details.user_id = :scheduler_id
     GROUP BY 
         buses.bus_no;
         ");
@@ -92,6 +107,20 @@ class Bus {
         //Bind values
         $this->db->bind(':bus_no', $bus_no);
         $this->db->bind(':status', $status);
+
+        //Execute function
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function requestRoute($busId,$route){
+        $this->db->query('UPDATE buses SET route_num = :route, status ="requested", status_updated_on = CURRENT_TIMESTAMP WHERE bus_no = :busId');
+        //Bind values
+        $this->db->bind(':busId', $busId);
+        $this->db->bind(':route', $route);
 
         //Execute function
         if($this->db->execute()){
@@ -156,11 +185,13 @@ class Bus {
         } else {
             return false;
         }
+
     }
     // Conductor Model
     //public function getConductorsWithDetailsWithAddressA(){
     //$this->db->query("SELECT * FROM conductors WHERE address LIKE 'A%A'");
     //return $this->db->resultSet();
+
 
 
 

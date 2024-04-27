@@ -26,22 +26,6 @@
             </div>
             <p class="action-label">My QR</p>
         </a>
-        
-        <!-- Add more dashboard actions as needed -->
-        <a href="#" class="dashboard-action">
-            <div class="action-icon" style="background: #62D9CC;">
-                <img src="<?php echo URLROOT; ?>/img/Routines.png" alt="QR">
-            </div>
-            <p class="action-label">Routines</p>
-        </a>
-
-        <!-- Add more dashboard actions as needed -->
-        <a href="#" class="dashboard-action">
-            <div class="action-icon" style="background: #62D9CC;">
-                <img src="<?php echo URLROOT; ?>/img/payment.png" alt="QR">
-            </div>
-            <p class="action-label">Payment methods</p>
-        </a>
 
         <!-- Add more dashboard actions as needed -->
         <a href="<?php echo URLROOT?>/RegPassengers/profile" class="dashboard-action">
