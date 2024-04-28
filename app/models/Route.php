@@ -59,10 +59,11 @@ class Route {
     }
 
     public function addRoute($data) {
-        $this->db->query('INSERT INTO routes (route_num, tostationid, fromstationid) VALUES (:route_num, :to, :from)');
+        $this->db->query('INSERT INTO routes (route_num, tostationid, fromstationid, ticket_price) VALUES (:route_num, :to, :from, :ticket_price)');
         $this->db->bind(':route_num', $data['routeNumber']);
         $this->db->bind(':to', $data['to']);
         $this->db->bind(':from', $data['from']);
+        $this->db->bind(':ticket_price', $data['ticketPrice']);
     
         // Insert the first record with tostationid:to and fromstationid:from
         if ($this->db->execute()) {

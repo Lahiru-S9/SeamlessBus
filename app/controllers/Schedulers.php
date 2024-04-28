@@ -668,7 +668,7 @@
             'ticketPrice_err' => ''
         ];
 
-        var_dump($data);
+        // var_dump($data);
 
         $this->view('schedulers/addRoute',$data);
     }
