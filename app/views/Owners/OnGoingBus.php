@@ -16,13 +16,13 @@
            </tr>
             </thead>
             <tbody>
-            <?php foreach ($data['revenue_data'] as $bus): ?>
+            <?php foreach ($data['bookings_details'] as $bus): ?>
                 <tr>
                     <td><?php echo $bus->bus_no; ?></td>
                     <td><?php echo $bus->date; ?></td>
-                    <td><?php echo $bus->time; ?></td>
+                    <td><?php echo $bus->departure_time; ?></td>
                     <td><?php echo $bus->booking_count; ?></td>
-                    <td><?php echo $bus->bus_seat; ?></td>
+                    <td><?php echo $bus->seats; ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody> 
