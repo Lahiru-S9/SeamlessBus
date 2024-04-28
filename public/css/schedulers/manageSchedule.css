@@ -1,47 +1,81 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
 
-h1,h2,h3,h4,h5,h6 {
-    margin:0;
-    color: green;
+.outer-container{
+  align-items: center;
+  display:flex;
+  flex-direction:column;
+  position: relative;
 }
 
-.container {
-  width: 90%;
+.tabs-container{
+  min-width: 100%;
+}
+
+.tabs-container,
+.form-container {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.tabs{
+  margin-top: 8%;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10%; 
-}
-[type=radio]:checked ~label{
-  background-color: yellowgreen;
-  border-bottom: 1px solid #fff;
-  
-}
-.tab label{
+  min-width: 90%;
+  position: relative;   
+  }
 
-  background: #71de87;
-  padding: 10px;
-  border: 1px solid #075a16;
-  margin-left: -1px;
-  position: relative;
-  left: 1px;
- cursor: pointer;
+  .tabs .tab form label {
+    width: 100%;
+    margin: 5px;
+    background: none; 
+    border: none; 
+  }
   
-}
-.tab:hover{
-  background: aqua;
-}
+  .tab {
+    float: left;
+  }
+  
+  .tab [type=radio] {
+    display: none;   
+  }
+
+  .tab label{
+    background: #71de87;
+    padding: 10px;
+    border: 1px solid #075a16;
+    margin-left: -1px;
+    position: relative;
+    left: 1px;
+   cursor: pointer;
+    
+  }
+  .tab:hover{
+    background: aqua;
+  }
+  
+  .content {
+    margin-top: 3%;
+    position: absolute;
+    left: 0;
+    background: #fff;
+    right: 0;
+    border: 1px solid #ccc; 
+    opacity: 0;
+    z-index: 100;
+  }
+
+  .container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
 .table {
-    /* width:auto;
-    border:1px solid #EEEEEE; */
-    width: auto;
-    height: 400px; /* Fixed height */
-    overflow-y: auto; /* Enables vertical scrolling */
-    table-layout: fixed;
-
+    width: 100%;
 }
 
 .table-header {
@@ -52,13 +86,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .table-content {
-  height:300px;
-	overflow:auto;
-	overflow-x:hidden;
-	display:block;
 	width:100%;
-  display:table;
-	table-layout:fixed;
 }
 
 .table-row {
@@ -74,6 +102,17 @@ h1,h2,h3,h4,h5,h6 {
 .table-data, .header__item {
     flex: 1 1 20%;
     text-align:center;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin:0;
+    color: green;
+}
+
+[type=radio]:checked ~label{
+  background-color: yellowgreen;
+  border-bottom: 1px solid #fff;
+  
 }
 
 .header__item {
@@ -107,46 +146,6 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 
-.tabs{
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -50px;
-  min-width: 90%;
-    position: relative;   
-    margin-bottom: 20px;
-  }
-  
-  .tab {
-    float: left;
-  }
-  
-  .tab label {
-    background: #eee; 
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    margin-left: -1px; 
-    position: relative;
-    left: 1px;             
-  }
-  
-  .tab [type=radio] {
-    display: none;   
-  }
-  
-  .content {
-    margin-top: -60px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #fff;
-    right: 0;
-    bottom: 0;
-    border: 1px solid #ccc; 
-    overflow: visible;   
-    opacity: 0;
-    z-index: -1;
-  }
-
   input[type=radio]{
     background-color: #000;
   }
@@ -163,20 +162,8 @@ input[type=radio]:checked ~ label ~ .content {
     opacity: 1;
   }
 
-.tabs-container{
-  min-width: 100%;
-}
-
-.tabs-container,
-.form-container {
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
 .form-container{
-  margin-top: 40%;
-  max-width: 70%;
-  width: 100%;
+  margin-top: 10%;
   padding: 20px; /* Add some padding for better spacing */
   background-color: #f4f4f4; /* Set a background color */
   border: 1px solid #ccc; /* Add a border */
@@ -188,12 +175,7 @@ form {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.tabs .tab form label {
-  width: 100%;
-  margin: 5px;
-  background: none; 
-  border: none; 
-}
+
 
 label{
   margin-bottom: 8px;
