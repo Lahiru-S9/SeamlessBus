@@ -75,6 +75,32 @@
   content: "Provide Feedback";
 }
 
+#select-conductors-card{
+  background: rgb(255, 81, 99);
+}
+#select-conductors-card::before,
+#select-conductors-card::after{
+  background-color: rgb(255, 126, 173);
+}
+.card#select-conductors-card:hover::after{
+  content: "Select Conductors";
+}
+
+#add-busses-card{
+  background: rgb(255, 170, 0);
+}
+#add-busses-card::before,
+#add-busses-card::after{
+  background-color: rgb(255, 205, 105);
+}
+.card#add-busses-card:hover::after{
+  content: "Add Busses";
+}
+
+.card#reports-card:hover::after{
+  content: "View Reports";
+}
+
 .card::before,
 .card::after {
   position: absolute;
