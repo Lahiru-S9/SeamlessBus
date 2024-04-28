@@ -492,12 +492,12 @@
 
             redirect('Users/login');
         }
-            $busModel = $this->model('Bus');
+
             $owner_id = $_SESSION['user_id'];
         
          //pass the revenue data to the view
          $data = [
-            'revenue_data' => $busModel->seeReports(['owner_id' => $owner_id])
+            'bookings_data' => $this->ownerModel->getBookingsByRoute($owner_id)
         ];
  
             //load the view

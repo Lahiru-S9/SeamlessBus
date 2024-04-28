@@ -6,6 +6,7 @@
     <div class="card-container">
         <div id="bus-card" class="card" onclick="window.location.href='<?php echo URLROOT ?>/Schedulers/buses'">Busses</div>
         <div id="schedule-card" class="card" onclick="window.location.href='<?php echo URLROOT ?>/Schedulers/manageSchedule'">Schedules</div>
+        <div id="addRoute-card" class="card" onclick="window.location.href='<?php echo URLROOT ?>/Schedulers/addRoute'">Routes</div>
         <div id="feedback-card" class="card" onclick="window.location.href='<?php echo URLROOT ?>/Schedulers/feedbackForm'">Feedback</div>
     </div>
 </div>
