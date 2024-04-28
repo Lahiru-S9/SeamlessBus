@@ -101,5 +101,25 @@
             $this->view('admins/addStation', $data);
             }
         }
+
+        public function deleteStation(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                // Sanitize POST array
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'station_id' => trim($_POST['station_id'])
+                ];
+
+                if($this->stationModel->deleteStation($data['station_id'])){
+                    flash('station_message', 'Station Removed');
+                    redirect('admins/addStation');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                redirect('admins/addStation');
+            }
+        }
     }
 
