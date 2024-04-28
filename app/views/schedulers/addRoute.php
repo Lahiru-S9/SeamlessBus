@@ -29,7 +29,14 @@
     <label for="routeNumber">Route Number:</label><br>
     <input type="text" id="routeNumber" name="routeNumber" placeholder="<?php echo $data['routeNumber_err'];?>"><br>
     <label for="Between">Between:</label><br>
-    <div><?php echo $data['station'][0]->station; ?></div>
+    <?php if (empty($data['station'])): ?>
+        <?php
+            $message = urlencode("You cannot access routes until you get assigned to a station.");
+            header('Location: ' . URLROOT . '/Schedulers/dashboard?message=' . $message);
+            exit;
+        ?>
+    <?php endif; ?>
+        <div><?php echo $data['station'][0]->station; ?></div>
     <input type="hidden" id="from" name="from" value="<?php echo $data['station'][0]->id; ?>"><br>
     <label for="And">And:</label><br>
     <select id="to" name="to" placeholder="<?php echo $data['to_err'];?>">
