@@ -143,6 +143,17 @@
   content: "View Profile";
 }
 
+#addRoute-card{  
+  background: rgb(82, 255, 94);
+}
+#addRoute-card::before,
+#addRoute-card::after{
+  background-color: rgb(92, 255, 228);
+}
+.card#addRoute-card:hover::after{
+  content: "Add Route";
+}
+
 /*.card#qr-card:hover::before {
   background-image: url(https://www.bdc.ca/globalassets/digizuite/40415-bdc-qr-code.jpg?v=498d76);
   background-size: contain;
