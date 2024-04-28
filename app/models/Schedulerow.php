@@ -288,8 +288,12 @@ class Schedulerow {
         return $results;
     }
 
-    public function getRouteNumbers() {
-        $this->db->query('SELECT route_num FROM routes');
+    public function getRouteNumbers($id) {
+        $this->db->query('SELECT DISTINCT route_num FROM routes JOIN schedulers ON schedulers.station_id = routes.tostationid 
+        JOIN scheduler_details ON schedulers.scheduler_id = scheduler_details.id 
+        WHERE  scheduler_details.user_id= :id');
+
+        $this->db->bind(':id', $id);
 
         $results = $this->db->resultSet();
 
