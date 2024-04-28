@@ -170,7 +170,7 @@
             $friday = $this->scheduleModel->getScheduleByDay('Friday',$_SESSION['user_id']);
             $saturday = $this->scheduleModel->getScheduleByDay('Saturday',$_SESSION['user_id']);
 
-            $routeNumbers = $this->scheduleModel->getRouteNumbers();
+            $routeNumbers = $this->scheduleModel->getRouteNumbers($_SESSION['user_id']);
 
             $data = [
                 'sunday' => $sunday,
