@@ -11,7 +11,6 @@
     position: relative;
     width: 190px;
     height: 254px;
-    background: #000;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -45,11 +44,22 @@
     filter: blur(20px);
   }
 
-  #passenger{
-    background-image: none; /*need to add image*/
-    background-size: cover;
-    background-repeat: no-repeat;
+  #passenger-card{
+    background-image: url(http://localhost/SeamlessBus/public/img/passenger-card.png);
   }
+
+  #conductor-card{
+    background-image: url(http://localhost/SeamlessBus/public/img/conductor-card.png);
+  }
+
+  #scheduler-card{
+    background-image: url(http://localhost/SeamlessBus/public/img/scheduler-card.png);
+  }
+
+  #owner-card{
+    background-image: url(http://localhost/SeamlessBus/public/img/owner-card.png);
+  }
+
   #passenger-card::before{
     background: linear-gradient(-45deg, #ff6200 0%, #e1ff00 100% );
   }
