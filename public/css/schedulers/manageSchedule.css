@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
 
 .outer-container{
+  width: 100%;
   align-items: center;
   display:flex;
   flex-direction:column;
@@ -106,7 +107,7 @@
 
 h1,h2,h3,h4,h5,h6 {
     margin:0;
-    color: green;
+    color: rgb(255, 255, 255);
 }
 
 [type=radio]:checked ~label{
@@ -156,26 +157,35 @@ input[type=radio]:checked ~ label {
     border-bottom: 1px solid #fff;
     z-index: 2;
   }
-  
+
 input[type=radio]:checked ~ label ~ .content {
     z-index: -1;
     opacity: 1;
   }
 
 .form-container{
+  width: 70%;
+  color: #fff;
   margin-top: 10%;
   padding: 20px; /* Add some padding for better spacing */
-  background-color: #f4f4f4; /* Set a background color */
+  background-color: #525252; /* Set a background color */
   border: 1px solid #ccc; /* Add a border */
   border-radius: 8px; /* Add border-radius for rounded corners */
 }
 
 form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display:flex;
+  gap: 5%;
+  width: 100%;
 }
 
+.group{
+  display: grid;
+}
+
+#arrival{
+  padding: -10px;
+}
 
 label{
   margin-bottom: 8px;
@@ -188,13 +198,26 @@ input {
   box-sizing: border-box;
 }
 
-
-.custom-select {
-  position: relative;
-  margin-bottom: 10px;
+#selected-tab{
+  padding: 2%;
+  font-size: 12pt;
 }
 
+#route-select{
+  padding: 3%;
+  font-size: 12pt;
+  width: 100%;
+}
 
+#from-station-select{
+  font-size: 12pt;
+  padding: 2%;
+}
+
+#to-station-select{
+  font-size: 12pt;
+  padding: 2%;
+}
 
 .select-selected {
   background-color: DodgerBlue;
