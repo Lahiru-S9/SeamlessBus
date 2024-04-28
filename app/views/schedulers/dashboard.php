@@ -1,6 +1,11 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/regPassengers/dashboard.css">
 
+<!-- Your HTML content -->
+<?php if (!empty($data['message'])): ?>
+    <div><?php echo $data['message']; ?></div>
+<?php endif; ?>
+
 <div class="container">
     <div class="title">What's on your mind?</div>
     <div class="card-container">
