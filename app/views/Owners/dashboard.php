@@ -48,6 +48,34 @@
             <p class="action-label">Add Feedback</p>
         </a>
     </div>
+    <!-- search bar 
+     <div class ="search-container">
+        <input type="text" id="searchInput" onkeypress="searchBus()" placeholder="Enter bus no " />
+
+    </div>
+    <script>
+        function searchBus(){
+            //get the search input value
+            var input = document.getElementById("serachInput");
+            var filter=input.value.toUppercase();
+            //get the list of bus number elements
+            var busList = document.getElementById("busList");
+            var buses =busList.getElementsByClassName("bus");
+
+            for(var i=0 ; i<buses.length; i++){
+                var bus = buses[i];
+                var name = bus.getElementsByTagName("span")[0];
+
+                // If the name matches the search query, display the conductor, otherwise hide it
+        if (name.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            bus.style.display = "";
+        } else {
+            bus.style.display = "none";
+        }
+    }
+}
+</script>  -->
+          
 
     <div class = "buses">
         <h2 class="dashboard-title">Your Buses</h2>

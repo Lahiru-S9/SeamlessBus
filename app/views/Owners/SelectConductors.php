@@ -48,7 +48,7 @@ function filterConductors() {
         }
     }
 }
-</script> 
+</script>  
 
 
 <!-- HTML to display conductor list -->
