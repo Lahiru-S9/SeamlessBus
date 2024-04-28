@@ -3,7 +3,6 @@
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedulers/manageSchedule.css">
 
 <div class="tabs-container">
-
     <div class="tabs">
         <div class="tab">
             <input type="radio" id="monday" name="tab-group-1" checked onchange="updateSelectedTab('monday')">
@@ -333,7 +332,5 @@ function updateSelectedTab(tab) {
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="<?php echo URLROOT; ?>/js/schedulers/manageSchedule.js"></script>
-
-
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
