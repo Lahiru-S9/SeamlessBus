@@ -11,7 +11,7 @@ function filterFunction() {
     } else {
       a[i].style.display = "none";
     }
-  }
+  }          
 }
 
 function showDropdown() {

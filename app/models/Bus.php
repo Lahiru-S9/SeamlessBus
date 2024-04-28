@@ -261,7 +261,7 @@ public function OnGoingBus($data){
     WHERE
          buses.ownerid = :id AND DATE(schedule.date) = CURDATE() 
     GROUP BY 
-        buses.bus_no;');
+        buses.bus_no');
     
     $this->db->bind(':id' , $data['owner_id']);
     $results = $this->db->resultSet();
