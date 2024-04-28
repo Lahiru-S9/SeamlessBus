@@ -6,6 +6,7 @@
     <div class="card-container">
     <div id="qr-card" class="card" onclick = "togglePopup()"><input id="text" type="hidden" value= "<?php echo $data['encrypted_data'];?>" style="width:80%"/>My QR</div>
     <div id="profile-card" class="card" onclick="window.location.href='<?php echo URLROOT?>/RegPassengers/profile'">My profile</div>
+    <div id="feedback-card" class="card" onclick="window.location.href='<?php echo URLROOT ?>/RegPassengers/feedbackForm'">Feedback</div>
     </div>
     <div class = "popup" id = "popup-1">
             <div class = "content">
