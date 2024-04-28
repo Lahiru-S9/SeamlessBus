@@ -3,12 +3,11 @@
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/schedulers/manageSchedule.css">
 <div class="outer-container">
 <div class="form-container" >
-    <h1>Add New</h1>
+    <h1>Add New Schedule</h1>
     <div>
-        <h4>Fill</h4>
         <br>
         <form id="myForm">
-
+        <div class="group">
             <label for="selected-tab">Select Day:</label>
             <select id="selected-tab" name="selected_tab" onchange="updateSelectedTab(this.value)">
                 <option value="monday" selected>Monday</option>
@@ -18,11 +17,11 @@
                 <option value="friday">Friday</option>
                 <option value="saturday">Saturday</option>
                 <option value="sunday">Sunday</option>
-            </select>
+            </select><br>
 
             
             <label for="route_num">Route Number</label>
-            <div class="custom-select" style="width:200px;">
+            <div class="custom-select">
                 
                 <select name="route_nums" id="route-select">
                     <option value="">Select Route Number</option>
@@ -32,23 +31,27 @@
                     
                     
                 </select>
-            </div>
+            </div></div>
+            <div class="group">
             <label for="arrival">Arrival Time:</label>
             <input type="time" id="arrival" placeholder="Enter Arrival Time" name="arrival">
             <label for="departure">Departure Time:</label>
             <input type="time" id="departure" placeholder="Enter Departure Time" name="departure">
+            </div>
+            <div class="group">
             <label for="from">From Station:</label>
-            <div class="custom-select" style="width:200px;">
+            <div class="custom-select">
                 <select name="stations" id="from-station-select"></select>
             </div>
             <label for="to">To Station:</label>
-            <div class="custom-select" style="width:200px;">
+            <div class="custom-select">
                 <select name="to_stations" id="to-station-select"></select>
-            </div>
+            </div></div>
+            <div class="group">
             <label for="route_id">Route ID:</label>
-            <div id="route-id-display"></div>
+            <div id="route-id-display"></div><br>
             <button type="button" class="btn btn-danger" onclick="add()">Add</button>
-            <button type="button" class="btn btn-secondary" onclick="reset()">Reset</button>
+            <button type="button" class="btn btn-secondary" onclick="reset()">Reset</button></div>
         </form>
     </div>
 </div>
