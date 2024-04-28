@@ -113,7 +113,11 @@
                 redirect('Users/login');
     
             }
-            $this->view('schedulers/dashboard' );
+            $message = isset($_GET['message']) ? urldecode($_GET['message']) : "";
+            $data = [
+                'message' => $message
+            ];
+            $this->view('schedulers/dashboard', $data);
         }
 
         public function AddBusRotation(){
@@ -597,6 +601,7 @@
 
         }
 
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //process form
            
@@ -653,6 +658,7 @@
         $station = $this->stationModel->getSchedulerStation($_SESSION['user_id']);
         $stations = $this->stationModel->getAllStations();
 
+
         $data = [
             'routes' => $routes,
             'station' => $station,
@@ -662,7 +668,7 @@
             'ticketPrice_err' => ''
         ];
 
-        // var_dump($data);
+        var_dump($data);
 
         $this->view('schedulers/addRoute',$data);
     }
