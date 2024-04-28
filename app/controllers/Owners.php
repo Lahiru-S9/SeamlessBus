@@ -429,19 +429,14 @@
         if(!isLoggedIn() || $_SESSION['usertype'] != 'Owner'){
             redirect('Owners/seeReports');
         }
-         
-        // Instantiate the Bus model
-        $busModel = $this->model('Bus');
     
         // Get the owner ID from the session or elsewhere
         $owner_id = $_SESSION['user_id']; // Adjust this line according to your session structure
-       
-    
         
-            //passing ongoing bus data for view
-            $data = [
-                'booking_count' => $busModel->OnGoingBus(['owner_id' => $owner_id])
-            ];
+        //passing ongoing bus data for view
+        $data = [
+            'bookings_details' => $this->busModel->OnGoingBus($owner_id)
+        ];
 
            
     
