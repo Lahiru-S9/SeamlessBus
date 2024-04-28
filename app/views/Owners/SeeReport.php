@@ -3,14 +3,14 @@
 
 <div class="container">
     <h1>Bus Owner Reports</h1>
-    <nav>
+    
         <ul>
             <li><a href="<?php echo URLROOT?>/Owners/PerformanceMatrix" class="container">Performance Metrics</a></li>
             <li><a href="<?php echo URLROOT?>/Owners/readFeedback" class="container">Feedback</a></li>
             <li><a href="<?php echo URLROOT?>/Owners/OnGoingBus" class="container">On Going Buses </a></li>
            <!-- <li><a href="<?php echo URLROOT?>/Owners/Booking" class="container">Bookings</a></li> -->
         </ul>
-    </nav>
+    
 
     
 
