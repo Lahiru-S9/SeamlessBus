@@ -241,7 +241,7 @@ class Schedulerow {
             $this->db->bind(':route_num', $route_num);
         }
 
-        echo "Executed Query: " . $sql . "<br>";
+        // echo "Executed Query: " . $sql . "<br>";
     
         // Execute the query and fetch results
         $results = $this->db->resultSet();
