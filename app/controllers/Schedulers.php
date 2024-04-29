@@ -557,42 +557,42 @@
         $this->view('schedulers/schedule');
     }
 
-    public function feedbackForm(){
-        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+    // public function feedbackForm(){
+    //     if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
            
-            redirect('Users/login');
+    //         redirect('Users/login');
 
-        }
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //     }
+    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            // Sanitize input data
-            $feedbackType = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
-            $feedbackCategory = filter_input(INPUT_POST, 'feedback-category', FILTER_SANITIZE_STRING);
-            $feedbackText = filter_input(INPUT_POST, 'feedback-text', FILTER_SANITIZE_STRING);
+    //         // Sanitize input data
+    //         $feedbackType = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
+    //         $feedbackCategory = filter_input(INPUT_POST, 'feedback-category', FILTER_SANITIZE_STRING);
+    //         $feedbackText = filter_input(INPUT_POST, 'feedback-text', FILTER_SANITIZE_STRING);
             
-            $data = [
-                'feedbackType' => $feedbackType,
-                'feedbackCategory' => $feedbackCategory,
-                'feedbackText' => $feedbackText,
-            ];
+    //         $data = [
+    //             'feedbackType' => $feedbackType,
+    //             'feedbackCategory' => $feedbackCategory,
+    //             'feedbackText' => $feedbackText,
+    //         ];
 
-            // var_dump($data);
+    //         // var_dump($data);
 
-            // Validate the data if needed
+    //         // Validate the data if needed
 
-            // Call a method in the Feedback model to save the feedback
-            $this->feedbackModel->addFeedback($data);
+    //         // Call a method in the Feedback model to save the feedback
+    //         $this->feedbackModel->addFeedback($data);
 
-            // Redirect or show success message
-            // You might want to redirect to a thank you page or the same page with a success message
-            flash('feedback_success', 'Thank you for your feedback!');
-            $this->view('schedulers/feedbackForm');
-        } else {
-            // If the form is not submitted, display the feedback form
-            $this->view('schedulers/feedbackForm');
-        }
+    //         // Redirect or show success message
+    //         // You might want to redirect to a thank you page or the same page with a success message
+    //         flash('feedback_success', 'Thank you for your feedback!');
+    //         $this->view('schedulers/feedbackForm');
+    //     } else {
+    //         // If the form is not submitted, display the feedback form
+    //         $this->view('schedulers/feedbackForm');
+    //     }
 
-    }
+    // }
 
     public function addRoute(){
         if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
