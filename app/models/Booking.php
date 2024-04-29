@@ -113,4 +113,27 @@
             $results = $this->db->resultSet();
             return $results;
         }
+
+        public function getBookingsByNIC($nice){
+            $this->db->query("
+                        SELECT s_from.station AS from_station,
+                        s_to.station AS to_station,
+                        schedule_def.arrival_time,
+                        schedule_def.departure_time,
+                        b.seatno
+                FROM routes r
+                JOIN stations s_from ON r.fromstationid = s_from.id
+                JOIN stations s_to ON r.tostationid = s_to.id
+                JOIN schedule_def ON schedule_def.route_id = r.id
+                JOIN schedule sch ON schedule_def.id = sch.schedule_defId
+                JOIN bookings b ON sch.id = b.scheduleid
+                WHERE b.user_id = :nic
+                AND b.payment_status = 'active';
+            ");
+            
+            $this->db->bind(':nic', $nic);    
+
+            $results = $this->db->resultSet();
+            return $results;
+        }
     }
