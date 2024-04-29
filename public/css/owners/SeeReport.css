@@ -14,49 +14,62 @@ h1 {
     color: blue;
 }
 
-nav ul {
-    list-style-type: none;
+ ul {
+    margin-top: 20px;
+    list-style-type: none; 
     padding: 0;
     margin: 0;
 }
 
-nav ul li {
-    display: inline;
+ ul li {
+    
+     display: inline; 
     margin-right: 20px;
+}
+.nav ul li:hover{
+    color:  rgb(191, 234, 106);
+
+
 }
 
 .summary {
+
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
+    margin-top: 20px;
     margin-bottom: 80px;
 }
 
 .statistic {
     display:grid;
-    margin-top: 40px;
+    margin-top: 20px;
     text-align: center;
+    cursor: pointer;
     
 }
 .statistic :hover{
-    background-color: brown;
+    background-color: rgb(191, 234, 106);
 }
 
 h2{
-    margin-top: 40px ;
+    margin-top: 20px ;
+    color:rgb(105, 105, 210);
+   
 }
 
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: rgb(234, 238, 226) ;
 }
 
 th, td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #0f0e0e;
 }
 
 th {
@@ -65,5 +78,10 @@ th {
 }
 
 tbody tr:hover {
-    background-color: #f2f2f2;
+    background-color:  rgb(191, 234, 106);
+}
+
+#footer-logo{
+    height: 80px;
+    width: auto;
 }

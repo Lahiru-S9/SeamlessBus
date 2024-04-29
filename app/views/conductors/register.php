@@ -2,10 +2,9 @@
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/gpassengers/register.css">
 
 <div class="container" >
-    <img src="<?php echo URLROOT; ?>/img/passenger_signup.png" alt="Background Image" />
-
+<img id="main-image-conductor" src="<?php echo URLROOT; ?>/img/conductor-register.png" alt="Background Image" />
     <div class="content">
-        <div class="login-title">Apply now to create an account</div>
+        <div class="login-title">Register now to create an account</div>
         <div class="subtitle">with just a few simple steps</div><br>
 
         <form action="<?php echo URLROOT; ?>/Conductors/register" method="POST">
@@ -36,33 +35,6 @@
             </div>
         </form>
     </div>
-</div><br><br>
-<div class="footer">
-        <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
-        <div class="footer-subtext">
-            Seamless Bus
-        </div>
-        <div class="footer-text">
-            Enhancing your Travel Experience
-        </div>
-
-        <div class="social-media-icons">
-            <a href="#" class="social-media-icon">
-                <img src="<?php echo URLROOT; ?>/img/Facebook.png" alt="Facebook">
-            </a>
-            <a href="#" class="social-media-icon">
-                <img src="<?php echo URLROOT; ?>/img/Twitter.png" alt="Twitter">
-            </a>
-            <a href="#" class="social-media-icon">
-                <img src="<?php echo URLROOT; ?>/img/Instagram.png" alt="Instagram">
-            </a>
-        </div>
-    
-        <div class="footer-subtext">
-            Developed by CS group 23
-        </div>
-    </div>
-    
-</div>
-
+</div></div>
+<br>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

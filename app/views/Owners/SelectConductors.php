@@ -11,10 +11,45 @@
             <span class="bus-model">Bus Model: <?php echo $bus->bus_model; ?></span><br>
             <span class="bus-route">Bus Route: <?php echo $bus->route_num; ?></span>
             <button class="select-btn" onclick="showConductors('<?php echo $bus->bus_no;?>')">Select</button>
-            <button class="deselect-btn" onclick="deSelectConductors()">Deselect</button>
+            <!-- Inside the loop where you display buses -->
+            <form method="post" action = "<?php echo URLROOT;?>/Owners/Selectconductors" style="display: inline;" >
+                <input type="hidden" name="deselectConductor" value="true">
+                <input type="hidden" name="conductorId" value="<?php echo $bus->conductorId; ?>">
+                <button type="submit" class="deselect-btn" onclick="deSelectConductors('<?php echo $bus->bus_no;?>')">Deselect</button>
+            </form>
         </div>
     <?php endforeach; ?>
 </div>
+ <div class = "search-container">
+    <input type="text" id="searchInput" onkeypress="filterConductors()" placeholder="Search for conductors...">
+
+</div>
+<script>
+// JavaScript function to filter the conductor list based on search input
+function filterConductors() {
+    // Get the search input value
+    var input = document.getElementById("searchInput");
+    var filter = input.value.toUpperCase();
+
+    // Get the list of conductor elements
+    var conductorList = document.getElementById("conductor-list");
+    var conductors = conductorList.getElementsByClassName("conductor");
+
+    // Loop through all conductor elements, and hide those that don't match the search query
+    for (var i = 0; i < conductors.length; i++) {
+        var conductor = conductors[i];
+        var name = conductor.getElementsByTagName("span")[0]; // Assuming the name is the first <span> element
+
+        // If the name matches the search query, display the conductor, otherwise hide it
+        if (name.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            conductor.style.display = "";
+        } else {
+            conductor.style.display = "none";
+        }
+    }
+}
+</script> 
+
 
 <!-- HTML to display conductor list -->
 <div id="conductor-list" style="display:none;">

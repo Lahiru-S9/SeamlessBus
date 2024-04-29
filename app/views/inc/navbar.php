@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-<!-- <link rel="stylesheet" href="/css/style.css"> -->
+<!--<link rel="stylesheet" href="/css/style.css">-->
 
 <nav>
     <div class="navbar-container">
@@ -18,12 +18,26 @@
         </ul>
         <div class="user-actions">
             <?php if(isset($_SESSION['user_id'])) : ?>
-                <a href="<?php echo URLROOT; ?>/<?php echo $_SESSION['usertype'].'s'?>/dashboard" class="dashboard">Dashboard</a>
-                <a href="<?php echo URLROOT; ?>/users/logout" class="logout">Log out</a>
+                <button type="button" onclick="window.location.href='<?php echo URLROOT; ?>/<?php echo $_SESSION['usertype'].'s'?>/dashboard'" class="dashboard">Dashboard</button>
+                <button type="button" onclick="window.location.href='<?php echo URLROOT; ?>/users/logout'" class="logout">Log out</button>
             <?php else : ?>
-                <a href="<?php echo URLROOT; ?>/pages/userSelect" class="signup">Sign up</a>
-                <a href="<?php echo URLROOT; ?>/users/login" class="login">Log in</a>
+                <button type="button" onclick="window.location.href='<?php echo URLROOT; ?>/pages/userSelect'" class="signup">SignUp</button>
+                <button type="button" onclick="window.location.href='<?php echo URLROOT; ?>/users/login'" class="login">Log in</button>
             <?php endif; ?>
         </div>
     </div>
 </nav><br>
+<!--
+<script>
+            document.getElementsByClassName("dashboard").addEventListener("click", function() {
+            window.location.href = "<?php echo URLROOT; ?>/<?php echo $_SESSION['usertype'].'s'?>/dashboard";});
+
+            document.getElementsByClassName("logout").addEventListener("click", function() {
+            window.location.href = "<?php echo URLROOT; ?>/users/logout";});
+
+            document.getElementsByClassName("signup").addEventListener("click", function() {
+            window.location.href = "<?php echo URLROOT; ?>/pages/userSelect";});
+
+            document.getElementsByClassName("login").addEventListener("click", function() {
+            window.location.href = "<?php echo URLROOT; ?>/users/login";});
+</script>-->

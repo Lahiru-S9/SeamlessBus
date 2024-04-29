@@ -114,7 +114,11 @@
                 redirect('Users/login');
     
             }
-            $this->view('schedulers/dashboard' );
+            $message = isset($_GET['message']) ? urldecode($_GET['message']) : "";
+            $data = [
+                'message' => $message
+            ];
+            $this->view('schedulers/dashboard', $data);
         }
 
         public function AddBusRotation(){
@@ -167,7 +171,7 @@
             $friday = $this->scheduleModel->getScheduleByDay('Friday',$_SESSION['user_id']);
             $saturday = $this->scheduleModel->getScheduleByDay('Saturday',$_SESSION['user_id']);
 
-            $routeNumbers = $this->scheduleModel->getRouteNumbers();
+            $routeNumbers = $this->scheduleModel->getRouteNumbers($_SESSION['user_id']);
 
             $data = [
                 'sunday' => $sunday,
@@ -183,6 +187,32 @@
             $this->view('schedulers/manageSchedule', $data);
         }
     
+    }
+
+    public function deleteSchedule(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // It's an AJAX request
+            var_dump($_GET);
+            $urlParts = explode('/', $_GET['url']);
+            $id = end($urlParts);
+
+            // Delete the schedule from the database
+            $this->scheduleModel->deleteSchedule($id);
+
+            // Return success message
+            echo json_encode(['status' => 'success', 'message' => 'Schedule deleted successfully']);
+
+            exit;
+        } else {
+            // Handle non-POST requests, if needed
+            echo json_encode(['error' => 'Invalid request method']);
+            exit;
+        }
     }
 
     public function addSchedule(){
@@ -601,6 +631,158 @@
         }
 =======
 >>>>>>> d38ac5344ed6dd5c4fd066da9adebcf7d99d42a5
+    }
+
+    public function addRoute(){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+
+        }
+
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //process form
+           
+            //Sanitize POST data
+            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Init data
+            $data = [
+                'routeNumber' => trim($_POST['routeNumber']),
+                'from' => trim($_POST['from']),
+                'to' => trim($_POST['to']),
+                'ticketPrice' => trim($_POST['ticketPrice']),
+                'routeNumber_err' => '',
+                'from_err' => '',
+                'to_err' => '',
+                'ticketPrice_err' => ''
+            ];
+
+            //Validate routeNumber
+            if(empty($data['routeNumber'])){
+                $data['routeNumber_err'] = 'Please enter route number';
+            } elseif($this->routesModel->getRouteByRouteNumber($data['routeNumber'])){
+                $data['routeNumber_err'] = 'Route name already exists';
+            }
+
+            //Validate to
+            if(empty($data['to'])){
+                $data['to_err'] = 'Please enter to station';
+            }
+
+            if(empty($data['ticketPrice'])){
+                $data['ticketPrice_err'] = 'Please enter ticket price';
+            }
+
+            //Make sure errors are empty
+            if(empty($data['routeNumber_err']) && empty($data['from_err']) && empty($data['to_err'])){
+                //Validated
+                
+                //Register User
+                if($this->routesModel->addRoute($data)){
+                    flash('route_success', 'Route added successfully');
+                    redirect('Schedulers/addRoute');
+                } else{
+                    die('Something went wrong');
+                }
+
+            }else {
+                //Load view with errors
+                $this->view('Schedulers/addRoute', $data);
+            }
+        }
+        //Init data
+        $routes= $this->routesModel->getRoutesbySchedulerWithDetails($_SESSION['user_id']);
+        $station = $this->stationModel->getSchedulerStation($_SESSION['user_id']);
+        $stations = $this->stationModel->getAllStations();
+
+
+        $data = [
+            'routes' => $routes,
+            'station' => $station,
+            'stations' => $stations,
+            'routeNumber_err' => '',
+            'to-err' => '',
+            'ticketPrice_err' => ''
+        ];
+
+        // var_dump($data);
+
+        $this->view('schedulers/addRoute',$data);
+    }
+
+    public function editRoute($routeNumber){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+            redirect('Users/login');
+        }
+    
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Process form
+            // Sanitize POST data
+            $POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    
+            // Initialize data
+            $data = [
+                'route_num' => $routeNumber,
+                'ticketPrice' => trim($_POST['ticketPrice']),
+                'ticketPrice_err' => ''
+            ];
+    
+            // Validate ticketPrice
+            if(empty($data['ticketPrice'])){
+                $data['ticketPrice_err'] = 'Please enter ticket price';
+            }
+    
+            // Make sure errors are empty
+            if(empty($data['ticketPrice_err'])){
+                // Validated
+                // Update ticket price
+                if($this->routesModel->updateTicketPrice($data)){
+                    flash('route_success', 'Ticket price updated successfully');
+                    redirect('Schedulers/addRoute');
+                } else{
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                $this->view('schedulers/editRoute', $data);
+            }
+        } else {
+            // Load the route data for editing
+            $route = $this->routesModel->getRouteByRouteNumber($routeNumber);
+            $data = [
+                'route_num' => $routeNumber,
+                'ticketPrice' => $route->ticket_price,
+                'ticketPrice_err' => ''
+            ];
+    
+            $this->view('schedulers/editRoute', $data);
+        }
+    }
+    
+
+    public function deleteRoute($routeNumber){
+        if(!isLoggedIn() || $_SESSION['usertype'] != 'Scheduler'){
+               
+            redirect('Users/login');
+
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // It's a regular request
+            if ($this->routesModel->deleteRoute($routeNumber)) {
+                // Redirect to the addRoute page
+                redirect('schedulers/addRoute');
+            } else {
+                // Handle the case where the route deletion fails
+                echo json_encode(['error' => 'Failed to delete route']);
+                exit;
+            }
+        } else {
+            // Handle non-GET requests, if needed
+            echo json_encode(['error' => 'Invalid request method']);
+            exit;
+        }
     }
     
     

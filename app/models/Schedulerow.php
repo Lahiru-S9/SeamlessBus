@@ -7,21 +7,6 @@ class Schedulerow {
         $this->db = new Database;
     }
 
-    // public function getSchedule(){
-    //     $this->db->query('SELECT sc.id, sc.arrival_time, sc.departure_time, 
-    //     stations.station AS from_station, 
-    //     s.station AS to_station
-    //     FROM schedule AS sc
-    //     JOIN routes AS r ON sc.routeid = r.id
-    //     JOIN stations AS stations ON r.fromstationid = stations.id
-    //     JOIN stations AS s ON r.tostationid = s.id
-    //  ');
-
-    //     $results = $this->db->resultSet();
-
-    //     return $results;
-    // }
-
     public function getSchedule(){
         $this->db->query('SELECT 
         schedule.id,
@@ -44,7 +29,9 @@ class Schedulerow {
     JOIN 
         stations AS from_station ON routes.fromstationid = from_station.id
     JOIN 
-        stations AS to_station ON routes.tostationid = to_station.id;
+        stations AS to_station ON routes.tostationid = to_station.id
+    WHERE 
+        schedule.date > CURDATE() OR (schedule.date = CURDATE() AND schedule_def.arrival_time > CURTIME());
         
      ');
 
@@ -272,7 +259,7 @@ class Schedulerow {
                             JOIN routes AS r ON sc.route_id = r.id
                             JOIN stations AS stations ON r.fromstationid = stations.id
                             JOIN stations AS s ON r.tostationid = s.id
-                            JOIN schedulers ON stations.id = schedulers.station_id
+                            JOIN schedulers ON (stations.id = schedulers.station_id OR s.id = schedulers.station_id)
                             JOIN scheduler_details ON schedulers.scheduler_id = scheduler_details.id
                             WHERE sc.day = :day AND scheduler_details.user_id = :id;
                          ');
@@ -301,8 +288,12 @@ class Schedulerow {
         return $results;
     }
 
-    public function getRouteNumbers() {
-        $this->db->query('SELECT route_num FROM routes');
+    public function getRouteNumbers($id) {
+        $this->db->query('SELECT DISTINCT route_num FROM routes JOIN schedulers ON schedulers.station_id = routes.tostationid 
+        JOIN scheduler_details ON schedulers.scheduler_id = scheduler_details.id 
+        WHERE  scheduler_details.user_id= :id');
+
+        $this->db->bind(':id', $id);
 
         $results = $this->db->resultSet();
 
@@ -319,6 +310,18 @@ class Schedulerow {
 
         if($this->db->execute()){
             return $this->db->lastInsertId();
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteSchedule($id) {
+        $this->db->query('DELETE FROM schedule_def WHERE id = :id');
+
+        $this->db->bind(':id', $id);
+
+        if($this->db->execute()){
+            return true;
         } else {
             return false;
         }

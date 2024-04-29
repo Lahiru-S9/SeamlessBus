@@ -6,7 +6,7 @@
         <div class="login-title">Register now to create an account</div>
         <div class="subtitle">with just a few simple steps</div><br>
 
-        <form action="<?php echo URLROOT; ?>/gPassengers/register" method="POST">
+        <form action="<?php echo URLROOT; ?>/GPassengers/register" method="POST">
             <div class="form-group">
                 <label for="name">Name: <sup>*</sup></label>
                 <input type="text" class="custom-input <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" name="name" value="<?php echo $data['name']; ?>">
@@ -37,30 +37,5 @@
     <img id="main-image" src="<?php echo URLROOT; ?>/img/registerPage.png" alt="Background Image" />
 </div>
 </div><br>
-<div class="footer">
-        <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
-        <div class="footer-subtext">
-            Seamless Bus
-        </div>
-        <div class="footer-text">
-            Enhancing your Travel Experience
-        </div>
-
-        <div class="social-media-icons">
-            <a href="#" class="social-media-icon">
-                <img src="<?php echo URLROOT; ?>/img/Facebook.png" alt="Facebook">
-            </a>
-            <a href="#" class="social-media-icon">
-                <img src="<?php echo URLROOT; ?>/img/Twitter.png" alt="Twitter">
-            </a>
-            <a href="#" class="social-media-icon">
-                <img src="<?php echo URLROOT; ?>/img/Instagram.png" alt="Instagram">
-            </a>
-        </div>
-    
-        <div class="footer-subtext">
-            Developed by CS group 23
-        </div>
-    </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

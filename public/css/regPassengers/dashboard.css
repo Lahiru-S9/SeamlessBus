@@ -1,141 +1,191 @@
-/* dashboard.css */
+.container{
+  text-align: center;  
+  margin-top: 5%;
+  display: block;
+}
 
-.container {
-  margin-top: 80px;
+.title{
+  font-weight: 700;
+  margin-top: 7%;
+  font-size: 200%;
+}
+
+.card-container{
+  margin-top: 3%;
+  justify-content: center;
+  gap: 5%;
+  display: flex;
+}
+
+.card {
+  position: relative;
+  width: 220px;
+  height: 320px;
+  background: mediumturquoise;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+}
+/*reg user my profile card*/
+#profile-card{
+  background: rgb(255, 221, 0);
+}
+#profile-card::before,
+#profile-card::after{
+  background-color: rgb(183, 255, 0);
+}
+
+/*scheduler busses card*/
+#bus-card{  
+  background: rgb(255, 221, 0);
+}
+#bus-card::before,
+#bus-card::after{
+  background-color: rgb(183, 255, 0);
+}
+.card#bus-card:hover::after{
+  content: "View Busses";
+}
+
+/*scheduler manage schedules card
+#schedule-card{
+  background: rgb(255, 221, 0);
+}
+#schedule-card::before,
+#schedule-card::after{
+  background-color: rgb(183, 255, 0);
+}*/
+.card#schedule-card:hover::after{
+  content: "Manage Schedules";
+}
+
+/*scheduler feedback form card*/
+#feedback-card{
+  background: rgb(255, 115, 243);
+}
+#feedback-card::before,
+#feedback-card::after{
+  background-color: rgb(255, 169, 218);
+}
+.card#feedback-card:hover::after{
+  content: "Provide Feedback";
+}
+
+#select-conductors-card{
+  background: rgb(255, 81, 99);
+}
+#select-conductors-card::before,
+#select-conductors-card::after{
+  background-color: rgb(255, 126, 173);
+}
+.card#select-conductors-card:hover::after{
+  content: "Select Conductors";
+}
+
+#add-busses-card{
+  background: rgb(255, 170, 0);
+}
+#add-busses-card::before,
+#add-busses-card::after{
+  background-color: rgb(255, 205, 105);
+}
+.card#add-busses-card:hover::after{
+  content: "Add Busses";
+}
+
+.card#reports-card:hover::after{
+  content: "View Reports";
+}
+
+.card::before,
+.card::after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: lightblue;
+  transition: all 0.5s;
+}
+
+.card::before {
+  top: 0;
+  right: 0;
+  border-radius: 0 15px 0 100%;
+}
+
+.card::after {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100%  0 15px;
+}
+
+.card:hover::before,
+.card:hover:after {
   width: 100%;
   height: 100%;
-  background: white;
-  display: flex; /* Use flexbox to align content and actions */
-  flex-direction: column;
+  border-radius: 15px;
+  transition: all 0.5s;
 }
 
-.dashboard-content {
-  text-align: center;
-  opacity: 0.6;
-  padding: 20px;
+.card#qr-card:hover::after{
+  content: "View QR";
+}
+.card#profile-card:hover::after{
+  content: "View Profile";
 }
 
-.dashboard-title {
-  text-align: center; 
-  color: #001514; 
-  font-size: 48px; 
-  font-family: Lato; 
-  font-weight: 800; 
-  line-height: 70px; 
-  word-wrap: break-word
+#addRoute-card{  
+  background: rgb(82, 255, 94);
+}
+#addRoute-card::before,
+#addRoute-card::after{
+  background-color: rgb(92, 255, 228);
+}
+.card#addRoute-card:hover::after{
+  content: "Add Route";
 }
 
-.dashboard-description {
-  opacity: 0.60; 
-  text-align: center; 
-  color: #001514; 
-  font-size: 20px; 
-  font-family: Lato; 
-  font-weight: 500; 
-  line-height: 30px; 
-  word-wrap: break-word
-}
-
-/* Style for the dashboard actions container */
-.dashboard-actions {
-    display: flex;
-    justify-content: center; /* Center the actions horizontally */
-    margin-top: 20px;
-  }
-  
-  /* Style for each dashboard action */
-  .dashboard-action {
-    text-decoration: none; /* Remove underline for links */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: #001514;
-    font-size: 16px;
-    font-family: Lato;
-    font-weight: 400;
-    line-height: 20px;
-    word-wrap: break-word;
-    margin: 10px; /* Adjust the spacing between actions */
-    transition: background 0.3s; /* Smooth background transition */
-    width: 200px
-  }
-  
-  /* Style for the action icons */
-  .action-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px; 
-    position: relative;
-  }
-
-  .action-icon img {
-    position: absolute; /* Position the image absolutely within the icon container */
-    width: 20px; /* Set the image width */
-    height: 20px; /* Set the image height */
-    top: 50%; /* Move the image to the center vertically */
-    left: 50%; /* Move the image to the center horizontally */
-    transform: translate(-50%, -50%); /* Center the image precisely */
-}
-  
-  /* Additional styles for different background colors */
-  .dashboard-action:nth-child(1) .action-icon {
-    background: #1877F2;
-  }
-  
-  .dashboard-action:nth-child(2) .action-icon {
-    background: #1DA1F2;
-  }
-  
-  .dashboard-action:nth-child(3) .action-icon {
-    background: linear-gradient(211deg, #FA2D9B 0%, #FD8451 50%, #FFD231 100%), linear-gradient(158deg, rgba(131.83, 35.06, 255, 0.74) 0%, rgba(255, 135.66, 25.50, 0) 100%);
-  }
-  
-  .dashboard-action:nth-child(4) .action-icon {
-    background: #0A6ED2;
-  }
-  
-  /* Hover effect for actions */
-  .dashboard-action:hover {
-    background: #FCFC62;
-  }
-  
-  /* Additional styling for action labels (optional) */
-  .action-label {
-    font-size: 14px;
-    font-weight: 600;
-  }
-
+/*.card#qr-card:hover::before {
+  background-image: url(https://www.bdc.ca/globalassets/digizuite/40415-bdc-qr-code.jpg?v=498d76);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}*/
   .popup {
     display: none;
-    position: fixed;
-    top: 0;
+    position: absolute;
+    bottom: 10%;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 30%;
+    height: 30%;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 3;
 }
 
 .popup .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: auto;
+    left: auto;
     width: 100%;
     height: 100%;
 }
 
 .popup .content {
+
   position: relative;
-  background: #fff;
+  background: lightblue;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 1rem;
   max-width: 80%;
   margin: auto;
   display: flex;
@@ -143,7 +193,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  top: 50%; /* Position it at 50% from the top */
   transform: translateY(-50%); /* Translate it back by -50% of its own height */
 }
 
@@ -157,9 +206,9 @@
 
 /* Your existing CSS remains unchanged */
 
-/* Additional styling for the "Show QR" button to match dashboard actions */
+/* Additional styling for the "Show QR" button to match dashboard actions 
 .popup-button {
-  text-decoration: none; /* Remove underline for links */
+  text-decoration: none; /* Remove underline for links 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,17 +219,17 @@
   font-weight: 400;
   line-height: 20px;
   word-wrap: break-word;
-  margin: 10px; /* Adjust the spacing between actions */
-  transition: background 0.3s; /* Smooth background transition */
+  margin: 10px; /* Adjust the spacing between actions 
+  transition: background 0.3s; /* Smooth background transition 
   width: 200px;
-  background: #62D9CC; /* Match the background color with other buttons */
-  border-radius: 5px; /* Apply border radius */
-  padding: 10px; /* Adjust padding */
-  border: none; /* Remove default button border */
-  cursor: pointer; /* Change cursor to pointer */
+  background: #62D9CC; /* Match the background color with other buttons 
+  border-radius: 5px; /* Apply border radius 
+  padding: 10px; /* Adjust padding
+  border: none; /* Remove default button border 
+  cursor: pointer; /* Change cursor to pointer
 }
 
-/* Hover effect for the "Show QR" button */
+/* Hover effect for the "Show QR" button 
 .popup-button:hover {
   background: #FCFC62;
 }

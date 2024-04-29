@@ -7,7 +7,7 @@
         }
 
         public function getTotalBookingsCount($passenger_id){
-            $this->db->query("SELECT COUNT(*) AS total_bookings FROM booked_regpassengers WHERE passengerid = :passenger_id");
+            $this->db->query("SELECT COUNT(*) AS total_bookings FROM bookings WHERE (payment_status='finished' AND id = :passenger_id)");
             
             $this->db->bind(':passenger_id', $passenger_id);    
 
@@ -60,9 +60,8 @@
                 JOIN schedule_def ON schedule_def.route_id = r.id
                 JOIN schedule sch ON schedule_def.id = sch.schedule_defId
                 JOIN bookings b ON sch.id = b.scheduleid
-                JOIN booked_regpassengers br ON b.id = br.bookingid
-                WHERE br.passengerid = :passenger_id
-                AND br.status = 'active';
+                WHERE b.user_id = :passenger_id
+                AND b.payment_status = 'active';
             ");
             
             $this->db->bind(':passenger_id', $passenger_id);    
@@ -84,9 +83,8 @@
         JOIN schedule_def ON schedule_def.route_id = r.id
         JOIN schedule sch ON schedule_def.id = sch.schedule_defId
         JOIN bookings b ON sch.id = b.scheduleid
-        JOIN booked_regpassengers br ON b.id = br.bookingid
-        WHERE br.passengerid = :passenger_id
-        AND br.status = 'finished';
+        WHERE b.user_id = :passenger_id
+        AND b.payment_status = 'finished';
             ");
             
             $this->db->bind(':passenger_id', $passenger_id);    

@@ -69,3 +69,17 @@ function assignConductor(conductorId, conductorName, busNumber) {
     },
   });
 }
+
+// JavaScript function to deselect the currently assigned conductor for a bus
+function deSelectConductors(busNumber) {
+  // Logic to deselect the conductor
+  // For now, let's assume the deselection is successful and update the UI accordingly
+
+  // Update selected bus tile to show no conductor assigned
+  var busNumberu = busNumber.replace(" ", "_");
+  var busTile = document.querySelector(`.bus-${busNumberu}`);
+  var conductorInfo = busTile.querySelector(".currant-conductor");
+  conductorInfo.innerText = "Current conductor: not assigned";
+
+  // You can also make an AJAX call here to update the deselection on the server if needed
+}

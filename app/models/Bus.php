@@ -41,15 +41,26 @@ class Bus {
         }
     }
 
+    // public function getBusesByOwnerId($owner_id){
+    //     $this->db->query('SELECT * FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE ownerid = :owner_id');
+    //     //Bind value
+    //     $this->db->bind(':owner_id', $owner_id);
+
+    //     $results = $this->db->resultSet();
+
+    //     return $results;
+    // }
+
     public function getBusesByOwnerId($owner_id){
-        $this->db->query('SELECT * FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE ownerid = :owner_id');
+        $this->db->query('SELECT buses.*, conductors.id AS conductorId, users.* FROM buses LEFT JOIN conductors ON buses.bus_no=conductors.assigned_to LEFT JOIN users ON users.id = conductors.user_id WHERE buses.ownerid = :owner_id');
         //Bind value
         $this->db->bind(':owner_id', $owner_id);
-
+    
         $results = $this->db->resultSet();
-
+    
         return $results;
     }
+    
 
     public function getRequestedBusesBySchdeuler($scheduler_id){
         $this->db->query("SELECT 
@@ -74,7 +85,7 @@ class Bus {
     JOIN
         users ON buses.ownerid = users.id
     WHERE 
-        buses.status = 'Requested' AND scheduler_details.user_id = :scheduler_id
+        buses.status = 'requested' AND scheduler_details.user_id = :scheduler_id
     GROUP BY 
         buses.bus_no;
         ");
@@ -88,6 +99,20 @@ class Bus {
         //Bind values
         $this->db->bind(':bus_no', $bus_no);
         $this->db->bind(':status', $status);
+
+        //Execute function
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function requestRoute($busId,$route){
+        $this->db->query('UPDATE buses SET route_num = :route, status ="requested", status_updated_on = CURRENT_TIMESTAMP WHERE bus_no = :busId');
+        //Bind values
+        $this->db->bind(':busId', $busId);
+        $this->db->bind(':route', $route);
 
         //Execute function
         if($this->db->execute()){
@@ -133,9 +158,9 @@ class Bus {
     }
 
     public function getFilteredBuses($sql,$id,$filter_value){
-        $this->db->query($sql);
-        $this->db->bind(':id', $id);
-        $this->db->bind(':filter_value', $filter_value);
+        $this->db->query($sql); //This parameter represents the SQL query to be executed for fetching the filtered buses. It is a dynamic query that may contain placeholders for bind parameters.
+        $this->db->bind(':id', $id);//owner_id 
+        $this->db->bind(':filter_value', $filter_value);//It represents the value used to filter the buses based on a specific condition.
         $results = $this->db->resultSet();
         return $results;
     }
@@ -152,5 +177,99 @@ class Bus {
         } else {
             return false;
         }
+
     }
+    // Conductor Model
+    //public function getConductorsWithDetailsWithAddressA(){
+    //$this->db->query("SELECT * FROM conductors WHERE address LIKE 'A%A'");
+    //return $this->db->resultSet();
+
+
+
+
+//   public function seeReports($data){
+//         $this->db->query('SELECT 
+//         buses.bus_no, 
+//         COUNT(bookings.id) AS booking_count,
+//         routes.ticket_price,
+//         COUNT(bookings.id) * routes.ticket_price AS total_revenue
+//         FROM 
+//             bookings
+//         JOIN 
+//             schedule ON bookings.scheduleid = schedule.id 
+//         JOIN
+//             schedule_def ON schedule_def.id = schedule.schedule_defId 
+//         JOIN 
+//             bus_assigned ON schedule.id = bus_assigned.schedule_id
+//         JOIN 
+//             buses ON bus_assigned.bus_no = buses.bus_no 
+//         JOIN
+//             routes ON routes.id = schedule_def.route_id
+//         WHERE
+//             buses.ownerid = :id 
+//         GROUP BY 
+//             buses.bus_no, routes.ticket_price;');
+   
+//    //bind values
+//     $this->db->bind(':id', $data['owner_id']);
+//     $results = $this->db->resultSet();
+//     return $results;
+//  }
+
+ public function seeReports($data){
+    $this->db->query('SELECT 
+    buses.bus_no,
+    COUNT(bookings.id) AS booking_count,
+    routes.ticket_price,
+    COUNT(bookings.id) * routes.ticket_price AS total_revenue
+FROM 
+    bookings 
+JOIN 
+    schedule ON bookings.scheduleid = schedule.id
+JOIN
+    schedule_def ON schedule_def.id = schedule.schedule_defId
+JOIN 
+    bus_assigned ON schedule.id = bus_assigned.schedule_id
+JOIN 
+    buses ON bus_assigned.bus_no = buses.bus_no
+JOIN 
+    routes ON routes.id = schedule_def.route_id
+WHERE 
+    buses.ownerid = :id AND schedule.date >= LAST_DAY(CURRENT_DATE - INTERVAL 1 MONTH) + INTERVAL 1 DAY
+    AND schedule.date < LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY
+GROUP BY 
+    buses.bus_no, routes.ticket_price;');
+
+//bind values
+$this->db->bind(':id', $data['owner_id']);
+$results = $this->db->resultSet();
+return $results;
+}
+
+public function OnGoingBus($id){
+    $this->db->query('SELECT 
+    buses.bus_no,
+    schedule.date,
+    schedule_def.departure_time,
+    COUNT(bookings.order_id) AS booking_count,
+    COUNT(bookings.id) AS seats
+    FROM
+    bookings 
+    JOIN 
+        schedule ON schedule.id = bookings.scheduleid 
+    JOIN
+        schedule_def ON schedule_def.id = schedule.schedule_defId
+    JOIN
+        bus_assigned ON bus_assigned.schedule_id = schedule.id 
+    JOIN 
+        buses ON buses.bus_no = bus_assigned.bus_no 
+    WHERE
+         buses.ownerid = :id AND DATE(schedule.date) = CURDATE() AND bookings.payment_status = "accepted"
+    GROUP BY
+        buses.bus_no;');
+    
+    $this->db->bind(':id' , $id);
+    $results = $this->db->resultSet();
+    return $results;
+}
 }
