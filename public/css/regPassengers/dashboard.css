@@ -51,6 +51,23 @@
   content: "View Busses";
 }
 
+.card#stations-card:hover::after{
+  content: "Add stations";
+}
+
+
+#scheduler-card{  
+  background: rgb(255, 221, 0);
+}
+#scheduler-card::before,
+#scheduler-card::after{
+  background-color: rgb(183, 255, 0);
+}
+.card#scheduler-card:hover::after{
+  content: "Manage Schedulers";
+}
+
+
 /*scheduler manage schedules card
 #schedule-card{
   background: rgb(255, 221, 0);
