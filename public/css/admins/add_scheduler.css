@@ -1,28 +1,31 @@
-
 .main-container {
   display: flex;
-  gap: 20px;
-  justify-content: center; /* Center the containers horizontally */
+  position: relative;
+  gap: 10%;
+  justify-content: center;
 }
 
 .container {
-  margin-top: 80px;
-  width: 45%; /* Adjust the width as needed */
-  display: inline-block;
-  vertical-align: top; /* Align containers to the top */
-  /* margin: 10px;  */
+  text-align: center;
+  margin-top: 5%; /* Adjust the width as needed */
 }
 
 #scheduler-list,
 #stations-list {
-  width: 100%;
+  background-color: aqua;
+  border-radius: 1rem;
+  padding: 5px;
   text-align: left;
-  margin-right:10px;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.stations-container{
+  min-width: 300px;
 }
 
 .scheduler-container,
 .stations-container {
-  margin-bottom: 10px;
   border: 1px solid #ccc;
   padding: 10px;
   cursor: pointer;
@@ -32,13 +35,12 @@
 
 .scheduler-container:hover,
 .stations-container:hover {
-  background-color: #f0f0f0; /* Change background color on hover */
+  background-color: #c8c8c8; /* Change background color on hover */
 }
 
 .assigned-stations,
 .assigned-schedulers {
   display: none;
-  margin-top: 10px;
 }
 
 /* The Modal (background) */
