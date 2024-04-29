@@ -14,7 +14,7 @@
             <li><a href="<?php echo URLROOT; ?>">Home</a></li>
             <li><a href="<?php echo URLROOT; ?>/pages/about">About Us</a></li>
             <li><a href="<?php echo URLROOT; ?>/schedule/index">Bus Schedules</a></li>
-            <li><a href="#">Bookings</a></li>
+            <li><a href="<?php echo URLROOT; ?>/Pages/bookings">Bookings</a></li>
         </ul>
         <div class="user-actions">
             <?php if(isset($_SESSION['user_id'])) : ?>
