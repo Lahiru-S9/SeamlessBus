@@ -6,7 +6,7 @@ function toggleStations(schedulerId, event) {
 
     var stationsDiv = document.getElementById('stations_' + schedulerId);
     var editButtonContainer = document.getElementById('scheduler-edit-button-container_' + schedulerId);
-    
+
     // Use the correct modal ID based on schedulerId
     var modalId = 'stationModal_' + schedulerId;
     var modal = document.getElementById(modalId);
@@ -249,5 +249,4 @@ function filterSchedulers(stationId) {
         }
     }
 }
-
 
