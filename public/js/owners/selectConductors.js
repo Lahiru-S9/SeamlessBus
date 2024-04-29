@@ -28,7 +28,7 @@ function showConductors(busNumber) {
                         <span>Name: ${conductor.name}</span><br>
                         <span>Age: ${conductor.mobile}</span><br>
                         <span>Address: ${conductor.address}</span><br>
-                        <span>Assigned: ${conductor.isAssigned}</span><br>
+                        <span>Assigned: ${conductor.assigned_to}</span><br>
                         ${assignButton}
                     </div>
         `;
