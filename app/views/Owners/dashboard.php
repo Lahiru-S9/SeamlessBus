@@ -1,5 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/regPassengers/dashboard.css">
+<link rel="stylesheet" href = "<?php echo URLROOT; ?>/css/Owners/dashboard.css">
 
 <div class="container">
     <div class="title">What's on your mind?</div>
