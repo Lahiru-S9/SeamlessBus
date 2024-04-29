@@ -58,5 +58,5 @@
 </div>
 
 <script src="<?php echo URLROOT; ?>/js/Owners/addBuses.js"></script>
+ 
 
-<?php require APPROOT . '/views/inc/footer.php'; ?>

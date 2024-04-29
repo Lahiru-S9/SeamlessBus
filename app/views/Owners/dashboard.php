@@ -11,9 +11,10 @@
         <div id="feedback-card" class="card" onclick="window.location.href='<?php echo URLROOT?>/Owners/AddFeedback'">Feedback</div>
     </div>
 </div><br><br> 
-
+    
     <div class = "buses">
         <h2 class="dashboard-title">Your Buses</h2>
+        
         <table>
             <tr>
                 <th>Bus No</th>

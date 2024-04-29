@@ -39,7 +39,7 @@
     <img src="<?php echo URLROOT; ?>/img/registerPage.png" alt="Background Image" />
 </div>
 </div><br>
-<div class="footer">
+<!-- <div class="footer">
         <img id="footer-logo" src="<?php echo URLROOT; ?>/img/logo_bw.png">
         <div class="footer-subtext">
             Seamless Bus
@@ -63,7 +63,7 @@
         <div class="footer-subtext">
             Developed by CS group 23
         </div>
-    </div>
+    </div> -->
 
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
