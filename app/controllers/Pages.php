@@ -32,5 +32,37 @@
             $this->view('pages/userSelect', $data);
         }
 
-       
+       public function bookings(){
+        if (isset($_SESSION['user_id']) && $_SESSION['user_type'] == 'RegPassenger' ) {
+            
+            redirect('RegPassengers/profile');
+        } else {
+
+            //is request method is post
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                // Process form
+                // Sanitize POST data
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $nic = trim($_POST['nic']);
+                $bookings = $this->bookingModel->getBookingsByNIC($nic);
+                $message = 'No bookings to show';
+                $data =  [
+                    'message' => $message,
+                    'bookings' => $bookings,
+                ];
+                $this->view('pages/bookings', $data);
+            }
+
+            else{      
+                $message = 'please enter your NIC to see bookings'; 
+                $data =  [
+                    'message' => $message,
+                ];
+                // var_dump ($data);
+                $this->view('pages/bookings', $data);
+            }
+
+        }
+       }
+
     }
