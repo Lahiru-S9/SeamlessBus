@@ -3,7 +3,7 @@
 
 <div class="main-container">
     <div class="container" id="scheduler-container">
-        <h2>Schedulers</h2>
+        <h2>Schedulers</h2><br>
         <div id="scheduler-list">
             <?php if (isset($data['schedulers']) && is_array($data['schedulers'])) : ?>
                 <!-- <h2>Schedulers</h2> -->
@@ -54,7 +54,7 @@
     </div>
 
     <div class="container" id="stations-container">
-        <h2>Stations</h2>
+        <h2>Stations</h2><br>
         <div id="stations-list">
             <?php if (isset($data['stations']) && is_array($data['stations'])) : ?>
                 <!-- <h2>Stations</h2> -->
