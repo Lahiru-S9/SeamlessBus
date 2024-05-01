@@ -16,7 +16,7 @@
         }
 
         public function getDetails($passenger_id){
-            $this->db->query("SELECT * FROM reg_passengers WHERE user_id = :passenger_id");
+            $this->db->query("SELECT * FROM reg_passengers JOIN users ON reg_passengers.user_id=users.id WHERE user_id = :passenger_id");
             
             $this->db->bind(':passenger_id', $passenger_id);    
 
