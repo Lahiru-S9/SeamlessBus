@@ -70,8 +70,8 @@
                     <div class="col-sm-3">
                       <h6 class="mb-0">Email</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      <?php echo $_SESSION['user_email'];?>
+                    <div class="col-sm-9 text-secondary" id='email'>
+                      <?php echo $data['passengerDetails'][0]->email;?>
                     </div>
                   </div>
                   <hr>
